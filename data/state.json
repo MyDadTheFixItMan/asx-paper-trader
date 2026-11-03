@@ -14,148 +14,23 @@
   }
  ],
  "day": {
-  "date": "2026-11-03",
-  "phase": "closed",
-  "start_equity": 10000,
+  "date": "2026-11-04",
+  "phase": "waiting_open",
+  "start_equity": 9763.69,
   "universe_size": 335,
-  "watchlist": [
-   {
-    "sym": "XYZ",
-    "rvol": 101.22,
-    "or_high": 109.7300033569336,
-    "or_low": 108.83999633789062,
-    "or_open": 108.83999633789062,
-    "or_close": 109.37000274658203,
-    "atr": 2.7193,
-    "gap_pct": -0.01
-   },
-   {
-    "sym": "VGN",
-    "rvol": 15.28,
-    "or_high": 2.7100000381469727,
-    "or_low": 2.5799999237060547,
-    "or_open": 2.5799999237060547,
-    "or_close": 2.700000047683716,
-    "atr": 0.0857,
-    "gap_pct": 4.03
-   },
-   {
-    "sym": "QAN",
-    "rvol": 9.78,
-    "or_high": 9.430000305175781,
-    "or_low": 9.210000038146973,
-    "or_open": 9.220000267028809,
-    "or_close": 9.395000457763672,
-    "atr": 0.1975,
-    "gap_pct": 4.77
-   },
-   {
-    "sym": "DPM",
-    "rvol": 6.95,
-    "or_high": 50.849998474121094,
-    "or_low": 50.400001525878906,
-    "or_open": 50.400001525878906,
-    "or_close": 50.84000015258789,
-    "atr": 1.7907,
-    "gap_pct": 1.08
-   },
-   {
-    "sym": "ALQ",
-    "rvol": 6.42,
-    "or_high": 21.549999237060547,
-    "or_low": 21.260000228881836,
-    "or_open": 21.3799991607666,
-    "or_close": 21.5,
-    "atr": 0.4989,
-    "gap_pct": 0.66
-   },
-   {
-    "sym": "JNS",
-    "rvol": 4.74,
-    "or_high": 0.5600000023841858,
-    "or_low": 0.49000000953674316,
-    "or_open": 0.49000000953674316,
-    "or_close": 0.5550000071525574,
-    "atr": 0.0746,
-    "gap_pct": 2.08
-   },
-   {
-    "sym": "DRO",
-    "rvol": 4.58,
-    "or_high": 1.3849999904632568,
-    "or_low": 1.340000033378601,
-    "or_open": 1.3450000286102295,
-    "or_close": 1.3519999980926514,
-    "atr": 0.0745,
-    "gap_pct": 1.51
-   },
-   {
-    "sym": "SGH",
-    "rvol": 4.01,
-    "or_high": 42.7400016784668,
-    "or_low": 41.90999984741211,
-    "or_open": 41.970001220703125,
-    "or_close": 42.47999954223633,
-    "atr": 0.7604,
-    "gap_pct": -0.05
-   },
-   {
-    "sym": "NUF",
-    "rvol": 3.5,
-    "or_high": 3.4100000858306885,
-    "or_low": 3.3499999046325684,
-    "or_open": 3.380000114440918,
-    "or_close": 3.390000104904175,
-    "atr": 0.0839,
-    "gap_pct": 0.9,
-    "skipped": true
-   },
-   {
-    "sym": "MQG",
-    "rvol": 3.48,
-    "or_high": 255.50999450683594,
-    "or_low": 252.42999267578125,
-    "or_open": 252.7550048828125,
-    "or_close": 255.0399932861328,
-    "atr": 4.1368,
-    "gap_pct": 0.57
-   }
-  ],
-  "entered": [
-   "VGN",
-   "DPM",
-   "ALQ",
-   "XYZ",
-   "JNS"
-  ],
-  "realized": -236.31,
-  "losses_in_row": 5,
-  "no_new_entries": true,
-  "market_change_pct": -0.17,
-  "last_ts": "2026-11-03T15:50:00+11:00",
+  "watchlist": [],
+  "entered": [],
+  "realized": 0.0,
+  "losses_in_row": 0,
+  "no_new_entries": false,
+  "market_change_pct": null,
+  "last_ts": null,
   "log": [
-   "12:05 Scanned 1836 ASX listings; 334 pass the liquidity and volatility filters.",
-   "Stocks in play: XYZ (101.22x), VGN (15.28x), QAN (9.78x), DPM (6.95x), ALQ (6.42x), JNS (4.74x), DRO (4.58x), SGH (4.01x), NUF (3.5x), MQG (3.48x)",
-   "10:15 BUY 915 VGN @ $2.730, stop $2.700 (breakout above $2.710)",
-   "10:15 SELL 915 VGN @ $2.690 (Stopped out on entry bar) net $-46.60",
-   "10:15 BUY 49 DPM @ $50.920, stop $50.470 (breakout above $50.850)",
-   "10:15 BUY 115 ALQ @ $21.590, stop $21.460 (breakout above $21.550)",
-   "10:20 BUY 22 XYZ @ $109.850, stop $109.170 (breakout above $109.730)",
-   "10:25 BUY 4385 JNS @ $0.570, stop $0.550 (breakout above $0.560)",
-   "10:30 Skipped NUF: not enough cash or risk room for a sensible size.",
-   "10:40 SELL 115 ALQ @ $21.430 (Stop loss) net $-28.40",
-   "11:05 SELL 4385 JNS @ $0.545 (Stop loss) net $-119.62",
-   "11:05 Daily loss limit reached. No more entries today.",
-   "12:45 SELL 49 DPM @ $50.410 (Stop loss) net $-34.99",
-   "15:50 SELL 22 XYZ @ $110.000 (End of day exit) net $-6.70",
-   "15:50 Day closed. Equity $9,763.69 (-236.31).",
-   "16:15 Daily review done. See 'Learning from losses' on the dashboard."
-  ],
-  "end_equity": 9763.69,
-  "reviewed": true
+   "09:24 Scanned 1836 ASX listings; 334 pass the liquidity and volatility filters."
+  ]
  },
- "status": "Day finished. Equity $9,763.69",
- "last_run": "2026-11-03T16:15:06.080930+11:00",
+ "status": "Morning scan done. Waiting for the 10:00 open.",
+ "last_run": "2026-11-04T09:24:37.379311+11:00",
  "learning": {
   "risk_multiplier": 0.75,
   "blocks": [],
