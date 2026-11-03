@@ -254,13 +254,19 @@ function render(){
   // watchlist
   const wl = state.day?.date===ref ? (state.day.watchlist||[]) : [];
   $("watch").innerHTML = wl.length? `<table><tr><th>Stock</th><th class="r">Rel. volume</th><th class="r">Gap</th><th class="r">Buy above</th><th class="r">Status</th></tr>${
-    wl.map(w=>`<tr><td>${symLink(w.sym)}</td><td class="r">${w.rvol}×</td><td class="r">${w.gap_pct!=null?fmtP(w.gap_pct,1):"—"}</td><td class="r">${w.or_high.toFixed(3)}</td><td class="r">${(state.day.entered||[]).includes(w.sym)?"Traded":w.skipped?"Skipped":"Watching"}</td></tr>`).join("")}</table>`
+    wl.map(w=>`<tr><td>${symLink(w.sym)}</td><td class="r">${w.rvol}×</td><td class="r">${w.gap_pct!=null?fmtP(w.gap_pct,1):"—"}</td><td class="r">${w.or_high.toFixed(3)}</td><td class="r">${wlStatus(w)}</td></tr>`).join("")}</table>`
     : `<div class="empty">${state.day?.phase==="waiting_open"? "Picked after the first 15 minutes of trading." : "No stocks in play selected."}</div>`;
 
+  function wlStatus(w){
+    const sold = trades.filter(t=>t.date===ref && t.sym===w.sym);
+    if (sold.length){ const n=sold.reduce((a,t)=>a+t.net,0); return `Sold <span class="${cls(n)}">${fmt$(n,true)}</span>`; }
+    if ((state.positions||[]).some(p=>p.sym===w.sym)) return "Holding";
+    return w.skipped? "Skipped" : (state.day.entered||[]).includes(w.sym)? "Bought" : "Watching";
+  }
   // trades
-  $("tradesTitle").textContent = `Trades · ${PERIODS.find(p=>p[0]===period)[1]}`;
+  $("tradesTitle").textContent = `Sold · ${PERIODS.find(p=>p[0]===period)[1]}`;
   const list = [...pt].reverse();
-  $("trades").innerHTML = !list.length? `<div class="empty">No closed trades in this period.</div>` :
+  $("trades").innerHTML = !list.length? `<div class="empty">Nothing sold in this period yet.</div>` :
     `<table class="wide"><tr><th>Date</th><th>Stock</th><th class="r">Qty</th><th class="r">Buy</th><th class="r">Sell</th><th class="r">Held</th><th class="r">P&L</th><th class="r">%</th><th class="r">R</th><th>Exit</th></tr>${
       list.map(t=>`<tr><td>${niceDate(t.date)}</td><td>${symLink(t.sym)}</td><td class="r">${t.qty}</td><td class="r">${t.entry_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.entry_time)}</div></td><td class="r">${t.exit_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.exit_time)}</div></td><td class="r">${held(t)}</td><td class="r ${cls(t.net)}">${fmt$(t.net,true)}</td><td class="r ${cls(t.net)}">${fmtP(t.pct)}</td><td class="r">${t.r.toFixed(1)}</td><td>${esc(t.reason)}</td></tr>`).join("")}</table>
      <div class="narrow">${list.map(t=>`<div class="trade"><div>${symLink(t.sym)} <span class="meta">${t.qty} shares · ${niceDate(t.date)}</span>
