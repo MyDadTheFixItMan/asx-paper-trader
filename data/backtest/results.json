@@ -1,0 +1,227 @@
+{
+ "run_at": "2026-11-03T13:28+11:00",
+ "period": [
+  "2026-09-02",
+  "2026-11-02"
+ ],
+ "universe": 334,
+ "results": [
+  {
+   "name": "current",
+   "days": 44,
+   "trades": 132,
+   "total_return_pct": -28.9,
+   "avg_week_pct": -3.35,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    -2.99,
+    -3.01,
+    -4.62,
+    -3.98,
+    -3.9,
+    -5.18,
+    -4.19,
+    -2.16,
+    -3.08,
+    -0.34
+   ],
+   "win_rate": 9.1,
+   "avg_r": -0.625,
+   "max_drawdown_pct": -28.9,
+   "fees": 1320.0,
+   "overrides": {}
+  },
+  {
+   "name": "intrabar entry (no close confirmation)",
+   "days": 44,
+   "trades": 118,
+   "total_return_pct": -21.33,
+   "avg_week_pct": -2.36,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    -2.92,
+    -1.15,
+    -4.24,
+    -2.75,
+    -1.54,
+    -3.33,
+    -3.83,
+    -0.95,
+    -2.27,
+    -0.64
+   ],
+   "win_rate": 12.7,
+   "avg_r": -0.409,
+   "max_drawdown_pct": -21.33,
+   "fees": 1180.0,
+   "overrides": {
+    "entry_confirm_close": false
+   }
+  },
+  {
+   "name": "5-min opening range",
+   "days": 44,
+   "trades": 32,
+   "total_return_pct": -7.35,
+   "avg_week_pct": -0.76,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    0.0,
+    0.0,
+    -2.32,
+    -0.57,
+    0.0,
+    -1.09,
+    -1.08,
+    -0.89,
+    -1.61,
+    0.0
+   ],
+   "win_rate": 6.2,
+   "avg_r": -0.762,
+   "max_drawdown_pct": -7.35,
+   "fees": 320.0,
+   "overrides": {
+    "opening_range_minutes": 5
+   }
+  },
+  {
+   "name": "30-min opening range",
+   "days": 44,
+   "trades": 78,
+   "total_return_pct": -17.78,
+   "avg_week_pct": -1.93,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    -3.43,
+    -2.51,
+    -3.95,
+    -3.77,
+    -0.43,
+    -0.1,
+    -1.8,
+    -0.43,
+    -2.86,
+    0.0
+   ],
+   "win_rate": 14.1,
+   "avg_r": -0.548,
+   "max_drawdown_pct": -17.78,
+   "fees": 780.0,
+   "overrides": {
+    "opening_range_minutes": 30
+   }
+  },
+  {
+   "name": "rvol 3x minimum",
+   "days": 44,
+   "trades": 78,
+   "total_return_pct": -18.25,
+   "avg_week_pct": -1.99,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    -2.99,
+    -1.85,
+    -2.75,
+    -2.78,
+    -1.59,
+    -2.5,
+    -3.89,
+    -0.3,
+    -1.23,
+    0.0
+   ],
+   "win_rate": 9.0,
+   "avg_r": -0.624,
+   "max_drawdown_pct": -18.25,
+   "fees": 780.0,
+   "overrides": {
+    "min_relative_volume": 3.0
+   }
+  },
+  {
+   "name": "no trailing stop (hold to close)",
+   "days": 44,
+   "trades": 73,
+   "total_return_pct": -14.16,
+   "avg_week_pct": -1.5,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    -2.92,
+    -2.9,
+    -5.01,
+    -0.69,
+    0.65,
+    -0.0,
+    -0.99,
+    -1.43,
+    -1.72,
+    0.0
+   ],
+   "win_rate": 17.8,
+   "avg_r": -0.364,
+   "max_drawdown_pct": -14.16,
+   "fees": 730.0,
+   "overrides": {
+    "trail_start_r": 99,
+    "breakeven_at_r": 99
+   }
+  },
+  {
+   "name": "wider stop 0.5 ATR",
+   "days": 44,
+   "trades": 155,
+   "total_return_pct": -24.05,
+   "avg_week_pct": -2.7,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    -2.29,
+    -0.75,
+    -4.51,
+    -2.85,
+    -3.07,
+    -5.16,
+    -0.01,
+    -4.46,
+    -2.44,
+    -1.44
+   ],
+   "win_rate": 21.9,
+   "avg_r": -0.179,
+   "max_drawdown_pct": -24.05,
+   "fees": 1550.0,
+   "overrides": {
+    "stop_atr_fraction": 0.5,
+    "min_stop_pct": 1.0
+   }
+  },
+  {
+   "name": "risk 2% per trade",
+   "days": 44,
+   "trades": 121,
+   "total_return_pct": -35.89,
+   "avg_week_pct": -4.33,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    -3.48,
+    -5.2,
+    -5.26,
+    -5.47,
+    -5.22,
+    -5.38,
+    -6.2,
+    -3.91,
+    -2.69,
+    -0.52
+   ],
+   "win_rate": 7.4,
+   "avg_r": -0.655,
+   "max_drawdown_pct": -35.89,
+   "fees": 1210.0,
+   "overrides": {
+    "risk_per_trade_pct": 2.0,
+    "max_position_pct": 40.0
+   }
+  }
+ ]
+}
