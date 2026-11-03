@@ -1,11 +1,12 @@
 name: Paper trader
 
+# One job runs the trader every 5 minutes for the whole trading day, so GitHub's
+# scheduler only needs to start it once. Extra starts are backups: they queue and
+# exit fast if the day is already handled.
 on:
   schedule:
-    # Every 5 min across the ASX day in both AEDT (UTC+11) and AEST (UTC+10).
-    # The script checks Sydney time and holidays itself and exits fast outside hours.
-    - cron: "*/5 22,23 * * 0-4"   # Mon-Fri morning (Sydney)
-    - cron: "*/5 0-6 * * 1-5"     # Mon-Fri trading day (Sydney)
+    - cron: "7 22 * * 0-4"     # ~9:07 AEDT / 8:07 AEST (Mon-Fri Sydney)
+    - cron: "7 0,2,4 * * 1-5"  # backups through the day
   workflow_dispatch: {}
 
 permissions:
@@ -18,7 +19,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 355
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -27,15 +28,26 @@ jobs:
           cache: pip
           cache-dependency-path: bot/requirements.txt
       - run: pip install -r bot/requirements.txt
-      - run: python bot/trader.py
+      - name: Trade every 5 minutes until the day is done
         env:
           PYTHONWARNINGS: ignore
-      - name: Save results
         run: |
           git config user.name "asx-paper-trader"
           git config user.email "actions@users.noreply.github.com"
-          git add data
-          git diff --cached --quiet && exit 0
-          git commit -m "Trader update $(TZ=Australia/Sydney date '+%Y-%m-%d %H:%M')"
-          git pull --rebase
-          git push
+          start=$(date +%s)
+          while true; do
+            git pull -q --rebase origin main || true
+            python bot/trader.py || echo "cycle failed, will retry"
+            git add data
+            if ! git diff --cached --quiet; then
+              git commit -q -m "Trader update $(TZ=Australia/Sydney date '+%Y-%m-%d %H:%M')"
+              git pull -q --rebase origin main && git push -q || echo "push failed, will retry"
+            fi
+            hm=$(TZ=Australia/Sydney date +%H%M); dow=$(TZ=Australia/Sydney date +%u)
+            phase=$(python -c "import json;print(json.load(open('data/state.json'))['day'].get('phase',''))" 2>/dev/null)
+            [ "$dow" -ge 6 ] && break
+            [ "$hm" -ge 1700 ] && break
+            [ "$phase" = "closed" ] && [ "$hm" -ge 1000 ] && break
+            [ $(( $(date +%s) - start )) -gt 20400 ] && break   # stop before the 6h job limit
+            sleep $(( 300 - $(date +%s) % 300 + 5 ))            # wake on the next 5-minute mark
+          done
