@@ -52,5 +52,26 @@
   "r": -1.25,
   "rvol": 4.74,
   "reason": "Stop loss"
+ },
+ {
+  "id": 4,
+  "date": "2026-11-03",
+  "sym": "DPM",
+  "qty": 49,
+  "entry_time": "2026-11-03T10:15:00+11:00",
+  "entry_price": 50.92,
+  "exit_time": "2026-11-03T12:45:00+11:00",
+  "exit_price": 50.41,
+  "initial_stop": 50.47,
+  "fees": 10.0,
+  "gross": -24.99,
+  "net": -34.99,
+  "pct": -1.4,
+  "r": -1.13,
+  "rvol": 6.95,
+  "gap_pct": null,
+  "stop_pct": null,
+  "market_pct": null,
+  "reason": "Stop loss"
  }
 ]
