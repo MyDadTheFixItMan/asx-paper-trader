@@ -1,0 +1,217 @@
+{
+ "run_at": "2026-11-03T17:05+11:00",
+ "period": [
+  "2016-12-15",
+  "2026-11-03"
+ ],
+ "shares": 1810,
+ "asx200_price_return_pct": 60.5,
+ "gap_diagnostic": [
+  {
+   "gap": "-99% to -4%",
+   "n": 4581110,
+   "avg_open_to_close_pct": 0.172,
+   "pct_up": 0.1
+  },
+  {
+   "gap": "-4% to -2%",
+   "n": 4581110,
+   "avg_open_to_close_pct": 0.147,
+   "pct_up": 0.3
+  },
+  {
+   "gap": "-2% to 0%",
+   "n": 4581110,
+   "avg_open_to_close_pct": 0.043,
+   "pct_up": 2.3
+  },
+  {
+   "gap": "0% to 2%",
+   "n": 4581110,
+   "avg_open_to_close_pct": -0.129,
+   "pct_up": 3.2
+  },
+  {
+   "gap": "2% to 4%",
+   "n": 4581110,
+   "avg_open_to_close_pct": -0.388,
+   "pct_up": 0.3
+  },
+  {
+   "gap": "4% to 8%",
+   "n": 4581110,
+   "avg_open_to_close_pct": -0.476,
+   "pct_up": 0.1
+  },
+  {
+   "gap": "8% to 60%",
+   "n": 4581110,
+   "avg_open_to_close_pct": -1.008,
+   "pct_up": 0.0
+  }
+ ],
+ "results": [
+  {
+   "name": "top 5 gaps \u22652%, stop 0.5 ATR",
+   "trades": 261,
+   "total_return_pct": -60.1,
+   "cagr_pct": -8.9,
+   "avg_week_pct": -0.168,
+   "best_week_pct": 2.98,
+   "weeks": 516,
+   "weeks_hitting_8pct": 0,
+   "win_rate": 19.2,
+   "avg_r": -0.465,
+   "max_drawdown_pct": -59.2,
+   "yearly_pct": {
+    "2016": -11.7,
+    "2017": -54.9,
+    "2018": 0.0,
+    "2019": 0.0,
+    "2020": 0.0,
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "end_equity": 3987.78
+  },
+  {
+   "name": "top 5 gaps \u22652%, stop 1 ATR",
+   "trades": 223,
+   "total_return_pct": -60.3,
+   "cagr_pct": -8.9,
+   "avg_week_pct": -0.169,
+   "best_week_pct": 0.33,
+   "weeks": 516,
+   "weeks_hitting_8pct": 0,
+   "win_rate": 17.5,
+   "avg_r": -0.399,
+   "max_drawdown_pct": -59.1,
+   "yearly_pct": {
+    "2016": -11.2,
+    "2017": -55.3,
+    "2018": 0.0,
+    "2019": 0.0,
+    "2020": 0.0,
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "end_equity": 3971.88
+  },
+  {
+   "name": "top 5 gaps \u22654%, stop 1 ATR",
+   "trades": 406,
+   "total_return_pct": -60.3,
+   "cagr_pct": -8.9,
+   "avg_week_pct": -0.173,
+   "best_week_pct": 8.15,
+   "weeks": 516,
+   "weeks_hitting_8pct": 1,
+   "win_rate": 29.8,
+   "avg_r": -0.097,
+   "max_drawdown_pct": -59.9,
+   "yearly_pct": {
+    "2016": -0.9,
+    "2017": -19.5,
+    "2018": -30.8,
+    "2019": -28.1,
+    "2020": 0.0,
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "end_equity": 3970.94
+  },
+  {
+   "name": "top 3 gaps \u22658% (episodic pivot), stop 1 ATR",
+   "trades": 394,
+   "total_return_pct": -60.2,
+   "cagr_pct": -8.9,
+   "avg_week_pct": -0.175,
+   "best_week_pct": 5.87,
+   "weeks": 516,
+   "weeks_hitting_8pct": 0,
+   "win_rate": 30.2,
+   "avg_r": -0.098,
+   "max_drawdown_pct": -61.6,
+   "yearly_pct": {
+    "2016": 0.0,
+    "2017": -4.4,
+    "2018": -10.1,
+    "2019": -11.1,
+    "2020": -18.8,
+    "2021": -7.6,
+    "2022": -11.4,
+    "2023": -4.5,
+    "2024": -6.3,
+    "2025": -8.5,
+    "2026": -4.2
+   },
+   "end_equity": 3975.47
+  },
+  {
+   "name": "small gaps 1\u20134%, stop 1 ATR",
+   "trades": 199,
+   "total_return_pct": -60.1,
+   "cagr_pct": -8.9,
+   "avg_week_pct": -0.167,
+   "best_week_pct": 0.0,
+   "weeks": 516,
+   "weeks_hitting_8pct": 0,
+   "win_rate": 11.6,
+   "avg_r": -0.471,
+   "max_drawdown_pct": -59.0,
+   "yearly_pct": {
+    "2016": -15.3,
+    "2017": -53.0,
+    "2018": 0.0,
+    "2019": 0.0,
+    "2020": 0.0,
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "end_equity": 3985.22
+  },
+  {
+   "name": "top 5 gaps \u22654%, no stop (open to close)",
+   "trades": 0,
+   "total_return_pct": 0.0,
+   "cagr_pct": 0.0,
+   "avg_week_pct": 0.0,
+   "best_week_pct": 0.0,
+   "weeks": 516,
+   "weeks_hitting_8pct": 0,
+   "win_rate": 0,
+   "avg_r": 0,
+   "max_drawdown_pct": 0.0,
+   "yearly_pct": {
+    "2016": 0.0,
+    "2017": 0.0,
+    "2018": 0.0,
+    "2019": 0.0,
+    "2020": 0.0,
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "end_equity": 10000.0
+  }
+ ]
+}
