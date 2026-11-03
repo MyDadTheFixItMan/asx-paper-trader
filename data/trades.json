@@ -73,5 +73,26 @@
   "stop_pct": null,
   "market_pct": null,
   "reason": "Stop loss"
+ },
+ {
+  "id": 5,
+  "date": "2026-11-03",
+  "sym": "XYZ",
+  "qty": 22,
+  "entry_time": "2026-11-03T10:20:00+11:00",
+  "entry_price": 109.85,
+  "exit_time": "2026-11-03T15:50:00+11:00",
+  "exit_price": 110.0,
+  "initial_stop": 109.17,
+  "fees": 10.0,
+  "gross": 3.3,
+  "net": -6.7,
+  "pct": -0.28,
+  "r": 0.22,
+  "rvol": 101.22,
+  "gap_pct": null,
+  "stop_pct": null,
+  "market_pct": null,
+  "reason": "End of day exit"
  }
 ]

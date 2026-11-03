@@ -1,28 +1,21 @@
 {
  "start_capital": 10000,
- "cash": 7348.69,
+ "cash": 9763.69,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [
+ "positions": [],
+ "daily": [
   {
-   "sym": "XYZ",
-   "qty": 22,
-   "entry": 109.85,
-   "entry_time": "2026-11-03T10:20:00+11:00",
-   "stop": 109.86,
-   "initial_stop": 109.17,
-   "risk_ps": 0.68,
-   "high": 110.72000122070312,
-   "last": 110.0999984741211,
-   "fees": 5.0,
-   "rvol": 101.22,
-   "atr": 2.7193,
-   "stop_note": "breakeven"
+   "date": "2026-11-03",
+   "start_equity": 10000,
+   "end_equity": 9763.69,
+   "pnl": -236.31,
+   "trades": 5,
+   "market_change_pct": -0.17
   }
  ],
- "daily": [],
  "day": {
   "date": "2026-11-03",
-  "phase": "trading",
+  "phase": "closed",
   "start_equity": 10000,
   "universe_size": 335,
   "watchlist": [
@@ -135,11 +128,11 @@
    "XYZ",
    "JNS"
   ],
-  "realized": -229.61,
-  "losses_in_row": 4,
+  "realized": -236.31,
+  "losses_in_row": 5,
   "no_new_entries": true,
   "market_change_pct": -0.17,
-  "last_ts": "2026-11-03T15:45:00+11:00",
+  "last_ts": "2026-11-03T15:50:00+11:00",
   "log": [
    "12:05 Scanned 1836 ASX listings; 334 pass the liquidity and volatility filters.",
    "Stocks in play: XYZ (101.22x), VGN (15.28x), QAN (9.78x), DPM (6.95x), ALQ (6.42x), JNS (4.74x), DRO (4.58x), SGH (4.01x), NUF (3.5x), MQG (3.48x)",
@@ -153,9 +146,130 @@
    "10:40 SELL 115 ALQ @ $21.430 (Stop loss) net $-28.40",
    "11:05 SELL 4385 JNS @ $0.545 (Stop loss) net $-119.62",
    "11:05 Daily loss limit reached. No more entries today.",
-   "12:45 SELL 49 DPM @ $50.410 (Stop loss) net $-34.99"
-  ]
+   "12:45 SELL 49 DPM @ $50.410 (Stop loss) net $-34.99",
+   "15:50 SELL 22 XYZ @ $110.000 (End of day exit) net $-6.70",
+   "15:50 Day closed. Equity $9,763.69 (-236.31).",
+   "16:15 Daily review done. See 'Learning from losses' on the dashboard."
+  ],
+  "end_equity": 9763.69,
+  "reviewed": true
  },
- "status": "Managing open trades only (no new entries today)",
- "last_run": "2026-11-03T16:10:05.609592+11:00"
+ "status": "Day finished. Equity $9,763.69",
+ "last_run": "2026-11-03T16:15:06.080930+11:00",
+ "learning": {
+  "risk_multiplier": 0.75,
+  "blocks": [],
+  "lessons": [
+   {
+    "trade_id": 1,
+    "date": "2026-11-03",
+    "sym": "VGN",
+    "net": -46.6,
+    "notes": [
+     "False breakout: it fell back through the stop in the same 5 minutes it was bought."
+    ]
+   },
+   {
+    "trade_id": 2,
+    "date": "2026-11-03",
+    "sym": "ALQ",
+    "net": -28.4,
+    "notes": [
+     "A normal stop-out: the breakout didn't follow through. Small, planned losses like this are part of the strategy."
+    ]
+   },
+   {
+    "trade_id": 3,
+    "date": "2026-11-03",
+    "sym": "JNS",
+    "net": -119.62,
+    "notes": [
+     "Lost $120, more than the planned $100: price stepped past the stop and fees added up.",
+     "Low-priced share: one price step is 0.9% of the price, so slippage hurts."
+    ]
+   },
+   {
+    "trade_id": 4,
+    "date": "2026-11-03",
+    "sym": "DPM",
+    "net": -34.99,
+    "notes": [
+     "A normal stop-out: the breakout didn't follow through. Small, planned losses like this are part of the strategy."
+    ]
+   },
+   {
+    "trade_id": 5,
+    "date": "2026-11-03",
+    "sym": "XYZ",
+    "net": -6.7,
+    "notes": [
+     "A normal stop-out: the breakout didn't follow through. Small, planned losses like this are part of the strategy."
+    ]
+   }
+  ],
+  "changes": [
+   {
+    "date": "2026-11-03",
+    "text": "Cut risk per trade to 0.75% of equity after a losing day (-236.31)."
+   }
+  ],
+  "buckets": [
+   {
+    "feature": "Entry time",
+    "label": "before 10:30",
+    "n": 5,
+    "win_rate": 0,
+    "avg_r": -0.94,
+    "net": -236.31
+   },
+   {
+    "feature": "Relative volume",
+    "label": "3\u20135\u00d7 volume",
+    "n": 1,
+    "win_rate": 0,
+    "avg_r": -1.25,
+    "net": -119.62
+   },
+   {
+    "feature": "Relative volume",
+    "label": "5\u201310\u00d7 volume",
+    "n": 2,
+    "win_rate": 0,
+    "avg_r": -1.18,
+    "net": -63.39
+   },
+   {
+    "feature": "Relative volume",
+    "label": "over 10\u00d7 volume",
+    "n": 2,
+    "win_rate": 0,
+    "avg_r": -0.56,
+    "net": -53.3
+   },
+   {
+    "feature": "Share price",
+    "label": "$1\u2013$5",
+    "n": 1,
+    "win_rate": 0,
+    "avg_r": -1.33,
+    "net": -46.6
+   },
+   {
+    "feature": "Share price",
+    "label": "over $20",
+    "n": 3,
+    "win_rate": 0,
+    "avg_r": -0.71,
+    "net": -70.09
+   },
+   {
+    "feature": "Share price",
+    "label": "under $1",
+    "n": 1,
+    "win_rate": 0,
+    "avg_r": -1.25,
+    "net": -119.62
+   }
+  ]
+ }
 }
