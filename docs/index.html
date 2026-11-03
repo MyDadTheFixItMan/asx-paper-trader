@@ -87,7 +87,7 @@ a.sym{font-weight:650;color:var(--series);text-decoration:none}a.sym:active,a.sy
   <section class="tiles" id="tiles"></section>
 
   <section class="card" id="targetCard">
-    <h2>This month vs 8% target</h2>
+    <h2>This week vs 8% target</h2>
     <div id="target"></div>
   </section>
 
@@ -223,18 +223,18 @@ function render(){
     ["Avg win / loss", st.n? `${fmt$(st.avgWin)} / ${fmt$(Math.abs(st.avgLoss))}`:"—", `profit factor ${st.n?pf:"—"} · fees ${fmt$(st.fees)}`],
   ].map(([k,v,n])=>`<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="n">${n}</div></div>`).join("");
 
-  // monthly target
-  const mStart = ref.slice(0,8)+"01";
-  const mDays = (state.daily||[]).filter(d=>d.date>=mStart && d.date<=ref);
-  const mBase = mDays.length? mDays[0].start_equity : (state.day?.start_equity||state.start_capital);
-  const mPL = (live? eq : (mDays.length? mDays[mDays.length-1].end_equity : mBase)) - mBase;
-  const goal = mBase * 0.08;
-  const prog = Math.max(0, Math.min(100, mPL/goal*100));
+  // weekly target: 8% on the value at the end of last week
+  const wStart = periodStart("week", ref);
+  const before = (state.daily||[]).filter(d=>d.date<wStart);
+  const wDays = (state.daily||[]).filter(d=>d.date>=wStart && d.date<=ref);
+  const wBase = before.length? before[before.length-1].end_equity : (wDays.length? wDays[0].start_equity : (state.day?.start_equity||state.start_capital));
+  const wNow = live? eq : (wDays.length? wDays[wDays.length-1].end_equity : wBase);
+  const wPL = wNow - wBase, goal = wBase*0.08, prog = Math.max(0, Math.min(100, wPL/goal*100));
   $("target").innerHTML = `<div style="display:flex;justify-content:space-between;font-variant-numeric:tabular-nums">
-      <span><b class="${cls(mPL)}">${fmt$(mPL,true)}</b> <span class="sub">(${fmtP(mPL/mBase*100)})</span></span>
+      <span><b class="${cls(wPL)}">${fmt$(wPL,true)}</b> <span class="sub">(${fmtP(wPL/wBase*100)})</span></span>
       <span class="sub">goal ${fmt$(goal)}</span></div>
     <div class="bar"><i style="width:${prog}%"></i></div>
-    <div class="sub" style="margin-top:6px">${mPL>=goal? "Target reached this month." : `${fmt$(Math.max(0,goal-mPL))} to go`}</div>`;
+    <div class="sub" style="margin-top:6px">${wPL>=goal? "Weekly target reached." : `${fmt$(Math.max(0,goal-wPL))} to go this week`}</div>`;
 
   // equity chart
   if (period==="today"){
