@@ -35,6 +35,7 @@
 
   "_learning": "Rules added from losses, plus an end-of-day review that adapts slowly and only on evidence.",
   "entry_confirm_close": false,
+  "vwap_entry_filter": true,
   "max_tick_pct": 0.5,
   "learn_min_risk_multiplier": 0.5,
   "learn_min_trades": 20,

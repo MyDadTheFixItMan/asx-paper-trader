@@ -22,3 +22,11 @@ from one losing trade made things worse over 40 days), stop at ½ ATR (at least 
 (hold to 3:50pm unless stopped), only stocks at 3× normal volume, top 5 only. It still lost money in the backtest:
 this is damage control, not a working edge yet. Next: test different setups (gap fades, closing-auction effects,
 mean reversion) and lower-cost execution assumptions.
+
+## 2026-11-03 (evening): research deep dive (see RESEARCH.md)
+- Added switchable rules from successful traders: VWAP entry filter and exit (Breitstein, Zarattini & Aziz),
+  episodic pivot with low-of-day stop (Kullamägi), A+ sizing (Breitstein), time stop, minimum gap (Cameron).
+- New 10-year daily backtest (bot/backtest_daily.py): buying ASX gap-ups at the open lost money in every version
+  over Dec 2016 – Nov 2026; gap-ups fade on average on the ASX.
+- 60-day intraday test: **adopted "no longs below VWAP"**: −3.5% vs −8.2%, avg R +0.04 vs −0.12, 52 trades,
+  max drawdown −6.8% vs −9.0%. Everything else rejected or needs more trades.

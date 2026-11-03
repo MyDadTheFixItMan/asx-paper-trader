@@ -136,7 +136,7 @@ def main():
     diag = []
     for lo, hi in buckets:
         m = liquid & (gap >= lo) & (gap < hi)
-        vals = oc[m].stack()
+        vals = oc[m].stack().dropna()
         diag.append({"gap": f"{lo}% to {hi}%", "n": int(vals.size), "avg_open_to_close_pct": round(float(vals.mean()), 3),
                      "pct_up": round(float((vals > 0).mean() * 100), 1)})
     print(json.dumps(diag, indent=1))
