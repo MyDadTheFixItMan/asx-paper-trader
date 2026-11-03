@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ASX Paper Trader</title>
+<meta name="data-repo" content="MyDadTheFixItMan/asx-paper-trader">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ASX Trader">
 <meta name="theme-color" content="#fcfcfb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1a1a19" media="(prefers-color-scheme: dark)">
 <style>
@@ -138,6 +141,8 @@ const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">"
 function dataBase(){
   const q = new URLSearchParams(location.search).get("data");
   if (q) return q.replace(/\/?$/,"/");
+  const fixed = document.querySelector('meta[name="data-repo"]')?.content;
+  if (fixed) return `https://raw.githubusercontent.com/${fixed}/main/data/`;
   if (location.hostname.endsWith(".github.io")) {
     const owner = location.hostname.split(".")[0];
     const repo = location.pathname.split("/").filter(Boolean)[0] || `${owner}.github.io`;
