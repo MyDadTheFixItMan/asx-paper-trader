@@ -1,9 +1,9 @@
 [
-  {"name": "intrabar entry (no close confirmation)", "overrides": {"entry_confirm_close": false}},
-  {"name": "5-min opening range", "overrides": {"opening_range_minutes": 5}},
-  {"name": "30-min opening range", "overrides": {"opening_range_minutes": 30}},
-  {"name": "rvol 3x minimum", "overrides": {"min_relative_volume": 3.0}},
-  {"name": "no trailing stop (hold to close)", "overrides": {"trail_start_r": 99, "breakeven_at_r": 99}},
-  {"name": "wider stop 0.5 ATR", "overrides": {"stop_atr_fraction": 0.5, "min_stop_pct": 1.0}},
-  {"name": "risk 2% per trade", "overrides": {"risk_per_trade_pct": 2.0, "max_position_pct": 40.0}}
+  {"name": "A: wide stop 0.5 ATR, hold to close, intrabar entry", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 0.5, "min_stop_pct": 1.0, "trail_start_r": 99, "breakeven_at_r": 99}},
+  {"name": "B: A with 1.0 ATR stop", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 1.0, "min_stop_pct": 1.5, "trail_start_r": 99, "breakeven_at_r": 99}},
+  {"name": "C: A, rvol 3x, top 5 only", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 0.5, "min_stop_pct": 1.0, "trail_start_r": 99, "breakeven_at_r": 99, "min_relative_volume": 3.0, "watchlist_size": 5}},
+  {"name": "D: A with 30-min range", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 0.5, "min_stop_pct": 1.0, "trail_start_r": 99, "breakeven_at_r": 99, "opening_range_minutes": 30}},
+  {"name": "E: A, 3 positions max 33%", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 0.5, "min_stop_pct": 1.0, "trail_start_r": 99, "breakeven_at_r": 99, "max_positions": 3, "max_position_pct": 33}},
+  {"name": "F: A, shares over $2", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 0.5, "min_stop_pct": 1.0, "trail_start_r": 99, "breakeven_at_r": 99, "min_price": 2.0}},
+  {"name": "G: B, trail 3R by 1 ATR", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 1.0, "min_stop_pct": 1.5, "breakeven_at_r": 99, "trail_start_r": 3, "trail_distance_r": 1.5, "trail_atr_fraction": 1.0}}
 ]
