@@ -213,7 +213,7 @@ function render(){
   const pf = st.pf===Infinity? "∞" : st.pf.toFixed(2);
   $("tiles").innerHTML = [
     ["Net P&L", `<span class="${cls(netP)}">${fmt$(netP,true)}</span>`, `${fmtP(netP/base*100)}${live&&openPL?` · incl. open ${fmt$(openPL,true)}`:""}`],
-    ["Trades", st.n, `${daily.length} trading day${daily.length===1?"":"s"}`],
+    ["Trades", st.n, (n=>`${n} trading day${n===1?"":"s"}`)(daily.length + (live && !daily.some(d=>d.date===ref) ? 1 : 0))],
     ["Win rate", st.n? st.winRate.toFixed(0)+"%":"—", st.n? `avg ${st.avgR>=0?"+":""}${st.avgR.toFixed(2)}R per trade`:""],
     ["Avg win / loss", st.n? `${fmt$(st.avgWin)} / ${fmt$(Math.abs(st.avgLoss))}`:"—", `profit factor ${st.n?pf:"—"} · fees ${fmt$(st.fees)}`],
   ].map(([k,v,n])=>`<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="n">${n}</div></div>`).join("");
