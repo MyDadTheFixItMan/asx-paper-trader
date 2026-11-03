@@ -1,8 +1,27 @@
 {
  "start_capital": 10000,
- "cash": 9763.69,
+ "cash": 7380.65,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [],
+ "positions": [
+  {
+   "sym": "AVH",
+   "qty": 532,
+   "entry": 4.47,
+   "entry_time": "2026-11-04T10:15:00+11:00",
+   "stop": 4.37,
+   "initial_stop": 4.37,
+   "risk_ps": 0.1,
+   "high": 4.460000038146973,
+   "last": 4.460000038146973,
+   "fees": 5.0,
+   "rvol": 3.07,
+   "atr": 0.185,
+   "stop_note": "initial",
+   "gap_pct": 0.0,
+   "stop_pct": 2.24,
+   "market_pct": -0.72
+  }
+ ],
  "daily": [
   {
    "date": "2026-11-03",
@@ -40,33 +59,36 @@
     "gap_pct": 0.0
    }
   ],
-  "entered": [],
+  "entered": [
+   "AVH"
+  ],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.72,
-  "last_ts": "2026-11-04T10:10:00+11:00",
+  "last_ts": "2026-11-04T10:15:00+11:00",
   "log": [
    "09:24 Scanned 1836 ASX listings; 334 pass the liquidity and volatility filters.",
-   "Stocks in play: CAT (3.41x), AVH (3.07x)"
+   "Stocks in play: CAT (3.41x), AVH (3.07x)",
+   "10:15 BUY 532 AVH @ $4.470, stop $4.370 (breakout above $4.450)"
   ],
   "tracks": {
    "CAT": {
-    "pv": 245676.01692875227,
-    "v": 69746.0,
+    "pv": 308693.2398362955,
+    "v": 87489.0,
     "low": 3.440000057220459,
-    "vwap": 3.5224388055050078
+    "vwap": 3.5283663070362614
    },
    "AVH": {
-    "pv": 378127.57192452747,
-    "v": 85608.0,
+    "pv": 440056.299299558,
+    "v": 99535.0,
     "low": 4.320000171661377,
-    "vwap": 4.416965376185957
+    "vwap": 4.4211212066062995
    }
   }
  },
  "status": "Watching 2 stocks in play for breakouts",
- "last_run": "2026-11-04T10:35:05.686590+11:00",
+ "last_run": "2026-11-04T10:40:05.536252+11:00",
  "learning": {
   "risk_multiplier": 0.75,
   "blocks": [],
