@@ -1,25 +1,175 @@
 {
  "start_capital": 10000,
- "cash": 10000,
+ "cash": 4883.6,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [],
+ "positions": [
+  {
+   "sym": "DPM",
+   "qty": 49,
+   "entry": 50.92,
+   "entry_time": "2026-11-03T10:15:00+11:00",
+   "stop": 50.47,
+   "initial_stop": 50.47,
+   "risk_ps": 0.45,
+   "high": 51.150001525878906,
+   "last": 51.150001525878906,
+   "fees": 5.0,
+   "rvol": 6.95,
+   "atr": 1.7907,
+   "stop_note": "initial"
+  },
+  {
+   "sym": "XYZ",
+   "qty": 22,
+   "entry": 109.85,
+   "entry_time": "2026-11-03T10:20:00+11:00",
+   "stop": 109.86,
+   "initial_stop": 109.17,
+   "risk_ps": 0.68,
+   "high": 110.55999755859375,
+   "last": 110.18000030517578,
+   "fees": 5.0,
+   "rvol": 101.22,
+   "atr": 2.7193,
+   "stop_note": "breakeven"
+  }
+ ],
  "daily": [],
  "day": {
   "date": "2026-11-03",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 10000,
   "universe_size": 335,
-  "watchlist": [],
-  "entered": [],
-  "realized": 0.0,
-  "losses_in_row": 0,
-  "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "watchlist": [
+   {
+    "sym": "XYZ",
+    "rvol": 101.22,
+    "or_high": 109.7300033569336,
+    "or_low": 108.83999633789062,
+    "or_open": 108.83999633789062,
+    "or_close": 109.37000274658203,
+    "atr": 2.7193,
+    "gap_pct": -0.01
+   },
+   {
+    "sym": "VGN",
+    "rvol": 15.28,
+    "or_high": 2.7100000381469727,
+    "or_low": 2.5799999237060547,
+    "or_open": 2.5799999237060547,
+    "or_close": 2.700000047683716,
+    "atr": 0.0857,
+    "gap_pct": 4.03
+   },
+   {
+    "sym": "QAN",
+    "rvol": 9.78,
+    "or_high": 9.430000305175781,
+    "or_low": 9.210000038146973,
+    "or_open": 9.220000267028809,
+    "or_close": 9.395000457763672,
+    "atr": 0.1975,
+    "gap_pct": 4.77
+   },
+   {
+    "sym": "DPM",
+    "rvol": 6.95,
+    "or_high": 50.849998474121094,
+    "or_low": 50.400001525878906,
+    "or_open": 50.400001525878906,
+    "or_close": 50.84000015258789,
+    "atr": 1.7907,
+    "gap_pct": 1.08
+   },
+   {
+    "sym": "ALQ",
+    "rvol": 6.42,
+    "or_high": 21.549999237060547,
+    "or_low": 21.260000228881836,
+    "or_open": 21.3799991607666,
+    "or_close": 21.5,
+    "atr": 0.4989,
+    "gap_pct": 0.66
+   },
+   {
+    "sym": "JNS",
+    "rvol": 4.74,
+    "or_high": 0.5600000023841858,
+    "or_low": 0.49000000953674316,
+    "or_open": 0.49000000953674316,
+    "or_close": 0.5550000071525574,
+    "atr": 0.0746,
+    "gap_pct": 2.08
+   },
+   {
+    "sym": "DRO",
+    "rvol": 4.58,
+    "or_high": 1.3849999904632568,
+    "or_low": 1.340000033378601,
+    "or_open": 1.3450000286102295,
+    "or_close": 1.3519999980926514,
+    "atr": 0.0745,
+    "gap_pct": 1.51
+   },
+   {
+    "sym": "SGH",
+    "rvol": 4.01,
+    "or_high": 42.7400016784668,
+    "or_low": 41.90999984741211,
+    "or_open": 41.970001220703125,
+    "or_close": 42.47999954223633,
+    "atr": 0.7604,
+    "gap_pct": -0.05
+   },
+   {
+    "sym": "NUF",
+    "rvol": 3.5,
+    "or_high": 3.4100000858306885,
+    "or_low": 3.3499999046325684,
+    "or_open": 3.380000114440918,
+    "or_close": 3.390000104904175,
+    "atr": 0.0839,
+    "gap_pct": 0.9,
+    "skipped": true
+   },
+   {
+    "sym": "MQG",
+    "rvol": 3.48,
+    "or_high": 255.50999450683594,
+    "or_low": 252.42999267578125,
+    "or_open": 252.7550048828125,
+    "or_close": 255.0399932861328,
+    "atr": 4.1368,
+    "gap_pct": 0.57
+   }
+  ],
+  "entered": [
+   "VGN",
+   "DPM",
+   "ALQ",
+   "XYZ",
+   "JNS"
+  ],
+  "realized": -194.62,
+  "losses_in_row": 3,
+  "no_new_entries": true,
+  "market_change_pct": -0.17,
+  "last_ts": "2026-11-03T11:40:00+11:00",
   "log": [
-   "12:05 Scanned 1836 ASX listings; 334 pass the liquidity and volatility filters."
+   "12:05 Scanned 1836 ASX listings; 334 pass the liquidity and volatility filters.",
+   "Stocks in play: XYZ (101.22x), VGN (15.28x), QAN (9.78x), DPM (6.95x), ALQ (6.42x), JNS (4.74x), DRO (4.58x), SGH (4.01x), NUF (3.5x), MQG (3.48x)",
+   "10:15 BUY 915 VGN @ $2.730, stop $2.700 (breakout above $2.710)",
+   "10:15 SELL 915 VGN @ $2.690 (Stopped out on entry bar) net $-46.60",
+   "10:15 BUY 49 DPM @ $50.920, stop $50.470 (breakout above $50.850)",
+   "10:15 BUY 115 ALQ @ $21.590, stop $21.460 (breakout above $21.550)",
+   "10:20 BUY 22 XYZ @ $109.850, stop $109.170 (breakout above $109.730)",
+   "10:25 BUY 4385 JNS @ $0.570, stop $0.550 (breakout above $0.560)",
+   "10:30 Skipped NUF: not enough cash or risk room for a sensible size.",
+   "10:40 SELL 115 ALQ @ $21.430 (Stop loss) net $-28.40",
+   "11:05 SELL 4385 JNS @ $0.545 (Stop loss) net $-119.62",
+   "11:05 Daily loss limit reached. No more entries today."
   ]
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-03T12:05:51.257495+11:00"
+ "status": "Managing open trades only (no new entries today)",
+ "last_run": "2026-11-03T12:08:44.778454+11:00"
 }

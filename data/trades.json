@@ -1,1 +1,56 @@
-[]
+[
+ {
+  "id": 1,
+  "date": "2026-11-03",
+  "sym": "VGN",
+  "qty": 915,
+  "entry_time": "2026-11-03T10:15:00+11:00",
+  "entry_price": 2.73,
+  "exit_time": "2026-11-03T10:15:00+11:00",
+  "exit_price": 2.69,
+  "initial_stop": 2.7,
+  "fees": 10.0,
+  "gross": -36.6,
+  "net": -46.6,
+  "pct": -1.87,
+  "r": -1.33,
+  "rvol": 15.28,
+  "reason": "Stopped out on entry bar"
+ },
+ {
+  "id": 2,
+  "date": "2026-11-03",
+  "sym": "ALQ",
+  "qty": 115,
+  "entry_time": "2026-11-03T10:15:00+11:00",
+  "entry_price": 21.59,
+  "exit_time": "2026-11-03T10:40:00+11:00",
+  "exit_price": 21.43,
+  "initial_stop": 21.46,
+  "fees": 10.0,
+  "gross": -18.4,
+  "net": -28.4,
+  "pct": -1.14,
+  "r": -1.23,
+  "rvol": 6.42,
+  "reason": "Stop loss"
+ },
+ {
+  "id": 3,
+  "date": "2026-11-03",
+  "sym": "JNS",
+  "qty": 4385,
+  "entry_time": "2026-11-03T10:25:00+11:00",
+  "entry_price": 0.57,
+  "exit_time": "2026-11-03T11:05:00+11:00",
+  "exit_price": 0.545,
+  "initial_stop": 0.55,
+  "fees": 10.0,
+  "gross": -109.62,
+  "net": -119.62,
+  "pct": -4.79,
+  "r": -1.25,
+  "rvol": 4.74,
+  "reason": "Stop loss"
+ }
+]
