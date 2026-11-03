@@ -62,7 +62,7 @@ td{padding:8px 6px;border-bottom:1px solid var(--grid);vertical-align:top}
 td.r,th.r{text-align:right}
 .trade{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 0;border-bottom:1px solid var(--grid)}
 .trade:last-child{border-bottom:0}
-.trade .sym{font-weight:650}
+a.sym{font-weight:650;color:var(--series);text-decoration:none}a.sym:active,a.sym:hover{text-decoration:underline}
 .trade .meta{font-size:12px;color:var(--text2)}
 .trade .pl{text-align:right;font-weight:650;font-variant-numeric:tabular-nums}
 .empty{color:var(--muted);font-size:14px;padding:6px 0}
@@ -248,13 +248,13 @@ function render(){
   // positions
   const pos = state.positions||[];
   $("positions").innerHTML = pos.length? `<table><tr><th>Stock</th><th class="r">Qty</th><th class="r">Bought</th><th class="r">Now</th><th class="r">Stop</th><th class="r">P&L</th></tr>${
-    pos.map(p=>{const pl=p.qty*(p.last-p.entry)-p.fees;return `<tr><td><b>${esc(p.sym)}</b><div class="sub" style="font-size:11px">${sydTime(p.entry_time)}</div></td><td class="r">${p.qty}</td><td class="r">${p.entry.toFixed(3)}</td><td class="r">${p.last.toFixed(3)}</td><td class="r">${p.stop.toFixed(3)}</td><td class="r ${cls(pl)}">${fmt$(pl,true)}</td></tr>`}).join("")}</table>`
+    pos.map(p=>{const pl=p.qty*(p.last-p.entry)-p.fees;return `<tr><td>${symLink(p.sym)}<div class="sub" style="font-size:11px">${sydTime(p.entry_time)}</div></td><td class="r">${p.qty}</td><td class="r">${p.entry.toFixed(3)}</td><td class="r">${p.last.toFixed(3)}</td><td class="r">${p.stop.toFixed(3)}</td><td class="r ${cls(pl)}">${fmt$(pl,true)}</td></tr>`}).join("")}</table>`
     : `<div class="empty">${live? "No open positions." : "Flat. The bot never holds overnight."}</div>`;
 
   // watchlist
   const wl = state.day?.date===ref ? (state.day.watchlist||[]) : [];
   $("watch").innerHTML = wl.length? `<table><tr><th>Stock</th><th class="r">Rel. volume</th><th class="r">Gap</th><th class="r">Buy above</th><th class="r">Status</th></tr>${
-    wl.map(w=>`<tr><td><b>${esc(w.sym)}</b></td><td class="r">${w.rvol}×</td><td class="r">${w.gap_pct!=null?fmtP(w.gap_pct,1):"—"}</td><td class="r">${w.or_high.toFixed(3)}</td><td class="r">${(state.day.entered||[]).includes(w.sym)?"Traded":w.skipped?"Skipped":"Watching"}</td></tr>`).join("")}</table>`
+    wl.map(w=>`<tr><td>${symLink(w.sym)}</td><td class="r">${w.rvol}×</td><td class="r">${w.gap_pct!=null?fmtP(w.gap_pct,1):"—"}</td><td class="r">${w.or_high.toFixed(3)}</td><td class="r">${(state.day.entered||[]).includes(w.sym)?"Traded":w.skipped?"Skipped":"Watching"}</td></tr>`).join("")}</table>`
     : `<div class="empty">${state.day?.phase==="waiting_open"? "Picked after the first 15 minutes of trading." : "No stocks in play selected."}</div>`;
 
   // trades
@@ -262,14 +262,15 @@ function render(){
   const list = [...pt].reverse();
   $("trades").innerHTML = !list.length? `<div class="empty">No closed trades in this period.</div>` :
     `<table class="wide"><tr><th>Date</th><th>Stock</th><th class="r">Qty</th><th class="r">Buy</th><th class="r">Sell</th><th class="r">Held</th><th class="r">P&L</th><th class="r">%</th><th class="r">R</th><th>Exit</th></tr>${
-      list.map(t=>`<tr><td>${niceDate(t.date)}</td><td><b>${esc(t.sym)}</b></td><td class="r">${t.qty}</td><td class="r">${t.entry_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.entry_time)}</div></td><td class="r">${t.exit_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.exit_time)}</div></td><td class="r">${held(t)}</td><td class="r ${cls(t.net)}">${fmt$(t.net,true)}</td><td class="r ${cls(t.net)}">${fmtP(t.pct)}</td><td class="r">${t.r.toFixed(1)}</td><td>${esc(t.reason)}</td></tr>`).join("")}</table>
-     <div class="narrow">${list.map(t=>`<div class="trade"><div><span class="sym">${esc(t.sym)}</span> <span class="meta">${t.qty} shares · ${niceDate(t.date)}</span>
+      list.map(t=>`<tr><td>${niceDate(t.date)}</td><td>${symLink(t.sym)}</td><td class="r">${t.qty}</td><td class="r">${t.entry_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.entry_time)}</div></td><td class="r">${t.exit_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.exit_time)}</div></td><td class="r">${held(t)}</td><td class="r ${cls(t.net)}">${fmt$(t.net,true)}</td><td class="r ${cls(t.net)}">${fmtP(t.pct)}</td><td class="r">${t.r.toFixed(1)}</td><td>${esc(t.reason)}</td></tr>`).join("")}</table>
+     <div class="narrow">${list.map(t=>`<div class="trade"><div>${symLink(t.sym)} <span class="meta">${t.qty} shares · ${niceDate(t.date)}</span>
         <div class="meta">Buy ${t.entry_price.toFixed(3)} at ${sydTime(t.entry_time)} → Sell ${t.exit_price.toFixed(3)} at ${sydTime(t.exit_time)}</div>
         <div class="meta">${esc(t.reason)} · ${t.r.toFixed(1)}R · fees ${fmt$(t.fees)}</div></div>
         <div class="pl ${cls(t.net)}">${fmt$(t.net,true)}<div class="meta">${fmtP(t.pct)}</div></div></div>`).join("")}</div>`;
 
   $("log").textContent = (state.day?.log||[]).join("\n") || "Nothing yet today.";
 }
+function symLink(sym){return `<a class="sym" href="https://au.finance.yahoo.com/quote/${encodeURIComponent(sym)}.AX" target="_blank" rel="noopener">${esc(sym)}</a>`}
 function held(t){const m=Math.round((new Date(t.exit_time)-new Date(t.entry_time))/60000);return m>=60?`${Math.floor(m/60)}h ${m%60}m`:`${m}m`}
 
 // ---- charts (inline SVG, single series, hover tooltip) ----
