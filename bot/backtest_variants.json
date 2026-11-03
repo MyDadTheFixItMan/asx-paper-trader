@@ -1,32 +1,10 @@
 [
- {
-  "name": "old rules (Nov 3)",
-  "overrides": {
-   "entry_confirm_close": true,
-   "stop_atr_fraction": 0.25,
-   "min_stop_pct": 0.5,
-   "breakeven_at_r": 1.0,
-   "trail_start_r": 2.0,
-   "min_relative_volume": 2.0,
-   "watchlist_size": 10
-  }
- },
- {
-  "name": "top 3 only",
-  "overrides": {
-   "watchlist_size": 3
-  }
- },
- {
-  "name": "rvol 5x",
-  "overrides": {
-   "min_relative_volume": 5.0
-  }
- },
- {
-  "name": "skip when market down at open",
-  "overrides": {
-   "market_min_change_pct": 0.0
-  }
- }
+ {"name": "VWAP entry filter (no longs below VWAP)", "overrides": {"vwap_entry_filter": true}},
+ {"name": "VWAP exit (sell on close below VWAP)", "overrides": {"vwap_exit": true}},
+ {"name": "VWAP filter + exit", "overrides": {"vwap_entry_filter": true, "vwap_exit": true}},
+ {"name": "Episodic pivot: gap 4%+, stop low of day, max 1 ATR", "overrides": {"min_gap_pct": 4, "stop_mode": "low_of_day", "max_stop_atr": 1.0, "min_relative_volume": 2.0, "watchlist_size": 5}},
+ {"name": "Episodic pivot + VWAP exit", "overrides": {"min_gap_pct": 4, "stop_mode": "low_of_day", "max_stop_atr": 1.0, "min_relative_volume": 2.0, "watchlist_size": 5, "vwap_exit": true}},
+ {"name": "Time stop 60 min", "overrides": {"time_stop_minutes": 60}},
+ {"name": "A+ sizing: 1.5x risk at 10x volume", "overrides": {"aplus_rvol": 10, "aplus_risk_multiplier": 1.5}},
+ {"name": "Ross Cameron: 5x volume, gap 5%+", "overrides": {"min_relative_volume": 5.0, "min_gap_pct": 5}}
 ]

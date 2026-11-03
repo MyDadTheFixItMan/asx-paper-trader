@@ -136,7 +136,10 @@ class Engine:
             above_prev = orr["close"] > meta.get("prev_close", 0)
             # Lesson from JNS: when one price step is a big % of the price, slippage eats the edge.
             step_ok = tick_size(orr["close"]) / orr["close"] * 100 <= cfg.get("max_tick_pct", 100)
-            if rvol >= cfg["min_relative_volume"] and bullish and above_prev and step_ok:
+            gap_ok = True
+            if cfg.get("min_gap_pct") and meta.get("prev_close"):
+                gap_ok = (orr["open"] / meta["prev_close"] - 1) * 100 >= cfg["min_gap_pct"]
+            if rvol >= cfg["min_relative_volume"] and bullish and above_prev and step_ok and gap_ok:
                 cands.append({
                     "sym": sym,
                     "rvol": round(rvol, 2),
@@ -187,11 +190,19 @@ class Engine:
             trigger = w["or_high"] + tick_size(w["or_high"])
             raw = max(trigger, bar["o"]) * (1 + slip)
         price = round_tick(raw, "up")
-        stop = max(w["or_low"], price - cfg["stop_atr_fraction"] * w["atr"])
+        if cfg.get("stop_mode") == "low_of_day":
+            # Kullamagi episodic pivot: stop at the low of the day
+            stop = self.day.get("tracks", {}).get(w["sym"], {}).get("low", w["or_low"])
+        else:
+            stop = max(w["or_low"], price - cfg["stop_atr_fraction"] * w["atr"])
         stop = min(stop, price * (1 - cfg["min_stop_pct"] / 100))
         stop = round_tick(stop, "down")
         risk_ps = price - stop
         if risk_ps <= 0:
+            return
+        if cfg.get("max_stop_atr") and risk_ps > cfg["max_stop_atr"] * w["atr"]:
+            self.log(bar["t"], f"Skipped {w['sym']}: stop would be more than {cfg['max_stop_atr']} ATR away.")
+            w["skipped"] = True
             return
         cand = {"entry_price": price, "entry_time": bar["t"].isoformat(), "gap_pct": w.get("gap_pct"),
                 "rvol": w["rvol"], "stop_pct": round(risk_ps / price * 100, 2),
@@ -204,7 +215,11 @@ class Engine:
             return
         # Lesson from losses bigger than planned: size the trade so slippage and both fees fit inside the risk budget.
         cost_ps = risk_ps + (price + stop) * slip + tick_size(stop)
-        qty = int(max(0.0, self._risk_budget() - 2 * self.fee()) / cost_ps)
+        budget = self._risk_budget()
+        if cfg.get("aplus_rvol") and w["rvol"] >= cfg["aplus_rvol"]:
+            # Breitstein: size up on the best setups (still capped at 2% of equity)
+            budget = min(budget * cfg.get("aplus_risk_multiplier", 1.0), self.day["start_equity"] * 0.02)
+        qty = int(max(0.0, budget - 2 * self.fee()) / cost_ps)
         max_value = min(self.day["start_equity"] * cfg["max_position_pct"] / 100, self.s["cash"] - self.fee())
         qty = min(qty, int(max_value / price))
         if qty * price < cfg["min_trade_value"]:
@@ -273,6 +288,14 @@ class Engine:
         pos["last"] = bar["c"]
         pos["high"] = max(pos["high"], bar["h"])
         r = pos["risk_ps"]
+        vw = self.day.get("tracks", {}).get(pos["sym"], {}).get("vwap")
+        if cfg.get("vwap_exit") and vw and bar["c"] < vw:
+            self._exit(pos, bar["c"], bar["t"], "Closed below VWAP")
+            return
+        tsm = cfg.get("time_stop_minutes")
+        if tsm and (bar["t"] - pd.Timestamp(pos["entry_time"])).total_seconds() >= tsm * 60 and bar["c"] <= pos["entry"]:
+            self._exit(pos, bar["c"], bar["t"], f"Time stop ({tsm} min, not working)")
+            return
         # 2) move stop to breakeven once +1R
         if pos["stop_note"] == "initial" and pos["high"] >= pos["entry"] + cfg["breakeven_at_r"] * r:
             pos["stop"] = round_tick(pos["entry"] + tick_size(pos["entry"]), "up")
@@ -299,7 +322,17 @@ class Engine:
         or_end = (datetime.combine(datetime.today(), hhmm("10:00")) +
                   pd.Timedelta(minutes=self.cfg["opening_range_minutes"])).time()
 
+        tracks = day.setdefault("tracks", {})
         for ts in stamps:
+            for sym, bars_at in index.items():
+                b = bars_at.get(ts)
+                if b:
+                    tr = tracks.setdefault(sym, {"pv": 0.0, "v": 0.0, "low": b["l"]})
+                    tp = (b["h"] + b["l"] + b["c"]) / 3
+                    tr["pv"] += tp * b["v"]
+                    tr["v"] += b["v"]
+                    tr["low"] = min(tr["low"], b["l"])
+                    tr["vwap"] = tr["pv"] / tr["v"] if tr["v"] else b["c"]
             if ts.time() < or_end:
                 day["last_ts"] = ts.isoformat()
                 continue
@@ -328,6 +361,9 @@ class Engine:
                         continue
                     bar = index.get(w["sym"], {}).get(ts)
                     if bar and bar["h"] > w["or_high"]:
+                        vw = tracks.get(w["sym"], {}).get("vwap")
+                        if self.cfg.get("vwap_entry_filter") and vw and bar["c"] < vw:
+                            continue  # Breitstein / Zarattini-Aziz: no longs below VWAP
                         self._enter(w, bar)
             day["last_ts"] = ts.isoformat()
 
