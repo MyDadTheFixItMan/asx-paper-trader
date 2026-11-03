@@ -134,7 +134,9 @@ class Engine:
             rvol = orr["volume"] / avg_or_vol
             bullish = orr["close"] > orr["open"]
             above_prev = orr["close"] > meta.get("prev_close", 0)
-            if rvol >= cfg["min_relative_volume"] and bullish and above_prev:
+            # Lesson from JNS: when one price step is a big % of the price, slippage eats the edge.
+            step_ok = tick_size(orr["close"]) / orr["close"] * 100 <= cfg.get("max_tick_pct", 100)
+            if rvol >= cfg["min_relative_volume"] and bullish and above_prev and step_ok:
                 cands.append({
                     "sym": sym,
                     "rvol": round(rvol, 2),
@@ -159,7 +161,8 @@ class Engine:
 
     # --- trading ---
     def _risk_budget(self) -> float:
-        return self.day["start_equity"] * self.cfg["risk_per_trade_pct"] / 100
+        mult = (self.s.get("learning") or {}).get("risk_multiplier", 1.0)
+        return self.day["start_equity"] * self.cfg["risk_per_trade_pct"] / 100 * mult
 
     def _check_halt(self, t, unrealized: float):
         if self.day["no_new_entries"]:
@@ -174,8 +177,15 @@ class Engine:
 
     def _enter(self, w: dict, bar: dict):
         cfg = self.cfg
-        trigger = w["or_high"] + tick_size(w["or_high"])
-        raw = max(trigger, bar["o"]) * (1 + cfg["slippage_pct"] / 100)
+        slip = cfg["slippage_pct"] / 100
+        if cfg.get("entry_confirm_close"):
+            # Lesson from false breakouts: only buy once a 5-minute bar CLOSES above the range.
+            if bar["c"] <= w["or_high"]:
+                return
+            raw = bar["c"] * (1 + slip)
+        else:
+            trigger = w["or_high"] + tick_size(w["or_high"])
+            raw = max(trigger, bar["o"]) * (1 + slip)
         price = round_tick(raw, "up")
         stop = max(w["or_low"], price - cfg["stop_atr_fraction"] * w["atr"])
         stop = min(stop, price * (1 - cfg["min_stop_pct"] / 100))
@@ -183,7 +193,18 @@ class Engine:
         risk_ps = price - stop
         if risk_ps <= 0:
             return
-        qty = int(self._risk_budget() / risk_ps)
+        cand = {"entry_price": price, "entry_time": bar["t"].isoformat(), "gap_pct": w.get("gap_pct"),
+                "rvol": w["rvol"], "stop_pct": round(risk_ps / price * 100, 2),
+                "market_pct": self.day.get("market_change_pct")}
+        from learn import blocked_reason
+        why = blocked_reason(self.s, cand)
+        if why:
+            self.log(bar["t"], f"Skipped {w['sym']}: {why}.")
+            w["skipped"] = True
+            return
+        # Lesson from losses bigger than planned: size the trade so slippage and both fees fit inside the risk budget.
+        cost_ps = risk_ps + (price + stop) * slip + tick_size(stop)
+        qty = int(max(0.0, self._risk_budget() - 2 * self.fee()) / cost_ps)
         max_value = min(self.day["start_equity"] * cfg["max_position_pct"] / 100, self.s["cash"] - self.fee())
         qty = min(qty, int(max_value / price))
         if qty * price < cfg["min_trade_value"]:
@@ -196,12 +217,14 @@ class Engine:
             "sym": w["sym"], "qty": qty, "entry": price, "entry_time": bar["t"].isoformat(),
             "stop": stop, "initial_stop": stop, "risk_ps": round(risk_ps, 4), "high": bar["h"],
             "last": bar["c"], "fees": self.fee(), "rvol": w["rvol"], "atr": w["atr"], "stop_note": "initial",
+            "gap_pct": w.get("gap_pct"), "stop_pct": cand["stop_pct"], "market_pct": cand["market_pct"],
         }
         self.s["positions"].append(pos)
         self.day["entered"].append(w["sym"])
-        self.log(bar["t"], f"BUY {qty} {w['sym']} @ ${price:.3f}, stop ${stop:.3f} (breakout above ${w['or_high']:.3f})")
-        # Same-bar stop check (conservative): if it closed below the stop, we're out.
-        if bar["c"] <= stop:
+        self.log(bar["t"], f"BUY {qty} {w['sym']} @ ${price:.3f}, stop ${stop:.3f} (closed above ${w['or_high']:.3f})"
+                 if cfg.get("entry_confirm_close") else
+                 f"BUY {qty} {w['sym']} @ ${price:.3f}, stop ${stop:.3f} (breakout above ${w['or_high']:.3f})")
+        if not cfg.get("entry_confirm_close") and bar["c"] <= stop:
             self._exit(pos, stop, bar["t"], "Stopped out on entry bar")
 
     def _exit(self, pos: dict, raw_price: float, t, reason: str):
@@ -231,6 +254,9 @@ class Engine:
             "pct": round(net / (pos["qty"] * pos["entry"]) * 100, 2),
             "r": round(r_mult, 2),
             "rvol": pos.get("rvol"),
+            "gap_pct": pos.get("gap_pct"),
+            "stop_pct": pos.get("stop_pct"),
+            "market_pct": pos.get("market_pct"),
             "reason": reason,
         }
         self.trades.append(trade)

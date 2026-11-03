@@ -33,6 +33,14 @@
   "last_entry_time": "12:30",
   "exit_time": "15:50",
 
+  "_learning": "Rules added from losses, plus an end-of-day review that adapts slowly and only on evidence.",
+  "entry_confirm_close": true,
+  "max_tick_pct": 0.5,
+  "learn_min_risk_multiplier": 0.5,
+  "learn_min_trades": 20,
+  "learn_block_avg_r": -0.3,
+  "learn_block_days": 30,
+
   "_costs": "Modelled on a low-cost online broker plus slippage from trading on 20-minute delayed data.",
   "brokerage_per_trade": 5.00,
   "slippage_pct": 0.10,

@@ -125,6 +125,12 @@ def main():
         last = {s: b[-1]["c"] for s, b in bars.items() if b}
         eng.close_day(now, last)
 
+    # End-of-day review: learn from today's losses
+    if day["phase"] == "closed" and not day.get("reviewed"):
+        import learn
+        learn.review_day(state, trades, CFG)
+        eng.log(now, "Daily review done. See 'Learning from losses' on the dashboard.")
+
     # mark to market + equity curve
     for p in state["positions"]:
         if bars.get(p["sym"]):
