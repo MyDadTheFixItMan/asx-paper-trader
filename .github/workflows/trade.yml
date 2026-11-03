@@ -1,0 +1,39 @@
+name: Paper trader
+
+on:
+  schedule:
+    # Every 5 min across the ASX day in both AEDT (UTC+11) and AEST (UTC+10).
+    # The script checks Sydney time and holidays itself and exits fast outside hours.
+    - cron: "*/5 22,23 * * 0-4"   # Mon-Fri morning (Sydney)
+    - cron: "*/5 0-6 * * 1-5"     # Mon-Fri trading day (Sydney)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trader
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: bot/requirements.txt
+      - run: pip install -r bot/requirements.txt
+      - run: python bot/trader.py
+      - name: Save results
+        run: |
+          git config user.name "asx-paper-trader"
+          git config user.email "actions@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet && exit 0
+          git commit -m "Trader update $(TZ=Australia/Sydney date '+%Y-%m-%d %H:%M')"
+          git pull --rebase
+          git push

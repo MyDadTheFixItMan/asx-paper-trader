@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ASX Paper Trader</title>
+<meta name="theme-color" content="#fcfcfb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1a19" media="(prefers-color-scheme: dark)">
+<style>
+:root{
+  --bg:#f4f4f1; --surface:#fcfcfb; --line:#e4e3de; --grid:#ecebe6;
+  --text:#0b0b0b; --text2:#52514e; --muted:#7a7974;
+  --series:#2a78d6; --gain:#2a78d6; --loss:#e34948; --neutral:#c9c8c2;
+  --good-text:#006300; --bad-text:#b42d2d;
+  --chip:#ecebe6; --chip-on:#0b0b0b; --chip-on-text:#fcfcfb;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#111110; --surface:#1a1a19; --line:#2c2c2a; --grid:#262624;
+  --text:#f0efec; --text2:#c3c2b7; --muted:#8f8e88;
+  --series:#3987e5; --gain:#3987e5; --loss:#e66767; --neutral:#4a4a46;
+  --good-text:#5cc95c; --bad-text:#f08a8a;
+  --chip:#262624; --chip-on:#f0efec; --chip-on-text:#1a1a19;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  padding:env(safe-area-inset-top) 0 40px}
+.wrap{max-width:880px;margin:0 auto;padding:12px}
+header{padding:8px 4px 4px}
+h1{font-size:15px;font-weight:600;margin:0;color:var(--text2);letter-spacing:.02em}
+.hero{font-size:38px;font-weight:700;letter-spacing:-.02em;margin:2px 0 0;font-variant-numeric:tabular-nums}
+.sub{color:var(--text2);font-size:14px;font-variant-numeric:tabular-nums}
+.pos{color:var(--good-text)} .neg{color:var(--bad-text)}
+.status{display:flex;gap:8px;align-items:center;margin:8px 0 2px;font-size:13px;color:var(--text2)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none}
+.dot.live{background:#0ca30c}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 2px 8px;scrollbar-width:none;position:sticky;top:0;background:var(--bg);z-index:5}
+.tabs button{border:0;background:var(--chip);color:var(--text);padding:8px 14px;border-radius:999px;font:inherit;font-size:14px;white-space:nowrap;cursor:pointer}
+.tabs button.on{background:var(--chip-on);color:var(--chip-on-text);font-weight:600}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin:10px 0}
+.card h2{font-size:13px;font-weight:600;color:var(--text2);margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:620px){.tiles{grid-template-columns:repeat(4,1fr)}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.tile .k{font-size:12px;color:var(--text2)}
+.tile .v{font-size:20px;font-weight:650;font-variant-numeric:tabular-nums;margin-top:2px}
+.tile .n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{height:8px;background:var(--grid);border-radius:4px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--series);border-radius:4px}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);white-space:nowrap;display:none;font-variant-numeric:tabular-nums;z-index:3}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--text2);margin-top:6px;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:3px;border-radius:2px;display:inline-block}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;color:var(--text2);font-size:12px;padding:6px 6px;border-bottom:1px solid var(--line)}
+td{padding:8px 6px;border-bottom:1px solid var(--grid);vertical-align:top}
+td.r,th.r{text-align:right}
+.trade{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 0;border-bottom:1px solid var(--grid)}
+.trade:last-child{border-bottom:0}
+.trade .sym{font-weight:650}
+.trade .meta{font-size:12px;color:var(--text2)}
+.trade .pl{text-align:right;font-weight:650;font-variant-numeric:tabular-nums}
+.empty{color:var(--muted);font-size:14px;padding:6px 0}
+.log{font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text2);white-space:pre-wrap;max-height:260px;overflow:auto}
+.note{font-size:12px;color:var(--muted);margin:14px 4px;line-height:1.5}
+.err{background:#fde8e8;color:#8a1f1f;border-radius:10px;padding:10px;margin:10px 0;display:none}
+.wide{display:none} @media(min-width:620px){.wide{display:table}.narrow{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>ASX PAPER TRADER · $10K TEST ACCOUNT</h1>
+    <div class="hero" id="equity">—</div>
+    <div class="sub" id="total">Loading…</div>
+    <div class="status"><span class="dot" id="dot"></span><span id="status"></span></div>
+  </header>
+  <div class="err" id="err"></div>
+
+  <nav class="tabs" id="tabs"></nav>
+
+  <section class="tiles" id="tiles"></section>
+
+  <section class="card" id="targetCard">
+    <h2>This month vs 8% target</h2>
+    <div id="target"></div>
+  </section>
+
+  <section class="card">
+    <h2 id="eqTitle">Equity</h2>
+    <div class="chart" id="eqChart"></div>
+  </section>
+
+  <section class="card" id="dailyCard">
+    <h2>Daily profit / loss</h2>
+    <div class="chart" id="dailyChart"></div>
+  </section>
+
+  <section class="card">
+    <h2>Open positions</h2>
+    <div id="positions"></div>
+  </section>
+
+  <section class="card">
+    <h2>Today's stocks in play</h2>
+    <div id="watch"></div>
+  </section>
+
+  <section class="card">
+    <h2 id="tradesTitle">Trades</h2>
+    <div id="trades"></div>
+  </section>
+
+  <section class="card">
+    <h2>Today's log</h2>
+    <div class="log" id="log"></div>
+  </section>
+
+  <p class="note">Paper trading only: no real money. Prices come from Yahoo Finance, which runs about 20 minutes behind the ASX,
+  so the bot trades on delayed bars and fills include brokerage and slippage. Strategy: opening range breakout on high
+  relative-volume "stocks in play", 1% risk per trade, hard stops, a 2% daily loss limit and flat by the close.
+  Updates every 5 minutes on trading days.</p>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const TZ = "Australia/Sydney";
+const fmt$ = (n, sign=false) => (sign && n>0?"+":"") + (n<0?"-":"") + "$" + Math.abs(n).toLocaleString("en-AU",{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtP = (n, d=2) => (n>0?"+":"") + n.toFixed(d) + "%";
+const cls = n => n>0?"pos":n<0?"neg":"";
+const sydDate = iso => new Date(iso).toLocaleDateString("en-CA",{timeZone:TZ});
+const sydTime = iso => new Date(iso).toLocaleTimeString("en-AU",{timeZone:TZ,hour:"2-digit",minute:"2-digit",hour12:false});
+const niceDate = d => new Date(d+"T12:00:00").toLocaleDateString("en-AU",{weekday:"short",day:"numeric",month:"short"});
+const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function dataBase(){
+  const q = new URLSearchParams(location.search).get("data");
+  if (q) return q.replace(/\/?$/,"/");
+  if (location.hostname.endsWith(".github.io")) {
+    const owner = location.hostname.split(".")[0];
+    const repo = location.pathname.split("/").filter(Boolean)[0] || `${owner}.github.io`;
+    return `https://raw.githubusercontent.com/${owner}/${repo}/main/data/`;
+  }
+  return "data/";
+}
+async function getJSON(name, fallback){
+  try { const r = await fetch(dataBase()+name+"?t="+Date.now(), {cache:"no-store"}); if(!r.ok) throw 0; return await r.json(); }
+  catch(e){ return fallback; }
+}
+
+const PERIODS = [
+  ["today","Today"],["week","Week"],["fortnight","Fortnight"],["month","Month"],["year","Year"],["all","All"]
+];
+let period = localStorage.getItem("period") || "today";
+let D = null;
+
+function periodStart(p, ref){
+  const d = new Date(ref+"T12:00:00");
+  const iso = x => x.toISOString().slice(0,10);
+  if (p==="today") return ref;
+  if (p==="week"){ const wd=(d.getDay()+6)%7; d.setDate(d.getDate()-wd); return iso(d); }
+  if (p==="fortnight"){ d.setDate(d.getDate()-13); return iso(d); }
+  if (p==="month") return ref.slice(0,8)+"01";
+  if (p==="year") return ref.slice(0,5)+"01-01";
+  return "0000-01-01";
+}
+
+function stats(trades){
+  const wins = trades.filter(t=>t.net>0), losses = trades.filter(t=>t.net<=0);
+  const sum = a => a.reduce((s,t)=>s+t.net,0);
+  const gw = sum(wins), gl = -sum(losses);
+  return {
+    n: trades.length, net: sum(trades), fees: trades.reduce((s,t)=>s+t.fees,0),
+    winRate: trades.length? wins.length/trades.length*100 : 0,
+    avgWin: wins.length? gw/wins.length:0, avgLoss: losses.length? -gl/losses.length:0,
+    pf: gl>0? gw/gl : (gw>0? Infinity:0),
+    avgR: trades.length? trades.reduce((s,t)=>s+t.r,0)/trades.length:0,
+  };
+}
+
+function render(){
+  const {state, trades, curve} = D;
+  const ref = state.day?.date || sydDate(new Date().toISOString());
+  const start = periodStart(period, ref);
+  const daily = (state.daily||[]).filter(d=>d.date>=start && d.date<=ref);
+  const pt = trades.filter(t=>t.date>=start && t.date<=ref);
+  const st = stats(pt);
+  const live = state.day?.date===ref && state.day?.phase!=="closed";
+  const openPL = (state.positions||[]).reduce((s,p)=>s+p.qty*(p.last-p.entry)-p.fees,0);
+
+  // header
+  const eq = state.cash + (state.positions||[]).reduce((s,p)=>s+p.qty*p.last,0);
+  const tot = eq - state.start_capital;
+  $("equity").textContent = fmt$(eq);
+  $("total").innerHTML = `<span class="${cls(tot)}">${fmt$(tot,true)} (${fmtP(tot/state.start_capital*100)})</span> since start · started ${niceDate(sydDate(state.created))}`;
+  $("dot").className = "dot"+(live?" live":"");
+  $("status").textContent = `${state.status||""} · updated ${state.last_run? sydTime(state.last_run)+" "+niceDate(sydDate(state.last_run)):"never"}`;
+
+  // tabs
+  $("tabs").innerHTML = PERIODS.map(([k,l])=>`<button data-k="${k}" class="${k===period?"on":""}">${l}</button>`).join("");
+  $("tabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{period=b.dataset.k;localStorage.setItem("period",period);render();});
+
+  // period base equity -> return %
+  const base = daily.length? daily[0].start_equity : (state.day?.start_equity || state.start_capital);
+  const netP = st.net + (live? openPL:0);
+  const pf = st.pf===Infinity? "∞" : st.pf.toFixed(2);
+  $("tiles").innerHTML = [
+    ["Net P&L", `<span class="${cls(netP)}">${fmt$(netP,true)}</span>`, `${fmtP(netP/base*100)}${live&&openPL?` · incl. open ${fmt$(openPL,true)}`:""}`],
+    ["Trades", st.n, `${daily.length} trading day${daily.length===1?"":"s"}`],
+    ["Win rate", st.n? st.winRate.toFixed(0)+"%":"—", st.n? `avg ${st.avgR>=0?"+":""}${st.avgR.toFixed(2)}R per trade`:""],
+    ["Avg win / loss", st.n? `${fmt$(st.avgWin)} / ${fmt$(Math.abs(st.avgLoss))}`:"—", `profit factor ${st.n?pf:"—"} · fees ${fmt$(st.fees)}`],
+  ].map(([k,v,n])=>`<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="n">${n}</div></div>`).join("");
+
+  // monthly target
+  const mStart = ref.slice(0,8)+"01";
+  const mDays = (state.daily||[]).filter(d=>d.date>=mStart && d.date<=ref);
+  const mBase = mDays.length? mDays[0].start_equity : (state.day?.start_equity||state.start_capital);
+  const mPL = (live? eq : (mDays.length? mDays[mDays.length-1].end_equity : mBase)) - mBase;
+  const goal = mBase * 0.08;
+  const prog = Math.max(0, Math.min(100, mPL/goal*100));
+  $("target").innerHTML = `<div style="display:flex;justify-content:space-between;font-variant-numeric:tabular-nums">
+      <span><b class="${cls(mPL)}">${fmt$(mPL,true)}</b> <span class="sub">(${fmtP(mPL/mBase*100)})</span></span>
+      <span class="sub">goal ${fmt$(goal)}</span></div>
+    <div class="bar"><i style="width:${prog}%"></i></div>
+    <div class="sub" style="margin-top:6px">${mPL>=goal? "Target reached this month." : `${fmt$(Math.max(0,goal-mPL))} to go`}</div>`;
+
+  // equity chart
+  if (period==="today"){
+    const pts = curve.filter(c=>sydDate(c.t)===ref).map(c=>({x:new Date(c.t), y:c.equity, label:sydTime(c.t)}));
+    $("eqTitle").textContent = "Equity today";
+    lineChart($("eqChart"), pts, state.day?.start_equity);
+  } else {
+    const pts = daily.map(d=>({x:new Date(d.date+"T16:00:00"), y:d.end_equity, label:niceDate(d.date)}));
+    if (daily.length) pts.unshift({x:new Date(daily[0].date+"T09:00:00"), y:daily[0].start_equity, label:"Start "+niceDate(daily[0].date)});
+    $("eqTitle").textContent = "Equity at each close";
+    lineChart($("eqChart"), pts, base);
+  }
+  $("dailyCard").style.display = period==="today"? "none":"";
+  if (period!=="today") barChart($("dailyChart"), daily);
+
+  // positions
+  const pos = state.positions||[];
+  $("positions").innerHTML = pos.length? `<table><tr><th>Stock</th><th class="r">Qty</th><th class="r">Bought</th><th class="r">Now</th><th class="r">Stop</th><th class="r">P&L</th></tr>${
+    pos.map(p=>{const pl=p.qty*(p.last-p.entry)-p.fees;return `<tr><td><b>${esc(p.sym)}</b><div class="sub" style="font-size:11px">${sydTime(p.entry_time)}</div></td><td class="r">${p.qty}</td><td class="r">${p.entry.toFixed(3)}</td><td class="r">${p.last.toFixed(3)}</td><td class="r">${p.stop.toFixed(3)}</td><td class="r ${cls(pl)}">${fmt$(pl,true)}</td></tr>`}).join("")}</table>`
+    : `<div class="empty">${live? "No open positions." : "Flat. The bot never holds overnight."}</div>`;
+
+  // watchlist
+  const wl = state.day?.date===ref ? (state.day.watchlist||[]) : [];
+  $("watch").innerHTML = wl.length? `<table><tr><th>Stock</th><th class="r">Rel. volume</th><th class="r">Gap</th><th class="r">Buy above</th><th class="r">Status</th></tr>${
+    wl.map(w=>`<tr><td><b>${esc(w.sym)}</b></td><td class="r">${w.rvol}×</td><td class="r">${w.gap_pct!=null?fmtP(w.gap_pct,1):"—"}</td><td class="r">${w.or_high.toFixed(3)}</td><td class="r">${(state.day.entered||[]).includes(w.sym)?"Traded":w.skipped?"Skipped":"Watching"}</td></tr>`).join("")}</table>`
+    : `<div class="empty">${state.day?.phase==="waiting_open"? "Picked after the first 15 minutes of trading." : "No stocks in play selected."}</div>`;
+
+  // trades
+  $("tradesTitle").textContent = `Trades · ${PERIODS.find(p=>p[0]===period)[1]}`;
+  const list = [...pt].reverse();
+  $("trades").innerHTML = !list.length? `<div class="empty">No closed trades in this period.</div>` :
+    `<table class="wide"><tr><th>Date</th><th>Stock</th><th class="r">Qty</th><th class="r">Buy</th><th class="r">Sell</th><th class="r">Held</th><th class="r">P&L</th><th class="r">%</th><th class="r">R</th><th>Exit</th></tr>${
+      list.map(t=>`<tr><td>${niceDate(t.date)}</td><td><b>${esc(t.sym)}</b></td><td class="r">${t.qty}</td><td class="r">${t.entry_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.entry_time)}</div></td><td class="r">${t.exit_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.exit_time)}</div></td><td class="r">${held(t)}</td><td class="r ${cls(t.net)}">${fmt$(t.net,true)}</td><td class="r ${cls(t.net)}">${fmtP(t.pct)}</td><td class="r">${t.r.toFixed(1)}</td><td>${esc(t.reason)}</td></tr>`).join("")}</table>
+     <div class="narrow">${list.map(t=>`<div class="trade"><div><span class="sym">${esc(t.sym)}</span> <span class="meta">${t.qty} shares · ${niceDate(t.date)}</span>
+        <div class="meta">Buy ${t.entry_price.toFixed(3)} at ${sydTime(t.entry_time)} → Sell ${t.exit_price.toFixed(3)} at ${sydTime(t.exit_time)}</div>
+        <div class="meta">${esc(t.reason)} · ${t.r.toFixed(1)}R · fees ${fmt$(t.fees)}</div></div>
+        <div class="pl ${cls(t.net)}">${fmt$(t.net,true)}<div class="meta">${fmtP(t.pct)}</div></div></div>`).join("")}</div>`;
+
+  $("log").textContent = (state.day?.log||[]).join("\n") || "Nothing yet today.";
+}
+function held(t){const m=Math.round((new Date(t.exit_time)-new Date(t.entry_time))/60000);return m>=60?`${Math.floor(m/60)}h ${m%60}m`:`${m}m`}
+
+// ---- charts (inline SVG, single series, hover tooltip) ----
+let W=640; const H=220, M={l:56,r:12,t:12,b:26};
+function niceTicks(lo,hi,n=4){const span=hi-lo||1;const step=Math.pow(10,Math.floor(Math.log10(span/n)));const err=span/n/step;const s=step*(err>=7.5?10:err>=3.5?5:err>=1.5?2:1);const out=[];for(let v=Math.floor(lo/s)*s;v<=hi+1e-9;v+=s)out.push(+v.toFixed(6));return out;}
+function lineChart(el, pts, baseline){
+  W=Math.max(300, el.clientWidth||640);
+  if (pts.length<2){ el.innerHTML=`<div class="empty">The chart fills in as the bot runs.</div>`; return; }
+  let lo=Math.min(...pts.map(p=>p.y), baseline??Infinity), hi=Math.max(...pts.map(p=>p.y), baseline??-Infinity);
+  const pad=(hi-lo)*0.1||20; lo-=pad; hi+=pad;
+  const ticks=niceTicks(lo,hi); lo=Math.min(lo,ticks[0]); hi=Math.max(hi,ticks[ticks.length-1]);
+  const x0=+pts[0].x, x1=+pts[pts.length-1].x;
+  const X=i=>M.l+(W-M.l-M.r)*(pts.length===1?0:i/(pts.length-1));
+  const Y=v=>M.t+(H-M.t-M.b)*(1-(v-lo)/(hi-lo));
+  const path=pts.map((p,i)=>`${i?"L":"M"}${X(i).toFixed(1)},${Y(p.y).toFixed(1)}`).join("");
+  const grid=ticks.map(v=>`<line x1="${M.l}" x2="${W-M.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--grid)"/><text x="${M.l-8}" y="${Y(v)+4}" text-anchor="end" font-size="11" fill="var(--muted)">$${v.toLocaleString("en-AU")}</text>`).join("");
+  const base = baseline!=null? `<line x1="${M.l}" x2="${W-M.r}" y1="${Y(baseline)}" y2="${Y(baseline)}" stroke="var(--muted)" stroke-dasharray="4 4"/>`:"";
+  const xl=[0,Math.floor((pts.length-1)/2),pts.length-1].filter((v,i,a)=>a.indexOf(v)===i).map(i=>`<text x="${X(i)}" y="${H-6}" text-anchor="${i===0?"start":i===pts.length-1?"end":"middle"}" font-size="11" fill="var(--muted)">${esc(pts[i].label)}</text>`).join("");
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Equity line chart">${grid}${base}<path d="${path}" fill="none" stroke="var(--series)" stroke-width="2" stroke-linejoin="round"/>${xl}
+    <line id="xh" y1="${M.t}" y2="${H-M.b}" stroke="var(--muted)" visibility="hidden"/><circle id="hd" r="5" fill="var(--series)" stroke="var(--surface)" stroke-width="2" visibility="hidden"/>
+    <rect x="${M.l}" y="0" width="${W-M.l-M.r}" height="${H}" fill="transparent" id="hit"/></svg>
+    <div class="tip"></div>${baseline!=null?`<div class="legend"><span><i class="sw" style="background:var(--series)"></i>Equity</span><span><i class="sw" style="background:var(--muted)"></i>Starting equity (dashed)</span></div>`:""}`;
+  const svg=el.querySelector("svg"), tip=el.querySelector(".tip"), xh=svg.querySelector("#xh"), hd=svg.querySelector("#hd");
+  const move=e=>{const r=svg.getBoundingClientRect();const cx=((e.touches?e.touches[0].clientX:e.clientX)-r.left)/r.width*W;
+    const i=Math.max(0,Math.min(pts.length-1,Math.round((cx-M.l)/(W-M.l-M.r)*(pts.length-1))));const p=pts[i];
+    xh.setAttribute("x1",X(i));xh.setAttribute("x2",X(i));xh.setAttribute("visibility","visible");
+    hd.setAttribute("cx",X(i));hd.setAttribute("cy",Y(p.y));hd.setAttribute("visibility","visible");
+    const ch = baseline!=null? ` <span class="${cls(p.y-baseline)}">${fmt$(p.y-baseline,true)}</span>`:"";
+    tip.innerHTML=`<b>${fmt$(p.y)}</b>${ch}<br><span class="sub">${esc(p.label)}</span>`;tip.style.display="block";
+    const px=X(i)/W*r.width;tip.style.left=Math.min(r.width-tip.offsetWidth,Math.max(0,px-tip.offsetWidth/2))+"px";tip.style.top="-6px";};
+  const out=()=>{tip.style.display="none";xh.setAttribute("visibility","hidden");hd.setAttribute("visibility","hidden");};
+  svg.addEventListener("pointermove",move);svg.addEventListener("touchmove",move,{passive:true});svg.addEventListener("pointerleave",out);
+}
+function barChart(el, days){
+  W=Math.max(300, el.clientWidth||640);
+  if (!days.length){ el.innerHTML=`<div class="empty">No completed trading days in this period.</div>`; return; }
+  const vals=days.map(d=>d.pnl); let lo=Math.min(0,...vals), hi=Math.max(0,...vals); if(lo===hi){hi=1}
+  const ticks=niceTicks(lo,hi); lo=Math.min(lo,ticks[0]); hi=Math.max(hi,ticks[ticks.length-1]);
+  const Y=v=>M.t+(H-M.t-M.b)*(1-(v-lo)/(hi-lo)); const cw=(W-M.l-M.r)/days.length; const bw=Math.max(2,Math.min(28,cw-2));
+  const grid=ticks.map(v=>`<line x1="${M.l}" x2="${W-M.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="${v===0?"var(--muted)":"var(--grid)"}"/><text x="${M.l-8}" y="${Y(v)+4}" text-anchor="end" font-size="11" fill="var(--muted)">${v<0?"-":""}$${Math.abs(v).toLocaleString("en-AU")}</text>`).join("");
+  const bars=days.map((d,i)=>{const x=M.l+i*cw+(cw-bw)/2;const y=Math.min(Y(d.pnl),Y(0));const h=Math.max(1,Math.abs(Y(d.pnl)-Y(0)));const r=Math.min(4,bw/2,h);
+    const path = d.pnl>=0 ? `M${x},${y+h}V${y+r}Q${x},${y} ${x+r},${y}H${x+bw-r}Q${x+bw},${y} ${x+bw},${y+r}V${y+h}Z` : `M${x},${y}V${y+h-r}Q${x},${y+h} ${x+r},${y+h}H${x+bw-r}Q${x+bw},${y+h} ${x+bw},${y+h-r}V${y}Z`;
+    return `<path d="${path}" fill="${d.pnl>=0?"var(--gain)":"var(--loss)"}"/><rect class="hb" data-i="${i}" x="${M.l+i*cw}" y="${M.t}" width="${cw}" height="${H-M.t-M.b}" fill="transparent"/>`}).join("");
+  const xl=[0,days.length-1].filter((v,i,a)=>a.indexOf(v)===i).map(i=>`<text x="${M.l+i*cw+cw/2}" y="${H-6}" text-anchor="${i===0&&days.length>1?"start":i===days.length-1&&days.length>1?"end":"middle"}" font-size="11" fill="var(--muted)">${niceDate(days[i].date)}</text>`).join("");
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Daily profit and loss bar chart">${grid}${bars}${xl}</svg><div class="tip"></div>
+    <div class="legend"><span><i class="sw" style="background:var(--gain);height:10px;width:10px"></i>Profit day</span><span><i class="sw" style="background:var(--loss);height:10px;width:10px"></i>Loss day</span></div>`;
+  const svg=el.querySelector("svg"), tip=el.querySelector(".tip");
+  svg.querySelectorAll(".hb").forEach(h=>{const show=()=>{const d=days[+h.dataset.i];const r=svg.getBoundingClientRect();
+    tip.innerHTML=`<b>${niceDate(d.date)}</b><br><span class="${cls(d.pnl)}">${fmt$(d.pnl,true)}</span> · ${d.trades} trade${d.trades===1?"":"s"}${d.market_change_pct!=null?`<br><span class="sub">ASX 200 at open ${fmtP(d.market_change_pct)}</span>`:""}`;
+    tip.style.display="block";const px=(+h.getAttribute("x")+cw/2)/W*r.width;tip.style.left=Math.min(r.width-tip.offsetWidth,Math.max(0,px-tip.offsetWidth/2))+"px";tip.style.top="-6px";};
+    h.addEventListener("pointerenter",show);h.addEventListener("click",show);});
+  svg.addEventListener("pointerleave",()=>tip.style.display="none");
+}
+
+async function load(){
+  const [state, trades, curve] = await Promise.all([getJSON("state.json",null),getJSON("trades.json",[]),getJSON("equity.json",[])]);
+  if (!state){ $("err").style.display="block"; $("err").textContent="No data yet. The bot writes its first results at about 9:15am on the next trading day."; $("total").textContent=""; return; }
+  $("err").style.display="none";
+  D={state,trades,curve}; render();
+}
+load(); setInterval(load, 60000);
+let rz; addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(()=>D&&render(),200);});
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)load();});
+</script>
+</body>
+</html>

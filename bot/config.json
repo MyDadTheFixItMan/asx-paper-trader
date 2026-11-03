@@ -1,0 +1,40 @@
+{
+  "start_capital": 10000,
+  "monthly_target_pct": 8.0,
+
+  "_universe": "Every ASX listing is scanned each morning, then filtered to shares a $10k account can actually trade.",
+  "min_price": 0.20,
+  "min_avg_turnover": 1000000,
+  "min_atr_pct": 1.5,
+  "max_universe": 500,
+
+  "_setup": "Opening range breakout on 'stocks in play' (Zarattini, Barbon & Aziz 2024; Toby Crabel).",
+  "opening_range_minutes": 15,
+  "min_relative_volume": 2.0,
+  "watchlist_size": 10,
+  "market_index": "^AXJO",
+  "market_min_change_pct": -1.0,
+
+  "_risk": "Defence first (Paul Tudor Jones): small fixed risk, hard stops, daily loss limit.",
+  "risk_per_trade_pct": 1.0,
+  "max_position_pct": 25.0,
+  "max_positions": 5,
+  "min_trade_value": 1000,
+  "stop_atr_fraction": 0.25,
+  "min_stop_pct": 0.5,
+  "breakeven_at_r": 1.0,
+  "trail_start_r": 2.0,
+  "trail_distance_r": 1.0,
+  "trail_atr_fraction": 0.5,
+  "daily_loss_limit_pct": 2.0,
+  "max_losses_in_row": 3,
+
+  "_timing": "Sydney time. Morning momentum only; flat before the close.",
+  "last_entry_time": "12:30",
+  "exit_time": "15:50",
+
+  "_costs": "Modelled on a low-cost online broker plus slippage from trading on 20-minute delayed data.",
+  "brokerage_per_trade": 5.00,
+  "slippage_pct": 0.10,
+  "data_delay_minutes": 20
+}
