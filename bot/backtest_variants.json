@@ -1,9 +1,32 @@
 [
-  {"name": "A: wide stop 0.5 ATR, hold to close, intrabar entry", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 0.5, "min_stop_pct": 1.0, "trail_start_r": 99, "breakeven_at_r": 99}},
-  {"name": "B: A with 1.0 ATR stop", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 1.0, "min_stop_pct": 1.5, "trail_start_r": 99, "breakeven_at_r": 99}},
-  {"name": "C: A, rvol 3x, top 5 only", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 0.5, "min_stop_pct": 1.0, "trail_start_r": 99, "breakeven_at_r": 99, "min_relative_volume": 3.0, "watchlist_size": 5}},
-  {"name": "D: A with 30-min range", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 0.5, "min_stop_pct": 1.0, "trail_start_r": 99, "breakeven_at_r": 99, "opening_range_minutes": 30}},
-  {"name": "E: A, 3 positions max 33%", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 0.5, "min_stop_pct": 1.0, "trail_start_r": 99, "breakeven_at_r": 99, "max_positions": 3, "max_position_pct": 33}},
-  {"name": "F: A, shares over $2", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 0.5, "min_stop_pct": 1.0, "trail_start_r": 99, "breakeven_at_r": 99, "min_price": 2.0}},
-  {"name": "G: B, trail 3R by 1 ATR", "overrides": {"entry_confirm_close": false, "stop_atr_fraction": 1.0, "min_stop_pct": 1.5, "breakeven_at_r": 99, "trail_start_r": 3, "trail_distance_r": 1.5, "trail_atr_fraction": 1.0}}
+ {
+  "name": "old rules (Nov 3)",
+  "overrides": {
+   "entry_confirm_close": true,
+   "stop_atr_fraction": 0.25,
+   "min_stop_pct": 0.5,
+   "breakeven_at_r": 1.0,
+   "trail_start_r": 2.0,
+   "min_relative_volume": 2.0,
+   "watchlist_size": 10
+  }
+ },
+ {
+  "name": "top 3 only",
+  "overrides": {
+   "watchlist_size": 3
+  }
+ },
+ {
+  "name": "rvol 5x",
+  "overrides": {
+   "min_relative_volume": 5.0
+  }
+ },
+ {
+  "name": "skip when market down at open",
+  "overrides": {
+   "market_min_change_pct": 0.0
+  }
+ }
 ]
