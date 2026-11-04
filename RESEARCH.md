@@ -52,3 +52,14 @@ On ASX data, the classic momentum day-trading playbook is roughly break-even bef
 1. VWAP-based trend rules (first positive avg R).
 2. Very selective "stocks in play" (Cameron-style), tested as more data accumulates.
 3. Mean-reversion after gap-downs, if execution costs can be brought below ~0.15% (larger positions, cheaper broker).
+
+## Ross Cameron in detail (4 Nov 2026)
+What he publishes: audited yearly totals, monthly broker statements, yearly stats, and daily recap videos.
+His own numbers: one period at 71% accuracy, average winner $1,800 vs average loser $761, winners held ~3 min, losers ~2 min;
+target 2:1 profit-to-loss. Five pillars: up 10%+, 5× relative volume, breaking news, $2–$20, float under 10M.
+He starts each day at quarter size until he's up for the day, shrinks size in cold markets, and trades mainly the first 90 minutes.
+
+What transfers to this bot: the stock filter (price band, volume) and the "be selective" principle.
+What doesn't: his edge comes from 1-minute charts, real-time Level 2 and 2–3 minute holds in US low-float stocks.
+This bot sees 5-minute bars 20 minutes late, so it can't scalp like that, and ASX small caps have far less of the
+US retail-driven momentum. His 2:1 profit target and quarter-size start both made results worse here (see CHANGELOG).

@@ -30,3 +30,18 @@ mean reversion) and lower-cost execution assumptions.
   over Dec 2016 – Nov 2026; gap-ups fade on average on the ASX.
 - 60-day intraday test: **adopted "no longs below VWAP"**: −3.5% vs −8.2%, avg R +0.04 vs −0.12, 52 trades,
   max drawdown −6.8% vs −9.0%. Everything else rejected or needs more trades.
+
+## 2026-11-04: Ross Cameron's published rules (see RESEARCH.md)
+Tested his rules as switchable options on 60 days of 5-minute ASX data, in two separate runs (Yahoo data differs slightly run to run):
+
+| Rule | Run 1 (trades, return, avg R) | Run 2 |
+|---|---|---|
+| Current | 68, −7.8%, −0.10 | 60, −8.5%, −0.14 |
+| **Shares $2–$20 only — adopted** | 41, **−1.4%**, −0.01 | 36, **−4.4%**, −0.04 |
+| No entries after 11:00 | 43, −1.9%, +0.04 | 64, −9.7%, −0.13 (flipped: rejected) |
+| No entries after 11:30 | 65, −6.8%, −0.07 | n/a |
+| Take profit at 2R / 3R | 73, −12.3% / 70, −10.3% | n/a (rejected: cutting winners hurts) |
+| Quarter size until green | 1 trade (positions too small for a $10k account) | n/a |
+| 5 pillars (5× volume, up 10%+) | 3 trades, +2.4%, +1.65 | n/a (too few trades; keep watching) |
+
+Adopted: price band $2–$20 (improved return, avg R and drawdown in both runs).

@@ -3,7 +3,8 @@
   "weekly_target_pct": 8.0,
 
   "_universe": "Every ASX listing is scanned each morning, then filtered to shares a $10k account can actually trade.",
-  "min_price": 0.20,
+  "min_price": 2.0,
+  "max_price": 20.0,
   "min_avg_turnover": 1000000,
   "min_atr_pct": 1.5,
   "max_universe": 500,
