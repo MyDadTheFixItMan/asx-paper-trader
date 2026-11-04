@@ -11,11 +11,19 @@
    "pnl": -236.31,
    "trades": 5,
    "market_change_pct": -0.17
+  },
+  {
+   "date": "2026-11-04",
+   "start_equity": 9763.69,
+   "end_equity": 9673.89,
+   "pnl": -89.8,
+   "trades": 1,
+   "market_change_pct": -0.72
   }
  ],
  "day": {
   "date": "2026-11-04",
-  "phase": "trading",
+  "phase": "closed",
   "start_equity": 9763.69,
   "universe_size": 335,
   "watchlist": [
@@ -47,32 +55,36 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.72,
-  "last_ts": "2026-11-04T15:45:00+11:00",
+  "last_ts": "2026-11-04T15:50:00+11:00",
   "log": [
    "09:24 Scanned 1836 ASX listings; 334 pass the liquidity and volatility filters.",
    "Stocks in play: CAT (3.41x), AVH (3.07x)",
    "10:15 BUY 532 AVH @ $4.470, stop $4.370 (breakout above $4.450)",
-   "12:20 SELL 532 AVH @ $4.320 (Stop loss) net $-89.80"
+   "12:20 SELL 532 AVH @ $4.320 (Stop loss) net $-89.80",
+   "15:50 Day closed. Equity $9,673.89 (-89.80).",
+   "16:15 Daily review done. See 'Learning from losses' on the dashboard."
   ],
   "tracks": {
    "CAT": {
-    "pv": 1542625.4080886836,
-    "v": 444988.0,
+    "pv": 1574704.7636593974,
+    "v": 454437.0,
     "low": 3.369999885559082,
-    "vwap": 3.4666674339278445
+    "vwap": 3.465177271347618
    },
    "AVH": {
-    "pv": 805306.7060640651,
-    "v": 182459.0,
+    "pv": 809639.9310830432,
+    "v": 183454.0,
     "low": 4.320000171661377,
-    "vwap": 4.413631040749237
+    "vwap": 4.4133130435043295
    }
-  }
+  },
+  "end_equity": 9673.89,
+  "reviewed": true
  },
- "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-04T16:10:06.051592+11:00",
+ "status": "Day finished. Equity $9,673.89",
+ "last_run": "2026-11-04T16:15:05.851007+11:00",
  "learning": {
-  "risk_multiplier": 0.75,
+  "risk_multiplier": 0.562,
   "blocks": [],
   "lessons": [
    {
@@ -120,30 +132,59 @@
     "notes": [
      "A normal stop-out: the breakout didn't follow through. Small, planned losses like this are part of the strategy."
     ]
+   },
+   {
+    "trade_id": 6,
+    "date": "2026-11-04",
+    "sym": "AVH",
+    "net": -89.8,
+    "notes": [
+     "The ASX 200 was down at the open: breakouts struggle when the market is weak."
+    ]
    }
   ],
   "changes": [
    {
     "date": "2026-11-03",
     "text": "Cut risk per trade to 0.75% of equity after a losing day (-236.31)."
+   },
+   {
+    "date": "2026-11-04",
+    "text": "Cut risk per trade to 0.56% of equity after a losing day (-89.80)."
    }
   ],
   "buckets": [
    {
     "feature": "Entry time",
     "label": "before 10:30",
-    "n": 5,
+    "n": 6,
     "win_rate": 0,
-    "avg_r": -0.94,
-    "net": -236.31
+    "avg_r": -1.04,
+    "net": -326.11
+   },
+   {
+    "feature": "Market at open",
+    "label": "market down",
+    "n": 1,
+    "win_rate": 0,
+    "avg_r": -1.5,
+    "net": -89.8
+   },
+   {
+    "feature": "Opening gap",
+    "label": "gap 0\u20132%",
+    "n": 1,
+    "win_rate": 0,
+    "avg_r": -1.5,
+    "net": -89.8
    },
    {
     "feature": "Relative volume",
     "label": "3\u20135\u00d7 volume",
-    "n": 1,
+    "n": 2,
     "win_rate": 0,
-    "avg_r": -1.25,
-    "net": -119.62
+    "avg_r": -1.38,
+    "net": -209.42
    },
    {
     "feature": "Relative volume",
@@ -164,10 +205,10 @@
    {
     "feature": "Share price",
     "label": "$1\u2013$5",
-    "n": 1,
+    "n": 2,
     "win_rate": 0,
-    "avg_r": -1.33,
-    "net": -46.6
+    "avg_r": -1.42,
+    "net": -136.4
    },
    {
     "feature": "Share price",
@@ -184,6 +225,14 @@
     "win_rate": 0,
     "avg_r": -1.25,
     "net": -119.62
+   },
+   {
+    "feature": "Stop distance",
+    "label": "stop over 2%",
+    "n": 1,
+    "win_rate": 0,
+    "avg_r": -1.5,
+    "net": -89.8
    }
   ]
  }
