@@ -47,7 +47,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.72,
-  "last_ts": "2026-11-04T15:00:00+11:00",
+  "last_ts": "2026-11-04T15:05:00+11:00",
   "log": [
    "09:24 Scanned 1836 ASX listings; 334 pass the liquidity and volatility filters.",
    "Stocks in play: CAT (3.41x), AVH (3.07x)",
@@ -56,21 +56,21 @@
   ],
   "tracks": {
    "CAT": {
-    "pv": 1380098.8027996218,
-    "v": 397121.0,
+    "pv": 1384203.4429306185,
+    "v": 398333.0,
     "low": 3.369999885559082,
-    "vwap": 3.475260192232649
+    "vwap": 3.4749906307803236
    },
    "AVH": {
-    "pv": 712436.7094491321,
-    "v": 161113.0,
+    "pv": 715398.6527260143,
+    "v": 161796.0,
     "low": 4.320000171661377,
-    "vwap": 4.42196911142572
+    "vwap": 4.421609018307092
    }
   }
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-04T15:25:06.033472+11:00",
+ "last_run": "2026-11-04T15:30:05.839074+11:00",
  "learning": {
   "risk_multiplier": 0.75,
   "blocks": [],
