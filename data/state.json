@@ -23,22 +23,106 @@
  ],
  "day": {
   "date": "2026-11-05",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9673.89,
   "universe_size": 250,
-  "watchlist": [],
+  "watchlist": [
+   {
+    "sym": "CKF",
+    "rvol": 18.23,
+    "or_high": 9.34000015258789,
+    "or_low": 9.199999809265137,
+    "or_open": 9.234999656677246,
+    "or_close": 9.289999961853027,
+    "atr": 0.1911,
+    "gap_pct": 0.38
+   },
+   {
+    "sym": "NWL",
+    "rvol": 12.82,
+    "or_high": 19.475000381469727,
+    "or_low": 19.149999618530273,
+    "or_open": 19.170000076293945,
+    "or_close": 19.315000534057617,
+    "atr": 0.7018,
+    "gap_pct": 4.47
+   },
+   {
+    "sym": "FMG",
+    "rvol": 10.54,
+    "or_high": 14.699999809265137,
+    "or_low": 14.460000038146973,
+    "or_open": 14.479999542236328,
+    "or_close": 14.675000190734863,
+    "atr": 0.3532,
+    "gap_pct": 2.04
+   },
+   {
+    "sym": "MFF",
+    "rvol": 9.88,
+    "or_high": 5.329999923706055,
+    "or_low": 5.269999980926514,
+    "or_open": 5.269999980926514,
+    "or_close": 5.289999961853027,
+    "atr": 0.0793,
+    "gap_pct": 0.76
+   },
+   {
+    "sym": "SEK",
+    "rvol": 9.24,
+    "or_high": 14.449999809265137,
+    "or_low": 14.130000114440918,
+    "or_open": 14.140000343322754,
+    "or_close": 14.430000305175781,
+    "atr": 0.4011,
+    "gap_pct": 3.67
+   }
+  ],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": 1.71,
+  "last_ts": "2026-11-05T10:10:00+11:00",
   "log": [
-   "09:24 Scanned 1836 ASX listings; 249 pass the liquidity and volatility filters."
-  ]
+   "09:24 Scanned 1836 ASX listings; 249 pass the liquidity and volatility filters.",
+   "Stocks in play: CKF (18.23x), NWL (12.82x), FMG (10.54x), MFF (9.88x), SEK (9.24x)"
+  ],
+  "tracks": {
+   "FMG": {
+    "pv": 29046522.28066476,
+    "v": 1990417.0,
+    "low": 14.460000038146973,
+    "vwap": 14.593184383304987
+   },
+   "SEK": {
+    "pv": 3105471.626741727,
+    "v": 215922.0,
+    "low": 14.130000114440918,
+    "vwap": 14.38237709331021
+   },
+   "NWL": {
+    "pv": 2285326.9743410745,
+    "v": 118383.0,
+    "low": 19.149999618530273,
+    "vwap": 19.304519857927865
+   },
+   "CKF": {
+    "pv": 496589.86171627045,
+    "v": 53491.0,
+    "low": 9.199999809265137,
+    "vwap": 9.283615219686872
+   },
+   "MFF": {
+    "pv": 425400.7727127075,
+    "v": 80239.0,
+    "low": 5.269999980926514,
+    "vwap": 5.3016709170441745
+   }
+  }
  },
- "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-05T10:30:06.421764+11:00",
+ "status": "Watching 5 stocks in play for breakouts",
+ "last_run": "2026-11-05T10:35:05.752640+11:00",
  "learning": {
   "risk_multiplier": 0.562,
   "blocks": [],
