@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: trader
+  group: backtest
   cancel-in-progress: false
 
 jobs:

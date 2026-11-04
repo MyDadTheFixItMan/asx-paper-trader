@@ -136,7 +136,7 @@ class Engine:
             above_prev = orr["close"] > meta.get("prev_close", 0)
             # Lesson from JNS: when one price step is a big % of the price, slippage eats the edge.
             step_ok = tick_size(orr["close"]) / orr["close"] * 100 <= cfg.get("max_tick_pct", 100)
-            gap_ok = True
+            gap_ok = orr["close"] <= cfg.get("max_price", 1e12)
             if cfg.get("min_gap_pct") and meta.get("prev_close"):
                 gap_ok = (orr["open"] / meta["prev_close"] - 1) * 100 >= cfg["min_gap_pct"]
             if rvol >= cfg["min_relative_volume"] and bullish and above_prev and step_ok and gap_ok:
@@ -216,6 +216,8 @@ class Engine:
         # Lesson from losses bigger than planned: size the trade so slippage and both fees fit inside the risk budget.
         cost_ps = risk_ps + (price + stop) * slip + tick_size(stop)
         budget = self._risk_budget()
+        if cfg.get("cushion_pct") and self.day["realized"] < self.day["start_equity"] * cfg["cushion_pct"] / 100:
+            budget *= cfg.get("cushion_start_fraction", 0.25)
         if cfg.get("aplus_rvol") and w["rvol"] >= cfg["aplus_rvol"]:
             # Breitstein: size up on the best setups (still capped at 2% of equity)
             budget = min(budget * cfg.get("aplus_risk_multiplier", 1.0), self.day["start_equity"] * 0.02)
@@ -285,6 +287,11 @@ class Engine:
             reason = {"initial": "Stop loss", "breakeven": "Breakeven stop", "trail": "Trailing stop"}[pos["stop_note"]]
             self._exit(pos, fill, bar["t"], reason)
             return
+        if cfg.get("profit_target_r"):
+            target = round_tick(pos["entry"] + cfg["profit_target_r"] * pos["risk_ps"], "up")
+            if bar["h"] >= target:
+                self._exit(pos, max(target, bar["o"]), bar["t"], f"Profit target {cfg['profit_target_r']}R")
+                return
         pos["last"] = bar["c"]
         pos["high"] = max(pos["high"], bar["h"])
         r = pos["risk_ps"]

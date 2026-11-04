@@ -1,10 +1,10 @@
 [
- {"name": "VWAP entry filter (no longs below VWAP)", "overrides": {"vwap_entry_filter": true}},
- {"name": "VWAP exit (sell on close below VWAP)", "overrides": {"vwap_exit": true}},
- {"name": "VWAP filter + exit", "overrides": {"vwap_entry_filter": true, "vwap_exit": true}},
- {"name": "Episodic pivot: gap 4%+, stop low of day, max 1 ATR", "overrides": {"min_gap_pct": 4, "stop_mode": "low_of_day", "max_stop_atr": 1.0, "min_relative_volume": 2.0, "watchlist_size": 5}},
- {"name": "Episodic pivot + VWAP exit", "overrides": {"min_gap_pct": 4, "stop_mode": "low_of_day", "max_stop_atr": 1.0, "min_relative_volume": 2.0, "watchlist_size": 5, "vwap_exit": true}},
- {"name": "Time stop 60 min", "overrides": {"time_stop_minutes": 60}},
- {"name": "A+ sizing: 1.5x risk at 10x volume", "overrides": {"aplus_rvol": 10, "aplus_risk_multiplier": 1.5}},
- {"name": "Ross Cameron: 5x volume, gap 5%+", "overrides": {"min_relative_volume": 5.0, "min_gap_pct": 5}}
+ {"name": "Cameron: morning only (no entries after 11:30)", "overrides": {"last_entry_time": "11:30"}},
+ {"name": "Cameron: first hour only (no entries after 11:00)", "overrides": {"last_entry_time": "11:00"}},
+ {"name": "Cameron: take profit at 2R", "overrides": {"profit_target_r": 2.0}},
+ {"name": "Cameron: take profit at 3R", "overrides": {"profit_target_r": 3.0}},
+ {"name": "Cameron: price $2-$20 only", "overrides": {"min_price": 2.0, "max_price": 20.0}},
+ {"name": "Cameron: quarter size until +0.5% on the day", "overrides": {"cushion_pct": 0.5, "cushion_start_fraction": 0.25}},
+ {"name": "Cameron combo: 11:30 cut-off + 2R target + $2-$20", "overrides": {"last_entry_time": "11:30", "profit_target_r": 2.0, "min_price": 2.0, "max_price": 20.0}},
+ {"name": "Cameron 5 pillars (ASX): 5x volume, up 10%+", "overrides": {"min_relative_volume": 5.0, "min_gap_pct": 10, "watchlist_size": 5}}
 ]
