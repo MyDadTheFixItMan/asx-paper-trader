@@ -1,8 +1,45 @@
 {
  "start_capital": 10000,
- "cash": 9673.89,
+ "cash": 4830.01,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [],
+ "positions": [
+  {
+   "sym": "FMG",
+   "qty": 164,
+   "entry": 14.73,
+   "entry_time": "2026-11-05T10:15:00+11:00",
+   "stop": 14.55,
+   "initial_stop": 14.55,
+   "risk_ps": 0.18,
+   "high": 14.720000267028809,
+   "last": 14.6899995803833,
+   "fees": 5.0,
+   "rvol": 10.54,
+   "atr": 0.3532,
+   "stop_note": "initial",
+   "gap_pct": 2.04,
+   "stop_pct": 1.22,
+   "market_pct": 1.71
+  },
+  {
+   "sym": "SEK",
+   "qty": 167,
+   "entry": 14.48,
+   "entry_time": "2026-11-05T10:15:00+11:00",
+   "stop": 14.27,
+   "initial_stop": 14.27,
+   "risk_ps": 0.21,
+   "high": 14.520000457763672,
+   "last": 14.430000305175781,
+   "fees": 5.0,
+   "rvol": 9.24,
+   "atr": 0.4011,
+   "stop_note": "initial",
+   "gap_pct": 3.67,
+   "stop_pct": 1.45,
+   "market_pct": 1.71
+  }
+ ],
  "daily": [
   {
    "date": "2026-11-03",
@@ -78,34 +115,39 @@
     "gap_pct": 3.67
    }
   ],
-  "entered": [],
+  "entered": [
+   "FMG",
+   "SEK"
+  ],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": 1.71,
-  "last_ts": "2026-11-05T10:10:00+11:00",
+  "last_ts": "2026-11-05T10:15:00+11:00",
   "log": [
    "09:24 Scanned 1836 ASX listings; 249 pass the liquidity and volatility filters.",
-   "Stocks in play: CKF (18.23x), NWL (12.82x), FMG (10.54x), MFF (9.88x), SEK (9.24x)"
+   "Stocks in play: CKF (18.23x), NWL (12.82x), FMG (10.54x), MFF (9.88x), SEK (9.24x)",
+   "10:15 BUY 164 FMG @ $14.730, stop $14.550 (breakout above $14.700)",
+   "10:15 BUY 167 SEK @ $14.480, stop $14.270 (breakout above $14.450)"
   ],
   "tracks": {
    "FMG": {
-    "pv": 29046522.28066476,
-    "v": 1990417.0,
+    "pv": 32839494.944399197,
+    "v": 2248618.0,
     "low": 14.460000038146973,
-    "vwap": 14.593184383304987
+    "vwap": 14.604301372842874
    },
    "SEK": {
-    "pv": 3105471.626741727,
-    "v": 215922.0,
+    "pv": 3906380.4005184174,
+    "v": 271361.0,
     "low": 14.130000114440918,
-    "vwap": 14.38237709331021
+    "vwap": 14.395511516092649
    },
    "NWL": {
-    "pv": 2285326.9743410745,
-    "v": 118383.0,
+    "pv": 2598731.6768137612,
+    "v": 134588.0,
     "low": 19.149999618530273,
-    "vwap": 19.304519857927865
+    "vwap": 19.308791844843235
    },
    "CKF": {
     "pv": 496589.86171627045,
@@ -114,15 +156,15 @@
     "vwap": 9.283615219686872
    },
    "MFF": {
-    "pv": 425400.7727127075,
-    "v": 80239.0,
+    "pv": 445650.8925666809,
+    "v": 84067.0,
     "low": 5.269999980926514,
-    "vwap": 5.3016709170441745
+    "vwap": 5.301139478828564
    }
   }
  },
  "status": "Watching 5 stocks in play for breakouts",
- "last_run": "2026-11-05T10:35:05.752640+11:00",
+ "last_run": "2026-11-05T10:40:05.561293+11:00",
  "learning": {
   "risk_multiplier": 0.562,
   "blocks": [],
