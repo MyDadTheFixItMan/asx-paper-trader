@@ -68,6 +68,12 @@ a.sym{font-weight:650;color:var(--series);text-decoration:none}a.sym:active,a.sy
 .empty{color:var(--muted);font-size:14px;padding:6px 0}
 .log{font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text2);white-space:pre-wrap;max-height:260px;overflow:auto}
 .note{font-size:12px;color:var(--muted);margin:14px 4px;line-height:1.5}
+.actions{display:flex;gap:10px;align-items:center;margin-top:8px}
+.actions button{border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;cursor:pointer}
+.actions button:disabled{opacity:.6;cursor:default}
+.stale{display:none;margin-top:8px;font-size:13px;background:#fff4e0;color:#7a4b00;border-radius:10px;padding:8px 10px}
+.stale a{color:inherit;font-weight:600}
+@media (prefers-color-scheme: dark){.stale{background:#3a2c12;color:#f3d39b}}
 .err{background:#fde8e8;color:#8a1f1f;border-radius:10px;padding:10px;margin:10px 0;display:none}
 .wide{display:none} @media(min-width:620px){.wide{display:table}.narrow{display:none}}
 </style>
@@ -79,6 +85,8 @@ a.sym{font-weight:650;color:var(--series);text-decoration:none}a.sym:active,a.sy
     <div class="hero" id="equity">—</div>
     <div class="sub" id="total">Loading…</div>
     <div class="status"><span class="dot" id="dot"></span><span id="status"></span></div>
+    <div class="actions"><button id="refresh" type="button">↻ Update now</button><span id="refreshNote" class="sub"></span></div>
+    <div id="stale" class="stale"></div>
   </header>
   <div class="err" id="err"></div>
 
@@ -155,7 +163,22 @@ function dataBase(){
   }
   return "data/";
 }
-async function getJSON(name, fallback){
+function repoName(){
+  const fixed = document.querySelector('meta[name="data-repo"]')?.content;
+  if (fixed) return fixed;
+  if (location.hostname.endsWith(".github.io")) return `${location.hostname.split(".")[0]}/${location.pathname.split("/").filter(Boolean)[0]}`;
+  return null;
+}
+async function getJSON(name, fallback, fresh=false){
+  const repo = repoName();
+  if (fresh && repo && !new URLSearchParams(location.search).get("data")) {
+    // GitHub's API isn't cached like raw files, so this gets the very latest commit (60 requests/hour limit).
+    try {
+      const r = await fetch(`https://api.github.com/repos/${repo}/contents/data/${name}?ref=main&t=${Date.now()}`,
+                            {cache:"no-store", headers:{Accept:"application/vnd.github.raw+json"}});
+      if (r.ok) return await r.json();
+    } catch(e) {}
+  }
   try { const r = await fetch(dataBase()+name+"?t="+Date.now(), {cache:"no-store"}); if(!r.ok) throw 0; return await r.json(); }
   catch(e){ return fallback; }
 }
@@ -351,12 +374,34 @@ function barChart(el, days){
   svg.addEventListener("pointerleave",()=>tip.style.display="none");
 }
 
-async function load(){
-  const [state, trades, curve] = await Promise.all([getJSON("state.json",null),getJSON("trades.json",[]),getJSON("equity.json",[])]);
+async function load(fresh=false){
+  const [state, trades, curve] = await Promise.all([getJSON("state.json",null,fresh),getJSON("trades.json",[],fresh),getJSON("equity.json",[],fresh)]);
   if (!state){ $("err").style.display="block"; $("err").textContent="No data yet. The bot writes its first results at about 9:15am on the next trading day."; $("total").textContent=""; return; }
   $("err").style.display="none";
-  D={state,trades,curve}; render();
+  D={state,trades,curve}; render(); checkStale(state);
 }
+function checkStale(state){
+  // Warn if the bot should be running but hasn't reported for 15+ minutes
+  const now = new Date();
+  const syd = new Date(now.toLocaleString("en-US",{timeZone:TZ}));
+  const mins = syd.getHours()*60 + syd.getMinutes(), wd = syd.getDay();
+  const tradingHours = wd>=1 && wd<=5 && mins>=600 && mins<=965;
+  const ago = state.last_run ? (now - new Date(state.last_run))/60000 : 1e9;
+  const closedToday = state.day?.date === sydDate(now.toISOString()) && state.day?.phase === "closed";
+  const el = $("stale");
+  if (tradingHours && ago > 15 && !closedToday && !/closed/i.test(state.status||"")) {
+    const repo = repoName();
+    el.innerHTML = `The bot hasn't reported for ${Math.round(ago)} minutes. ` +
+      (repo ? `<a href="https://github.com/${repo}/actions/workflows/trade.yml" target="_blank" rel="noopener">Start it on GitHub</a> (tap “Run workflow”).` : "");
+    el.style.display = "block";
+  } else el.style.display = "none";
+}
+$("refresh").onclick = async () => {
+  const b = $("refresh"); b.disabled = true; b.textContent = "Updating…";
+  await load(true);
+  b.disabled = false; b.textContent = "↻ Update now";
+  $("refreshNote").textContent = "Updated " + new Date().toLocaleTimeString("en-AU",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false});
+};
 load(); setInterval(load, 60000);
 let rz; addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(()=>D&&render(),200);});
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)load();});
