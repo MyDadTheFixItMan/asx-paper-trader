@@ -31,22 +31,24 @@
  ],
  "day": {
   "date": "2026-11-06",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9749.8,
   "universe_size": 254,
   "watchlist": [],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
-  "no_new_entries": false,
-  "market_change_pct": null,
+  "no_new_entries": true,
+  "market_change_pct": -1.43,
   "last_ts": null,
   "log": [
-   "09:23 Scanned 1836 ASX listings; 253 pass the liquidity and volatility filters."
-  ]
+   "09:23 Scanned 1836 ASX listings; 253 pass the liquidity and volatility filters.",
+   "10:10 ASX 200 -1.43% at the open: weak market, standing aside today."
+  ],
+  "tracks": {}
  },
- "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-06T10:30:06.365462+11:00",
+ "status": "Managing open trades only (no new entries today)",
+ "last_run": "2026-11-06T10:35:05.601950+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
