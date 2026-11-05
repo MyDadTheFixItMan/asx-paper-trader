@@ -45,8 +45,8 @@
    "09:23 Scanned 1836 ASX listings; 253 pass the liquidity and volatility filters."
   ]
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-06T09:23:54.615203+11:00",
+ "status": "Building the opening range (prices are ~20 min delayed)",
+ "last_run": "2026-11-06T10:00:06.258139+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
