@@ -115,5 +115,26 @@
   "stop_pct": 2.24,
   "market_pct": -0.72,
   "reason": "Stop loss"
+ },
+ {
+  "id": 7,
+  "date": "2026-11-05",
+  "sym": "SEK",
+  "qty": 167,
+  "entry_time": "2026-11-05T10:15:00+11:00",
+  "entry_price": 14.48,
+  "exit_time": "2026-11-05T11:35:00+11:00",
+  "exit_price": 14.25,
+  "initial_stop": 14.27,
+  "fees": 10.0,
+  "gross": -38.41,
+  "net": -48.41,
+  "pct": -2.0,
+  "r": -1.1,
+  "rvol": 9.24,
+  "gap_pct": 3.67,
+  "stop_pct": 1.45,
+  "market_pct": 1.71,
+  "reason": "Stop loss"
  }
 ]
