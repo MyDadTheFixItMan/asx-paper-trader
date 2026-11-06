@@ -1,11 +1,10 @@
 {
- "updated": "2026-11-06T14:42+11:00",
- "events": 10000,
- "measured": 8341,
+ "updated": "2026-11-06T16:45+11:00",
+ "events": 10003,
+ "measured": 8348,
  "first_day": "2026-07-29",
  "rules": {
   "block": [
-   "Other",
    "Quarterly report",
    "Contract / deal"
   ],
@@ -29,20 +28,20 @@
   },
   {
    "category": "Other",
-   "n": 410,
+   "n": 412,
    "avg_gap_pct": 0.34,
-   "avg_move_after_open_pct": -0.3,
-   "pct_up_after_open": 44.1,
-   "n_gap_up": 198,
-   "gap_up_then_move_pct": -0.33,
-   "gap_up_pct_up": 44.4
+   "avg_move_after_open_pct": -0.32,
+   "pct_up_after_open": 43.9,
+   "n_gap_up": 199,
+   "gap_up_then_move_pct": -0.37,
+   "gap_up_pct_up": 44.2
   },
   {
    "category": "Quarterly report",
-   "n": 201,
+   "n": 202,
    "avg_gap_pct": 0.19,
-   "avg_move_after_open_pct": -1.56,
-   "pct_up_after_open": 35.3,
+   "avg_move_after_open_pct": -1.55,
+   "pct_up_after_open": 35.1,
    "n_gap_up": 103,
    "gap_up_then_move_pct": -1.03,
    "gap_up_pct_up": 35.9

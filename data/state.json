@@ -27,11 +27,19 @@
    "pnl": 75.91,
    "trades": 3,
    "market_change_pct": 1.71
+  },
+  {
+   "date": "2026-11-06",
+   "start_equity": 9749.8,
+   "end_equity": 9749.8,
+   "pnl": 0.0,
+   "trades": 0,
+   "market_change_pct": -1.43
   }
  ],
  "day": {
   "date": "2026-11-06",
-  "phase": "trading",
+  "phase": "closed",
   "start_equity": 9749.8,
   "universe_size": 254,
   "watchlist": [],
@@ -43,12 +51,17 @@
   "last_ts": null,
   "log": [
    "09:23 Scanned 1836 ASX listings; 253 pass the liquidity and volatility filters.",
-   "10:10 ASX 200 -1.43% at the open: weak market, standing aside today."
+   "10:10 ASX 200 -1.43% at the open: weak market, standing aside today.",
+   "16:45 Day closed. Equity $9,749.80 (+0.00).",
+   "16:45 Daily review done. See 'Learning from losses' on the dashboard.",
+   "16:45 News review done: today's announcements and price reactions recorded."
   ],
-  "tracks": {}
+  "tracks": {},
+  "end_equity": 9749.8,
+  "reviewed": true
  },
- "status": "Standing aside today: ASX 200 opened -1.43%",
- "last_run": "2026-11-06T16:40:06.300067+11:00",
+ "status": "Day finished. Equity $9,749.80",
+ "last_run": "2026-11-06T16:45:06.491866+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
@@ -180,6 +193,14 @@
     "win_rate": 67,
     "avg_r": 1.14,
     "net": 75.91
+   },
+   {
+    "feature": "Overnight news",
+    "label": "no news",
+    "n": 9,
+    "win_rate": 22,
+    "avg_r": -0.31,
+    "net": -250.2
    },
    {
     "feature": "Relative volume",
