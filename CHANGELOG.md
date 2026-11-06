@@ -45,3 +45,12 @@ Tested his rules as switchable options on 60 days of 5-minute ASX data, in two s
 | 5 pillars (5× volume, up 10%+) | 3 trades, +2.4%, +1.65 | n/a (too few trades; keep watching) |
 
 Adopted: price band $2–$20 (improved return, avg R and drawdown in both runs).
+
+## 2026-11-06: ASX news
+- New: the bot reads the ASX's price-sensitive announcements each morning (and again at selection), tags each stock
+  in play and each trade with its news, and after every close records how each announcement moved the price
+  (data/news/events.json, data/news/stats.json). Backfilled 10,000 announcements (29 Jul – 6 Nov 2026).
+- Finding: on the ASX most "good news" gaps up then fades. For shares that opened up, the rest of the day averaged:
+  Results +0.5% (432), Exploration +1.5% (69), Acquisition +0.8% (31), Quarterly −1.0% (103), Contract/deal −1.3% (33).
+- 60-day intraday test (walk-forward, no hindsight): news rules did not help (current −4.1%, avg −0.03R;
+  news learning −4.1%, −0.07R; news-only 14 trades). Rules stay OFF; history keeps growing for re-tests.

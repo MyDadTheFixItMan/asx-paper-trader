@@ -165,7 +165,7 @@ def rules(stat_rows: list[dict], cfg: dict) -> dict:
     block, boost = [], []
     for s in stat_rows:
         n, mv = s.get("n_gap_up", 0), s.get("gap_up_then_move_pct")
-        if n < cfg.get("news_min_events", 30) or mv is None:
+        if n < cfg.get("news_min_events", 30) or mv is None or s["category"] == "Other":
             continue
         if mv <= cfg.get("news_block_move_pct", -0.3):
             block.append(s["category"])

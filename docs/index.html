@@ -125,6 +125,11 @@ a.sym{font-weight:650;color:var(--series);text-decoration:none}a.sym:active,a.sy
   </section>
 
   <section class="card">
+    <h2>What ASX news does to prices</h2>
+    <div id="news"></div>
+  </section>
+
+  <section class="card">
     <h2>Learning from losses</h2>
     <div id="learn"></div>
   </section>
@@ -282,7 +287,7 @@ function render(){
   // watchlist
   const wl = state.day?.date===ref ? (state.day.watchlist||[]) : [];
   $("watch").innerHTML = wl.length? `<table><tr><th>Stock</th><th class="r">Rel. volume</th><th class="r">Gap</th><th class="r">Buy above</th><th class="r">Status</th></tr>${
-    wl.map(w=>`<tr><td>${symLink(w.sym)}</td><td class="r">${w.rvol}×</td><td class="r">${w.gap_pct!=null?fmtP(w.gap_pct,1):"—"}</td><td class="r">${w.or_high.toFixed(3)}</td><td class="r">${wlStatus(w)}</td></tr>`).join("")}</table>`
+    wl.map(w=>`<tr><td>${symLink(w.sym)}</td><td class="r">${w.rvol}×</td><td class="r">${w.gap_pct!=null?fmtP(w.gap_pct,1):"—"}</td><td class="r">${w.or_high.toFixed(3)}</td><td class="r">${wlStatus(w)}</td></tr>${w.news?`<tr><td colspan="5" class="meta" style="padding-top:0">📰 ${esc(w.news.category)}: ${esc(w.news.headline)}</td></tr>`:""}`).join("")}</table>`
     : `<div class="empty">${state.day?.phase==="waiting_open"? "Picked after the first 15 minutes of trading." : "No stocks in play selected."}</div>`;
 
   function wlStatus(w){
@@ -296,14 +301,25 @@ function render(){
   const list = [...pt].reverse();
   $("trades").innerHTML = !list.length? `<div class="empty">Nothing sold in this period yet.</div>` :
     `<table class="wide"><tr><th>Date</th><th>Stock</th><th class="r">Qty</th><th class="r">Buy</th><th class="r">Sell</th><th class="r">Held</th><th class="r">P&L</th><th class="r">%</th><th class="r">R</th><th>Exit</th></tr>${
-      list.map(t=>`<tr><td>${niceDate(t.date)}</td><td>${symLink(t.sym)}</td><td class="r">${t.qty}</td><td class="r">${t.entry_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.entry_time)}</div></td><td class="r">${t.exit_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.exit_time)}</div></td><td class="r">${held(t)}</td><td class="r ${cls(t.net)}">${fmt$(t.net,true)}</td><td class="r ${cls(t.net)}">${fmtP(t.pct)}</td><td class="r">${t.r.toFixed(1)}</td><td>${esc(t.reason)}</td></tr>`).join("")}</table>
+      list.map(t=>`<tr><td>${niceDate(t.date)}</td><td>${symLink(t.sym)}</td><td class="r">${t.qty}</td><td class="r">${t.entry_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.entry_time)}</div></td><td class="r">${t.exit_price.toFixed(3)}<div class="sub" style="font-size:11px">${sydTime(t.exit_time)}</div></td><td class="r">${held(t)}</td><td class="r ${cls(t.net)}">${fmt$(t.net,true)}</td><td class="r ${cls(t.net)}">${fmtP(t.pct)}</td><td class="r">${t.r.toFixed(1)}</td><td>${esc(t.reason)}${t.news_cat?`<div class="meta">📰 ${esc(t.news_cat)}</div>`:""}</td></tr>`).join("")}</table>
      <div class="narrow">${list.map(t=>`<div class="trade"><div>${symLink(t.sym)} <span class="meta">${t.qty} shares · ${niceDate(t.date)}</span>
         <div class="meta">Buy ${t.entry_price.toFixed(3)} at ${sydTime(t.entry_time)} → Sell ${t.exit_price.toFixed(3)} at ${sydTime(t.exit_time)}</div>
-        <div class="meta">${esc(t.reason)} · ${t.r.toFixed(1)}R · fees ${fmt$(t.fees)}</div></div>
+        <div class="meta">${esc(t.reason)} · ${t.r.toFixed(1)}R · fees ${fmt$(t.fees)}</div>${t.news_cat?`<div class="meta">📰 ${esc(t.news_cat)}</div>`:""}</div>
         <div class="pl ${cls(t.net)}">${fmt$(t.net,true)}<div class="meta">${fmtP(t.pct)}</div></div></div>`).join("")}</div>`;
 
   renderLearning(state);
+  renderNews(D.newsStats, state);
   $("log").textContent = (state.day?.log||[]).join("\n") || "Nothing yet today.";
+}
+function renderNews(ns, state){
+  if (!ns){ $("news").innerHTML = `<div class="empty">News history builds after each close.</div>`; return; }
+  const on = state.news_learning_on;
+  const rows = ns.categories.filter(c=>c.n>=10 && c.category!=="Other").slice(0,12);
+  const r = ns.rules||{};
+  $("news").innerHTML = `<div class="sub" style="margin-bottom:8px">${ns.measured.toLocaleString()} price-sensitive announcements measured since ${niceDate(ns.first_day)}. The bot only buys shares that open up, so the key column is what happened next on those.</div>
+    <table><tr><th>News type</th><th class="r">Count</th><th class="r">Gap at open</th><th class="r">Opened up → rest of day</th></tr>${
+    rows.map(c=>`<tr><td>${esc(c.category)}</td><td class="r">${c.n}</td><td class="r ${cls(c.avg_gap_pct)}">${fmtP(c.avg_gap_pct,1)}</td><td class="r ${cls(c.gap_up_then_move_pct||0)}">${c.gap_up_then_move_pct==null?"—":fmtP(c.gap_up_then_move_pct,1)} <span class="meta">(${c.n_gap_up})</span></td></tr>`).join("")}</table>
+    <div class="meta" style="margin-top:8px">${r.block&&r.block.length?`Tends to fade: ${r.block.map(esc).join(", ")}. `:""}${r.boost&&r.boost.length?`Tends to keep rising: ${r.boost.map(esc).join(", ")}. `:""}News rules are being tracked; they switch on only when testing shows they improve results.</div>`;
 }
 function renderLearning(state){
   const L = state.learning;
@@ -375,10 +391,10 @@ function barChart(el, days){
 }
 
 async function load(fresh=false){
-  const [state, trades, curve] = await Promise.all([getJSON("state.json",null,fresh),getJSON("trades.json",[],fresh),getJSON("equity.json",[],fresh)]);
+  const [state, trades, curve, newsStats] = await Promise.all([getJSON("state.json",null,fresh),getJSON("trades.json",[],fresh),getJSON("equity.json",[],fresh),getJSON("news/stats.json",null,fresh)]);
   if (!state){ $("err").style.display="block"; $("err").textContent="No data yet. The bot writes its first results at about 9:15am on the next trading day."; $("total").textContent=""; return; }
   $("err").style.display="none";
-  D={state,trades,curve}; render(); checkStale(state);
+  D={state,trades,curve,newsStats}; render(); checkStale(state);
 }
 function checkStale(state){
   // Warn if the bot should be running but hasn't reported for 15+ minutes
