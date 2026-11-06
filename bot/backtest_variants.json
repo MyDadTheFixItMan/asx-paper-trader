@@ -1,6 +1,8 @@
 [
- {"name": "News: only shares with fresh price-sensitive news (Cameron's catalyst)", "overrides": {"news_require": true}},
- {"name": "News learning: skip news types that fade, favour ones that rise", "overrides": {"news_learning": true}},
- {"name": "News learning + only shares with news", "overrides": {"news_learning": true, "news_require": true}},
- {"name": "News learning, stricter (need 50 events)", "overrides": {"news_learning": true, "news_min_events": 50}}
+ {"name": "Gap-down V: gapped down >=2%, green opening range, buy breakout above it (VWAP filter on)", "overrides": {"require_above_prev": false, "max_gap_pct": -2.0, "min_relative_volume": 2.0}},
+ {"name": "Gap-down V, also on weak-market days", "overrides": {"require_above_prev": false, "max_gap_pct": -2.0, "min_relative_volume": 2.0, "market_min_change_pct": -99}},
+ {"name": "Gap-down buy at 10:15 (no confirmation), gap >=3%, 1 ATR stop, any market", "overrides": {"require_above_prev": false, "require_green_or": false, "max_gap_pct": -3.0, "min_relative_volume": 1.0, "entry_mode": "after_or", "stop_use_or_low": false, "stop_atr_fraction": 1.0, "market_min_change_pct": -99, "vwap_entry_filter": false}},
+ {"name": "Current rules + also allow gap-downs (green range, breakout)", "overrides": {"require_above_prev": false}},
+ {"name": "Current rules, 2% risk / 50% max size (fees smaller share of each trade)", "overrides": {"risk_per_trade_pct": 2.0, "max_position_pct": 50.0}},
+ {"name": "Ross Cameron filter (5x volume, gap 5%+): re-check trade count", "overrides": {"min_relative_volume": 5.0, "min_gap_pct": 5.0}}
 ]

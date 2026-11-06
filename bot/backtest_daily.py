@@ -26,19 +26,32 @@ from engine import round_tick, tick_size  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 CFG = json.loads((ROOT / "bot/config.json").read_text())
 
+# Each variant: which shares to buy at the open and how to size/stop them. Keys:
+#   side "up"/"down": gap direction; min_gap/max_gap: signed gap range in % (down: e.g. -20 to -3)
+#   chan: Ernest Chan's "buy on gap" (open below prior low by > 1 sd of daily returns, open above 20-day average)
+#   ma200: prior close above its 200-day average (uptrend); min_turnover: liquidity override ($/day)
+#   market_max_gap: only on days STW (ASX 200 ETF) opens down at least this much; syms: restrict to these codes
+#   risk/max_pos: % risk per trade and max % of equity per position (defaults: config, within guardrails)
 VARIANTS = [
-    {"name": "top 5 gaps ≥2%, stop 0.5 ATR", "min_gap": 2, "max_gap": 99, "stop_atr": 0.5, "top": 5},
-    {"name": "top 5 gaps ≥2%, stop 1 ATR", "min_gap": 2, "max_gap": 99, "stop_atr": 1.0, "top": 5},
-    {"name": "top 5 gaps ≥4%, stop 1 ATR", "min_gap": 4, "max_gap": 99, "stop_atr": 1.0, "top": 5},
-    {"name": "top 3 gaps ≥8% (episodic pivot), stop 1 ATR", "min_gap": 8, "max_gap": 99, "stop_atr": 1.0, "top": 3},
-    {"name": "small gaps 1–4%, stop 1 ATR", "min_gap": 1, "max_gap": 4, "stop_atr": 1.0, "top": 5},
-    {"name": "top 5 gaps ≥4%, no stop (open to close)", "min_gap": 4, "max_gap": 99, "stop_atr": 99, "top": 5},
+    {"name": "control: top 5 gaps up >=2%, stop 1 ATR", "side": "up", "min_gap": 2, "max_gap": 60, "stop_atr": 1.0, "top": 5},
+    {"name": "control: top 5 gaps up >=4%, stop 1 ATR", "side": "up", "min_gap": 4, "max_gap": 60, "stop_atr": 1.0, "top": 5},
+    {"name": "gap-down >=3%: buy top 5 at open, stop 1 ATR", "side": "down", "min_gap": -40, "max_gap": -3, "stop_atr": 1.0, "top": 5},
+    {"name": "gap-down >=3% in uptrend (above 200-day avg)", "side": "down", "min_gap": -40, "max_gap": -3, "stop_atr": 1.0, "top": 5, "ma200": True},
+    {"name": "Chan buy-on-gap (below prior low by 1 sd, above 20-day avg)", "side": "down", "min_gap": -40, "max_gap": 0, "stop_atr": 1.0, "top": 5, "chan": True},
+    {"name": "Chan buy-on-gap, large caps ($20M+/day)", "side": "down", "min_gap": -40, "max_gap": 0, "stop_atr": 1.0, "top": 5, "chan": True, "min_turnover": 20e6},
+    {"name": "Chan buy-on-gap, large caps, 2% risk / 50% max size", "side": "down", "min_gap": -40, "max_gap": 0, "stop_atr": 1.0, "top": 2, "chan": True, "min_turnover": 20e6, "risk": 2.0, "max_pos": 50},
+    {"name": "large-cap gap-down >=3% on market-down mornings (STW <= -1%)", "side": "down", "min_gap": -40, "max_gap": -3, "stop_atr": 1.0, "top": 3, "min_turnover": 20e6, "market_max_gap": -1.0},
+    {"name": "large-cap gap-down >=2%, 2% risk / 50% max, stop 1.5 ATR", "side": "down", "min_gap": -40, "max_gap": -2, "stop_atr": 1.5, "top": 2, "min_turnover": 20e6, "risk": 2.0, "max_pos": 50},
+    {"name": "STW (ASX 200 ETF) weak open <= -1.5%, 2% risk / 50% max, stop 1 ATR", "side": "down", "min_gap": -40, "max_gap": -1.5, "stop_atr": 1.0, "top": 1, "syms": ["STW"], "risk": 2.0, "max_pos": 50, "min_turnover": 0},
+    {"name": "STW weak open <= -1%, 2% risk / 50% max, stop 1 ATR", "side": "down", "min_gap": -40, "max_gap": -1.0, "stop_atr": 1.0, "top": 1, "syms": ["STW"], "risk": 2.0, "max_pos": 50, "min_turnover": 0},
 ]
+EXTRA = ["STW.AX"]  # ETFs aren't in the company list
 
 
 def load():
     codes = md.asx_codes(ROOT / "data/asx_codes.txt")
-    raw = md._download([f"{c}.AX" for c in codes] + [CFG["market_index"]], period="10y", interval="1d")
+    tickers = sorted({f"{c}.AX" for c in codes} | set(EXTRA)) + [CFG["market_index"]]
+    raw = md._download(tickers, period="10y", interval="1d")
     frames = {}
     for t, df in raw.items():
         df = df[["Open", "High", "Low", "Close", "Volume"]].dropna()
@@ -52,23 +65,56 @@ def panel(frames, field):
     return pd.DataFrame({s: f[field] for s, f in frames.items() if s != CFG["market_index"]})
 
 
-def run(v, O, H, L, C, V, ATR, TURN):
+def signals(v, P):
+    """Boolean frame of eligible shares and a score (lower = picked first for gap-downs)."""
     cfg = CFG
+    O, L, C = P["O"], P["L"], P["C"]
+    prevC, prevL = C.shift(1), L.shift(1)
+    gap = (O / prevC - 1) * 100
+    turn = v.get("min_turnover", cfg["min_avg_turnover"])
+    ok = (prevC >= cfg["min_price"]) & (P["TURN"].shift(1) >= turn) & \
+         (P["ATR"].shift(1) / prevC * 100 >= cfg["min_atr_pct"]) & (gap >= v["min_gap"]) & (gap < v["max_gap"])
+    if v.get("syms"):
+        mask = pd.DataFrame(False, index=O.index, columns=O.columns)
+        for sym in v["syms"]:
+            if sym in mask.columns:
+                mask[sym] = True
+        ok = ok & mask
+    score = gap
+    if v.get("chan"):
+        sd = (C / C.shift(1) - 1).rolling(90).std().shift(1)
+        ma20 = C.rolling(20).mean().shift(1)
+        low_gap = O / prevL - 1
+        ok = ok & (low_gap < -sd) & (O > ma20)
+        score = low_gap
+    if v.get("ma200"):
+        ok = ok & (prevC > C.rolling(200).mean().shift(1))
+    if v.get("market_max_gap") is not None and "STW" in O.columns:
+        mkt = (O["STW"] / C["STW"].shift(1) - 1) * 100
+        ok = ok.mul(mkt <= v["market_max_gap"], axis=0)
+    return ok.fillna(False).astype(bool), score
+
+
+def run(v, P, reset_yearly=False):
+    cfg = CFG
+    O, H, L, C = P["O"], P["H"], P["L"], P["C"]
+    ATRp = P["ATR"].shift(1)
     eq = cfg["start_capital"]
     fee = cfg["brokerage_per_trade"]
     slip = cfg["slippage_pct"] / 100
-    prevC = C.shift(1)
-    gap = (O / prevC - 1) * 100
-    ok = (prevC >= cfg["min_price"]) & (TURN.shift(1) >= cfg["min_avg_turnover"]) & \
-         (ATR.shift(1) / prevC * 100 >= cfg["min_atr_pct"]) & (gap >= v["min_gap"]) & (gap < v["max_gap"])
+    risk_pct = min(v.get("risk", cfg["risk_per_trade_pct"]), 2.0)      # guardrail: <= 2%
+    max_pos = min(v.get("max_pos", cfg["max_position_pct"]), 50)      # guardrail: <= 50%
+    ok, score = signals(v, P)
     daily, trades = [], []
+    year = None
     for d in O.index[30:]:
-        row = gap.loc[d][ok.loc[d].fillna(False)].dropna()
-        # skip absurd gaps (data errors, reconstructions)
-        row = row[row < 60].sort_values(ascending=False).head(v["top"])
+        if reset_yearly and d.year != year:
+            year, eq = d.year, cfg["start_capital"]
+        row = score.loc[d][ok.loc[d]].dropna()
+        row = row.sort_values(ascending=(v["side"] == "down")).head(v["top"])
         start = eq
         for s in row.index:
-            o, h, l, c, atr = O.at[d, s], H.at[d, s], L.at[d, s], C.at[d, s], ATR.shift(1).at[d, s]
+            o, h, l, c, atr = O.at[d, s], H.at[d, s], L.at[d, s], C.at[d, s], ATRp.at[d, s]
             if any(map(lambda x: x is None or (isinstance(x, float) and math.isnan(x)), (o, l, c, atr))):
                 continue
             if tick_size(o) / o * 100 > cfg.get("max_tick_pct", 100):
@@ -78,18 +124,19 @@ def run(v, O, H, L, C, V, ATR, TURN):
             if stop <= 0:
                 stop = round_tick(entry * 0.5, "down")
             risk_ps = entry - stop + (entry + stop) * slip + tick_size(stop)
-            budget = start * cfg["risk_per_trade_pct"] / 100
+            budget = start * risk_pct / 100
             qty = int(max(0, budget - 2 * fee) / risk_ps) if risk_ps > 0 else 0
-            qty = min(qty, int(start * cfg["max_position_pct"] / 100 / entry))
+            qty = min(qty, int(start * max_pos / 100 / entry))
             if qty * entry < cfg["min_trade_value"]:
                 continue
             exitp = stop if l <= stop else c
             exitp = round_tick(exitp * (1 - slip), "down")
             net = qty * (exitp - entry) - 2 * fee
             eq += net
-            trades.append({"date": d.date().isoformat(), "sym": s, "gap": round(row[s], 2), "net": round(net, 2),
+            trades.append({"date": d.date().isoformat(), "sym": s, "score": round(float(row[s]), 3), "net": round(net, 2),
                            "r": round((exitp - entry) / (entry - stop), 2) if entry > stop else 0,
-                           "stopped": bool(l <= stop)})
+                           "gross_pct": round((c if l > stop else stop) / o * 100 - 100, 3),
+                           "net_pct_of_equity": round(net / start * 100, 3), "stopped": bool(l <= stop)})
         daily.append((d, start, eq))
     return daily, trades
 
@@ -116,6 +163,11 @@ def summarise(v, daily, trades, start_capital):
         "max_drawdown_pct": round(float(((eqs / peak) - 1).min() * 100), 1),
         "yearly_pct": {str(k.year): round(float(x), 1) for k, x in yret.items()},
         "end_equity": round(float(eqs.iloc[-1]), 2),
+        "avg_gross_move_pct": round(float(np.mean([t["gross_pct"] for t in trades])), 3) if n else 0,
+        "avg_net_pct_of_equity": round(float(np.mean([t["net_pct_of_equity"] for t in trades])), 4) if n else 0,
+        "pct_stopped": round(sum(t["stopped"] for t in trades) / n * 100, 1) if n else 0,
+        "too_small_to_trade_from": (str(eqs.index[[i for i, x in enumerate(eqs.values) if x < start_capital * 0.42][0]].date())
+                                    if (eqs < start_capital * 0.42).any() else None),
     }
 
 
@@ -146,11 +198,20 @@ def main():
     if idx is not None:
         bench = round((idx["Close"].iloc[-1] / idx["Close"].iloc[30] - 1) * 100, 1)
 
+    P = {"O": O, "H": H, "L": L, "C": C, "ATR": ATR, "TURN": TURN}
     results = []
     for v in VARIANTS:
-        daily, trades = run(v, O, H, L, C, V, ATR, TURN)
+        daily, trades = run(v, P)
         r = summarise(v, daily, trades, CFG["start_capital"])
-        print(json.dumps({k: r.get(k) for k in ("name", "trades", "total_return_pct", "cagr_pct", "avg_week_pct", "weeks_hitting_8pct", "win_rate", "avg_r", "max_drawdown_pct")}))
+        # Same rules, but every calendar year restarts at $10k: shows each year on its own even if the
+        # compounding run shrank the account below the minimum trade size.
+        dy, ty = run(v, P, reset_yearly=True)
+        r["yearly_reset_pct"] = {}
+        for y in sorted({d.year for d, _, _ in dy}):
+            ys = [e for d, _, e in dy if d.year == y]
+            r["yearly_reset_pct"][str(y)] = round((ys[-1] / CFG["start_capital"] - 1) * 100, 1)
+        r["years_profitable"] = sum(x > 0 for x in r["yearly_reset_pct"].values())
+        print(json.dumps({k: r.get(k) for k in ("name", "trades", "total_return_pct", "cagr_pct", "avg_week_pct", "weeks_hitting_8pct", "win_rate", "avg_r", "max_drawdown_pct", "avg_gross_move_pct", "years_profitable", "too_small_to_trade_from")}))
         results.append(r)
     out = ROOT / "data/backtest"
     out.mkdir(parents=True, exist_ok=True)

@@ -138,7 +138,7 @@ class Engine:
             step_ok = tick_size(orr["close"]) / orr["close"] * 100 <= cfg.get("max_tick_pct", 100)
             gap_ok = orr["close"] <= cfg.get("max_price", 1e12)
             if cfg.get("min_gap_pct") and meta.get("prev_close"):
-                gap_ok = (orr["open"] / meta["prev_close"] - 1) * 100 >= cfg["min_gap_pct"]
+                gap_ok = gap_ok and (orr["open"] / meta["prev_close"] - 1) * 100 >= cfg["min_gap_pct"]
             nw = (self.day.get("news") or {}).get(sym)
             if cfg.get("news_require") and not nw:
                 continue  # Cameron's catalyst pillar: only shares with fresh price-sensitive news
@@ -146,6 +146,14 @@ class Engine:
                 if rvol >= cfg["min_relative_volume"] and bullish and above_prev:
                     self.log(None, f"Skipped {sym}: '{nw['category']}' news has tended to fall after an up-open.")
                 continue
+            gap_now = (orr["open"] / meta["prev_close"] - 1) * 100 if meta.get("prev_close") else None
+            if cfg.get("max_gap_pct") is not None:
+                # Gap-down setups (Chan's buy-on-gap; Griffith study of large ASX stocks rebounding after bad nights)
+                gap_ok = gap_ok and gap_now is not None and gap_now <= cfg["max_gap_pct"]
+            if not cfg.get("require_above_prev", True):
+                above_prev = True
+            if not cfg.get("require_green_or", True):
+                bullish = True
             if rvol >= cfg["min_relative_volume"] and bullish and above_prev and step_ok and gap_ok:
                 cands.append({
                     "sym": sym,
@@ -196,6 +204,8 @@ class Engine:
             if bar["c"] <= w["or_high"]:
                 return
             raw = bar["c"] * (1 + slip)
+        elif cfg.get("entry_mode") == "after_or":
+            raw = bar["o"] * (1 + slip)  # buy as soon as the opening range is complete
         else:
             trigger = w["or_high"] + tick_size(w["or_high"])
             raw = max(trigger, bar["o"]) * (1 + slip)
@@ -203,6 +213,8 @@ class Engine:
         if cfg.get("stop_mode") == "low_of_day":
             # Kullamagi episodic pivot: stop at the low of the day
             stop = self.day.get("tracks", {}).get(w["sym"], {}).get("low", w["or_low"])
+        elif not cfg.get("stop_use_or_low", True):
+            stop = price - cfg["stop_atr_fraction"] * w["atr"]
         else:
             stop = max(w["or_low"], price - cfg["stop_atr_fraction"] * w["atr"])
         stop = min(stop, price * (1 - cfg["min_stop_pct"] / 100))
@@ -380,6 +392,11 @@ class Engine:
                     if w["sym"] in day["entered"] or w.get("skipped"):
                         continue
                     bar = index.get(w["sym"], {}).get(ts)
+                    if bar and self.cfg.get("entry_mode") == "after_or":
+                        self._enter(w, bar)
+                        if w["sym"] not in day["entered"]:
+                            w["skipped"] = True
+                        continue
                     if bar and bar["h"] > w["or_high"]:
                         vw = tracks.get(w["sym"], {}).get("vwap")
                         if self.cfg.get("vwap_entry_filter") and vw and bar["c"] < vw:
