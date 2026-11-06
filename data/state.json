@@ -48,7 +48,7 @@
   "tracks": {}
  },
  "status": "Managing open trades only (no new entries today)",
- "last_run": "2026-11-06T11:55:05.488306+11:00",
+ "last_run": "2026-11-06T12:00:06.418496+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
