@@ -1,0 +1,76 @@
+{
+ "run_at": "2026-11-06T14:25+11:00",
+ "daily_10y": [
+  {
+   "name": "Buy STW at open, sell at close: index opens down >1.5%",
+   "days": 60,
+   "avg_net_pct": 0.236,
+   "pct_days_up": 51.7,
+   "compounded_pct": 13.8,
+   "max_drawdown_pct": -6.5,
+   "avg_gross_open_to_close_pct": 0.436
+  },
+  {
+   "name": "Buy STW at open, sell at close: down 1\u20131.5%",
+   "days": 72,
+   "avg_net_pct": -0.217,
+   "pct_days_up": 38.9,
+   "compounded_pct": -15.0,
+   "max_drawdown_pct": -15.6,
+   "avg_gross_open_to_close_pct": -0.017
+  },
+  {
+   "name": "Buy STW at open, sell at close: down 0.5\u20131%",
+   "days": 229,
+   "avg_net_pct": -0.24,
+   "pct_days_up": 32.3,
+   "compounded_pct": -42.5,
+   "max_drawdown_pct": -43.1,
+   "avg_gross_open_to_close_pct": -0.04
+  },
+  {
+   "name": "Buy STW at open, sell at close: flat \u00b10.5%",
+   "days": 1686,
+   "avg_net_pct": -0.22,
+   "pct_days_up": 31.3,
+   "compounded_pct": -97.6,
+   "max_drawdown_pct": -97.6,
+   "avg_gross_open_to_close_pct": -0.02
+  },
+  {
+   "name": "Buy STW at open, sell at close: up >0.5%",
+   "days": 481,
+   "avg_net_pct": -0.247,
+   "pct_days_up": 32.8,
+   "compounded_pct": -70.0,
+   "max_drawdown_pct": -70.5,
+   "avg_gross_open_to_close_pct": -0.047
+  }
+ ],
+ "hourly_2y": [
+  {
+   "name": "Index opened down >1%: buy STW at open",
+   "days": 34,
+   "avg_net_pct": -0.008,
+   "pct_days_up": 44.1,
+   "compounded_pct": -0.3,
+   "max_drawdown_pct": -3.0
+  },
+  {
+   "name": "\u2026wait until STW closes an hour back above its open (before 3pm)",
+   "days": 27,
+   "avg_net_pct": -0.003,
+   "pct_days_up": 44.4,
+   "compounded_pct": -0.1,
+   "max_drawdown_pct": -1.5
+  },
+  {
+   "name": "\u2026wait until STW closes an hour above its VWAP (before 3pm)",
+   "days": 34,
+   "avg_net_pct": -0.073,
+   "pct_days_up": 41.2,
+   "compounded_pct": -2.5,
+   "max_drawdown_pct": -3.9
+  }
+ ]
+}
