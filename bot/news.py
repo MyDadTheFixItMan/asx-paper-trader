@@ -153,21 +153,37 @@ def stats(events: list[dict], before: str | None = None, min_price=0.2, min_turn
         out.append({"category": cat, "n": a["n"], "avg_gap_pct": round(a["gap"] / a["n"], 2),
                     "avg_move_after_open_pct": round(a["move"] / a["n"], 2),
                     "pct_up_after_open": round(a["up"] / a["n"] * 100, 1),
-                    "gap_up_then_move_pct": round(sum(a["gap_up_move"]) / len(a["gap_up_move"]), 2) if a["gap_up_move"] else None})
+                    "n_gap_up": len(a["gap_up_move"]),
+                    "gap_up_then_move_pct": round(sum(a["gap_up_move"]) / len(a["gap_up_move"]), 2) if a["gap_up_move"] else None,
+                    "gap_up_pct_up": round(sum(m > 0 for m in a["gap_up_move"]) / len(a["gap_up_move"]) * 100, 1) if a["gap_up_move"] else None})
     return sorted(out, key=lambda x: -x["n"])
 
 
 def rules(stat_rows: list[dict], cfg: dict) -> dict:
     """Learned rules: avoid categories that fall after the open, favour ones that rise (only with enough history)."""
+    # The bot only buys shares that open UP, so judge each news type on what happened after up-openings.
     block, boost = [], []
     for s in stat_rows:
-        if s["n"] < cfg.get("news_min_events", 30) or s["category"] == "Other":
+        n, mv = s.get("n_gap_up", 0), s.get("gap_up_then_move_pct")
+        if n < cfg.get("news_min_events", 30) or mv is None:
             continue
-        if s["avg_move_after_open_pct"] <= cfg.get("news_block_move_pct", -0.3):
+        if mv <= cfg.get("news_block_move_pct", -0.3):
             block.append(s["category"])
-        elif s["avg_move_after_open_pct"] >= cfg.get("news_boost_move_pct", 0.3):
+        elif mv >= cfg.get("news_boost_move_pct", 0.3):
             boost.append(s["category"])
     return {"block": block, "boost": boost}
+
+
+def morning_map(events: list[dict], since: pd.Timestamp, symbols=None) -> dict:
+    """{sym: most relevant price-sensitive news since `since`} for the morning scan."""
+    out = {}
+    for e in sorted(events, key=lambda e: e["time"]):
+        if pd.Timestamp(e["time"]) <= since or (symbols is not None and e["sym"] not in symbols):
+            continue
+        cur = out.get(e["sym"])
+        if cur is None or (cur["category"] == "Other" and e["category"] != "Other"):
+            out[e["sym"]] = {"category": e["category"], "headline": e["headline"][:140], "time": e["time"]}
+    return out
 
 
 def load_events(path: Path) -> list[dict]:

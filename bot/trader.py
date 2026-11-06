@@ -43,6 +43,29 @@ def is_trading_day(d) -> bool:
         return True
 
 
+def load_news(state, now, symbols, refresh=False):
+    """Attach overnight price-sensitive ASX news (since yesterday 10:00) and the learned news rules to today."""
+    if not CFG.get("news_enabled", True):
+        return
+    try:
+        import news
+        prev = (now - pd.offsets.BDay(1)).normalize().replace(hour=10)
+        fresh = news.fetch(prev if not refresh else now - pd.Timedelta(hours=3), max_pages=40)
+        stored = news.load_events(DATA / "news" / "events.json")
+        known = {e["key"] for e in stored}
+        all_ev = stored + [e for e in fresh if e["key"] not in known]
+        m = news.morning_map(all_ev, prev, symbols)
+        day = state["day"]
+        day.setdefault("news", {}).update(m)
+        st = DATA / "news" / "stats.json"
+        if st.exists():
+            day["news_rules"] = json.loads(st.read_text()).get("rules", {})
+        if not refresh:
+            Engine(state, [], CFG).log(now, f"Read {len(fresh)} price-sensitive ASX announcements; {len(m)} are for shares the bot can trade.")
+    except Exception as e:  # noqa: BLE001
+        print(f"News fetch failed: {e}")
+
+
 def main():
     now = pd.Timestamp(os.environ["TRADER_NOW"], tz=TZ) if os.environ.get("TRADER_NOW") else pd.Timestamp.now(tz=TZ)
     today = now.date().isoformat()
@@ -83,6 +106,7 @@ def main():
             uni = md.build_universe(codes, CFG, now.to_pydatetime())
             save("universe.json", uni)
         eng.new_day(today, uni["symbols"])
+        load_news(state, now, set(uni["symbols"]))
         eng.log(now, f"Scanned {uni.get('scanned')} ASX listings; {len(uni['symbols']) - 1} pass the liquidity and volatility filters.")
         finish("Morning scan done. Waiting for the 10:00 open.")
         return
@@ -109,6 +133,9 @@ def main():
             eng.close_day(now)
             finish("No ASX price data today (market holiday?).")
             return
+        if not state["day"].get("news_refreshed"):
+            load_news(state, now, set(symbols), refresh=True)
+            state["day"]["news_refreshed"] = True
         if not eng.select_watchlist(bars, index_bars, symbols):
             finish("Building the opening range (prices are ~20 min delayed)")
             return
@@ -125,11 +152,17 @@ def main():
         last = {s: b[-1]["c"] for s, b in bars.items() if b}
         eng.close_day(now, last)
 
-    # End-of-day review: learn from today's losses
+    # End-of-day review: learn from today's losses, then from today's ASX news
     if day["phase"] == "closed" and not day.get("reviewed"):
         import learn
         learn.review_day(state, trades, CFG)
         eng.log(now, "Daily review done. See 'Learning from losses' on the dashboard.")
+        try:
+            import news_update
+            news_update.update()
+            eng.log(now, "News review done: today's announcements and price reactions recorded.")
+        except Exception as e:  # noqa: BLE001
+            print(f"News update failed: {e}")
 
     # mark to market + equity curve
     for p in state["positions"]:

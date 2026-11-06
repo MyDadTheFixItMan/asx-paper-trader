@@ -58,7 +58,7 @@ def _yf():
     return yf
 
 
-def _download(tickers: list[str], **kw) -> dict[str, pd.DataFrame]:
+def _download(tickers: list[str], _retry: bool = True, **kw) -> dict[str, pd.DataFrame]:
     """Batch download; returns {ticker: DataFrame[Open, High, Low, Close, Volume]}."""
     yf = _yf()
     out: dict[str, pd.DataFrame] = {}
@@ -85,6 +85,12 @@ def _download(tickers: list[str], **kw) -> dict[str, pd.DataFrame]:
             sub = sub.dropna(subset=["Close"])
             if not sub.empty:
                 out[t] = sub
+        if len(tickers) > chunk:
+            _time.sleep(2)
+    missing = [t for t in tickers if t not in out]
+    if missing and len(missing) < len(tickers) and _retry:
+        _time.sleep(20)
+        out.update(_download(missing, _retry=False, **kw))
     return out
 
 

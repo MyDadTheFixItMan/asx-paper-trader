@@ -139,6 +139,13 @@ class Engine:
             gap_ok = orr["close"] <= cfg.get("max_price", 1e12)
             if cfg.get("min_gap_pct") and meta.get("prev_close"):
                 gap_ok = (orr["open"] / meta["prev_close"] - 1) * 100 >= cfg["min_gap_pct"]
+            nw = (self.day.get("news") or {}).get(sym)
+            if cfg.get("news_require") and not nw:
+                continue  # Cameron's catalyst pillar: only shares with fresh price-sensitive news
+            if cfg.get("news_learning") and nw and nw["category"] in (self.day.get("news_rules") or {}).get("block", []):
+                if rvol >= cfg["min_relative_volume"] and bullish and above_prev:
+                    self.log(None, f"Skipped {sym}: '{nw['category']}' news has tended to fall after an up-open.")
+                continue
             if rvol >= cfg["min_relative_volume"] and bullish and above_prev and step_ok and gap_ok:
                 cands.append({
                     "sym": sym,
@@ -149,14 +156,17 @@ class Engine:
                     "or_close": orr["close"],
                     "atr": meta["atr"],
                     "gap_pct": round((orr["open"] / meta["prev_close"] - 1) * 100, 2) if meta.get("prev_close") else None,
+                    "news": nw,
                 })
         if ready == 0:
             return False
-        cands.sort(key=lambda c: c["rvol"], reverse=True)
+        boost = set((self.day.get("news_rules") or {}).get("boost", [])) if cfg.get("news_learning") else set()
+        cands.sort(key=lambda c: c["rvol"] * (1.5 if c.get("news") and c["news"]["category"] in boost else 1.0), reverse=True)
         self.day["watchlist"] = cands[: cfg["watchlist_size"]]
         self.day["phase"] = "trading"
         if self.day["watchlist"]:
-            names = ", ".join(f"{c['sym']} ({c['rvol']}x)" for c in self.day["watchlist"])
+            names = ", ".join(f"{c['sym']} ({c['rvol']}x" + (f", news: {c['news']['category']}" if c.get("news") else "") + ")"
+                              for c in self.day["watchlist"])
             self.log(None, f"Stocks in play: {names}")
         else:
             self.log(None, "No stock met the in-play rules today. No trades.")
@@ -235,6 +245,7 @@ class Engine:
             "stop": stop, "initial_stop": stop, "risk_ps": round(risk_ps, 4), "high": bar["h"],
             "last": bar["c"], "fees": self.fee(), "rvol": w["rvol"], "atr": w["atr"], "stop_note": "initial",
             "gap_pct": w.get("gap_pct"), "stop_pct": cand["stop_pct"], "market_pct": cand["market_pct"],
+            "news_cat": (w.get("news") or {}).get("category"), "news_headline": (w.get("news") or {}).get("headline"),
         }
         self.s["positions"].append(pos)
         self.day["entered"].append(w["sym"])
@@ -274,6 +285,8 @@ class Engine:
             "gap_pct": pos.get("gap_pct"),
             "stop_pct": pos.get("stop_pct"),
             "market_pct": pos.get("market_pct"),
+            "news_cat": pos.get("news_cat"),
+            "news_headline": pos.get("news_headline"),
             "reason": reason,
         }
         self.trades.append(trade)

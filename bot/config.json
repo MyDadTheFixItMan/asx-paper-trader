@@ -43,6 +43,14 @@
   "learn_block_avg_r": -0.3,
   "learn_block_days": 30,
 
+  "_news": "Price-sensitive ASX announcements. Rules switch on only after testing.",
+  "news_enabled": true,
+  "news_require": false,
+  "news_learning": false,
+  "news_min_events": 30,
+  "news_block_move_pct": -0.3,
+  "news_boost_move_pct": 0.3,
+
   "_costs": "Modelled on a low-cost online broker plus slippage from trading on 20-minute delayed data.",
   "brokerage_per_trade": 5.00,
   "slippage_pct": 0.10,

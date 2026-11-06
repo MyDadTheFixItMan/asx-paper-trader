@@ -18,6 +18,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).parent))
 import data as md  # noqa: E402
 import learn  # noqa: E402
+import news  # noqa: E402
 from engine import TZ, Engine  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -69,6 +70,9 @@ def meta_for(sym, d, intraday, daily, cfg):
     return {"prev_close": prev, "atr": atr, "avg_or_volume": float(per.mean())}
 
 
+EVENTS = news.load_events(ROOT / "data/news/events.json")
+
+
 def run(cfg, syms, intraday, daily, days):
     state = {"start_capital": cfg["start_capital"], "cash": cfg["start_capital"], "positions": [], "daily": [],
              "day": {"date": None, "phase": "closed"}}
@@ -88,6 +92,11 @@ def run(cfg, syms, intraday, daily, days):
             prev_idx = float(h["Close"].iloc[-1]) if len(h) else None
         uni["__index__"] = {"prev_close": prev_idx}
         eng.new_day(d.isoformat(), uni)
+        # News known at that morning, and rules learned only from earlier days (walk-forward, no hindsight)
+        ov = news.overnight_news(EVENTS, d.isoformat())
+        state["day"]["news"] = {sym: {"category": evs[-1]["category"], "headline": evs[-1]["headline"][:140]}
+                                for sym, evs in ov.items()}
+        state["day"]["news_rules"] = news.rules(news.stats(EVENTS, before=d.isoformat()), cfg)
         bars = {s: bars_for(intraday[s], d) for s in uni if s != "__index__" and s in intraday}
         bars = {s: b for s, b in bars.items() if b}
         index_bars = bars_for(intraday[idx], d) if idx in intraday else None

@@ -20,6 +20,7 @@ FEATURES = {
     "entry": ("Entry time", [(0, 630, "before 10:30"), (630, 660, "10:30–11:00"), (660, 1e9, "after 11:00")]),
     "stop": ("Stop distance", [(0, 1, "stop under 1%"), (1, 2, "stop 1–2%"), (2, 1e9, "stop over 2%")]),
     "market": ("Market at open", [(-1e9, 0, "market down"), (0, 1e9, "market up")]),
+    "news": ("Overnight news", None),
 }
 
 
@@ -34,7 +35,7 @@ def features(t: dict) -> dict:
         "stop": t.get("stop_pct"),
         "market": t.get("market_pct"),
     }
-    out = {}
+    out = {"news": f"news: {t['news_cat']}" if t.get("news_cat") else "no news"} if "id" in t or "news_cat" in t else {}
     for k, v in raw.items():
         if v is None:
             continue
