@@ -1,139 +1,204 @@
 {
- "run_at": "2026-11-06T14:50+11:00",
+ "run_at": "2026-11-07T10:07+11:00",
  "period": [
   "2026-09-07",
-  "2026-11-05"
+  "2026-11-06"
  ],
  "universe": 253,
  "results": [
   {
    "name": "current",
-   "days": 44,
-   "trades": 43,
-   "total_return_pct": -4.13,
-   "avg_week_pct": -0.45,
+   "days": 45,
+   "trades": 41,
+   "total_return_pct": -2.9,
+   "avg_week_pct": -0.31,
    "weeks_hitting_8pct": 0,
    "weekly_returns": [
-    1.78,
-    -3.1,
-    -2.57,
-    -0.96,
+    1.18,
+    -3.51,
+    -3.2,
+    -0.77,
     0.0,
-    1.24,
-    1.62,
-    -1.18,
-    -0.92
+    2.25,
+    2.71,
+    -0.72,
+    -0.7
    ],
-   "win_rate": 23.3,
-   "avg_r": -0.029,
-   "max_drawdown_pct": -6.55,
-   "fees": 430.0,
+   "win_rate": 24.4,
+   "avg_r": -0.042,
+   "max_drawdown_pct": -7.31,
+   "fees": 410.0,
    "overrides": {}
   },
   {
-   "name": "News: only shares with fresh price-sensitive news (Cameron's catalyst)",
-   "days": 44,
-   "trades": 14,
-   "total_return_pct": -0.4,
-   "avg_week_pct": -0.04,
+   "name": "Gap-down V: gapped down >=2%, green opening range, buy breakout above it (VWAP filter on)",
+   "days": 45,
+   "trades": 13,
+   "total_return_pct": -4.29,
+   "avg_week_pct": -0.48,
    "weeks_hitting_8pct": 0,
    "weekly_returns": [
-    -0.63,
-    -1.5,
+    0.0,
+    0.0,
+    -0.81,
+    -0.53,
+    -0.69,
+    -0.83,
     -0.47,
-    -0.48,
-    0.0,
-    0.0,
-    3.85,
-    -0.58,
-    -0.52
+    -0.1,
+    -0.93
    ],
-   "win_rate": 21.4,
-   "avg_r": -0.056,
-   "max_drawdown_pct": -3.04,
-   "fees": 140.0,
+   "win_rate": 7.7,
+   "avg_r": -0.664,
+   "max_drawdown_pct": -4.29,
+   "fees": 130.0,
    "overrides": {
-    "news_require": true
+    "require_above_prev": false,
+    "max_gap_pct": -2.0,
+    "min_relative_volume": 2.0
    }
   },
   {
-   "name": "News learning: skip news types that fade, favour ones that rise",
-   "days": 44,
-   "trades": 39,
-   "total_return_pct": -4.08,
-   "avg_week_pct": -0.45,
+   "name": "Gap-down V, also on weak-market days",
+   "days": 45,
+   "trades": 17,
+   "total_return_pct": -4.92,
+   "avg_week_pct": -0.56,
    "weeks_hitting_8pct": 0,
    "weekly_returns": [
-    1.78,
-    -3.1,
-    -2.1,
-    -1.44,
+    -0.6,
     0.0,
-    1.24,
-    1.29,
-    -1.18,
-    -0.53
+    -0.62,
+    -0.7,
+    -0.76,
+    -0.84,
+    -0.47,
+    -0.1,
+    -0.93
    ],
-   "win_rate": 23.1,
-   "avg_r": -0.065,
-   "max_drawdown_pct": -6.56,
-   "fees": 390.0,
+   "win_rate": 17.6,
+   "avg_r": -0.509,
+   "max_drawdown_pct": -4.92,
+   "fees": 170.0,
    "overrides": {
-    "news_learning": true
+    "require_above_prev": false,
+    "max_gap_pct": -2.0,
+    "min_relative_volume": 2.0,
+    "market_min_change_pct": -99
    }
   },
   {
-   "name": "News learning + only shares with news",
-   "days": 44,
-   "trades": 7,
-   "total_return_pct": -0.98,
-   "avg_week_pct": -0.11,
+   "name": "Gap-down buy at 10:15 (no confirmation), gap >=3%, 1 ATR stop, any market",
+   "days": 45,
+   "trades": 31,
+   "total_return_pct": -6.35,
+   "avg_week_pct": -0.73,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    -0.79,
+    -0.39,
+    -0.68,
+    -1.59,
+    -0.1,
+    0.0,
+    -0.43,
+    -0.75,
+    -1.8
+   ],
+   "win_rate": 16.1,
+   "avg_r": -0.195,
+   "max_drawdown_pct": -6.35,
+   "fees": 310.0,
+   "overrides": {
+    "require_above_prev": false,
+    "require_green_or": false,
+    "max_gap_pct": -3.0,
+    "min_relative_volume": 1.0,
+    "entry_mode": "after_or",
+    "stop_use_or_low": false,
+    "stop_atr_fraction": 1.0,
+    "market_min_change_pct": -99,
+    "vwap_entry_filter": false
+   }
+  },
+  {
+   "name": "Current rules + also allow gap-downs (green range, breakout)",
+   "days": 45,
+   "trades": 44,
+   "total_return_pct": -6.42,
+   "avg_week_pct": -0.72,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    0.53,
+    -3.4,
+    -3.37,
+    -0.47,
+    0.0,
+    -0.31,
+    2.57,
+    -0.84,
+    -1.17
+   ],
+   "win_rate": 22.7,
+   "avg_r": -0.18,
+   "max_drawdown_pct": -8.49,
+   "fees": 440.0,
+   "overrides": {
+    "require_above_prev": false
+   }
+  },
+  {
+   "name": "Current rules, 2% risk / 50% max size (fees smaller share of each trade)",
+   "days": 45,
+   "trades": 41,
+   "total_return_pct": -1.4,
+   "avg_week_pct": -0.09,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    2.82,
+    -3.24,
+    -5.85,
+    -2.61,
+    0.0,
+    4.65,
+    6.44,
+    -1.94,
+    -1.05
+   ],
+   "win_rate": 22.0,
+   "avg_r": -0.089,
+   "max_drawdown_pct": -11.28,
+   "fees": 410.0,
+   "overrides": {
+    "risk_per_trade_pct": 2.0,
+    "max_position_pct": 50.0
+   }
+  },
+  {
+   "name": "Ross Cameron filter (5x volume, gap 5%+): re-check trade count",
+   "days": 45,
+   "trades": 9,
+   "total_return_pct": 3.25,
+   "avg_week_pct": 0.36,
    "weeks_hitting_8pct": 0,
    "weekly_returns": [
     -0.63,
-    -1.5,
     0.0,
     0.0,
+    -0.6,
     0.0,
     0.0,
-    1.71,
-    0.0,
-    -0.54
+    3.04,
+    -0.48,
+    1.94
    ],
-   "win_rate": 14.3,
-   "avg_r": -0.049,
-   "max_drawdown_pct": -2.11,
-   "fees": 70.0,
+   "win_rate": 66.7,
+   "avg_r": 0.85,
+   "max_drawdown_pct": -1.22,
+   "fees": 90.0,
    "overrides": {
-    "news_learning": true,
-    "news_require": true
-   }
-  },
-  {
-   "name": "News learning, stricter (need 50 events)",
-   "days": 44,
-   "trades": 39,
-   "total_return_pct": -4.08,
-   "avg_week_pct": -0.45,
-   "weeks_hitting_8pct": 0,
-   "weekly_returns": [
-    1.78,
-    -3.1,
-    -2.1,
-    -1.44,
-    0.0,
-    1.24,
-    1.29,
-    -1.18,
-    -0.53
-   ],
-   "win_rate": 23.1,
-   "avg_r": -0.065,
-   "max_drawdown_pct": -6.56,
-   "fees": 390.0,
-   "overrides": {
-    "news_learning": true,
-    "news_min_events": 50
+    "min_relative_volume": 5.0,
+    "min_gap_pct": 5.0
    }
   }
  ]
