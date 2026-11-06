@@ -63,3 +63,20 @@ What transfers to this bot: the stock filter (price band, volume) and the "be se
 What doesn't: his edge comes from 1-minute charts, real-time Level 2 and 2–3 minute holds in US low-float stocks.
 This bot sees 5-minute bars 20 minutes late, so it can't scalp like that, and ASX small caps have far less of the
 US retail-driven momentum. His 2:1 profit target and quarter-size start both made results worse here (see CHANGELOG).
+
+## Weak open, then recovery? (6 Nov 2026, bot/research_vday.py)
+Buying an ASX 200 ETF (STW) at the open and selling at the close, after costs ($5 each way, 0.05% slippage):
+
+| How the ETF opened | Days (10 yrs) | Avg gross move | Avg after costs | Days up |
+|---|---|---|---|---|
+| **Down more than 1.5%** | 60 | **+0.44%** | **+0.24%** | 52% |
+| Down 1–1.5% | 72 | −0.02% | −0.22% | 39% |
+| Down 0.5–1% | 229 | −0.04% | −0.24% | 32% |
+| Flat ±0.5% | 1,686 | −0.02% | −0.22% | 31% |
+| Up more than 0.5% | 481 | −0.05% | −0.25% | 33% |
+
+Hourly data (2 years, days opening down >1%, 34 days): buying at the open ≈ 0%; waiting for the ETF to climb back above
+its open ≈ 0%; waiting for it to close above VWAP −0.07%. Waiting for the turn didn't help in this sample.
+
+Takeaway: a real but small, rare bounce after big down opens (~6 days a year). Candidate setup for the weekly improver:
+"weak-open bounce": buy STW/IOZ at the open when it opens down >1.5%, sell at the close, with a stop; test the stop's effect first.
