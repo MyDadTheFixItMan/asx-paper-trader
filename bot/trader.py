@@ -142,6 +142,10 @@ def main():
 
     if day["phase"] == "closed":
         status = f"Day finished. Equity ${eq:,.2f}"
+    elif day.get("no_new_entries") and not state["positions"]:
+        mc = day.get("market_change_pct")
+        status = (f"Standing aside today: ASX 200 opened {mc:+.2f}%" if mc is not None and mc < CFG["market_min_change_pct"]
+                  else "Done for today: daily loss limit reached")
     elif day.get("no_new_entries"):
         status = "Managing open trades only (no new entries today)"
     elif now.time() >= hhmm(CFG["last_entry_time"]):
