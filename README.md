@@ -28,7 +28,7 @@ Every setting lives in `bot/config.json`.
 
 - **Yahoo's ASX prices are ~20 minutes delayed.** The bot trades on those delayed bars, so a real trader
   with live data would get different fills.
-- **8% a week is the challenge target**, far above what any tested rule has achieved;, not an expectation. Most day traders lose money; treat the dashboard as an honest test.
+- **8% a week is the challenge target**, far above anything any tested rule has achieved, not an expectation. Most day traders lose money; treat the dashboard as an honest test.
 - GitHub's scheduled runs can start a few minutes late when GitHub is busy. The bot replays every
   missed 5-minute bar in order, so late runs don't change the results.
 - The repo should be **public**: it keeps GitHub Actions free and lets the dashboard read the data.
