@@ -34,16 +34,12 @@ CFG = json.loads((ROOT / "bot/config.json").read_text())
 #   risk/max_pos: % risk per trade and max % of equity per position (defaults: config, within guardrails)
 VARIANTS = [
     {"name": "control: top 5 gaps up >=4%, stop 1 ATR", "side": "up", "min_gap": 4, "max_gap": 60, "stop_atr": 1.0, "top": 5},
-    {"name": "LC gap-down >=3% on market-down mornings (STW <= -1%) [round 1 best]", "side": "down", "min_gap": -40, "max_gap": -3, "stop_atr": 1.0, "top": 3, "min_turnover": 20e6, "market_max_gap": -1.0},
-    {"name": "…same, 2% risk / 50% max size", "side": "down", "min_gap": -40, "max_gap": -3, "stop_atr": 1.0, "top": 3, "min_turnover": 20e6, "market_max_gap": -1.0, "risk": 2.0, "max_pos": 50},
-    {"name": "…same, stop 2 ATR, 2% risk / 50% max", "side": "down", "min_gap": -40, "max_gap": -3, "stop_atr": 2.0, "top": 3, "min_turnover": 20e6, "market_max_gap": -1.0, "risk": 2.0, "max_pos": 50},
-    {"name": "…market STW <= -1.5%", "side": "down", "min_gap": -40, "max_gap": -3, "stop_atr": 1.0, "top": 3, "min_turnover": 20e6, "market_max_gap": -1.5},
-    {"name": "…stock gap >=4%", "side": "down", "min_gap": -40, "max_gap": -4, "stop_atr": 1.0, "top": 3, "min_turnover": 20e6, "market_max_gap": -1.0},
-    {"name": "…stock gap >=2%", "side": "down", "min_gap": -40, "max_gap": -2, "stop_atr": 1.0, "top": 3, "min_turnover": 20e6, "market_max_gap": -1.0},
-    {"name": "…$50M+/day turnover only", "side": "down", "min_gap": -40, "max_gap": -3, "stop_atr": 1.0, "top": 3, "min_turnover": 50e6, "market_max_gap": -1.0},
-    {"name": "STW weak open <= -1.5% (no ATR filter), 2% risk / 50% max, stop 1 ATR", "side": "down", "min_gap": -40, "max_gap": -1.5, "stop_atr": 1.0, "top": 1, "syms": ["STW"], "risk": 2.0, "max_pos": 50, "min_turnover": 0, "min_atr": 0},
-    {"name": "STW weak open <= -1% (no ATR filter), 2% risk / 50% max, stop 1 ATR", "side": "down", "min_gap": -40, "max_gap": -1.0, "stop_atr": 1.0, "top": 1, "syms": ["STW"], "risk": 2.0, "max_pos": 50, "min_turnover": 0, "min_atr": 0},
-    {"name": "STW weak open <= -1.5% (no ATR filter), config sizing, stop 1 ATR", "side": "down", "min_gap": -40, "max_gap": -1.5, "stop_atr": 1.0, "top": 1, "syms": ["STW"], "min_turnover": 0, "min_atr": 0},
+    {"name": "LC gap-down >=3%, STW <= -1.5% [round 2 best]", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 3, "market_max_gap": -1.5},
+    {"name": "…same, 2% risk / 50% max size", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 3, "market_max_gap": -1.5, "risk": 2.0, "max_pos": 50},
+    {"name": "…same, top 1 only, 2% risk / 50% max", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 1, "market_max_gap": -1.5, "risk": 2.0, "max_pos": 50},
+    {"name": "…stock gap >=4%, STW <= -1.5%", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -4, "top": 3, "market_max_gap": -1.5},
+    {"name": "…stock gap >=3%, STW <= -2%", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 3, "market_max_gap": -2.0},
+    {"name": "…stock gap >=3%, STW <= -1.5%, in uptrend (above 200-day avg)", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 3, "market_max_gap": -1.5, "ma200": True},
 ]
 EXTRA = ["STW.AX"]  # ETFs aren't in the company list
 
