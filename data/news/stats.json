@@ -1,0 +1,126 @@
+{
+ "updated": "2026-11-06T14:36+11:00",
+ "events": 10000,
+ "measured": 5533,
+ "first_day": "2026-07-29",
+ "rules": {
+  "block": [
+   "Quarterly report",
+   "Exploration / drilling",
+   "Takeover / merger",
+   "Dividend / buy-back",
+   "Management change",
+   "Contract / deal",
+   "Trading halt"
+  ],
+  "boost": [
+   "Acquisition / sale"
+  ]
+ },
+ "categories": [
+  {
+   "category": "Results",
+   "n": 505,
+   "avg_gap_pct": 0.84,
+   "avg_move_after_open_pct": -0.11,
+   "pct_up_after_open": 46.1,
+   "gap_up_then_move_pct": 1.05
+  },
+  {
+   "category": "Other",
+   "n": 269,
+   "avg_gap_pct": 0.26,
+   "avg_move_after_open_pct": -0.1,
+   "pct_up_after_open": 42.8,
+   "gap_up_then_move_pct": 0.03
+  },
+  {
+   "category": "Quarterly report",
+   "n": 147,
+   "avg_gap_pct": 0.03,
+   "avg_move_after_open_pct": -1.65,
+   "pct_up_after_open": 34.7,
+   "gap_up_then_move_pct": -0.97
+  },
+  {
+   "category": "Exploration / drilling",
+   "n": 90,
+   "avg_gap_pct": 0.09,
+   "avg_move_after_open_pct": -0.46,
+   "pct_up_after_open": 45.6,
+   "gap_up_then_move_pct": 1.17
+  },
+  {
+   "category": "Takeover / merger",
+   "n": 87,
+   "avg_gap_pct": 2.5,
+   "avg_move_after_open_pct": -0.54,
+   "pct_up_after_open": 41.4,
+   "gap_up_then_move_pct": -0.03
+  },
+  {
+   "category": "Dividend / buy-back",
+   "n": 73,
+   "avg_gap_pct": 0.52,
+   "avg_move_after_open_pct": -0.3,
+   "pct_up_after_open": 37.0,
+   "gap_up_then_move_pct": -0.33
+  },
+  {
+   "category": "Management change",
+   "n": 54,
+   "avg_gap_pct": -0.38,
+   "avg_move_after_open_pct": -0.6,
+   "pct_up_after_open": 44.4,
+   "gap_up_then_move_pct": -1.4
+  },
+  {
+   "category": "Contract / deal",
+   "n": 44,
+   "avg_gap_pct": 1.7,
+   "avg_move_after_open_pct": -0.6,
+   "pct_up_after_open": 43.2,
+   "gap_up_then_move_pct": -0.32
+  },
+  {
+   "category": "Trading halt",
+   "n": 39,
+   "avg_gap_pct": -0.97,
+   "avg_move_after_open_pct": -0.75,
+   "pct_up_after_open": 46.2,
+   "gap_up_then_move_pct": -1.02
+  },
+  {
+   "category": "Acquisition / sale",
+   "n": 35,
+   "avg_gap_pct": 1.9,
+   "avg_move_after_open_pct": 0.92,
+   "pct_up_after_open": 57.1,
+   "gap_up_then_move_pct": 1.09
+  },
+  {
+   "category": "Capital raising",
+   "n": 14,
+   "avg_gap_pct": 0.1,
+   "avg_move_after_open_pct": -1.35,
+   "pct_up_after_open": 35.7,
+   "gap_up_then_move_pct": -0.28
+  },
+  {
+   "category": "Regulatory / clinical",
+   "n": 8,
+   "avg_gap_pct": 1.78,
+   "avg_move_after_open_pct": 0.11,
+   "pct_up_after_open": 12.5,
+   "gap_up_then_move_pct": 1.02
+  },
+  {
+   "category": "Guidance upgrade",
+   "n": 8,
+   "avg_gap_pct": 1.16,
+   "avg_move_after_open_pct": 3.63,
+   "pct_up_after_open": 75.0,
+   "gap_up_then_move_pct": 2.87
+  }
+ ]
+}
