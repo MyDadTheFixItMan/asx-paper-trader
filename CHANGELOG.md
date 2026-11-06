@@ -54,3 +54,60 @@ Adopted: price band $2–$20 (improved return, avg R and drawdown in both runs).
   Results +0.5% (432), Exploration +1.5% (69), Acquisition +0.8% (31), Quarterly −1.0% (103), Contract/deal −1.3% (33).
 - 60-day intraday test (walk-forward, no hindsight): news rules did not help (current −4.1%, avg −0.03R;
   news learning −4.1%, −0.07R; news-only 14 trades). Rules stay OFF; history keeps growing for re-tests.
+
+## 2026-11-07: weekly review #1 (no rule changes adopted)
+
+**Live week (3–6 Nov): −2.5%** ($10,000 → $9,749.80) vs the +8% goal. 9 trades, 2 winners (22%), average −0.31R.
+Losses were mostly ordinary stop-outs on 3 Nov (5 trades, −$236); FMG (+3.4R) and NWL (+1.1R) won on 5 Nov.
+6 Nov: ASX 200 opened −1.4%, bot stood aside (market filter).
+
+**Research this week:** Chan's "buy-on-gap" (buy shares that gap below yesterday's low in an uptrend, sell at the close;
+strong 2005–2012 in US small caps, decayed after publication); Griffith University study of large Australian stocks
+(intraday rebounds after very bad overnight news); Lou, Polk & Skouras "tug of war" (reversal profits mostly intraday,
+momentum overnight); Baltussen/Da "end-of-day reversal" (≈0.04%/day gross, far below our costs); turn-of-month
+(not significant in Australia in the full sample).
+
+**Fix:** the 10-year daily backtest stopped trading once a losing variant shrank the account to ~$4,000 (positions
+fell under the $1,000 minimum), so every losing variant showed the same "−60%". It now also reports each calendar year
+restarted at $10k, the average gross move per trade, and % stopped. Costs and sizing rules unchanged.
+
+**10-year daily test (Dec 2016 – Nov 2026, ~1,800 ASX shares, buy at open, sell at close, $5 + 0.10% each way):**
+
+| Variant | Trades | 10-yr return | Avg R | Avg gross move | Max DD | Years up |
+|---|---|---|---|---|---|---|
+| Control: top 5 gap-ups ≥4% | 430 | −60% (account too small from 2019) | −0.07 | +0.15% | −60% | 0 of 11 |
+| Gap-downs ≥3%, top 5 | 383 | −60% | −0.13 | +0.06% | −61% | 1 |
+| …in uptrend (above 200-day avg) | 613 | −60% | +0.02 | +0.47% | −60% | 1 |
+| Chan buy-on-gap | 629 | −60% | +0.01 | +0.41% | −60% | 1 |
+| Chan, large caps ($20M+/day) | 450 | −47% | −0.02 | +0.29% | −47% | 1 |
+| Large-cap gap-down ≥3% when STW opens ≤ −1% | 268 | −18% | +0.05 | +0.62% | −24% | 4 |
+| **…when STW opens ≤ −1.5%** | 141 | **+5.7%** | **+0.17** | +1.27% | −8.5% | 5 of 9 |
+| …same, 2% risk / 50% max size | 168 | +23.9% | +0.14 | +1.04% | −13.9% | 5 |
+| …stock gap ≥4% | 120 | +5.8% | +0.18 | +1.29% | −7.7% | 6 |
+| …STW ≤ −2% | 50 | +14.0% | +0.44 | +2.84% | −3.4% | 5 |
+| STW ETF itself, opens ≤ −1.5% | 59 | −0.9% | −0.02 | +0.47% | −6.2% | 2 |
+
+Finding: on the ASX, gap-downs *do* bounce from open to close (gross +0.3% to +2.8% per trade), and the bounce is
+biggest in large caps on mornings when the whole market opens sharply down. After costs most versions still lose;
+only the "weak-market morning, large-cap gap-down" family is positive, and only by ~0.5–2% a year (about 15 trades a
+year). These variants were found by searching ~25 combinations, so some of the result is likely luck.
+
+**60-day intraday test (5-minute data, 7 Sep – 6 Nov 2026, 253 shares):**
+
+| Variant | Trades | Return | Avg R | Max DD |
+|---|---|---|---|---|
+| Current rules | 41 | −2.9% | −0.04 | −7.3% |
+| Gap-down V (gapped down ≥2%, buy break of green opening range) | 13 | −4.3% | −0.66 | −4.3% |
+| …also on weak-market days | 17 | −4.9% | −0.51 | −4.9% |
+| Gap-down buy at 10:15, 1 ATR stop | 31 | −6.4% | −0.20 | −6.4% |
+| Current + allow gap-downs | 44 | −6.4% | −0.18 | −8.5% |
+| Current, 2% risk / 50% max size | 41 | −1.4% | −0.09 | −11.3% |
+| Cameron filter (5× volume, gap 5%+) | 9 | +3.3% | +0.85 | −1.2% |
+
+**Adopted: nothing.** No variant beat "current" on both return and avg R with ≥30 trades. 2% risk / 50% size improved
+return but worsened avg R and drawdown (−4 points): rejected. Small-cap gap-down setups lost intraday. The weak-morning
+large-cap bounce can't be tested intraday yet (only ~1–2 such mornings in 60 days); it needs engine support and a
+live/shadow record before it could be switched on.
+
+New engine switches (all default off / current behaviour): `max_gap_pct`, `require_above_prev`, `require_green_or`,
+`entry_mode: "after_or"`, `stop_use_or_low`. Also fixed: `min_gap_pct` no longer bypassed the $20 price cap.

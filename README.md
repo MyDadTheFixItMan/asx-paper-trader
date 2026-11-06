@@ -10,15 +10,17 @@ The rules come from published research and well-known traders' risk rules:
 
 | Rule | Setting | Source |
 |---|---|---|
-| Scan every ASX listing each morning, keep only shares with ≥ $1M average daily turnover, price ≥ $0.20 and ATR ≥ 1.5% | `min_avg_turnover`, `min_price`, `min_atr_pct` | Liquidity first: a $10k account must be able to get in and out |
-| Trade only **stocks in play**: opening volume ≥ 2× normal, green opening range, above yesterday's close; top 10 by relative volume | `min_relative_volume`, `watchlist_size` | Zarattini, Barbon & Aziz (2024) “A Profitable Day Trading Strategy for the U.S. Equity Market”; Ross Cameron's relative-volume rule |
+| Scan every ASX listing each morning, keep only shares priced $2–$20 with ≥ $1M average daily turnover and ATR ≥ 1.5% | `min_price`, `max_price`, `min_avg_turnover`, `min_atr_pct` | Liquidity first; Ross Cameron's price band (adopted 4 Nov after two backtests) |
+| Trade only **stocks in play**: opening volume ≥ 3× normal, green opening range, above yesterday's close; top 5 by relative volume | `min_relative_volume`, `watchlist_size` | Zarattini, Barbon & Aziz (2024); Cameron's relative-volume rule |
 | **Opening range breakout**: buy when price breaks the high of the first 15 minutes (covers the ASX's staggered 10:00–10:10 open) | `opening_range_minutes` | Toby Crabel; Zarattini et al. |
+| **No longs below VWAP** | `vwap_entry_filter` | Lance Breitstein; Zarattini & Aziz (adopted 3 Nov: first rule with positive avg R) |
 | Long only; stand aside when the ASX 200 opens down more than 1% | `market_min_change_pct` | Trade with the market |
-| Risk 1% of equity per trade, max 25% of equity in one stock, max 5 positions | `risk_per_trade_pct` … | Paul Tudor Jones / Linda Raschke: defence first |
-| Stop below the opening range or ¼ ATR, whichever is tighter; breakeven at +1R; trail by max(1R, ½ ATR) after +2R | `stop_atr_fraction`, `breakeven_at_r`, `trail_*` | Cut losses fast, let winners run |
-| No new entries after 12:30 (midday chop); all positions closed at 15:50 | `last_entry_time`, `exit_time` | Morning momentum; never hold overnight |
+| Risk 1% of equity per trade (scaled down after losing days), max 25% of equity in one stock, max 5 positions | `risk_per_trade_pct` … | Paul Tudor Jones / Linda Raschke: defence first |
+| Stop below the opening range or ½ ATR (at least 1%); no breakeven or trailing stop, hold to the close | `stop_atr_fraction`, `min_stop_pct` | Backtest: cutting winners early made results worse |
+| No new entries after 12:30; all positions closed at 15:50 | `last_entry_time`, `exit_time` | Morning momentum; never hold overnight |
 | Stop for the day after −2% or 3 losses in a row | `daily_loss_limit_pct`, `max_losses_in_row` | Protect the account on bad days |
 | $5 brokerage per trade + 0.10% slippage each way | `brokerage_per_trade`, `slippage_pct` | Realistic costs |
+| Tested but off: news filters, gap-down setups, Cameron 5-pillar filter, larger sizing | see CHANGELOG.md | Not yet proven over ≥30 trades |
 
 Every setting lives in `bot/config.json`.
 
@@ -26,7 +28,7 @@ Every setting lives in `bot/config.json`.
 
 - **Yahoo's ASX prices are ~20 minutes delayed.** The bot trades on those delayed bars, so a real trader
   with live data would get different fills.
-- **8% a month is a stretch target**, not an expectation. Most day traders lose money; treat the dashboard as an honest test.
+- **8% a week is the challenge target**, far above what any tested rule has achieved;, not an expectation. Most day traders lose money; treat the dashboard as an honest test.
 - GitHub's scheduled runs can start a few minutes late when GitHub is busy. The bot replays every
   missed 5-minute bar in order, so late runs don't change the results.
 - The repo should be **public**: it keeps GitHub Actions free and lets the dashboard read the data.

@@ -80,3 +80,17 @@ its open ≈ 0%; waiting for it to close above VWAP −0.07%. Waiting for the tu
 
 Takeaway: a real but small, rare bounce after big down opens (~6 days a year). Candidate setup for the weekly improver:
 "weak-open bounce": buy STW/IOZ at the open when it opens down >1.5%, sell at the close, with a stop; test the stop's effect first.
+
+## Gap-downs on the ASX: the bounce is real but small (7 Nov 2026, 10-year daily test)
+- Ernest Chan's "buy-on-gap" (buy shares opening below yesterday's low by more than one daily standard deviation while
+  above their 20-day average; sell at the close) earned well in US small caps 2005–2012 but decayed after it was
+  published (financialnoob; QuantRocket). On the ASX over 10 years it averaged +0.41% gross per trade — not enough to
+  cover ~0.5% costs on a $10k account: −60%.
+- A Griffith University study of large Australian stocks found intraday rebounds after very bad overnight news.
+  Consistent with that, large caps ($20M+/day) gapping down ≥3% on mornings the ASX 200 ETF (STW) opens ≥1.5% down
+  rose +1.3% on average from open to close (141 trades, 51% winners) — the only family positive after costs, but only
+  +5.7% over 10 years with config sizing (+24% at 2% risk / 50% size).
+- Reversal profits are earned intraday and momentum overnight (Lou, Polk & Skouras 2019), which fits: a long-only,
+  never-overnight bot is better placed to buy weakness than to chase strength.
+- Candidate setup for the weekly improver: "weak-morning large-cap bounce". Needs engine support, a stop, and a shadow
+  record before going live; expect ~15 trades a year.
