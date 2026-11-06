@@ -39,7 +39,7 @@ def summarise(name, rets):
 
 
 def main():
-    d = md._download([ETF, IDX], period="10y", interval="1d")
+    d = {**md._download([ETF], period="10y", interval="1d"), **md._download([IDX], period="10y", interval="1d")}
     etf, idx = d[ETF], d[IDX]
     for df in (etf, idx):
         df.index = pd.to_datetime(df.index).tz_localize(None).normalize()
@@ -58,7 +58,7 @@ def main():
         print(json.dumps(out))
 
     # Hourly: wait for the turn
-    h = md._download([ETF, IDX], period="730d", interval="60m")
+    h = {**md._download([ETF], period="730d", interval="60m"), **md._download([IDX], period="730d", interval="60m")}
     he, hi_ = md.to_sydney(h[ETF]), md.to_sydney(h[IDX])
     prev_close = j["Close_e"]
     hourly = {"open": [], "above_open": [], "above_vwap": []}
