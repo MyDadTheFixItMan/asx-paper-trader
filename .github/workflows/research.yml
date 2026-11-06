@@ -6,6 +6,9 @@ on:
       script:
         description: Script in bot/ to run
         default: research_vday.py
+      lookback:
+        description: News backfill days (news_update.py only)
+        default: ""
 
 permissions:
   contents: write
@@ -29,11 +32,12 @@ jobs:
       - run: python bot/${{ inputs.script }}
         env:
           PYTHONWARNINGS: ignore
+          NEWS_LOOKBACK_DAYS: ${{ inputs.lookback }}
       - name: Save results
         run: |
           git config user.name "asx-paper-trader"
           git config user.email "actions@users.noreply.github.com"
-          git add data/backtest
+          git add data
           git diff --cached --quiet && exit 0
           git commit -m "Backtest results $(TZ=Australia/Sydney date '+%Y-%m-%d %H:%M')"
           git pull --rebase
