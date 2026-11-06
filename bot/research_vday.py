@@ -44,7 +44,8 @@ def main():
     for df in (etf, idx):
         df.index = pd.to_datetime(df.index).tz_localize(None).normalize()
     j = etf.join(idx, lsuffix="_e", rsuffix="_i", how="inner").dropna()
-    j["gap_i"] = (j["Open_i"] / j["Close_i"].shift() - 1) * 100
+    # Yahoo's ^AXJO "open" is usually just the prior close, so use the ETF's real opening trade instead
+    j["gap_i"] = (j["Open_e"] / j["Close_e"].shift() - 1) * 100
     j = j.dropna()
     daily = []
     for lo, hi, label in [(-99, -1.5, "index opens down >1.5%"), (-1.5, -1.0, "down 1–1.5%"), (-1.0, -0.5, "down 0.5–1%"),
@@ -59,7 +60,7 @@ def main():
     # Hourly: wait for the turn
     h = md._download([ETF, IDX], period="730d", interval="60m")
     he, hi_ = md.to_sydney(h[ETF]), md.to_sydney(h[IDX])
-    prev_close = j["Close_i"]
+    prev_close = j["Close_e"]
     hourly = {"open": [], "above_open": [], "above_vwap": []}
     for day, g in hi_.groupby(hi_.index.date):
         ts = pd.Timestamp(day)
@@ -68,25 +69,28 @@ def main():
         pc = prev_close.shift().get(ts)
         if pd.isna(pc) or g.empty:
             continue
-        gap = (g["Open"].iloc[0] / pc - 1) * 100
+        ge = he[he.index.date == day]
+        if ge.empty:
+            continue
+        gap = (float(ge["Open"].iloc[0]) / pc - 1) * 100
         if gap > -1.0:
             continue
-        ge = he[he.index.date == day]
         if len(ge) < 3:
             continue
         exit_ = float(ge["Close"].iloc[-1])
         hourly["open"].append(net_ret(float(ge["Open"].iloc[0]), exit_))
-        day_open = float(g["Open"].iloc[0])
+        day_open = float(ge["Open"].iloc[0])
         tp = (ge["High"] + ge["Low"] + ge["Close"]) / 3
-        vwap = (tp * ge["Volume"]).cumsum() / ge["Volume"].cumsum().replace(0, pd.NA)
-        for key, cond in (("above_open", g["Close"] > day_open), ("above_vwap", ge["Close"] > vwap)):
+        vol = ge["Volume"].astype(float).clip(lower=1)
+        vwap = (tp * vol).cumsum() / vol.cumsum()
+        for key, cond in (("above_open", ge["Close"] > day_open), ("above_vwap", ge["Close"] > vwap)):
             hits = [t for t, ok in cond.items() if bool(ok) and t.hour < 15]
             if hits:
                 t0 = hits[0]
                 if t0 in ge.index:
                     hourly[key].append(net_ret(float(ge.loc[t0, "Close"]), exit_))
     hourly_out = [summarise("Index opened down >1%: buy STW at open", hourly["open"]),
-                  summarise("…wait until the index trades back above its open (before 3pm)", hourly["above_open"]),
+                  summarise("…wait until STW closes an hour back above its open (before 3pm)", hourly["above_open"]),
                   summarise("…wait until STW closes an hour above its VWAP (before 3pm)", hourly["above_vwap"])]
     for x in hourly_out:
         print(json.dumps(x))
