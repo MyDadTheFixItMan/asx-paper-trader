@@ -118,6 +118,16 @@ class Engine:
                     self.log(idx_or["end"], f"ASX 200 {chg:+.2f}% at the open: weak market, standing aside today.")
                     return True
 
+        # Tudor Jones / O'Neil "M": long only when the market is in an uptrend
+        mma = cfg.get("market_trend_ma")
+        im = universe.get("__index__", {})
+        if mma and im.get(f"ma{mma}") and im.get("prev_close") and im["prev_close"] < im[f"ma{mma}"]:
+            self.day["watchlist"] = []
+            self.day["phase"] = "trading"
+            self.day["no_new_entries"] = True
+            self.log(None, f"ASX 200 is below its {mma}-day average: market downtrend, standing aside today.")
+            return True
+
         cands = []
         ready = 0
         for sym, bars in bars_by_sym.items():
@@ -139,6 +149,17 @@ class Engine:
             gap_ok = orr["close"] <= cfg.get("max_price", 1e12)
             if cfg.get("min_gap_pct") and meta.get("prev_close"):
                 gap_ok = gap_ok and (orr["open"] / meta["prev_close"] - 1) * 100 >= cfg["min_gap_pct"]
+            # Book filters on the stock itself (only facts known before the open)
+            sma = cfg.get("stock_trend_ma")
+            if sma and not (meta.get(f"ma{sma}") and meta.get("prev_close", 0) > meta[f"ma{sma}"]):
+                continue  # Murphy / Pring: stock must be in its own uptrend
+            if cfg.get("near_high_pct") is not None and not (meta.get("high252") and meta.get("prev_close", 0) >= meta["high252"] * (1 - cfg["near_high_pct"] / 100)):
+                continue  # O'Neil / Livermore: leaders trade near their highs
+            if cfg.get("rs_min") is not None and (meta.get("ret63") is None or im.get("ret63") is None or meta["ret63"] - im["ret63"] < cfg["rs_min"]):
+                continue  # O'Neil: relative strength vs the market over ~3 months
+            if cfg.get("or_close_top_pct") and orr["high"] > orr["low"] and \
+                    (orr["close"] - orr["low"]) / (orr["high"] - orr["low"]) * 100 < 100 - cfg["or_close_top_pct"]:
+                continue  # Nison: strong opening candle (closes near its high)
             nw = (self.day.get("news") or {}).get(sym)
             if cfg.get("news_require") and not nw:
                 continue  # Cameron's catalyst pillar: only shares with fresh price-sensitive news

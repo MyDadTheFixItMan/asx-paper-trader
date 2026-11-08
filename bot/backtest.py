@@ -32,7 +32,7 @@ def load_market(cfg):
     intraday = {t[:-3] if t.endswith(".AX") else t: md.to_sydney(df)
                 for t, df in md._download(tickers + [cfg["market_index"]], period="60d", interval="5m").items()}
     daily = {t[:-3] if t.endswith(".AX") else t: md.to_sydney(df)
-             for t, df in md._download(tickers + [cfg["market_index"]], period="6mo", interval="1d").items()}
+             for t, df in md._download(tickers + [cfg["market_index"]], period="2y", interval="1d").items()}
     return syms, intraday, daily
 
 
@@ -46,7 +46,8 @@ def meta_for(sym, d, intraday, daily, cfg):
     dd = daily.get(sym)
     if dd is None:
         return None
-    hist = dd[dd.index.date < d].tail(30)
+    full = dd[dd.index.date < d]
+    hist = full.tail(30)
     if len(hist) < 15:
         return None
     hl = hist["High"] - hist["Low"]
@@ -67,7 +68,7 @@ def meta_for(sym, d, intraday, daily, cfg):
     per = per[per > 0].tail(14)
     if len(per) < 5:
         return None
-    return {"prev_close": prev, "atr": atr, "avg_or_volume": float(per.mean())}
+    return {"prev_close": prev, "atr": atr, "avg_or_volume": float(per.mean()), **md.trend_meta(full["Close"], full["High"])}
 
 
 EVENTS = news.load_events(ROOT / "data/news/events.json")
@@ -90,7 +91,7 @@ def run(cfg, syms, intraday, daily, days):
         if idd is not None:
             h = idd[idd.index.date < d]
             prev_idx = float(h["Close"].iloc[-1]) if len(h) else None
-        uni["__index__"] = {"prev_close": prev_idx}
+        uni["__index__"] = {"prev_close": prev_idx, **(md.trend_meta(h["Close"]) if idd is not None and len(h) else {})}
         eng.new_day(d.isoformat(), uni)
         # News known at that morning, and rules learned only from earlier days (walk-forward, no hindsight)
         ov = news.overnight_news(EVENTS, d.isoformat())
@@ -135,6 +136,7 @@ def summarise(name, cfg, state, trades):
         "weekly_returns": wret,
         "win_rate": round(sum(t["net"] > 0 for t in trades) / n * 100, 1) if n else 0,
         "avg_r": round(sum(t["r"] for t in trades) / n, 3) if n else 0,
+        "sqn": round((sum(t["r"] for t in trades) / n) / (pd.Series([t["r"] for t in trades]).std() or 1) * min(n, 100) ** 0.5, 2) if n > 1 else 0,
         "max_drawdown_pct": round(mdd, 2),
         "fees": round(sum(t["fees"] for t in trades), 2),
     }
@@ -155,7 +157,7 @@ def main():
         r = summarise(v["name"], cfg, state, trades)
         r["overrides"] = v["overrides"]
         results.append(r)
-        print(json.dumps({k: r[k] for k in ("name", "trades", "total_return_pct", "avg_week_pct", "win_rate", "avg_r", "max_drawdown_pct")}))
+        print(json.dumps({k: r[k] for k in ("name", "trades", "total_return_pct", "avg_week_pct", "win_rate", "avg_r", "sqn", "max_drawdown_pct")}))
     out = ROOT / "data/backtest"
     out.mkdir(parents=True, exist_ok=True)
     (out / "results.json").write_text(json.dumps({

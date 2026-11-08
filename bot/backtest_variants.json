@@ -1,8 +1,10 @@
 [
- {"name": "Gap-down V: gapped down >=2%, green opening range, buy breakout above it (VWAP filter on)", "overrides": {"require_above_prev": false, "max_gap_pct": -2.0, "min_relative_volume": 2.0}},
- {"name": "Gap-down V, also on weak-market days", "overrides": {"require_above_prev": false, "max_gap_pct": -2.0, "min_relative_volume": 2.0, "market_min_change_pct": -99}},
- {"name": "Gap-down buy at 10:15 (no confirmation), gap >=3%, 1 ATR stop, any market", "overrides": {"require_above_prev": false, "require_green_or": false, "max_gap_pct": -3.0, "min_relative_volume": 1.0, "entry_mode": "after_or", "stop_use_or_low": false, "stop_atr_fraction": 1.0, "market_min_change_pct": -99, "vwap_entry_filter": false}},
- {"name": "Current rules + also allow gap-downs (green range, breakout)", "overrides": {"require_above_prev": false}},
- {"name": "Current rules, 2% risk / 50% max size (fees smaller share of each trade)", "overrides": {"risk_per_trade_pct": 2.0, "max_position_pct": 50.0}},
- {"name": "Ross Cameron filter (5x volume, gap 5%+): re-check trade count", "overrides": {"min_relative_volume": 5.0, "min_gap_pct": 5.0}}
+ {"name": "Tudor Jones: trade only when ASX 200 is above its 200-day average", "overrides": {"market_trend_ma": 200}},
+ {"name": "O'Neil 'M': ASX 200 above its 50-day average", "overrides": {"market_trend_ma": 50}},
+ {"name": "Murphy/Pring: stock above its 50-day average", "overrides": {"stock_trend_ma": 50}},
+ {"name": "O'Neil leaders: within 15% of 52-week high", "overrides": {"near_high_pct": 15}},
+ {"name": "O'Neil RS: beat the market over 3 months", "overrides": {"rs_min": 0}},
+ {"name": "Nison: opening candle closes in top 25% of its range", "overrides": {"or_close_top_pct": 25}},
+ {"name": "Douglas: same size every trade (no cutting size after losing days)", "overrides": {"learn_min_risk_multiplier": 1.0}},
+ {"name": "Combined trend: market >50-day + stock >50-day + near high", "overrides": {"market_trend_ma": 50, "stock_trend_ma": 50, "near_high_pct": 15}}
 ]

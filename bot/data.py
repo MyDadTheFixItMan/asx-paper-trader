@@ -97,7 +97,7 @@ def _download(tickers: list[str], _retry: bool = True, **kw) -> dict[str, pd.Dat
 def build_universe(codes: list[str], cfg: dict, today: datetime) -> dict:
     """Morning scan of every listing -> tradeable universe with ATR, turnover and opening volume norms."""
     tickers = [f"{c}.AX" for c in codes]
-    daily = _download(tickers, period="3mo", interval="1d")
+    daily = _download(tickers, period="1y", interval="1d")
     today_d = today.date()
     rows = []
     for t, df in daily.items():
@@ -118,10 +118,10 @@ def build_universe(codes: list[str], cfg: dict, today: datetime) -> dict:
         atr_pct = atr / prev_close * 100
         if turnover < cfg["min_avg_turnover"] or atr_pct < cfg["min_atr_pct"]:
             continue
-        rows.append((t[:-3], prev_close, atr, turnover))
+        rows.append((t[:-3], prev_close, atr, turnover, trend_meta(df["Close"], df["High"])))
     rows.sort(key=lambda r: r[3], reverse=True)
     rows = rows[: cfg["max_universe"]]
-    syms = {r[0]: {"prev_close": round(r[1], 4), "atr": round(r[2], 4), "avg_turnover": round(r[3])}
+    syms = {r[0]: {"prev_close": round(r[1], 4), "atr": round(r[2], 4), "avg_turnover": round(r[3]), **r[4]}
             for r in rows}
 
     # Typical opening-range volume over the last 14 sessions (for relative volume)
@@ -139,15 +139,31 @@ def build_universe(codes: list[str], cfg: dict, today: datetime) -> dict:
             syms[s]["avg_or_volume"] = float(per_day.mean())
     syms = {s: m for s, m in syms.items() if m.get("avg_or_volume")}
 
-    idx = _download([cfg["market_index"]], period="10d", interval="1d").get(cfg["market_index"])
+    idx = _download([cfg["market_index"]], period="1y", interval="1d").get(cfg["market_index"])
     index_prev = None
     if idx is not None:
         idx = to_sydney(idx)
         idx = idx[idx.index.date < today_d]
         if len(idx):
             index_prev = float(idx["Close"].iloc[-1])
-    syms["__index__"] = {"prev_close": index_prev}
+    syms["__index__"] = {"prev_close": index_prev, **(trend_meta(idx["Close"]) if idx is not None and len(idx) else {})}
     return {"date": today_d.isoformat(), "scanned": len(codes), "priced": len(daily), "symbols": syms}
+
+
+def trend_meta(closes: pd.Series, highs: pd.Series | None = None) -> dict:
+    """Book-style trend facts from completed daily closes (Murphy/Pring MAs, O'Neil 52-week high & 3-month return)."""
+    c = closes.dropna()
+    out = {}
+    if len(c) >= 50:
+        out["ma50"] = round(float(c.tail(50).mean()), 4)
+    if len(c) >= 200:
+        out["ma200"] = round(float(c.tail(200).mean()), 4)
+    if len(c) >= 64:
+        out["ret63"] = round(float(c.iloc[-1] / c.iloc[-64] - 1) * 100, 2)
+    h = (highs if highs is not None else c).dropna().tail(252)
+    if len(h) >= 150:
+        out["high252"] = round(float(h.max()), 4)
+    return out
 
 
 def to_sydney(df: pd.DataFrame) -> pd.DataFrame:
