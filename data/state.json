@@ -39,19 +39,81 @@
  ],
  "day": {
   "date": "2026-11-09",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9749.8,
   "universe_size": 254,
-  "watchlist": [],
+  "watchlist": [
+   {
+    "sym": "VAU",
+    "rvol": 4.22,
+    "or_high": 6.079999923706055,
+    "or_low": 5.889999866485596,
+    "or_open": 5.889999866485596,
+    "or_close": 6.059999942779541,
+    "atr": 0.2729,
+    "gap_pct": 0.86,
+    "news": null
+   },
+   {
+    "sym": "EVT",
+    "rvol": 3.76,
+    "or_high": 15.904999732971191,
+    "or_low": 15.779999732971191,
+    "or_open": 15.84000015258789,
+    "or_close": 15.890000343322754,
+    "atr": 0.4396,
+    "gap_pct": 0.57,
+    "news": null
+   },
+   {
+    "sym": "GMD",
+    "rvol": 3.32,
+    "or_high": 7.340000152587891,
+    "or_low": 7.059999942779541,
+    "or_open": 7.059999942779541,
+    "or_close": 7.329999923706055,
+    "atr": 0.3525,
+    "gap_pct": 0.28,
+    "news": null
+   },
+   {
+    "sym": "WHC",
+    "rvol": 3.13,
+    "or_high": 7.170000076293945,
+    "or_low": 7.0,
+    "or_open": 7.059999942779541,
+    "or_close": 7.09499979019165,
+    "atr": 0.2871,
+    "gap_pct": 0.28,
+    "news": null
+   },
+   {
+    "sym": "SIQ",
+    "rvol": 3.05,
+    "or_high": 11.34000015258789,
+    "or_low": 11.0600004196167,
+    "or_open": 11.220000267028809,
+    "or_close": 11.270000457763672,
+    "atr": 0.4889,
+    "gap_pct": 0.72,
+    "news": {
+     "category": "Other",
+     "headline": "Trading Update and UBS Australasia Conference Materials",
+     "time": "2026-11-09T08:46:26+11:00"
+    }
+   }
+  ],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": 0.2,
+  "last_ts": "2026-11-09T10:10:00+11:00",
   "log": [
    "09:24 Read 115 price-sensitive ASX announcements; 15 are for shares the bot can trade.",
-   "09:24 Scanned 1836 ASX listings; 253 pass the liquidity and volatility filters."
+   "09:24 Scanned 1836 ASX listings; 253 pass the liquidity and volatility filters.",
+   "Stocks in play: VAU (4.22x), EVT (3.76x), GMD (3.32x), WHC (3.13x), SIQ (3.05x, news: Other)",
+   "10:35 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "INA": {
@@ -147,10 +209,44 @@
     "Acquisition / sale"
    ]
   },
-  "news_refreshed": true
+  "news_refreshed": true,
+  "tracks": {
+   "GMD": {
+    "pv": 3956679.943787416,
+    "v": 547395.0,
+    "low": 7.059999942779541,
+    "vwap": 7.228198912645194
+   },
+   "WHC": {
+    "pv": 3003258.9603128433,
+    "v": 422609.0,
+    "low": 7.0,
+    "vwap": 7.1064718458737115
+   },
+   "VAU": {
+    "pv": 3064148.6731688185,
+    "v": 509302.0,
+    "low": 5.889999866485596,
+    "vwap": 6.016368820795557
+   },
+   "SIQ": {
+    "pv": 552569.2867654165,
+    "v": 49250.0,
+    "low": 11.0600004196167,
+    "vwap": 11.219680949551604
+   },
+   "EVT": {
+    "pv": 197556.68057759604,
+    "v": 12467.0,
+    "low": 15.779999732971191,
+    "vwap": 15.846368859998078
+   }
+  },
+  "news_checked_at": "2026-11-09T10:35:05.701677+11:00",
+  "news_today": []
  },
- "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-09T10:30:06.316767+11:00",
+ "status": "Watching 5 stocks in play for breakouts",
+ "last_run": "2026-11-09T10:35:05.701677+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
