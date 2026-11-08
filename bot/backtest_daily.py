@@ -32,14 +32,23 @@ CFG = json.loads((ROOT / "bot/config.json").read_text())
 #   ma200: prior close above its 200-day average (uptrend); min_turnover: liquidity override ($/day)
 #   market_max_gap: only on days STW (ASX 200 ETF) opens down at least this much; syms: restrict to these codes
 #   risk/max_pos: % risk per trade and max % of equity per position (defaults: config, within guardrails)
+GU = {"side": "up", "min_gap": 4, "max_gap": 60, "stop_atr": 1.0, "top": 5}
+LC = {"side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 3, "market_max_gap": -1.5}
 VARIANTS = [
-    {"name": "control: top 5 gaps up >=4%, stop 1 ATR", "side": "up", "min_gap": 4, "max_gap": 60, "stop_atr": 1.0, "top": 5},
-    {"name": "LC gap-down >=3%, STW <= -1.5% [round 2 best]", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 3, "market_max_gap": -1.5},
-    {"name": "…same, 2% risk / 50% max size", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 3, "market_max_gap": -1.5, "risk": 2.0, "max_pos": 50},
-    {"name": "…same, top 1 only, 2% risk / 50% max", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 1, "market_max_gap": -1.5, "risk": 2.0, "max_pos": 50},
-    {"name": "…stock gap >=4%, STW <= -1.5%", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -4, "top": 3, "market_max_gap": -1.5},
-    {"name": "…stock gap >=3%, STW <= -2%", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 3, "market_max_gap": -2.0},
-    {"name": "…stock gap >=3%, STW <= -1.5%, in uptrend (above 200-day avg)", "side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 3, "market_max_gap": -1.5, "ma200": True},
+    dict(GU, name="control: top 5 gap-ups >=4%, stop 1 ATR"),
+    dict(GU, name="Tudor Jones: + market above its 200-day average", mkt_ma=200),
+    dict(GU, name="Murphy/O'Neil: + market >200-day and stock >50-day average", mkt_ma=200, stock_ma=50),
+    dict(GU, name="O'Neil CAN SLIM-style leaders: gap >=2%, within 5% of 52-wk high, beats market by 10%+ over 3 mths, market >50-day",
+         min_gap=2, near_high_pct=5, rs_min=10, mkt_ma=50),
+    dict(GU, name="O'Neil: + prior-day volume >=1.5x 50-day avg (gap >=2%, market >50-day)", min_gap=2, prev_vol_surge=1.5, mkt_ma=50),
+    dict(GU, name="Livermore pivot: opens above 20-day high, market >200-day", min_gap=0, pivot_days=20, mkt_ma=200),
+    dict(GU, name="Livermore pivot: opens above 52-wk high (near_high 0%), gap >=1%", min_gap=1, near_high_pct=0, pivot_days=250),
+    dict(GU, name="Nison: gap-up >=2% after a bullish engulfing day", min_gap=2, prev_engulf=True),
+    dict(LC, name="best so far: large-cap gap-down >=3% when STW opens <= -1.5%"),
+    dict(LC, name="…+ stock above its 200-day average (Murphy: buy dips in uptrends)", stock_ma=200),
+    dict(LC, name="…+ market above its 200-day average (Tudor Jones)", mkt_ma=200),
+    dict(LC, name="…+ stock beats market over 3 months (O'Neil RS)", rs_min=0),
+    dict(LC, name="Nison: large-cap gap-down >=3% after a hammer day, any market", market_max_gap=None, prev_hammer=True),
 ]
 EXTRA = ["STW.AX"]  # ETFs aren't in the company list
 
@@ -85,6 +94,31 @@ def signals(v, P):
         score = low_gap
     if v.get("ma200"):
         ok = ok & (prevC > C.rolling(200).mean().shift(1))
+    # ---- Ideas from the trading books (all use only information known before the open) ----
+    stw_c = C["STW"] if "STW" in C.columns else None
+    if v.get("mkt_ma") and stw_c is not None:            # Tudor Jones / O'Neil "M": only trade when the market is in an uptrend
+        up = (stw_c > stw_c.rolling(v["mkt_ma"]).mean()).shift(1)
+        ok = ok.mul(up.fillna(False), axis=0)
+    if v.get("stock_ma"):                                  # Murphy / Pring: stock in its own uptrend
+        ok = ok & (prevC > C.rolling(v["stock_ma"]).mean().shift(1))
+    if v.get("near_high_pct") is not None:                 # O'Neil / Livermore: leaders trade near their highs
+        hi = P["H"].rolling(252, min_periods=150).max().shift(1)
+        ok = ok & (prevC >= hi * (1 - v["near_high_pct"] / 100))
+    if v.get("rs_min") is not None and stw_c is not None:  # O'Neil relative strength: beat the market over ~3 months
+        rs = (C / C.shift(63) - 1).sub(stw_c / stw_c.shift(63) - 1, axis=0) * 100
+        ok = ok & (rs.shift(1) >= v["rs_min"])
+    if v.get("pivot_days"):                                # Livermore pivotal point: open above the prior N-day high
+        ok = ok & (O > P["H"].rolling(v["pivot_days"]).max().shift(1))
+    if v.get("prev_vol_surge"):                            # O'Neil: volume surge (prior day volume vs 50-day average)
+        V = P["V"]
+        ok = ok & (V.shift(1) >= V.rolling(50).mean().shift(2) * v["prev_vol_surge"])
+    if v.get("prev_engulf"):                               # Nison: bullish engulfing candle the day before
+        pO, pC, ppO, ppC = O.shift(1), C.shift(1), O.shift(2), C.shift(2)
+        ok = ok & (pC > pO) & (ppC < ppO) & (pC >= ppO) & (pO <= ppC)
+    if v.get("prev_hammer"):                               # Nison: hammer the day before (long lower shadow, small body near the high)
+        pO, pH, pL, pC = O.shift(1), P["H"].shift(1), L.shift(1), C.shift(1)
+        body, rng = (pC - pO).abs(), (pH - pL)
+        ok = ok & (rng > 0) & ((pO.where(pO < pC, pC) - pL) >= 2 * body) & ((pH - pO.where(pO > pC, pC)) <= body)
     if v.get("market_max_gap") is not None and "STW" in O.columns:
         mkt = (O["STW"] / C["STW"].shift(1) - 1) * 100
         ok = ok.mul(mkt <= v["market_max_gap"], axis=0)
@@ -156,6 +190,7 @@ def summarise(v, daily, trades, start_capital):
         "weeks": int(len(wret)), "weeks_hitting_8pct": int((wret >= 8).sum()),
         "win_rate": round(sum(t["net"] > 0 for t in trades) / n * 100, 1) if n else 0,
         "avg_r": round(float(np.mean([t["r"] for t in trades])), 3) if n else 0,
+        "sqn": round(float(np.mean([t["r"] for t in trades]) / (np.std([t["r"] for t in trades]) or 1) * min(n, 100) ** 0.5), 2) if n > 1 else 0,
         "max_drawdown_pct": round(float(((eqs / peak) - 1).min() * 100), 1),
         "yearly_pct": {str(k.year): round(float(x), 1) for k, x in yret.items()},
         "end_equity": round(float(eqs.iloc[-1]), 2),
@@ -194,7 +229,7 @@ def main():
     if idx is not None:
         bench = round((idx["Close"].iloc[-1] / idx["Close"].iloc[30] - 1) * 100, 1)
 
-    P = {"O": O, "H": H, "L": L, "C": C, "ATR": ATR, "TURN": TURN}
+    P = {"O": O, "H": H, "L": L, "C": C, "V": V, "ATR": ATR, "TURN": TURN}
     results = []
     for v in VARIANTS:
         daily, trades = run(v, P)
@@ -207,7 +242,7 @@ def main():
             ys = [e for d, _, e in dy if d.year == y]
             r["yearly_reset_pct"][str(y)] = round((ys[-1] / CFG["start_capital"] - 1) * 100, 1)
         r["years_profitable"] = sum(x > 0 for x in r["yearly_reset_pct"].values())
-        print(json.dumps({k: r.get(k) for k in ("name", "trades", "total_return_pct", "cagr_pct", "avg_week_pct", "weeks_hitting_8pct", "win_rate", "avg_r", "max_drawdown_pct", "avg_gross_move_pct", "years_profitable", "too_small_to_trade_from")}))
+        print(json.dumps({k: r.get(k) for k in ("name", "trades", "total_return_pct", "cagr_pct", "avg_week_pct", "weeks_hitting_8pct", "win_rate", "avg_r", "sqn", "max_drawdown_pct", "avg_gross_move_pct", "years_profitable", "too_small_to_trade_from")}))
         results.append(r)
     out = ROOT / "data/backtest"
     out.mkdir(parents=True, exist_ok=True)
