@@ -94,3 +94,21 @@ Takeaway: a real but small, rare bounce after big down opens (~6 days a year). C
   never-overnight bot is better placed to buy weakness than to chase strength.
 - Candidate setup for the weekly improver: "weak-morning large-cap bounce". Needs engine support, a stop, and a shadow
   record before going live; expect ~15 trades a year.
+
+## The classic trading books (8 Nov 2026)
+Core ideas (summarised, not quoted), what we built, and what the tests said.
+
+| Book | Core idea | How it's used / tested |
+|---|---|---|
+| Douglas, *Trading in the Zone* / *The Disciplined Trader* | Any one trade is random; an edge only shows over many trades, so execute every signal the same way and judge on samples, not single results | The bot is fully mechanical; no rule is adopted on fewer than 30 trades. Tested "same size every trade" (no cutting size after losing days): return −2.4% vs −4.1% but avg R slightly worse (−0.035 vs −0.029) → not adopted yet |
+| Tharp, *Trade Your Way to Financial Freedom* | Think in R-multiples; expectancy and position sizing matter more than entries; System Quality Number (SQN) | R and avg R were already tracked; **SQN now reported in every backtest and on the dashboard**. Tested 2% risk earlier: worse avg R and drawdown |
+| Schwager, *Market Wizards* | Cut losses, let winners run, never average down, respect the market trend (e.g. Tudor Jones's 200-day rule) | Hard stops, no averaging down, hold to close already in place. 200-day market filter: intraday −1.7% vs −4.1% but only 23 trades and worse avg R; 10-year test: made results worse → not adopted |
+| O'Neil, *How to Make Money in Stocks* (CAN SLIM) | Buy market leaders near new highs, with relative strength and volume surges, only in a confirmed uptrend | Leaders filter (near 52-wk high + RS + uptrend): 10-year avg R −0.26 (worse than control −0.07); intraday near-high and RS filters −6.4% / −6.8% → rejected. CAN SLIM is a multi-week swing method; on the ASX, leaders that gap up fade *within the day* |
+| Murphy, *Technical Analysis of the Financial Markets*; Pring, *Technical Analysis Explained* | Trade in the direction of the trend (moving averages), confirm with volume, multiple timeframes | Stock above 50-day: intraday −7.2% (worse). On the best 10-yr setup (large-cap gap-down on weak mornings), adding "stock above 200-day" gave +4.0% vs +5.7% → no improvement |
+| Lefèvre, *Reminiscences of a Stock Operator* (Livermore) | Buy at pivotal points (new highs), follow the line of least resistance, sit with winners | Pivot entries (open above 20-day / 52-week high): 10-year avg R −0.14 / −0.23 → rejected for day trading. "Sit with winners" is already how exits work (no profit targets; tests showed targets hurt) |
+| Nison, *Japanese Candlestick Charting Techniques* | Reversal/continuation candle patterns | Bullish engulfing before a gap-up: 10-yr avg R −0.19; hammer before a large-cap gap-down: −0.09 (vs +0.17 without); strong opening candle intraday: −4.5%. No benefit found, consistent with academic tests of candlesticks |
+
+Bottom line: the books' risk rules (small fixed risk, hard stops, no averaging down, mechanical execution, judge by
+expectancy over samples) are already the bot's foundation. Their entry methods were built for multi-day to multi-week
+holds in US markets; as same-day ASX filters, none improved results. The one promising area remains the large-cap
+gap-down bounce on sharply weak mornings (10-yr +5.7%, avg +0.17R, SQN ~2), which none of the book filters improved.

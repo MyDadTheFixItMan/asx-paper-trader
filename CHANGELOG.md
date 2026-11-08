@@ -111,3 +111,11 @@ live/shadow record before it could be switched on.
 
 New engine switches (all default off / current behaviour): `max_gap_pct`, `require_above_prev`, `require_green_or`,
 `entry_mode: "after_or"`, `stop_use_or_low`. Also fixed: `min_gap_pct` no longer bypassed the $20 price cap.
+
+## 2026-11-08: ideas from nine classic trading books (see RESEARCH.md)
+- New switchable filters (all off): `market_trend_ma`, `stock_trend_ma`, `near_high_pct`, `rs_min`, `or_close_top_pct`;
+  universe now carries 50/200-day averages, 52-week high and 3-month return. 10-year daily test gained the same filters
+  plus pivot, volume-surge, engulfing and hammer patterns. Tharp's SQN added to both backtests.
+- Results: no book filter beat "current" on both return and avg R with 30+ trades (intraday: current −4.1%, avg −0.03R;
+  best book variant "same size every trade" −2.4%, avg −0.035R). 10-year: every book entry filter lowered avg R.
+  **Adopted: nothing.** Dashboard now shows SQN.

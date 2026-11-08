@@ -214,6 +214,8 @@ function stats(trades){
     winRate: trades.length? wins.length/trades.length*100 : 0,
     avgWin: wins.length? gw/wins.length:0, avgLoss: losses.length? -gl/losses.length:0,
     pf: gl>0? gw/gl : (gw>0? Infinity:0),
+    sqn: (()=>{ const rs=trades.map(t=>t.r); if(rs.length<2) return null; const m=rs.reduce((a,b)=>a+b,0)/rs.length;
+      const sd=Math.sqrt(rs.reduce((a,b)=>a+(b-m)**2,0)/(rs.length-1)); return sd? m/sd*Math.sqrt(Math.min(rs.length,100)) : null; })(),
     avgR: trades.length? trades.reduce((s,t)=>s+t.r,0)/trades.length:0,
   };
 }
@@ -247,7 +249,7 @@ function render(){
   $("tiles").innerHTML = [
     ["Net P&L", `<span class="${cls(netP)}">${fmt$(netP,true)}</span>`, `${fmtP(netP/base*100)}${live&&openPL?` · incl. open ${fmt$(openPL,true)}`:""}`],
     ["Trades", st.n, (n=>`${n} trading day${n===1?"":"s"}`)(daily.length + (live && !daily.some(d=>d.date===ref) ? 1 : 0))],
-    ["Win rate", st.n? st.winRate.toFixed(0)+"%":"—", st.n? `avg ${st.avgR>=0?"+":""}${st.avgR.toFixed(2)}R per trade`:""],
+    ["Win rate", st.n? st.winRate.toFixed(0)+"%":"—", st.n? `avg ${st.avgR>=0?"+":""}${st.avgR.toFixed(2)}R per trade${st.sqn!=null?` · SQN ${st.sqn.toFixed(1)}`:""}`:""],
     ["Avg win / loss", st.n? `${fmt$(st.avgWin)} / ${fmt$(Math.abs(st.avgLoss))}`:"—", `profit factor ${st.n?pf:"—"} · fees ${fmt$(st.fees)}`],
   ].map(([k,v,n])=>`<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="n">${n}</div></div>`).join("");
 
