@@ -78,6 +78,8 @@ def main():
     shutil.copytree(REPO / "bot", tmp / "bot")
     (tmp / "data").mkdir()
     (tmp / "bot" / "data.py").write_text(FAKE_DATA)
+    cfgp = tmp / "bot" / "config.json"   # no network in tests: switch live news off
+    cfg = json.loads(cfgp.read_text()); cfg["news_enabled"] = False; cfgp.write_text(json.dumps(cfg))
     (tmp / "bot" / "scenario.json").write_text(json.dumps(
         {k: [dict(b, t=b["t"].isoformat()) for b in v] for k, v in SCENARIO.items()}))
     (tmp / "bot" / "uni.json").write_text(json.dumps(UNIVERSE))

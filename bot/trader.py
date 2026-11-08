@@ -66,6 +66,40 @@ def load_news(state, now, symbols, refresh=False):
         print(f"News fetch failed: {e}")
 
 
+def check_news_hourly(state, eng, now, symbols):
+    """Every hour during the session: read new price-sensitive ASX announcements, flag news on held shares."""
+    if not CFG.get("news_enabled", True):
+        return
+    day = state["day"]
+    last = day.get("news_checked_at")
+    every = CFG.get("news_check_minutes", 60)
+    if last and (now - pd.Timestamp(last)).total_seconds() < every * 60:
+        return
+    try:
+        import news
+        since = pd.Timestamp(last) if last else now.normalize().replace(hour=10)
+        fresh = news.fetch(since, max_pages=20)
+        day["news_checked_at"] = now.isoformat()
+        feed = day.setdefault("news_today", [])
+        known = {x["key"] for x in feed}
+        held = {p["sym"] for p in state["positions"]}
+        added = 0
+        for e in sorted(fresh, key=lambda e: e["time"]):
+            if e["key"] in known or (e["sym"] not in symbols and e["sym"] not in held):
+                continue
+            feed.append({k: e[k] for k in ("key", "sym", "time", "category", "headline")})
+            added += 1
+            if e["sym"] in held:
+                eng.log(now, f"NEWS on held share {e['sym']}: {e['category']}: {e['headline'][:100]}")
+                if e["category"] in CFG.get("news_exit_categories", []):
+                    pos = next(p for p in state["positions"] if p["sym"] == e["sym"])
+                    eng._exit(pos, pos["last"], now, f"Sold on news: {e['category']}")
+        del feed[:-60]
+        eng.log(now, f"Hourly news check: {len(fresh)} new price-sensitive announcements, {added} for shares the bot trades.")
+    except Exception as ex:  # noqa: BLE001
+        print(f"Hourly news check failed: {ex}")
+
+
 def main():
     now = pd.Timestamp(os.environ["TRADER_NOW"], tz=TZ) if os.environ.get("TRADER_NOW") else pd.Timestamp.now(tz=TZ)
     today = now.date().isoformat()
@@ -146,6 +180,7 @@ def main():
         bars = md.intraday_bars([f"{s}.AX" for s in wanted], now, delay)
 
     eng.process(bars)
+    check_news_hourly(state, eng, now, set(symbols))
 
     # Late-day safety net: flatten if the exit bar never arrived (halt, data gap)
     if day["phase"] == "trading" and now.time() >= hhmm("16:45"):

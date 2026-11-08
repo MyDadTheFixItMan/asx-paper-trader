@@ -119,3 +119,10 @@ New engine switches (all default off / current behaviour): `max_gap_pct`, `requi
 - Results: no book filter beat "current" on both return and avg R with 30+ trades (intraday: current −4.1%, avg −0.03R;
   best book variant "same size every trade" −2.4%, avg −0.035R). 10-year: every book entry filter lowered avg R.
   **Adopted: nothing.** Dashboard now shows SQN.
+
+## 2026-11-08 (evening): hourly news + intraday-news test
+- Live bot now checks ASX price-sensitive announcements every hour during the session, logs them, flags news on held
+  shares, and shows "Today's ASX news" on the dashboard. Optional `news_exit_categories` (empty = off).
+- Test (bot/research_intraday_news.py, 58 days, 5-minute data): only 87 intraday announcements in tradeable shares;
+  those that jumped 1%+ in the first 25 minutes then drifted −0.44% by the close (−1.04% after costs, 40% rose).
+  With ~20-minute delayed data, chasing intraday news loses → no intraday news entry setup.

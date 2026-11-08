@@ -45,6 +45,8 @@
 
   "_news": "Price-sensitive ASX announcements. Rules switch on only after testing.",
   "news_enabled": true,
+  "news_check_minutes": 60,
+  "news_exit_categories": [],
   "news_require": false,
   "news_learning": false,
   "news_min_events": 30,

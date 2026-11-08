@@ -125,6 +125,11 @@ a.sym{font-weight:650;color:var(--series);text-decoration:none}a.sym:active,a.sy
   </section>
 
   <section class="card">
+    <h2>Today's ASX news (checked hourly)</h2>
+    <div id="newsToday"></div>
+  </section>
+
+  <section class="card">
     <h2>What ASX news does to prices</h2>
     <div id="news"></div>
   </section>
@@ -311,6 +316,12 @@ function render(){
 
   renderLearning(state);
   renderNews(D.newsStats, state);
+  const nt = (state.day?.date===ref ? (state.day.news_today||[]) : []).slice().reverse();
+  const nm = state.day?.date===ref ? Object.entries(state.day.news||{}) : [];
+  $("newsToday").innerHTML = (nt.length||nm.length) ? [
+      ...nt.map(n=>`<div class="trade" style="grid-template-columns:1fr"><div>${symLink(n.sym)} <span class="meta">${sydTime(n.time)} · ${esc(n.category)}</span><div class="meta">${esc(n.headline)}</div></div></div>`),
+      ...(nm.length?[`<div class="meta" style="margin-top:6px"><b>Overnight news on tradeable shares:</b> ${nm.slice(0,30).map(([k,v])=>`${esc(k)} (${esc(v.category)})`).join(", ")}${nm.length>30?` and ${nm.length-30} more`:""}</div>`]:[])
+    ].join("") : `<div class="empty">No price-sensitive news yet today for shares the bot trades.</div>`;
   $("log").textContent = (state.day?.log||[]).join("\n") || "Nothing yet today.";
 }
 function renderNews(ns, state){
