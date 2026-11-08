@@ -1,0 +1,106 @@
+{
+ "run_at": "2026-11-08T18:08+11:00",
+ "cost_assumed_pct": 0.6,
+ "categories": [
+  {
+   "category": "ALL",
+   "n": 75,
+   "avg_jump_first_25min_pct": 0.37,
+   "avg_drift_to_close_pct": -0.41,
+   "n_jumped_up_1pct": 20,
+   "drift_after_jump_up_pct": -0.44,
+   "net_after_costs_if_bought_pct": -1.04,
+   "pct_up_after_jump": 40.0
+  },
+  {
+   "category": "Other",
+   "n": 18,
+   "avg_jump_first_25min_pct": 0.48,
+   "avg_drift_to_close_pct": 0.31,
+   "n_jumped_up_1pct": 8,
+   "drift_after_jump_up_pct": 0.9,
+   "net_after_costs_if_bought_pct": 0.3,
+   "pct_up_after_jump": 62.5
+  },
+  {
+   "category": "Management change",
+   "n": 15,
+   "avg_jump_first_25min_pct": -0.69,
+   "avg_drift_to_close_pct": 0.42,
+   "n_jumped_up_1pct": 3,
+   "drift_after_jump_up_pct": 0.46,
+   "net_after_costs_if_bought_pct": -0.14,
+   "pct_up_after_jump": 33.3
+  },
+  {
+   "category": "Dividend / buy-back",
+   "n": 11,
+   "avg_jump_first_25min_pct": 0.33,
+   "avg_drift_to_close_pct": -0.51,
+   "n_jumped_up_1pct": 1,
+   "drift_after_jump_up_pct": 0.26,
+   "net_after_costs_if_bought_pct": -0.34,
+   "pct_up_after_jump": 100.0
+  },
+  {
+   "category": "Takeover / merger",
+   "n": 11,
+   "avg_jump_first_25min_pct": 0.01,
+   "avg_drift_to_close_pct": 0.61,
+   "n_jumped_up_1pct": 0,
+   "drift_after_jump_up_pct": null,
+   "net_after_costs_if_bought_pct": null,
+   "pct_up_after_jump": null
+  },
+  {
+   "category": "Quarterly report",
+   "n": 7,
+   "avg_jump_first_25min_pct": -0.37,
+   "avg_drift_to_close_pct": -1.01,
+   "n_jumped_up_1pct": 3,
+   "drift_after_jump_up_pct": 0.51,
+   "net_after_costs_if_bought_pct": -0.09,
+   "pct_up_after_jump": 33.3
+  },
+  {
+   "category": "Exploration / drilling",
+   "n": 6,
+   "avg_jump_first_25min_pct": 0.15,
+   "avg_drift_to_close_pct": -4.86,
+   "n_jumped_up_1pct": 1,
+   "drift_after_jump_up_pct": -9.21,
+   "net_after_costs_if_bought_pct": -9.81,
+   "pct_up_after_jump": 0.0
+  },
+  {
+   "category": "Contract / deal",
+   "n": 4,
+   "avg_jump_first_25min_pct": 0.93,
+   "avg_drift_to_close_pct": -0.23,
+   "n_jumped_up_1pct": 2,
+   "drift_after_jump_up_pct": -1.12,
+   "net_after_costs_if_bought_pct": -1.72,
+   "pct_up_after_jump": 0.0
+  },
+  {
+   "category": "Results",
+   "n": 2,
+   "avg_jump_first_25min_pct": 10.38,
+   "avg_drift_to_close_pct": -3.31,
+   "n_jumped_up_1pct": 1,
+   "drift_after_jump_up_pct": -7.49,
+   "net_after_costs_if_bought_pct": -8.09,
+   "pct_up_after_jump": 0.0
+  },
+  {
+   "category": "Regulatory / clinical",
+   "n": 1,
+   "avg_jump_first_25min_pct": 3.11,
+   "avg_drift_to_close_pct": -0.14,
+   "n_jumped_up_1pct": 1,
+   "drift_after_jump_up_pct": -0.14,
+   "net_after_costs_if_bought_pct": -0.74,
+   "pct_up_after_jump": 0.0
+  }
+ ]
+}
