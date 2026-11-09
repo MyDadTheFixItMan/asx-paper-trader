@@ -47,19 +47,77 @@
  ],
  "day": {
   "date": "2026-11-10",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9797.93,
   "universe_size": 256,
-  "watchlist": [],
+  "watchlist": [
+   {
+    "sym": "VNT",
+    "rvol": 9.87,
+    "or_high": 4.860000133514404,
+    "or_low": 4.699999809265137,
+    "or_open": 4.75,
+    "or_close": 4.829999923706055,
+    "atr": 0.2175,
+    "gap_pct": -1.04,
+    "news": null
+   },
+   {
+    "sym": "APZ",
+    "rvol": 7.43,
+    "or_high": 5.130000114440918,
+    "or_low": 5.0,
+    "or_open": 5.0,
+    "or_close": 5.110000133514404,
+    "atr": 0.1571,
+    "gap_pct": 0.2,
+    "news": null
+   },
+   {
+    "sym": "PWH",
+    "rvol": 7.21,
+    "or_high": 11.78499984741211,
+    "or_low": 11.324999809265137,
+    "or_open": 11.324999809265137,
+    "or_close": 11.699999809265137,
+    "atr": 0.345,
+    "gap_pct": 0.67,
+    "news": null
+   },
+   {
+    "sym": "SIQ",
+    "rvol": 5.05,
+    "or_high": 11.789999961853027,
+    "or_low": 11.199999809265137,
+    "or_open": 11.260000228881836,
+    "or_close": 11.739999771118164,
+    "atr": 0.51,
+    "gap_pct": 0.09,
+    "news": null
+   },
+   {
+    "sym": "CGS",
+    "rvol": 4.56,
+    "or_high": 3.444999933242798,
+    "or_low": 3.380000114440918,
+    "or_open": 3.380000114440918,
+    "or_close": 3.430000066757202,
+    "atr": 0.115,
+    "gap_pct": 0.6,
+    "news": null
+   }
+  ],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": 0.7,
+  "last_ts": "2026-11-10T10:10:00+11:00",
   "log": [
    "09:24 Read 72 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
-   "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters."
+   "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters.",
+   "Stocks in play: VNT (9.87x), APZ (7.43x), PWH (7.21x), SIQ (5.05x), CGS (4.56x)",
+   "10:35 Hourly news check: 7 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "NXT": {
@@ -130,10 +188,44 @@
     "Acquisition / sale"
    ]
   },
-  "news_refreshed": true
+  "news_refreshed": true,
+  "tracks": {
+   "VNT": {
+    "pv": 1833952.3986727397,
+    "v": 380953.0,
+    "low": 4.699999809265137,
+    "vwap": 4.814117223575454
+   },
+   "SIQ": {
+    "pv": 1093188.7931871414,
+    "v": 94443.0,
+    "low": 11.199999809265137,
+    "vwap": 11.575117194362116
+   },
+   "APZ": {
+    "pv": 267915.5108049711,
+    "v": 52727.0,
+    "low": 5.0,
+    "vwap": 5.081182521383183
+   },
+   "PWH": {
+    "pv": 441610.685558637,
+    "v": 37863.0,
+    "low": 11.324999809265137,
+    "vwap": 11.663383396947864
+   },
+   "CGS": {
+    "pv": 117567.50699234009,
+    "v": 34388.0,
+    "low": 3.380000114440918,
+    "vwap": 3.4188527100250115
+   }
+  },
+  "news_checked_at": "2026-11-10T10:35:06.364851+11:00",
+  "news_today": []
  },
- "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-10T10:30:05.890685+11:00",
+ "status": "Watching 5 stocks in play for breakouts",
+ "last_run": "2026-11-10T10:35:06.364851+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
