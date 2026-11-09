@@ -106,6 +106,16 @@
     "category": "Other",
     "headline": "SRL Completes Investment in Agni Semiconductor, Inc.",
     "time": "2026-11-10T09:16:47+11:00"
+   },
+   "DDR": {
+    "category": "Dividend / buy-back",
+    "headline": "Dividend/Distribution - DDR",
+    "time": "2026-11-10T09:25:42+11:00"
+   },
+   "INA": {
+    "category": "Takeover / merger",
+    "headline": "AVID exercises matching right",
+    "time": "2026-11-10T09:57:42+11:00"
    }
   },
   "news_rules": {
@@ -119,10 +129,11 @@
     "Management change",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-10T09:24:58.507608+11:00",
+ "status": "Building the opening range (prices are ~20 min delayed)",
+ "last_run": "2026-11-10T10:00:06.220203+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
