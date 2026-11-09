@@ -46,184 +46,66 @@
   }
  ],
  "day": {
-  "date": "2026-11-09",
-  "phase": "closed",
-  "start_equity": 9749.8,
-  "universe_size": 254,
-  "watchlist": [
-   {
-    "sym": "VAU",
-    "rvol": 4.22,
-    "or_high": 6.079999923706055,
-    "or_low": 5.889999866485596,
-    "or_open": 5.889999866485596,
-    "or_close": 6.059999942779541,
-    "atr": 0.2729,
-    "gap_pct": 0.86,
-    "news": null
-   },
-   {
-    "sym": "EVT",
-    "rvol": 3.76,
-    "or_high": 15.904999732971191,
-    "or_low": 15.779999732971191,
-    "or_open": 15.84000015258789,
-    "or_close": 15.890000343322754,
-    "atr": 0.4396,
-    "gap_pct": 0.57,
-    "news": null
-   },
-   {
-    "sym": "GMD",
-    "rvol": 3.32,
-    "or_high": 7.340000152587891,
-    "or_low": 7.059999942779541,
-    "or_open": 7.059999942779541,
-    "or_close": 7.329999923706055,
-    "atr": 0.3525,
-    "gap_pct": 0.28,
-    "news": null
-   },
-   {
-    "sym": "WHC",
-    "rvol": 3.13,
-    "or_high": 7.170000076293945,
-    "or_low": 7.0,
-    "or_open": 7.059999942779541,
-    "or_close": 7.09499979019165,
-    "atr": 0.2871,
-    "gap_pct": 0.28,
-    "news": null
-   },
-   {
-    "sym": "SIQ",
-    "rvol": 3.05,
-    "or_high": 11.34000015258789,
-    "or_low": 11.0600004196167,
-    "or_open": 11.220000267028809,
-    "or_close": 11.270000457763672,
-    "atr": 0.4889,
-    "gap_pct": 0.72,
-    "news": {
-     "category": "Other",
-     "headline": "Trading Update and UBS Australasia Conference Materials",
-     "time": "2026-11-09T08:46:26+11:00"
-    }
-   }
-  ],
-  "entered": [
-   "SIQ",
-   "WHC",
-   "VAU",
-   "GMD"
-  ],
-  "realized": 48.13,
+  "date": "2026-11-10",
+  "phase": "waiting_open",
+  "start_equity": 9797.93,
+  "universe_size": 256,
+  "watchlist": [],
+  "entered": [],
+  "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": 0.2,
-  "last_ts": "2026-11-09T15:50:00+11:00",
+  "market_change_pct": null,
+  "last_ts": null,
   "log": [
-   "09:24 Read 115 price-sensitive ASX announcements; 15 are for shares the bot can trade.",
-   "09:24 Scanned 1836 ASX listings; 253 pass the liquidity and volatility filters.",
-   "Stocks in play: VAU (4.22x), EVT (3.76x), GMD (3.32x), WHC (3.13x), SIQ (3.05x, news: Other)",
-   "10:35 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades.",
-   "10:15 BUY 214 SIQ @ $11.370, stop $11.120 (breakout above $11.340)",
-   "10:40 BUY 339 WHC @ $7.190, stop $7.040 (breakout above $7.170)",
-   "11:35 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades.",
-   "11:40 BUY 399 VAU @ $6.100, stop $5.960 (breakout above $6.080)",
-   "11:40 BUY 329 GMD @ $7.360, stop $7.180 (breakout above $7.340)",
-   "12:40 Hourly news check: 3 new price-sensitive announcements, 1 for shares the bot trades.",
-   "13:45 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades.",
-   "14:45 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:45 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:50 SELL 214 SIQ @ $11.170 (End of day exit) net $-52.80",
-   "15:50 SELL 339 WHC @ $7.270 (End of day exit) net $+17.12",
-   "15:50 SELL 399 VAU @ $6.220 (End of day exit) net $+37.88",
-   "15:50 SELL 329 GMD @ $7.530 (End of day exit) net $+45.93",
-   "15:50 Day closed. Equity $9,797.93 (+48.13).",
-   "16:15 Daily review done. See 'Learning from losses' on the dashboard.",
-   "16:15 News review done: today's announcements and price reactions recorded."
+   "09:24 Read 72 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
+   "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters."
   ],
   "news": {
-   "INA": {
-    "category": "Takeover / merger",
-    "headline": "Update on Warburg Pincus proposal and AVID matching right",
-    "time": "2026-11-06T18:55:21+11:00"
-   },
-   "ANZ": {
-    "category": "Results",
-    "headline": "ANZ Full Year Results, Dividend Announcement & Appendix 4E",
-    "time": "2026-11-09T07:30:16+11:00"
-   },
-   "VNT": {
-    "category": "Results",
-    "headline": "Evolution of strategy, simplification and FY26 outlook",
-    "time": "2026-11-09T08:13:11+11:00"
-   },
-   "RRL": {
+   "NXT": {
     "category": "Other",
-    "headline": "Fatal Incident at Duketon South",
-    "time": "2026-11-09T08:15:56+11:00"
+    "headline": "Response to Statement by Goodman Group & Digital Realty",
+    "time": "2026-11-09T11:41:22+11:00"
    },
-   "SXE": {
-    "category": "Acquisition / sale",
-    "headline": "Completion of Entire acquisition",
-    "time": "2026-11-09T08:21:46+11:00"
-   },
-   "EOS": {
-    "category": "Contract / deal",
-    "headline": "NEW MIDDLE EAST COUNTER DRONE ORDER (US$16M)",
-    "time": "2026-11-09T08:22:56+11:00"
-   },
-   "DNL": {
-    "category": "Results",
-    "headline": "Appendix 4E and FY26 Financial & Sustainability Reports",
-    "time": "2026-11-09T08:28:56+11:00"
-   },
-   "ANN": {
-    "category": "Management change",
-    "headline": "Ansell AGM 2026 Presentations (with trading update)",
-    "time": "2026-11-09T08:29:26+11:00"
-   },
-   "NST": {
+   "VGN": {
     "category": "Other",
-    "headline": "Major Growth Projects Update",
-    "time": "2026-11-09T08:29:51+11:00"
+    "headline": "Virgin Australia Market Update - November 2026",
+    "time": "2026-11-09T17:21:33+11:00"
+   },
+   "SLC": {
+    "category": "Other",
+    "headline": "Trading update and FY27 Guidance",
+    "time": "2026-11-10T08:16:11+11:00"
+   },
+   "MND": {
+    "category": "Other",
+    "headline": "Monadelphous Business Update",
+    "time": "2026-11-10T08:19:47+11:00"
+   },
+   "360": {
+    "category": "Results",
+    "headline": "Life360 Reports Q3 2026 Results",
+    "time": "2026-11-10T08:24:37+11:00"
+   },
+   "SLS": {
+    "category": "Other",
+    "headline": "More Strong Copper-Gold Hits at Nanadie",
+    "time": "2026-11-10T08:39:02+11:00"
    },
    "SSM": {
     "category": "Trading halt",
-    "headline": "Trading Halt",
-    "time": "2026-11-09T08:32:51+11:00"
+    "headline": "Successful completion of Placement & Institutional Offer",
+    "time": "2026-11-10T08:50:32+11:00"
    },
-   "SIQ": {
+   "BXB": {
     "category": "Other",
-    "headline": "Trading Update and UBS Australasia Conference Materials",
-    "time": "2026-11-09T08:46:26+11:00"
+    "headline": "Brambles prices 850M Euro Green Bond",
+    "time": "2026-11-10T08:51:12+11:00"
    },
-   "LLC": {
-    "category": "Contract / deal",
-    "headline": "Termination of sale agreement for MSG North",
-    "time": "2026-11-09T09:03:16+11:00"
-   },
-   "IGO": {
+   "SRL": {
     "category": "Other",
-    "headline": "Nova Concludes Mining, Beats Production and Cost Guidance",
-    "time": "2026-11-09T09:06:26+11:00"
-   },
-   "GMG": {
-    "category": "Acquisition / sale",
-    "headline": "Acquisition of a 9.9% interest in NEXTDC",
-    "time": "2026-11-09T09:17:41+11:00"
-   },
-   "VEA": {
-    "category": "Other",
-    "headline": "2026 Strategy Update",
-    "time": "2026-11-09T09:21:36+11:00"
-   },
-   "CDA": {
-    "category": "Acquisition / sale",
-    "headline": "Acquisition Announcement",
-    "time": "2026-11-09T09:49:56+11:00"
+    "headline": "SRL Completes Investment in Agni Semiconductor, Inc.",
+    "time": "2026-11-10T09:16:47+11:00"
    }
   },
   "news_rules": {
@@ -237,55 +119,10 @@
     "Management change",
     "Acquisition / sale"
    ]
-  },
-  "news_refreshed": true,
-  "tracks": {
-   "GMD": {
-    "pv": 94443827.60777283,
-    "v": 12656454.0,
-    "low": 7.059999942779541,
-    "vwap": 7.462108076067185
-   },
-   "WHC": {
-    "pv": 55040477.99605686,
-    "v": 7584981.0,
-    "low": 7.0,
-    "vwap": 7.256508354609835
-   },
-   "VAU": {
-    "pv": 22405941.18462514,
-    "v": 3669196.0,
-    "low": 5.889999866485596,
-    "vwap": 6.106498858230833
-   },
-   "SIQ": {
-    "pv": 14483928.327285763,
-    "v": 1289462.0,
-    "low": 11.0600004196167,
-    "vwap": 11.23253599352735
-   },
-   "EVT": {
-    "pv": 3139507.097736675,
-    "v": 199869.0,
-    "low": 15.630000114440918,
-    "vwap": 15.707824113477702
-   }
-  },
-  "news_checked_at": "2026-11-09T15:45:06.127564+11:00",
-  "news_today": [
-   {
-    "key": "2924-03159557-2A1709518",
-    "sym": "NXT",
-    "time": "2026-11-09T11:41:22+11:00",
-    "category": "Other",
-    "headline": "Response to Statement by Goodman Group & Digital Realty"
-   }
-  ],
-  "end_equity": 9797.93,
-  "reviewed": true
+  }
  },
- "status": "Day finished. Equity $9,797.93",
- "last_run": "2026-11-09T16:15:05.967382+11:00",
+ "status": "Morning scan done. Waiting for the 10:00 open.",
+ "last_run": "2026-11-10T09:24:58.507608+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
