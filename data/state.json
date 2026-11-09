@@ -12,7 +12,7 @@
    "initial_stop": 11.12,
    "risk_ps": 0.25,
    "high": 11.520000457763672,
-   "last": 11.220000267028809,
+   "last": 11.279999732971191,
    "fees": 5.0,
    "rvol": 3.05,
    "atr": 0.4889,
@@ -32,7 +32,7 @@
    "initial_stop": 7.04,
    "risk_ps": 0.15,
    "high": 7.195000171661377,
-   "last": 7.15500020980835,
+   "last": 7.175000190734863,
    "fees": 5.0,
    "rvol": 3.13,
    "atr": 0.2871,
@@ -152,14 +152,15 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": 0.2,
-  "last_ts": "2026-11-09T11:05:00+11:00",
+  "last_ts": "2026-11-09T11:10:00+11:00",
   "log": [
    "09:24 Read 115 price-sensitive ASX announcements; 15 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 253 pass the liquidity and volatility filters.",
    "Stocks in play: VAU (4.22x), EVT (3.76x), GMD (3.32x), WHC (3.13x), SIQ (3.05x, news: Other)",
    "10:35 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades.",
    "10:15 BUY 214 SIQ @ $11.370, stop $11.120 (breakout above $11.340)",
-   "10:40 BUY 339 WHC @ $7.190, stop $7.040 (breakout above $7.170)"
+   "10:40 BUY 339 WHC @ $7.190, stop $7.040 (breakout above $7.170)",
+   "11:35 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "INA": {
@@ -258,41 +259,41 @@
   "news_refreshed": true,
   "tracks": {
    "GMD": {
-    "pv": 10045537.588328201,
-    "v": 1387944.0,
+    "pv": 10453728.147449968,
+    "v": 1444454.0,
     "low": 7.059999942779541,
-    "vwap": 7.237711023159581
+    "vwap": 7.237148533251989
    },
    "WHC": {
-    "pv": 7397654.629384041,
-    "v": 1037822.0,
+    "pv": 7822581.3756740885,
+    "v": 1097059.0,
     "low": 7.0,
-    "vwap": 7.128057248144712
+    "vwap": 7.130501983643622
    },
    "VAU": {
-    "pv": 5907834.737930615,
-    "v": 982850.0,
+    "pv": 6139559.47465086,
+    "v": 1021503.0,
     "low": 5.889999866485596,
-    "vwap": 6.010922051107102
+    "vwap": 6.010319572875321
    },
    "SIQ": {
-    "pv": 1563732.5372222266,
-    "v": 138341.0,
+    "pv": 1591432.137003263,
+    "v": 140801.0,
     "low": 11.0600004196167,
-    "vwap": 11.303464173471543
+    "vwap": 11.302704789051662
    },
    "EVT": {
-    "pv": 743992.2590732574,
-    "v": 47195.0,
+    "pv": 754744.7390384674,
+    "v": 47879.0,
     "low": 15.699999809265137,
-    "vwap": 15.764217800047833
+    "vwap": 15.763586103270065
    }
   },
-  "news_checked_at": "2026-11-09T10:35:05.701677+11:00",
+  "news_checked_at": "2026-11-09T11:35:06.201393+11:00",
   "news_today": []
  },
  "status": "Watching 5 stocks in play for breakouts",
- "last_run": "2026-11-09T11:30:05.741452+11:00",
+ "last_run": "2026-11-09T11:35:06.201393+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
