@@ -1,6 +1,6 @@
 {
  "start_capital": 10000,
- "cash": 4869.21,
+ "cash": 3.87,
  "created": "2026-11-03T12:05:51.257495+11:00",
  "positions": [
   {
@@ -12,7 +12,7 @@
    "initial_stop": 11.12,
    "risk_ps": 0.25,
    "high": 11.520000457763672,
-   "last": 11.220000267028809,
+   "last": 11.239999771118164,
    "fees": 5.0,
    "rvol": 3.05,
    "atr": 0.4889,
@@ -32,13 +32,53 @@
    "initial_stop": 7.04,
    "risk_ps": 0.15,
    "high": 7.195000171661377,
-   "last": 7.164999961853027,
+   "last": 7.170000076293945,
    "fees": 5.0,
    "rvol": 3.13,
    "atr": 0.2871,
    "stop_note": "initial",
    "gap_pct": 0.28,
    "stop_pct": 2.09,
+   "market_pct": 0.2,
+   "news_cat": null,
+   "news_headline": null
+  },
+  {
+   "sym": "VAU",
+   "qty": 399,
+   "entry": 6.1,
+   "entry_time": "2026-11-09T11:40:00+11:00",
+   "stop": 5.96,
+   "initial_stop": 5.96,
+   "risk_ps": 0.14,
+   "high": 6.085000038146973,
+   "last": 6.079999923706055,
+   "fees": 5.0,
+   "rvol": 4.22,
+   "atr": 0.2729,
+   "stop_note": "initial",
+   "gap_pct": 0.86,
+   "stop_pct": 2.3,
+   "market_pct": 0.2,
+   "news_cat": null,
+   "news_headline": null
+  },
+  {
+   "sym": "GMD",
+   "qty": 329,
+   "entry": 7.36,
+   "entry_time": "2026-11-09T11:40:00+11:00",
+   "stop": 7.18,
+   "initial_stop": 7.18,
+   "risk_ps": 0.18,
+   "high": 7.360000133514404,
+   "last": 7.349999904632568,
+   "fees": 5.0,
+   "rvol": 3.32,
+   "atr": 0.3525,
+   "stop_note": "initial",
+   "gap_pct": 0.28,
+   "stop_pct": 2.45,
    "market_pct": 0.2,
    "news_cat": null,
    "news_headline": null
@@ -146,13 +186,15 @@
   ],
   "entered": [
    "SIQ",
-   "WHC"
+   "WHC",
+   "VAU",
+   "GMD"
   ],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": 0.2,
-  "last_ts": "2026-11-09T11:35:00+11:00",
+  "last_ts": "2026-11-09T11:40:00+11:00",
   "log": [
    "09:24 Read 115 price-sensitive ASX announcements; 15 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 253 pass the liquidity and volatility filters.",
@@ -160,7 +202,9 @@
    "10:35 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades.",
    "10:15 BUY 214 SIQ @ $11.370, stop $11.120 (breakout above $11.340)",
    "10:40 BUY 339 WHC @ $7.190, stop $7.040 (breakout above $7.170)",
-   "11:35 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades."
+   "11:35 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades.",
+   "11:40 BUY 399 VAU @ $6.100, stop $5.960 (breakout above $6.080)",
+   "11:40 BUY 329 GMD @ $7.360, stop $7.180 (breakout above $7.340)"
   ],
   "news": {
    "INA": {
@@ -259,41 +303,41 @@
   "news_refreshed": true,
   "tracks": {
    "GMD": {
-    "pv": 14451583.670565126,
-    "v": 1995059.0,
+    "pv": 15113453.724114574,
+    "v": 2085273.0,
     "low": 7.059999942779541,
-    "vwap": 7.243687364917593
+    "vwap": 7.247709879768536
    },
    "WHC": {
-    "pv": 19111950.931217827,
-    "v": 2673160.0,
+    "pv": 19171212.097884495,
+    "v": 2681429.0,
     "low": 7.0,
-    "vwap": 7.149572390435973
+    "vwap": 7.149625105823982
    },
    "VAU": {
-    "pv": 7764445.525315285,
-    "v": 1291666.0,
+    "pv": 7901100.528126717,
+    "v": 1314173.0,
     "low": 5.889999866485596,
-    "vwap": 6.011186735050148
+    "vwap": 6.012222537007469
    },
    "SIQ": {
-    "pv": 4602521.603790601,
-    "v": 408845.0,
+    "pv": 4625710.643738111,
+    "v": 410909.0,
     "low": 11.0600004196167,
-    "vwap": 11.25737529819516
+    "vwap": 11.257262906721708
    },
    "EVT": {
-    "pv": 823744.7088553109,
-    "v": 52267.0,
+    "pv": 830734.9171886443,
+    "v": 52712.0,
     "low": 15.699999809265137,
-    "vwap": 15.760321213295406
+    "vwap": 15.75988232638952
    }
   },
   "news_checked_at": "2026-11-09T11:35:06.201393+11:00",
   "news_today": []
  },
  "status": "Watching 5 stocks in play for breakouts",
- "last_run": "2026-11-09T12:00:05.784569+11:00",
+ "last_run": "2026-11-09T12:05:06.226214+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
