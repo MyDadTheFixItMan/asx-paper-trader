@@ -1,89 +1,8 @@
 {
  "start_capital": 10000,
- "cash": 3.87,
+ "cash": 9797.93,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [
-  {
-   "sym": "SIQ",
-   "qty": 214,
-   "entry": 11.37,
-   "entry_time": "2026-11-09T10:15:00+11:00",
-   "stop": 11.12,
-   "initial_stop": 11.12,
-   "risk_ps": 0.25,
-   "high": 11.520000457763672,
-   "last": 11.210000038146973,
-   "fees": 5.0,
-   "rvol": 3.05,
-   "atr": 0.4889,
-   "stop_note": "initial",
-   "gap_pct": 0.72,
-   "stop_pct": 2.2,
-   "market_pct": 0.2,
-   "news_cat": "Other",
-   "news_headline": "Trading Update and UBS Australasia Conference Materials"
-  },
-  {
-   "sym": "WHC",
-   "qty": 339,
-   "entry": 7.19,
-   "entry_time": "2026-11-09T10:40:00+11:00",
-   "stop": 7.04,
-   "initial_stop": 7.04,
-   "risk_ps": 0.15,
-   "high": 7.355000019073486,
-   "last": 7.284999847412109,
-   "fees": 5.0,
-   "rvol": 3.13,
-   "atr": 0.2871,
-   "stop_note": "initial",
-   "gap_pct": 0.28,
-   "stop_pct": 2.09,
-   "market_pct": 0.2,
-   "news_cat": null,
-   "news_headline": null
-  },
-  {
-   "sym": "VAU",
-   "qty": 399,
-   "entry": 6.1,
-   "entry_time": "2026-11-09T11:40:00+11:00",
-   "stop": 5.96,
-   "initial_stop": 5.96,
-   "risk_ps": 0.14,
-   "high": 6.260000228881836,
-   "last": 6.25,
-   "fees": 5.0,
-   "rvol": 4.22,
-   "atr": 0.2729,
-   "stop_note": "initial",
-   "gap_pct": 0.86,
-   "stop_pct": 2.3,
-   "market_pct": 0.2,
-   "news_cat": null,
-   "news_headline": null
-  },
-  {
-   "sym": "GMD",
-   "qty": 329,
-   "entry": 7.36,
-   "entry_time": "2026-11-09T11:40:00+11:00",
-   "stop": 7.18,
-   "initial_stop": 7.18,
-   "risk_ps": 0.18,
-   "high": 7.570000171661377,
-   "last": 7.559999942779541,
-   "fees": 5.0,
-   "rvol": 3.32,
-   "atr": 0.3525,
-   "stop_note": "initial",
-   "gap_pct": 0.28,
-   "stop_pct": 2.45,
-   "market_pct": 0.2,
-   "news_cat": null,
-   "news_headline": null
-  }
- ],
+ "positions": [],
  "daily": [
   {
    "date": "2026-11-03",
@@ -116,11 +35,19 @@
    "pnl": 0.0,
    "trades": 0,
    "market_change_pct": -1.43
+  },
+  {
+   "date": "2026-11-09",
+   "start_equity": 9749.8,
+   "end_equity": 9797.93,
+   "pnl": 48.13,
+   "trades": 4,
+   "market_change_pct": 0.2
   }
  ],
  "day": {
   "date": "2026-11-09",
-  "phase": "trading",
+  "phase": "closed",
   "start_equity": 9749.8,
   "universe_size": 254,
   "watchlist": [
@@ -190,11 +117,11 @@
    "VAU",
    "GMD"
   ],
-  "realized": 0.0,
+  "realized": 48.13,
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": 0.2,
-  "last_ts": "2026-11-09T15:45:00+11:00",
+  "last_ts": "2026-11-09T15:50:00+11:00",
   "log": [
    "09:24 Read 115 price-sensitive ASX announcements; 15 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 253 pass the liquidity and volatility filters.",
@@ -208,7 +135,14 @@
    "12:40 Hourly news check: 3 new price-sensitive announcements, 1 for shares the bot trades.",
    "13:45 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades.",
    "14:45 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:45 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades."
+   "15:45 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
+   "15:50 SELL 214 SIQ @ $11.170 (End of day exit) net $-52.80",
+   "15:50 SELL 339 WHC @ $7.270 (End of day exit) net $+17.12",
+   "15:50 SELL 399 VAU @ $6.220 (End of day exit) net $+37.88",
+   "15:50 SELL 329 GMD @ $7.530 (End of day exit) net $+45.93",
+   "15:50 Day closed. Equity $9,797.93 (+48.13).",
+   "16:15 Daily review done. See 'Learning from losses' on the dashboard.",
+   "16:15 News review done: today's announcements and price reactions recorded."
   ],
   "news": {
    "INA": {
@@ -307,34 +241,34 @@
   "news_refreshed": true,
   "tracks": {
    "GMD": {
-    "pv": 93216702.5813001,
-    "v": 12493885.0,
+    "pv": 94443827.60777283,
+    "v": 12656454.0,
     "low": 7.059999942779541,
-    "vwap": 7.460986120914359
+    "vwap": 7.462108076067185
    },
    "WHC": {
-    "pv": 54543426.90404573,
-    "v": 7516736.0,
+    "pv": 55040477.99605686,
+    "v": 7584981.0,
     "low": 7.0,
-    "vwap": 7.256264807496994
+    "vwap": 7.256508354609835
    },
    "VAU": {
-    "pv": 21750173.335271034,
-    "v": 3564105.0,
+    "pv": 22405941.18462514,
+    "v": 3669196.0,
     "low": 5.889999866485596,
-    "vwap": 6.1025624484326455
+    "vwap": 6.106498858230833
    },
    "SIQ": {
-    "pv": 14336265.87428792,
-    "v": 1276270.0,
+    "pv": 14483928.327285763,
+    "v": 1289462.0,
     "low": 11.0600004196167,
-    "vwap": 11.23294120702353
+    "vwap": 11.23253599352735
    },
    "EVT": {
-    "pv": 3108082.0640974026,
-    "v": 197864.0,
+    "pv": 3139507.097736675,
+    "v": 199869.0,
     "low": 15.630000114440918,
-    "vwap": 15.708173614691923
+    "vwap": 15.707824113477702
    }
   },
   "news_checked_at": "2026-11-09T15:45:06.127564+11:00",
@@ -346,12 +280,14 @@
     "category": "Other",
     "headline": "Response to Statement by Goodman Group & Digital Realty"
    }
-  ]
+  ],
+  "end_equity": 9797.93,
+  "reviewed": true
  },
- "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-09T16:10:06.319896+11:00",
+ "status": "Day finished. Equity $9,797.93",
+ "last_run": "2026-11-09T16:15:05.967382+11:00",
  "learning": {
-  "risk_multiplier": 0.812,
+  "risk_multiplier": 1.0,
   "blocks": [],
   "lessons": [
    {
@@ -417,6 +353,15 @@
     "notes": [
      "A normal stop-out: the breakout didn't follow through. Small, planned losses like this are part of the strategy."
     ]
+   },
+   {
+    "trade_id": 10,
+    "date": "2026-11-09",
+    "sym": "SIQ",
+    "net": -52.8,
+    "notes": [
+     "A normal stop-out: the breakout didn't follow through. Small, planned losses like this are part of the strategy."
+    ]
    }
   ],
   "changes": [
@@ -431,24 +376,36 @@
    {
     "date": "2026-11-05",
     "text": "Raised risk per trade to 0.81% of equity after a winning day (+75.91)."
+   },
+   {
+    "date": "2026-11-09",
+    "text": "Raised risk per trade to 1.00% of equity after a winning day (+48.13)."
    }
   ],
   "buckets": [
    {
     "feature": "Entry time",
     "label": "10:30\u201311:00",
-    "n": 1,
+    "n": 2,
     "win_rate": 100,
-    "avg_r": 1.14,
-    "net": 34.28
+    "avg_r": 0.83,
+    "net": 51.4
+   },
+   {
+    "feature": "Entry time",
+    "label": "after 11:00",
+    "n": 2,
+    "win_rate": 100,
+    "avg_r": 0.9,
+    "net": 83.81
    },
    {
     "feature": "Entry time",
     "label": "before 10:30",
-    "n": 8,
-    "win_rate": 12,
-    "avg_r": -0.49,
-    "net": -284.48
+    "n": 9,
+    "win_rate": 11,
+    "avg_r": -0.53,
+    "net": -337.28
    },
    {
     "feature": "Market at open",
@@ -461,18 +418,18 @@
    {
     "feature": "Market at open",
     "label": "market up",
-    "n": 3,
-    "win_rate": 67,
-    "avg_r": 1.14,
-    "net": 75.91
+    "n": 7,
+    "win_rate": 71,
+    "avg_r": 0.71,
+    "net": 124.04
    },
    {
     "feature": "Opening gap",
     "label": "gap 0\u20132%",
-    "n": 1,
-    "win_rate": 0,
-    "avg_r": -1.5,
-    "net": -89.8
+    "n": 5,
+    "win_rate": 60,
+    "avg_r": 0.01,
+    "net": -41.67
    },
    {
     "feature": "Opening gap",
@@ -484,19 +441,27 @@
    },
    {
     "feature": "Overnight news",
+    "label": "news: Other",
+    "n": 1,
+    "win_rate": 0,
+    "avg_r": -0.8,
+    "net": -52.8
+   },
+   {
+    "feature": "Overnight news",
     "label": "no news",
-    "n": 9,
-    "win_rate": 22,
-    "avg_r": -0.31,
-    "net": -250.2
+    "n": 12,
+    "win_rate": 42,
+    "avg_r": -0.04,
+    "net": -149.27
    },
    {
     "feature": "Relative volume",
     "label": "3\u20135\u00d7 volume",
-    "n": 2,
-    "win_rate": 0,
-    "avg_r": -1.38,
-    "net": -209.42
+    "n": 6,
+    "win_rate": 50,
+    "avg_r": -0.2,
+    "net": -161.29
    },
    {
     "feature": "Relative volume",
@@ -525,10 +490,10 @@
    {
     "feature": "Share price",
     "label": "$5\u2013$20",
-    "n": 3,
-    "win_rate": 67,
-    "avg_r": 1.14,
-    "net": 75.91
+    "n": 7,
+    "win_rate": 71,
+    "avg_r": 0.71,
+    "net": 124.04
    },
    {
     "feature": "Share price",
@@ -557,10 +522,10 @@
    {
     "feature": "Stop distance",
     "label": "stop over 2%",
-    "n": 1,
-    "win_rate": 0,
-    "avg_r": -1.5,
-    "net": -89.8
+    "n": 5,
+    "win_rate": 60,
+    "avg_r": 0.01,
+    "net": -41.67
    }
   ]
  }
