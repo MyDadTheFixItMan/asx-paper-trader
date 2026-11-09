@@ -1,6 +1,6 @@
 {
  "start_capital": 10000,
- "cash": 7311.62,
+ "cash": 4869.21,
  "created": "2026-11-03T12:05:51.257495+11:00",
  "positions": [
   {
@@ -11,8 +11,8 @@
    "stop": 11.12,
    "initial_stop": 11.12,
    "risk_ps": 0.25,
-   "high": 11.5,
-   "last": 11.470000267028809,
+   "high": 11.520000457763672,
+   "last": 11.449999809265137,
    "fees": 5.0,
    "rvol": 3.05,
    "atr": 0.4889,
@@ -22,6 +22,26 @@
    "market_pct": 0.2,
    "news_cat": "Other",
    "news_headline": "Trading Update and UBS Australasia Conference Materials"
+  },
+  {
+   "sym": "WHC",
+   "qty": 339,
+   "entry": 7.19,
+   "entry_time": "2026-11-09T10:40:00+11:00",
+   "stop": 7.04,
+   "initial_stop": 7.04,
+   "risk_ps": 0.15,
+   "high": 7.179999828338623,
+   "last": 7.150000095367432,
+   "fees": 5.0,
+   "rvol": 3.13,
+   "atr": 0.2871,
+   "stop_note": "initial",
+   "gap_pct": 0.28,
+   "stop_pct": 2.09,
+   "market_pct": 0.2,
+   "news_cat": null,
+   "news_headline": null
   }
  ],
  "daily": [
@@ -125,19 +145,21 @@
    }
   ],
   "entered": [
-   "SIQ"
+   "SIQ",
+   "WHC"
   ],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": 0.2,
-  "last_ts": "2026-11-09T10:35:00+11:00",
+  "last_ts": "2026-11-09T10:40:00+11:00",
   "log": [
    "09:24 Read 115 price-sensitive ASX announcements; 15 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 253 pass the liquidity and volatility filters.",
    "Stocks in play: VAU (4.22x), EVT (3.76x), GMD (3.32x), WHC (3.13x), SIQ (3.05x, news: Other)",
    "10:35 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades.",
-   "10:15 BUY 214 SIQ @ $11.370, stop $11.120 (breakout above $11.340)"
+   "10:15 BUY 214 SIQ @ $11.370, stop $11.120 (breakout above $11.340)",
+   "10:40 BUY 339 WHC @ $7.190, stop $7.040 (breakout above $7.170)"
   ],
   "news": {
    "INA": {
@@ -236,41 +258,41 @@
   "news_refreshed": true,
   "tracks": {
    "GMD": {
-    "pv": 6568773.827290535,
-    "v": 905495.0,
+    "pv": 7206826.225646973,
+    "v": 993482.0,
     "low": 7.059999942779541,
-    "vwap": 7.254345774731539
+    "vwap": 7.254108504881792
    },
    "WHC": {
-    "pv": 4891407.474603018,
-    "v": 687464.0,
+    "pv": 5576827.115211646,
+    "v": 783193.0,
     "low": 7.0,
-    "vwap": 7.115147083488034
+    "vwap": 7.120629417284943
    },
    "VAU": {
-    "pv": 4300500.082845847,
-    "v": 713917.0,
+    "pv": 4543781.508998076,
+    "v": 754374.0,
     "low": 5.889999866485596,
-    "vwap": 6.023809606503063
+    "vwap": 6.023247764368969
    },
    "SIQ": {
-    "pv": 1108015.106327375,
-    "v": 97999.0,
+    "pv": 1159828.679775556,
+    "v": 102515.0,
     "low": 11.0600004196167,
-    "vwap": 11.306391966523892
+    "vwap": 11.313746083749267
    },
    "EVT": {
-    "pv": 275535.91522789,
-    "v": 17399.0,
+    "pv": 285176.9552745819,
+    "v": 18011.0,
     "low": 15.739999771118164,
-    "vwap": 15.836307559508594
+    "vwap": 15.833488161378153
    }
   },
   "news_checked_at": "2026-11-09T10:35:05.701677+11:00",
   "news_today": []
  },
  "status": "Watching 5 stocks in play for breakouts",
- "last_run": "2026-11-09T11:00:06.019110+11:00",
+ "last_run": "2026-11-09T11:05:05.559104+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
