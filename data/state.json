@@ -1,8 +1,49 @@
 {
  "start_capital": 10000,
- "cash": 9797.93,
+ "cash": 4894.97,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [],
+ "positions": [
+  {
+   "sym": "SIQ",
+   "qty": 207,
+   "entry": 11.82,
+   "entry_time": "2026-11-10T10:15:00+11:00",
+   "stop": 11.56,
+   "initial_stop": 11.56,
+   "risk_ps": 0.26,
+   "high": 11.890000343322754,
+   "last": 11.869999885559082,
+   "fees": 5.0,
+   "rvol": 5.05,
+   "atr": 0.51,
+   "stop_note": "initial",
+   "gap_pct": 0.09,
+   "stop_pct": 2.2,
+   "market_pct": 0.7,
+   "news_cat": null,
+   "news_headline": null
+  },
+  {
+   "sym": "CGS",
+   "qty": 707,
+   "entry": 3.46,
+   "entry_time": "2026-11-10T10:15:00+11:00",
+   "stop": 3.4,
+   "initial_stop": 3.4,
+   "risk_ps": 0.06,
+   "high": 3.4600000381469727,
+   "last": 3.4600000381469727,
+   "fees": 5.0,
+   "rvol": 4.56,
+   "atr": 0.115,
+   "stop_note": "initial",
+   "gap_pct": 0.6,
+   "stop_pct": 1.73,
+   "market_pct": 0.7,
+   "news_cat": null,
+   "news_headline": null
+  }
+ ],
  "daily": [
   {
    "date": "2026-11-03",
@@ -107,17 +148,22 @@
     "news": null
    }
   ],
-  "entered": [],
+  "entered": [
+   "SIQ",
+   "CGS"
+  ],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": 0.7,
-  "last_ts": "2026-11-10T10:10:00+11:00",
+  "last_ts": "2026-11-10T10:15:00+11:00",
   "log": [
    "09:24 Read 72 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters.",
    "Stocks in play: VNT (9.87x), APZ (7.43x), PWH (7.21x), SIQ (5.05x), CGS (4.56x)",
-   "10:35 Hourly news check: 7 new price-sensitive announcements, 0 for shares the bot trades."
+   "10:35 Hourly news check: 7 new price-sensitive announcements, 0 for shares the bot trades.",
+   "10:15 BUY 207 SIQ @ $11.820, stop $11.560 (breakout above $11.790)",
+   "10:15 BUY 707 CGS @ $3.460, stop $3.400 (breakout above $3.445)"
   ],
   "news": {
    "NXT": {
@@ -191,41 +237,41 @@
   "news_refreshed": true,
   "tracks": {
    "VNT": {
-    "pv": 1833952.3986727397,
-    "v": 380953.0,
+    "pv": 2142715.1779305143,
+    "v": 445056.0,
     "low": 4.699999809265137,
-    "vwap": 4.814117223575454
+    "vwap": 4.814484419782037
    },
    "SIQ": {
-    "pv": 1093188.7931871414,
-    "v": 94443.0,
+    "pv": 1424691.4156827927,
+    "v": 122481.0,
     "low": 11.199999809265137,
-    "vwap": 11.575117194362116
+    "vwap": 11.631938142918434
    },
    "APZ": {
-    "pv": 267915.5108049711,
-    "v": 52727.0,
+    "pv": 412927.801604112,
+    "v": 81198.0,
     "low": 5.0,
-    "vwap": 5.081182521383183
+    "vwap": 5.085443010962241
    },
    "PWH": {
-    "pv": 441610.685558637,
-    "v": 37863.0,
+    "pv": 465227.85209687555,
+    "v": 39883.0,
     "low": 11.324999809265137,
-    "vwap": 11.663383396947864
+    "vwap": 11.664815888896912
    },
    "CGS": {
-    "pv": 117567.50699234009,
-    "v": 34388.0,
+    "pv": 153640.3208580017,
+    "v": 44854.0,
     "low": 3.380000114440918,
-    "vwap": 3.4188527100250115
+    "vwap": 3.425342686449407
    }
   },
   "news_checked_at": "2026-11-10T10:35:06.364851+11:00",
   "news_today": []
  },
  "status": "Watching 5 stocks in play for breakouts",
- "last_run": "2026-11-10T10:35:06.364851+11:00",
+ "last_run": "2026-11-10T10:40:06.356366+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
