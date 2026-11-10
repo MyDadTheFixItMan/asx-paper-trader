@@ -157,7 +157,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": 0.7,
-  "last_ts": "2026-11-10T13:45:00+11:00",
+  "last_ts": "2026-11-10T13:50:00+11:00",
   "log": [
    "09:24 Read 72 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters.",
@@ -243,28 +243,28 @@
   "news_refreshed": true,
   "tracks": {
    "VNT": {
-    "pv": 40148429.44380554,
-    "v": 8256094.0,
+    "pv": 40555665.08278354,
+    "v": 8337923.0,
     "low": 4.699999809265137,
-    "vwap": 4.862884245722679
+    "vwap": 4.864000912791296
    },
    "SIQ": {
-    "pv": 17135972.95120684,
-    "v": 1471629.0,
+    "pv": 17175521.7573541,
+    "v": 1475033.0,
     "low": 11.199999809265137,
-    "vwap": 11.64422075890516
+    "vwap": 11.644161016976637
    },
    "APZ": {
-    "pv": 2097381.0352139473,
-    "v": 413088.0,
+    "pv": 2100517.5519391694,
+    "v": 413702.0,
     "low": 5.0,
-    "vwap": 5.0773225927985015
+    "vwap": 5.077368617843688
    },
    "PWH": {
-    "pv": 1668859.6516720452,
-    "v": 143568.0,
+    "pv": 1683813.3316392896,
+    "v": 144856.0,
     "low": 11.324999809265137,
-    "vwap": 11.624175663602232
+    "vwap": 11.624049619203138
    },
    "CGS": {
     "pv": 2085094.7933231194,
@@ -299,7 +299,7 @@
   ]
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-10T14:10:05.705496+11:00",
+ "last_run": "2026-11-10T14:15:06.174386+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
