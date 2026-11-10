@@ -12,7 +12,7 @@
    "initial_stop": 3.4,
    "risk_ps": 0.06,
    "high": 3.5899999141693115,
-   "last": 3.569999933242798,
+   "last": 3.5799999237060547,
    "fees": 5.0,
    "rvol": 4.56,
    "atr": 0.115,
@@ -32,7 +32,7 @@
    "initial_stop": 4.77,
    "risk_ps": 0.11,
    "high": 5.019999980926514,
-   "last": 5.010000228881836,
+   "last": 5.005000114440918,
    "fees": 5.0,
    "rvol": 9.87,
    "atr": 0.2175,
@@ -157,7 +157,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": 0.7,
-  "last_ts": "2026-11-10T15:20:00+11:00",
+  "last_ts": "2026-11-10T15:25:00+11:00",
   "log": [
    "09:24 Read 72 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters.",
@@ -170,7 +170,8 @@
    "11:40 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades.",
    "12:40 Hourly news check: 6 new price-sensitive announcements, 2 for shares the bot trades.",
    "13:45 Hourly news check: 2 new price-sensitive announcements, 1 for shares the bot trades.",
-   "14:45 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades."
+   "14:45 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades.",
+   "15:50 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "NXT": {
@@ -244,37 +245,37 @@
   "news_refreshed": true,
   "tracks": {
    "VNT": {
-    "pv": 49202760.54038572,
-    "v": 10072979.0,
+    "pv": 49369967.584208965,
+    "v": 10106387.0,
     "low": 4.699999809265137,
-    "vwap": 4.884628523536654
+    "vwap": 4.8850264277638455
    },
    "SIQ": {
-    "pv": 19819402.929030415,
-    "v": 1701999.0,
+    "pv": 19907032.889607426,
+    "v": 1709562.0,
     "low": 11.199999809265137,
-    "vwap": 11.64477942056982
+    "vwap": 11.644522333561126
    },
    "APZ": {
-    "pv": 2721498.377160549,
-    "v": 535517.0,
+    "pv": 2759617.3871129355,
+    "v": 543006.0,
     "low": 5.0,
-    "vwap": 5.0820018359091295
+    "vwap": 5.082112144456849
    },
    "PWH": {
-    "pv": 1989675.7644646957,
-    "v": 171292.0,
+    "pv": 1996861.7692988708,
+    "v": 171913.0,
     "low": 11.324999809265137,
-    "vwap": 11.615695797029025
+    "vwap": 11.615536749977435
    },
    "CGS": {
-    "pv": 2400051.314099868,
-    "v": 685506.0,
+    "pv": 2400982.1140800314,
+    "v": 685766.0,
     "low": 3.380000114440918,
-    "vwap": 3.5011383038220933
+    "vwap": 3.5011682032647164
    }
   },
-  "news_checked_at": "2026-11-10T14:45:05.851258+11:00",
+  "news_checked_at": "2026-11-10T15:50:06.280119+11:00",
   "news_today": [
    {
     "key": "2924-03160030-6A1354342",
@@ -300,7 +301,7 @@
   ]
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-10T15:45:05.682186+11:00",
+ "last_run": "2026-11-10T15:50:06.280119+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
