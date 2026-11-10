@@ -362,5 +362,28 @@
   "news_cat": null,
   "news_headline": null,
   "reason": "Stop loss"
+ },
+ {
+  "id": 18,
+  "date": "2026-11-11",
+  "sym": "MTS",
+  "qty": 705,
+  "entry_time": "2026-11-11T10:15:00+11:00",
+  "entry_price": 3.49,
+  "exit_time": "2026-11-11T10:30:00+11:00",
+  "exit_price": 3.44,
+  "initial_stop": 3.45,
+  "fees": 10.0,
+  "gross": -35.25,
+  "net": -45.25,
+  "pct": -1.84,
+  "r": -1.25,
+  "rvol": 21.05,
+  "gap_pct": 0.44,
+  "stop_pct": 1.15,
+  "market_pct": -0.27,
+  "news_cat": null,
+  "news_headline": null,
+  "reason": "Stop loss"
  }
 ]

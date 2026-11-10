@@ -1,29 +1,8 @@
 {
  "start_capital": 10000,
- "cash": 7330.59,
+ "cash": 9750.79,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [
-  {
-   "sym": "MTS",
-   "qty": 705,
-   "entry": 3.49,
-   "entry_time": "2026-11-11T10:15:00+11:00",
-   "stop": 3.45,
-   "initial_stop": 3.45,
-   "risk_ps": 0.04,
-   "high": 3.4800000190734863,
-   "last": 3.450000047683716,
-   "fees": 5.0,
-   "rvol": 21.05,
-   "atr": 0.0625,
-   "stop_note": "initial",
-   "gap_pct": 0.44,
-   "stop_pct": 1.15,
-   "market_pct": -0.27,
-   "news_cat": null,
-   "news_headline": null
-  }
- ],
+ "positions": [],
  "daily": [
   {
    "date": "2026-11-03",
@@ -144,11 +123,11 @@
    "SHV",
    "MTS"
   ],
-  "realized": -49.76,
-  "losses_in_row": 1,
+  "realized": -95.01,
+  "losses_in_row": 2,
   "no_new_entries": false,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-11T10:25:00+11:00",
+  "last_ts": "2026-11-11T10:30:00+11:00",
   "log": [
    "09:24 Read 79 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
@@ -156,7 +135,8 @@
    "10:35 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades.",
    "10:15 BUY 568 SHV @ $4.330, stop $4.270 (breakout above $4.300)",
    "10:15 BUY 705 MTS @ $3.490, stop $3.450 (breakout above $3.470)",
-   "10:20 SELL 568 SHV @ $4.260 (Stop loss) net $-49.76"
+   "10:20 SELL 568 SHV @ $4.260 (Stop loss) net $-49.76",
+   "10:30 SELL 705 MTS @ $3.440 (Stop loss) net $-45.25"
   ],
   "news": {
    "NXG": {
@@ -219,41 +199,41 @@
   "news_refreshed": true,
   "tracks": {
    "DOW": {
-    "pv": 7380900.575524807,
-    "v": 1011073.0,
+    "pv": 7385236.142312527,
+    "v": 1011668.0,
     "low": 7.260000228881836,
-    "vwap": 7.300066934360632
+    "vwap": 7.3000590532788685
    },
    "MTS": {
-    "pv": 3571759.0044748783,
-    "v": 1037157.0,
+    "pv": 3741433.456820011,
+    "v": 1086338.0,
     "low": 3.390000104904175,
-    "vwap": 3.443797809275624
+    "vwap": 3.4440785987602487
    },
    "SHV": {
-    "pv": 1377128.691628456,
-    "v": 322795.0,
+    "pv": 1380463.7183297474,
+    "v": 323573.0,
     "low": 4.119999885559082,
-    "vwap": 4.266264011612497
+    "vwap": 4.26631306793134
    },
    "CGS": {
-    "pv": 401091.3050157229,
-    "v": 109683.0,
-    "low": 3.5899999141693115,
-    "vwap": 3.6568228897433777
+    "pv": 445294.3372160593,
+    "v": 121973.0,
+    "low": 3.5799999237060547,
+    "vwap": 3.650761539160792
    },
    "FDC": {
-    "pv": 402768.2787806988,
-    "v": 107996.0,
+    "pv": 447899.7995994091,
+    "v": 120260.0,
     "low": 3.6500000953674316,
-    "vwap": 3.7294740433043705
+    "vwap": 3.7244287344038676
    }
   },
   "news_checked_at": "2026-11-11T10:35:06.289709+11:00",
   "news_today": []
  },
  "status": "Watching 5 stocks in play for breakouts",
- "last_run": "2026-11-11T10:50:05.793443+11:00",
+ "last_run": "2026-11-11T10:55:06.386257+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
