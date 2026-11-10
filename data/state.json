@@ -55,19 +55,81 @@
  ],
  "day": {
   "date": "2026-11-11",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9845.8,
   "universe_size": 255,
-  "watchlist": [],
+  "watchlist": [
+   {
+    "sym": "DOW",
+    "rvol": 55.21,
+    "or_high": 7.340000152587891,
+    "or_low": 7.260000228881836,
+    "or_open": 7.260000228881836,
+    "or_close": 7.300000190734863,
+    "atr": 0.1746,
+    "gap_pct": -0.55,
+    "news": null
+   },
+   {
+    "sym": "SHV",
+    "rvol": 26.96,
+    "or_high": 4.300000190734863,
+    "or_low": 4.119999885559082,
+    "or_open": 4.119999885559082,
+    "or_close": 4.289999961853027,
+    "atr": 0.1139,
+    "gap_pct": 0.73,
+    "news": null
+   },
+   {
+    "sym": "MTS",
+    "rvol": 21.05,
+    "or_high": 3.4700000286102295,
+    "or_low": 3.390000104904175,
+    "or_open": 3.3949999809265137,
+    "or_close": 3.4600000381469727,
+    "atr": 0.0625,
+    "gap_pct": 0.44,
+    "news": null
+   },
+   {
+    "sym": "CGS",
+    "rvol": 5.84,
+    "or_high": 3.744999885559082,
+    "or_low": 3.630000114440918,
+    "or_open": 3.6500000953674316,
+    "or_close": 3.7200000286102295,
+    "atr": 0.1243,
+    "gap_pct": 1.39,
+    "news": null
+   },
+   {
+    "sym": "FDC",
+    "rvol": 5.27,
+    "or_high": 3.8299999237060547,
+    "or_low": 3.7200000286102295,
+    "or_open": 3.7200000286102295,
+    "or_close": 3.7699999809265137,
+    "atr": 0.1739,
+    "gap_pct": 5.38,
+    "news": {
+     "category": "Guidance upgrade",
+     "headline": "FDC upgrades FY27 guidance",
+     "time": "2026-11-11T08:45:26+11:00"
+    }
+   }
+  ],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": -0.27,
+  "last_ts": "2026-11-11T10:10:00+11:00",
   "log": [
    "09:24 Read 79 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
-   "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters."
+   "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
+   "Stocks in play: DOW (55.21x), SHV (26.96x), MTS (21.05x), CGS (5.84x), FDC (5.27x, news: Guidance upgrade)",
+   "10:35 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "NXG": {
@@ -127,10 +189,44 @@
     "Acquisition / sale"
    ]
   },
-  "news_refreshed": true
+  "news_refreshed": true,
+  "tracks": {
+   "DOW": {
+    "pv": 7370284.038750172,
+    "v": 1009619.0,
+    "low": 7.260000228881836,
+    "vwap": 7.300064716244615
+   },
+   "MTS": {
+    "pv": 3261018.741387129,
+    "v": 947449.0,
+    "low": 3.390000104904175,
+    "vwap": 3.4418936970614027
+   },
+   "SHV": {
+    "pv": 509559.96778615314,
+    "v": 119752.0,
+    "low": 4.119999885559082,
+    "vwap": 4.255126994005554
+   },
+   "CGS": {
+    "pv": 183185.84910051027,
+    "v": 50014.0,
+    "low": 3.630000114440918,
+    "vwap": 3.6626914284102505
+   },
+   "FDC": {
+    "pv": 220855.51582336426,
+    "v": 58659.0,
+    "low": 3.7200000286102295,
+    "vwap": 3.7650746828852224
+   }
+  },
+  "news_checked_at": "2026-11-11T10:35:06.289709+11:00",
+  "news_today": []
  },
- "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-11T10:30:05.505086+11:00",
+ "status": "Watching 5 stocks in play for breakouts",
+ "last_run": "2026-11-11T10:35:06.289709+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
