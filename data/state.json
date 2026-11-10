@@ -54,152 +54,56 @@
   }
  ],
  "day": {
-  "date": "2026-11-10",
-  "phase": "closed",
-  "start_equity": 9797.93,
-  "universe_size": 256,
-  "watchlist": [
-   {
-    "sym": "VNT",
-    "rvol": 9.87,
-    "or_high": 4.860000133514404,
-    "or_low": 4.699999809265137,
-    "or_open": 4.75,
-    "or_close": 4.829999923706055,
-    "atr": 0.2175,
-    "gap_pct": -1.04,
-    "news": null
-   },
-   {
-    "sym": "APZ",
-    "rvol": 7.43,
-    "or_high": 5.130000114440918,
-    "or_low": 5.0,
-    "or_open": 5.0,
-    "or_close": 5.110000133514404,
-    "atr": 0.1571,
-    "gap_pct": 0.2,
-    "news": null
-   },
-   {
-    "sym": "PWH",
-    "rvol": 7.21,
-    "or_high": 11.78499984741211,
-    "or_low": 11.324999809265137,
-    "or_open": 11.324999809265137,
-    "or_close": 11.699999809265137,
-    "atr": 0.345,
-    "gap_pct": 0.67,
-    "news": null
-   },
-   {
-    "sym": "SIQ",
-    "rvol": 5.05,
-    "or_high": 11.789999961853027,
-    "or_low": 11.199999809265137,
-    "or_open": 11.260000228881836,
-    "or_close": 11.739999771118164,
-    "atr": 0.51,
-    "gap_pct": 0.09,
-    "news": null
-   },
-   {
-    "sym": "CGS",
-    "rvol": 4.56,
-    "or_high": 3.444999933242798,
-    "or_low": 3.380000114440918,
-    "or_open": 3.380000114440918,
-    "or_close": 3.430000066757202,
-    "atr": 0.115,
-    "gap_pct": 0.6,
-    "news": null
-   }
-  ],
-  "entered": [
-   "SIQ",
-   "CGS",
-   "VNT"
-  ],
-  "realized": 47.87,
+  "date": "2026-11-11",
+  "phase": "waiting_open",
+  "start_equity": 9845.8,
+  "universe_size": 255,
+  "watchlist": [],
+  "entered": [],
+  "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": 0.7,
-  "last_ts": "2026-11-10T15:50:00+11:00",
+  "market_change_pct": null,
+  "last_ts": null,
   "log": [
-   "09:24 Read 72 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
-   "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters.",
-   "Stocks in play: VNT (9.87x), APZ (7.43x), PWH (7.21x), SIQ (5.05x), CGS (4.56x)",
-   "10:35 Hourly news check: 7 new price-sensitive announcements, 0 for shares the bot trades.",
-   "10:15 BUY 207 SIQ @ $11.820, stop $11.560 (breakout above $11.790)",
-   "10:15 BUY 707 CGS @ $3.460, stop $3.400 (breakout above $3.445)",
-   "11:05 SELL 207 SIQ @ $11.540 (Stop loss) net $-67.96",
-   "11:10 BUY 501 VNT @ $4.880, stop $4.770 (breakout above $4.860)",
-   "11:40 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades.",
-   "12:40 Hourly news check: 6 new price-sensitive announcements, 2 for shares the bot trades.",
-   "13:45 Hourly news check: 2 new price-sensitive announcements, 1 for shares the bot trades.",
-   "14:45 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:50 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:50 SELL 707 CGS @ $3.560 (End of day exit) net $+60.70",
-   "15:50 SELL 501 VNT @ $5.010 (End of day exit) net $+55.13",
-   "15:50 Day closed. Equity $9,845.80 (+47.87).",
-   "16:15 Daily review done. See 'Learning from losses' on the dashboard.",
-   "16:15 News review done: today's announcements and price reactions recorded."
+   "09:24 Read 79 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
+   "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters."
   ],
   "news": {
-   "NXT": {
+   "NXG": {
     "category": "Other",
-    "headline": "Response to Statement by Goodman Group & Digital Realty",
-    "time": "2026-11-09T11:41:22+11:00"
+    "headline": "Interim Financial Statements - 30 September 2026",
+    "time": "2026-11-10T12:27:47+11:00"
    },
-   "VGN": {
+   "EOS": {
+    "category": "Contract / deal",
+    "headline": "UPDATE ON CONTRACT FOR MIDDLE EAST COUNTER DRONE ORDER",
+    "time": "2026-11-10T13:06:22+11:00"
+   },
+   "CBA": {
     "category": "Other",
-    "headline": "Virgin Australia Market Update - November 2026",
-    "time": "2026-11-09T17:21:33+11:00"
+    "headline": "September Quarter 2026 Trading Update",
+    "time": "2026-11-11T07:30:06+11:00"
    },
-   "SLC": {
+   "PXA": {
+    "category": "Management change",
+    "headline": "PEXA 2026 AGM Chair and CEO & MD addresses",
+    "time": "2026-11-11T09:07:01+11:00"
+   },
+   "FLT": {
+    "category": "Management change",
+    "headline": "Chair & MD's AGM Speeches (inc trading update & guidance)",
+    "time": "2026-11-11T08:21:36+11:00"
+   },
+   "NHC": {
     "category": "Other",
-    "headline": "Trading update and FY27 Guidance",
-    "time": "2026-11-10T08:16:11+11:00"
+    "headline": "New Hope proposes making an offer of Hybrid Securities",
+    "time": "2026-11-11T08:29:26+11:00"
    },
-   "MND": {
-    "category": "Other",
-    "headline": "Monadelphous Business Update",
-    "time": "2026-11-10T08:19:47+11:00"
-   },
-   "360": {
-    "category": "Results",
-    "headline": "Life360 Reports Q3 2026 Results",
-    "time": "2026-11-10T08:24:37+11:00"
-   },
-   "SLS": {
-    "category": "Other",
-    "headline": "More Strong Copper-Gold Hits at Nanadie",
-    "time": "2026-11-10T08:39:02+11:00"
-   },
-   "SSM": {
-    "category": "Trading halt",
-    "headline": "Successful completion of Placement & Institutional Offer",
-    "time": "2026-11-10T08:50:32+11:00"
-   },
-   "BXB": {
-    "category": "Other",
-    "headline": "Brambles prices 850M Euro Green Bond",
-    "time": "2026-11-10T08:51:12+11:00"
-   },
-   "SRL": {
-    "category": "Other",
-    "headline": "SRL Completes Investment in Agni Semiconductor, Inc.",
-    "time": "2026-11-10T09:16:47+11:00"
-   },
-   "DDR": {
-    "category": "Dividend / buy-back",
-    "headline": "Dividend/Distribution - DDR",
-    "time": "2026-11-10T09:25:42+11:00"
-   },
-   "INA": {
-    "category": "Takeover / merger",
-    "headline": "AVID exercises matching right",
-    "time": "2026-11-10T09:57:42+11:00"
+   "FDC": {
+    "category": "Guidance upgrade",
+    "headline": "FDC upgrades FY27 guidance",
+    "time": "2026-11-11T08:45:26+11:00"
    }
   },
   "news_rules": {
@@ -210,72 +114,12 @@
    "boost": [
     "Results",
     "Exploration / drilling",
-    "Management change",
     "Acquisition / sale"
    ]
-  },
-  "news_refreshed": true,
-  "tracks": {
-   "VNT": {
-    "pv": 53069464.94755697,
-    "v": 10843033.0,
-    "low": 4.699999809265137,
-    "vwap": 4.894337677249251
-   },
-   "SIQ": {
-    "pv": 20526635.39441935,
-    "v": 1762892.0,
-    "low": 11.199999809265137,
-    "vwap": 11.643728256988714
-   },
-   "APZ": {
-    "pv": 2966160.3121425314,
-    "v": 583468.0,
-    "low": 5.0,
-    "vwap": 5.083672647244633
-   },
-   "PWH": {
-    "pv": 2323543.533163388,
-    "v": 200270.0,
-    "low": 11.324999809265137,
-    "vwap": 11.602054891713125
-   },
-   "CGS": {
-    "pv": 2462570.1761062937,
-    "v": 702971.0,
-    "low": 3.380000114440918,
-    "vwap": 3.5030892826393885
-   }
-  },
-  "news_checked_at": "2026-11-10T15:50:06.280119+11:00",
-  "news_today": [
-   {
-    "key": "2924-03160030-6A1354342",
-    "sym": "NXG",
-    "time": "2026-11-10T12:27:47+11:00",
-    "category": "Other",
-    "headline": "Interim Financial Statements - 30 September 2026"
-   },
-   {
-    "key": "2924-03160031-6A1354343",
-    "sym": "NXG",
-    "time": "2026-11-10T12:28:17+11:00",
-    "category": "Other",
-    "headline": "Management Discussion and Analysis - 30 September 2026"
-   },
-   {
-    "key": "2924-03160043-2A1709761",
-    "sym": "EOS",
-    "time": "2026-11-10T13:06:22+11:00",
-    "category": "Contract / deal",
-    "headline": "UPDATE ON CONTRACT FOR MIDDLE EAST COUNTER DRONE ORDER"
-   }
-  ],
-  "end_equity": 9845.8,
-  "reviewed": true
+  }
  },
- "status": "Day finished. Equity $9,845.80",
- "last_run": "2026-11-10T16:15:06.441148+11:00",
+ "status": "Morning scan done. Waiting for the 10:00 open.",
+ "last_run": "2026-11-11T09:24:05.075918+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
