@@ -104,6 +104,16 @@
     "category": "Guidance upgrade",
     "headline": "FDC upgrades FY27 guidance",
     "time": "2026-11-11T08:45:26+11:00"
+   },
+   "NWH": {
+    "category": "Contract / deal",
+    "headline": "Fredon Industries Contract Award",
+    "time": "2026-11-11T09:28:56+11:00"
+   },
+   "IEL": {
+    "category": "Takeover / merger",
+    "headline": "Receipt of revised unsolicited proposal",
+    "time": "2026-11-11T09:38:01+11:00"
    }
   },
   "news_rules": {
@@ -116,10 +126,11 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-11T09:24:05.075918+11:00",
+ "status": "Building the opening range (prices are ~20 min delayed)",
+ "last_run": "2026-11-11T10:00:06.025833+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
