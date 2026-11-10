@@ -32,7 +32,7 @@
    "initial_stop": 4.77,
    "risk_ps": 0.11,
    "high": 4.900000095367432,
-   "last": 4.864999771118164,
+   "last": 4.860000133514404,
    "fees": 5.0,
    "rvol": 9.87,
    "atr": 0.2175,
@@ -157,7 +157,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": 0.7,
-  "last_ts": "2026-11-10T12:00:00+11:00",
+  "last_ts": "2026-11-10T12:05:00+11:00",
   "log": [
    "09:24 Read 72 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters.",
@@ -241,41 +241,41 @@
   "news_refreshed": true,
   "tracks": {
    "VNT": {
-    "pv": 29588556.803995613,
-    "v": 6115509.0,
+    "pv": 29839640.325709824,
+    "v": 6167190.0,
     "low": 4.699999809265137,
-    "vwap": 4.838281949056998
+    "vwap": 4.83844997895473
    },
    "SIQ": {
-    "pv": 15107272.329547562,
-    "v": 1298356.0,
+    "pv": 15168268.334265707,
+    "v": 1303542.0,
     "low": 11.199999809265137,
-    "vwap": 11.635693391910664
+    "vwap": 11.636194563938643
    },
    "APZ": {
-    "pv": 1545001.591879686,
-    "v": 304741.0,
+    "pv": 1566092.341879686,
+    "v": 308890.0,
     "low": 5.0,
-    "vwap": 5.069884235727015
+    "vwap": 5.070064883549763
    },
    "PWH": {
-    "pv": 1136046.610116005,
-    "v": 97706.0,
+    "pv": 1140874.0800523758,
+    "v": 98123.0,
     "low": 11.324999809265137,
-    "vwap": 11.627193929912236
+    "vwap": 11.626979200109819
    },
    "CGS": {
-    "pv": 1836541.2361176012,
-    "v": 526859.0,
+    "pv": 1880154.7361176012,
+    "v": 539320.0,
     "low": 3.380000114440918,
-    "vwap": 3.4858306228376117
+    "vwap": 3.486158006596457
    }
   },
   "news_checked_at": "2026-11-10T11:40:06.261304+11:00",
   "news_today": []
  },
- "status": "Watching 5 stocks in play for breakouts",
- "last_run": "2026-11-10T12:25:06.213179+11:00",
+ "status": "Past the entry cut-off. Managing open trades until the close.",
+ "last_run": "2026-11-10T12:30:05.732989+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
