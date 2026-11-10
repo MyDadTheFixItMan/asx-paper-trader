@@ -339,5 +339,28 @@
   "news_cat": null,
   "news_headline": null,
   "reason": "End of day exit"
+ },
+ {
+  "id": 17,
+  "date": "2026-11-11",
+  "sym": "SHV",
+  "qty": 568,
+  "entry_time": "2026-11-11T10:15:00+11:00",
+  "entry_price": 4.33,
+  "exit_time": "2026-11-11T10:20:00+11:00",
+  "exit_price": 4.26,
+  "initial_stop": 4.27,
+  "fees": 10.0,
+  "gross": -39.76,
+  "net": -49.76,
+  "pct": -2.02,
+  "r": -1.17,
+  "rvol": 26.96,
+  "gap_pct": 0.73,
+  "stop_pct": 1.39,
+  "market_pct": -0.27,
+  "news_cat": null,
+  "news_headline": null,
+  "reason": "Stop loss"
  }
 ]
