@@ -128,7 +128,7 @@
   "losses_in_row": 3,
   "no_new_entries": true,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-11T15:20:00+11:00",
+  "last_ts": "2026-11-11T15:25:00+11:00",
   "log": [
    "09:24 Read 79 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
@@ -144,7 +144,8 @@
    "12:25 SELL 334 DOW @ $7.260 (Stop loss) net $-43.40",
    "12:25 3 losses in a row. Stopping for the day.",
    "13:45 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "14:45 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades."
+   "14:45 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
+   "15:50 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "NXG": {
@@ -207,41 +208,41 @@
   "news_refreshed": true,
   "tracks": {
    "DOW": {
-    "pv": 9857012.114497187,
-    "v": 1350769.0,
+    "pv": 9882006.949519001,
+    "v": 1354200.0,
     "low": 7.255000114440918,
-    "vwap": 7.297333677702987
+    "vwap": 7.2973024291234685
    },
    "MTS": {
-    "pv": 9365019.75119646,
-    "v": 2716132.0,
+    "pv": 9418023.55095108,
+    "v": 2731570.0,
     "low": 3.390000104904175,
-    "vwap": 3.4479251196909653
+    "vwap": 3.447842651277866
    },
    "SHV": {
-    "pv": 2811333.9868218107,
-    "v": 656112.0,
+    "pv": 2821638.6000156407,
+    "v": 658550.0,
     "low": 4.119999885559082,
-    "vwap": 4.2848385440623105
+    "vwap": 4.284623187329194
    },
    "CGS": {
-    "pv": 2301454.7408905826,
-    "v": 634013.0,
+    "pv": 2305826.0142583055,
+    "v": 635215.0,
     "low": 3.5399999618530273,
-    "vwap": 3.6299803645833486
+    "vwap": 3.6299930169443506
    },
    "FDC": {
-    "pv": 3541534.2112840805,
-    "v": 976980.0,
+    "pv": 3588139.7817330356,
+    "v": 989819.0,
     "low": 3.569999933242798,
-    "vwap": 3.62498128035792
+    "vwap": 3.6250463789167875
    }
   },
-  "news_checked_at": "2026-11-11T14:45:06.189803+11:00",
+  "news_checked_at": "2026-11-11T15:50:05.786157+11:00",
   "news_today": []
  },
  "status": "Done for today: daily loss limit reached",
- "last_run": "2026-11-11T15:45:05.747787+11:00",
+ "last_run": "2026-11-11T15:50:05.786157+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
