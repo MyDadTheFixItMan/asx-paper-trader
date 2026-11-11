@@ -1,252 +1,151 @@
 {
- "run_at": "2026-11-08T17:39+11:00",
+ "run_at": "2026-11-11T19:57+11:00",
  "period": [
-  "2026-09-07",
-  "2026-11-06"
+  "2026-09-10",
+  "2026-11-10"
  ],
- "universe": 253,
+ "universe": 254,
  "results": [
   {
    "name": "current",
-   "days": 45,
-   "trades": 43,
-   "total_return_pct": -4.13,
-   "avg_week_pct": -0.45,
+   "days": 44,
+   "trades": 48,
+   "total_return_pct": -7.31,
+   "avg_week_pct": -0.74,
    "weeks_hitting_8pct": 0,
    "weekly_returns": [
-    1.78,
-    -3.1,
-    -2.57,
-    -0.96,
     0.0,
-    1.24,
-    1.62,
-    -1.18,
-    -0.92
+    -3.23,
+    -2.58,
+    -1.92,
+    -1.67,
+    0.16,
+    2.36,
+    -1.5,
+    0.39,
+    0.56
    ],
-   "win_rate": 23.3,
-   "avg_r": -0.029,
-   "sqn": -0.12,
-   "max_drawdown_pct": -6.55,
-   "fees": 430.0,
+   "win_rate": 18.8,
+   "avg_r": -0.216,
+   "sqn": -1.09,
+   "max_drawdown_pct": -10.28,
+   "fees": 480.0,
    "overrides": {}
   },
   {
-   "name": "Tudor Jones: trade only when ASX 200 is above its 200-day average",
-   "days": 45,
-   "trades": 23,
-   "total_return_pct": -1.66,
-   "avg_week_pct": -0.18,
+   "name": "Zarattini/Aziz: 10-minute opening range (shortest that covers the ASX's staggered open)",
+   "days": 44,
+   "trades": 57,
+   "total_return_pct": -6.73,
+   "avg_week_pct": -0.67,
    "weeks_hitting_8pct": 0,
    "weekly_returns": [
-    1.78,
     0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.53,
-    -3.28,
-    -0.63
-   ],
-   "win_rate": 26.1,
-   "avg_r": -0.099,
-   "sqn": -0.36,
-   "max_drawdown_pct": -4.96,
-   "fees": 230.0,
-   "overrides": {
-    "market_trend_ma": 200
-   }
-  },
-  {
-   "name": "O'Neil 'M': ASX 200 above its 50-day average",
-   "days": 45,
-   "trades": 18,
-   "total_return_pct": -2.17,
-   "avg_week_pct": -0.24,
-   "weeks_hitting_8pct": 0,
-   "weekly_returns": [
-    1.78,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    -3.27,
-    -0.63
-   ],
-   "win_rate": 27.8,
-   "avg_r": -0.114,
-   "sqn": -0.42,
-   "max_drawdown_pct": -3.88,
-   "fees": 180.0,
-   "overrides": {
-    "market_trend_ma": 50
-   }
-  },
-  {
-   "name": "Murphy/Pring: stock above its 50-day average",
-   "days": 45,
-   "trades": 39,
-   "total_return_pct": -7.19,
-   "avg_week_pct": -0.82,
-   "weeks_hitting_8pct": 0,
-   "weekly_returns": [
-    0.58,
-    -1.65,
-    -1.59,
-    -0.45,
-    -0.78,
-    -0.12,
-    -0.39,
-    -2.58,
-    -0.42
-   ],
-   "win_rate": 25.6,
-   "avg_r": -0.273,
-   "sqn": -2.03,
-   "max_drawdown_pct": -7.89,
-   "fees": 390.0,
-   "overrides": {
-    "stock_trend_ma": 50
-   }
-  },
-  {
-   "name": "O'Neil leaders: within 15% of 52-week high",
-   "days": 45,
-   "trades": 36,
-   "total_return_pct": -6.36,
-   "avg_week_pct": -0.72,
-   "weeks_hitting_8pct": 0,
-   "weekly_returns": [
-    0.58,
-    -1.29,
-    -1.52,
-    0.0,
-    -0.81,
-    -0.32,
-    -0.07,
-    -2.16,
-    -0.92
-   ],
-   "win_rate": 25.0,
-   "avg_r": -0.267,
-   "sqn": -1.97,
-   "max_drawdown_pct": -6.9,
-   "fees": 360.0,
-   "overrides": {
-    "near_high_pct": 15
-   }
-  },
-  {
-   "name": "O'Neil RS: beat the market over 3 months",
-   "days": 45,
-   "trades": 43,
-   "total_return_pct": -6.79,
-   "avg_week_pct": -0.77,
-   "weeks_hitting_8pct": 0,
-   "weekly_returns": [
-    2.87,
-    -1.64,
-    -1.64,
-    -0.45,
-    -1.8,
-    -0.64,
-    -0.29,
-    -2.57,
-    -0.76
-   ],
-   "win_rate": 23.3,
-   "avg_r": -0.291,
-   "sqn": -2.04,
-   "max_drawdown_pct": -9.4,
-   "fees": 430.0,
-   "overrides": {
-    "rs_min": 0
-   }
-  },
-  {
-   "name": "Nison: opening candle closes in top 25% of its range",
-   "days": 45,
-   "trades": 35,
-   "total_return_pct": -4.49,
-   "avg_week_pct": -0.5,
-   "weeks_hitting_8pct": 0,
-   "weekly_returns": [
-    1.78,
-    -3.17,
-    -1.25,
-    -1.22,
-    -1.99,
-    0.12,
-    1.27,
-    -0.02,
+    -4.01,
+    -1.69,
+    -1.24,
+    -3.15,
+    0.92,
+    3.57,
+    -0.23,
+    -0.9,
     0.0
    ],
-   "win_rate": 17.1,
-   "avg_r": -0.146,
-   "sqn": -0.55,
-   "max_drawdown_pct": -8.5,
-   "fees": 350.0,
+   "win_rate": 19.3,
+   "avg_r": -0.195,
+   "sqn": -1.08,
+   "max_drawdown_pct": -11.38,
+   "fees": 570.0,
    "overrides": {
-    "or_close_top_pct": 25
+    "opening_range_minutes": 10
    }
   },
   {
-   "name": "Douglas: same size every trade (no cutting size after losing days)",
-   "days": 45,
-   "trades": 44,
-   "total_return_pct": -2.42,
-   "avg_week_pct": -0.25,
+   "name": "Zarattini/Aziz: 10-minute range, top 10 at 2x volume (closer to the paper's top-20 stocks in play)",
+   "days": 44,
+   "trades": 101,
+   "total_return_pct": -21.33,
+   "avg_week_pct": -2.35,
    "weeks_hitting_8pct": 0,
    "weekly_returns": [
-    2.23,
-    -3.07,
-    -2.98,
-    -1.07,
     0.0,
-    1.87,
-    3.21,
+    -5.02,
+    -3.33,
+    -3.65,
+    -5.39,
+    -1.13,
+    -2.35,
+    0.45,
+    -3.09,
+    0.0
+   ],
+   "win_rate": 17.8,
+   "avg_r": -0.346,
+   "sqn": -2.96,
+   "max_drawdown_pct": -21.33,
+   "fees": 1010.0,
+   "overrides": {
+    "opening_range_minutes": 10,
+    "min_relative_volume": 2.0,
+    "watchlist_size": 10
+   }
+  },
+  {
+   "name": "Current 15-minute range, top 10 at 2x volume",
+   "days": 44,
+   "trades": 108,
+   "total_return_pct": -17.33,
+   "avg_week_pct": -1.87,
+   "weeks_hitting_8pct": 0,
+   "weekly_returns": [
+    0.0,
+    -4.47,
+    -2.91,
+    -3.58,
+    -4.17,
+    -1.04,
+    -2.91,
+    1.58,
     -1.17,
-    -1.27
+    0.0
    ],
-   "win_rate": 22.7,
-   "avg_r": -0.035,
-   "sqn": -0.15,
-   "max_drawdown_pct": -7.32,
-   "fees": 440.0,
+   "win_rate": 19.4,
+   "avg_r": -0.215,
+   "sqn": -1.8,
+   "max_drawdown_pct": -18.59,
+   "fees": 1080.0,
    "overrides": {
-    "learn_min_risk_multiplier": 1.0
+    "min_relative_volume": 2.0,
+    "watchlist_size": 10
    }
   },
   {
-   "name": "Combined trend: market >50-day + stock >50-day + near high",
-   "days": 45,
-   "trades": 8,
-   "total_return_pct": -0.6,
-   "avg_week_pct": -0.07,
+   "name": "Zarattini/Aziz: 10-minute range, stop 0.25 ATR (paper used a tight ATR stop; 1% minimum still applies)",
+   "days": 44,
+   "trades": 49,
+   "total_return_pct": -7.37,
+   "avg_week_pct": -0.75,
    "weeks_hitting_8pct": 0,
    "weekly_returns": [
-    0.58,
+    0.0,
+    -3.67,
+    -0.86,
+    -1.95,
+    -3.33,
+    0.4,
+    1.93,
     0.0,
     0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    -1.03,
-    -0.14
+    0.0
    ],
-   "win_rate": 37.5,
-   "avg_r": 0.134,
-   "sqn": 0.31,
-   "max_drawdown_pct": -1.6,
-   "fees": 80.0,
+   "win_rate": 16.3,
+   "avg_r": -0.168,
+   "sqn": -0.52,
+   "max_drawdown_pct": -11.49,
+   "fees": 490.0,
    "overrides": {
-    "market_trend_ma": 50,
-    "stock_trend_ma": 50,
-    "near_high_pct": 15
+    "opening_range_minutes": 10,
+    "stop_atr_fraction": 0.25
    }
   }
  ]
