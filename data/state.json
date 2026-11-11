@@ -62,147 +62,76 @@
   }
  ],
  "day": {
-  "date": "2026-11-11",
-  "phase": "closed",
-  "start_equity": 9845.8,
-  "universe_size": 255,
-  "watchlist": [
-   {
-    "sym": "DOW",
-    "rvol": 55.21,
-    "or_high": 7.340000152587891,
-    "or_low": 7.260000228881836,
-    "or_open": 7.260000228881836,
-    "or_close": 7.300000190734863,
-    "atr": 0.1746,
-    "gap_pct": -0.55,
-    "news": null
-   },
-   {
-    "sym": "SHV",
-    "rvol": 26.96,
-    "or_high": 4.300000190734863,
-    "or_low": 4.119999885559082,
-    "or_open": 4.119999885559082,
-    "or_close": 4.289999961853027,
-    "atr": 0.1139,
-    "gap_pct": 0.73,
-    "news": null
-   },
-   {
-    "sym": "MTS",
-    "rvol": 21.05,
-    "or_high": 3.4700000286102295,
-    "or_low": 3.390000104904175,
-    "or_open": 3.3949999809265137,
-    "or_close": 3.4600000381469727,
-    "atr": 0.0625,
-    "gap_pct": 0.44,
-    "news": null
-   },
-   {
-    "sym": "CGS",
-    "rvol": 5.84,
-    "or_high": 3.744999885559082,
-    "or_low": 3.630000114440918,
-    "or_open": 3.6500000953674316,
-    "or_close": 3.7200000286102295,
-    "atr": 0.1243,
-    "gap_pct": 1.39,
-    "news": null
-   },
-   {
-    "sym": "FDC",
-    "rvol": 5.27,
-    "or_high": 3.8299999237060547,
-    "or_low": 3.7200000286102295,
-    "or_open": 3.7200000286102295,
-    "or_close": 3.7699999809265137,
-    "atr": 0.1739,
-    "gap_pct": 5.38,
-    "news": {
-     "category": "Guidance upgrade",
-     "headline": "FDC upgrades FY27 guidance",
-     "time": "2026-11-11T08:45:26+11:00"
-    }
-   }
-  ],
-  "entered": [
-   "SHV",
-   "MTS",
-   "DOW"
-  ],
-  "realized": -138.41,
-  "losses_in_row": 3,
-  "no_new_entries": true,
-  "market_change_pct": -0.27,
-  "last_ts": "2026-11-11T15:50:00+11:00",
+  "date": "2026-11-12",
+  "phase": "waiting_open",
+  "start_equity": 9707.39,
+  "universe_size": 256,
+  "watchlist": [],
+  "entered": [],
+  "realized": 0.0,
+  "losses_in_row": 0,
+  "no_new_entries": false,
+  "market_change_pct": null,
+  "last_ts": null,
   "log": [
-   "09:24 Read 79 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
-   "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
-   "Stocks in play: DOW (55.21x), SHV (26.96x), MTS (21.05x), CGS (5.84x), FDC (5.27x, news: Guidance upgrade)",
-   "10:35 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades.",
-   "10:15 BUY 568 SHV @ $4.330, stop $4.270 (breakout above $4.300)",
-   "10:15 BUY 705 MTS @ $3.490, stop $3.450 (breakout above $3.470)",
-   "10:20 SELL 568 SHV @ $4.260 (Stop loss) net $-49.76",
-   "10:30 SELL 705 MTS @ $3.440 (Stop loss) net $-45.25",
-   "10:45 BUY 334 DOW @ $7.360, stop $7.270 (breakout above $7.340)",
-   "11:35 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades.",
-   "12:40 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
-   "12:25 SELL 334 DOW @ $7.260 (Stop loss) net $-43.40",
-   "12:25 3 losses in a row. Stopping for the day.",
-   "13:45 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "14:45 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:50 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:50 Day closed. Equity $9,707.39 (-138.41).",
-   "16:15 Daily review done. See 'Learning from losses' on the dashboard.",
-   "16:15 News review done: today's announcements and price reactions recorded."
+   "09:24 Read 80 price-sensitive ASX announcements; 11 are for shares the bot can trade.",
+   "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters."
   ],
   "news": {
-   "NXG": {
-    "category": "Other",
-    "headline": "Interim Financial Statements - 30 September 2026",
-    "time": "2026-11-10T12:27:47+11:00"
-   },
-   "EOS": {
-    "category": "Contract / deal",
-    "headline": "UPDATE ON CONTRACT FOR MIDDLE EAST COUNTER DRONE ORDER",
-    "time": "2026-11-10T13:06:22+11:00"
-   },
-   "CBA": {
-    "category": "Other",
-    "headline": "September Quarter 2026 Trading Update",
-    "time": "2026-11-11T07:30:06+11:00"
-   },
-   "PXA": {
-    "category": "Management change",
-    "headline": "PEXA 2026 AGM Chair and CEO & MD addresses",
-    "time": "2026-11-11T09:07:01+11:00"
-   },
-   "FLT": {
-    "category": "Management change",
-    "headline": "Chair & MD's AGM Speeches (inc trading update & guidance)",
-    "time": "2026-11-11T08:21:36+11:00"
-   },
-   "NHC": {
-    "category": "Other",
-    "headline": "New Hope proposes making an offer of Hybrid Securities",
-    "time": "2026-11-11T08:29:26+11:00"
-   },
-   "FDC": {
-    "category": "Guidance upgrade",
-    "headline": "FDC upgrades FY27 guidance",
-    "time": "2026-11-11T08:45:26+11:00"
-   },
-   "NWH": {
-    "category": "Contract / deal",
-    "headline": "Fredon Industries Contract Award",
-    "time": "2026-11-11T09:28:56+11:00"
-   },
-   "IEL": {
+   "VAU": {
     "category": "Takeover / merger",
-    "headline": "Receipt of revised unsolicited proposal",
-    "time": "2026-11-11T09:38:01+11:00"
+    "headline": "Results of Scheme Meeting",
+    "time": "2026-11-11T16:14:47+11:00"
+   },
+   "CTD": {
+    "category": "Other",
+    "headline": "Q1 FY27 Business Performance Update",
+    "time": "2026-11-11T16:53:52+11:00"
+   },
+   "XRO": {
+    "category": "Results",
+    "headline": "Appendix 4D & FY27 Interim Report",
+    "time": "2026-11-12T07:44:10+11:00"
+   },
+   "ORI": {
+    "category": "Results",
+    "headline": "Orica Annual Report 2026 (including Appendix 4E)",
+    "time": "2026-11-12T08:03:25+11:00"
+   },
+   "ING": {
+    "category": "Other",
+    "headline": "FY27 Trading Update",
+    "time": "2026-11-12T08:20:10+11:00"
+   },
+   "ALL": {
+    "category": "Management change",
+    "headline": "CEO Leadership Transition",
+    "time": "2026-11-12T08:21:35+11:00"
+   },
+   "AXQ": {
+    "category": "Results",
+    "headline": "Aura Reports Third Quarter 2026 Financial Results",
+    "time": "2026-11-12T08:23:05+11:00"
+   },
+   "AUB": {
+    "category": "Management change",
+    "headline": "2026 AGM - Presentation",
+    "time": "2026-11-12T08:25:55+11:00"
+   },
+   "CPU": {
+    "category": "Management change",
+    "headline": "2026 AGM presentations and proxy summary",
+    "time": "2026-11-12T08:36:30+11:00"
+   },
+   "GNC": {
+    "category": "Management change",
+    "headline": "GrainCorp announces Managing Director & CEO Succession",
+    "time": "2026-11-12T08:51:50+11:00"
+   },
+   "WGN": {
+    "category": "Management change",
+    "headline": "2026 AGM - Chairman and Managing Director's Address",
+    "time": "2026-11-12T09:15:50+11:00"
    }
   },
   "news_rules": {
@@ -215,47 +144,10 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  },
-  "news_refreshed": true,
-  "tracks": {
-   "DOW": {
-    "pv": 15522306.902065756,
-    "v": 2130070.0,
-    "low": 7.244999885559082,
-    "vwap": 7.287228542754819
-   },
-   "MTS": {
-    "pv": 9973044.062002495,
-    "v": 2893269.0,
-    "low": 3.390000104904175,
-    "vwap": 3.446981273432403
-   },
-   "SHV": {
-    "pv": 2878299.7081796336,
-    "v": 671960.0,
-    "low": 4.119999885559082,
-    "vwap": 4.2834390561635125
-   },
-   "CGS": {
-    "pv": 2388829.299704234,
-    "v": 658026.0,
-    "low": 3.5399999618530273,
-    "vwap": 3.630296218848851
-   },
-   "FDC": {
-    "pv": 3701437.0486687813,
-    "v": 1021058.0,
-    "low": 3.569999933242798,
-    "vwap": 3.6250996992029654
-   }
-  },
-  "news_checked_at": "2026-11-11T15:50:05.786157+11:00",
-  "news_today": [],
-  "end_equity": 9707.39,
-  "reviewed": true
+  }
  },
- "status": "Day finished. Equity $9,707.39",
- "last_run": "2026-11-11T16:15:06.511818+11:00",
+ "status": "Morning scan done. Waiting for the 10:00 open.",
+ "last_run": "2026-11-12T09:24:08.299173+11:00",
  "learning": {
   "risk_multiplier": 0.75,
   "blocks": [],
