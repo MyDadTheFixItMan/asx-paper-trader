@@ -46,6 +46,9 @@ VARIANTS = [
     dict(LC, name="Prior-day losers >=5% when STW 20-day vol >= 20%", max_gap=1, prev_ret_max=-5, market_max_gap=None, mkt_vol_min=20),
     # Stress-day reversal (Quantpedia 2025): buy the morning after the whole market sold off
     dict(LC, name="Stress: large-cap gap-down >=3% after STW fell >=1.5% yesterday", market_max_gap=None, mkt_prev_ret_max=-1.5),
+    dict(LC, name="Stress: same, STW fell >=2% yesterday", market_max_gap=None, mkt_prev_ret_max=-2.0),
+    dict(LC, name="Weak open OR stress day: best so far, or STW fell >=1.5% yesterday", or_mkt_prev_ret_max=-1.5),
+    dict(LC, name="Stress + Nagel: STW fell >=1.5% yesterday and STW vol >= 15%", market_max_gap=None, mkt_prev_ret_max=-1.5, mkt_vol_min=15),
 ]
 EXTRA = ["STW.AX"]  # ETFs aren't in the company list
 
@@ -129,7 +132,11 @@ def signals(v, P):
         ok = ok.mul((mprev <= v["mkt_prev_ret_max"]).fillna(False), axis=0)
     if v.get("market_max_gap") is not None and "STW" in O.columns:
         mkt = (O["STW"] / C["STW"].shift(1) - 1) * 100
-        ok = ok.mul(mkt <= v["market_max_gap"], axis=0)
+        cond = mkt <= v["market_max_gap"]
+        if v.get("or_mkt_prev_ret_max") is not None and stw_c is not None:
+            # either a sharply weak open OR yesterday was a market sell-off (stress day)
+            cond = cond | (((stw_c / stw_c.shift(1) - 1) * 100).shift(1) <= v["or_mkt_prev_ret_max"])
+        ok = ok.mul(cond, axis=0)
     return ok.fillna(False).astype(bool), score
 
 
