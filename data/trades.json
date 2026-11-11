@@ -385,5 +385,28 @@
   "news_cat": null,
   "news_headline": null,
   "reason": "Stop loss"
+ },
+ {
+  "id": 19,
+  "date": "2026-11-11",
+  "sym": "DOW",
+  "qty": 334,
+  "entry_time": "2026-11-11T10:45:00+11:00",
+  "entry_price": 7.36,
+  "exit_time": "2026-11-11T12:25:00+11:00",
+  "exit_price": 7.26,
+  "initial_stop": 7.27,
+  "fees": 10.0,
+  "gross": -33.4,
+  "net": -43.4,
+  "pct": -1.77,
+  "r": -1.11,
+  "rvol": 55.21,
+  "gap_pct": -0.55,
+  "stop_pct": 1.22,
+  "market_pct": -0.27,
+  "news_cat": null,
+  "news_headline": null,
+  "reason": "Stop loss"
  }
 ]

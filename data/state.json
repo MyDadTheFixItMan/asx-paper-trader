@@ -1,29 +1,8 @@
 {
  "start_capital": 10000,
- "cash": 7287.55,
+ "cash": 9707.39,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [
-  {
-   "sym": "DOW",
-   "qty": 334,
-   "entry": 7.36,
-   "entry_time": "2026-11-11T10:45:00+11:00",
-   "stop": 7.27,
-   "initial_stop": 7.27,
-   "risk_ps": 0.09,
-   "high": 7.349999904632568,
-   "last": 7.275000095367432,
-   "fees": 5.0,
-   "rvol": 55.21,
-   "atr": 0.1746,
-   "stop_note": "initial",
-   "gap_pct": -0.55,
-   "stop_pct": 1.22,
-   "market_pct": -0.27,
-   "news_cat": null,
-   "news_headline": null
-  }
- ],
+ "positions": [],
  "daily": [
   {
    "date": "2026-11-03",
@@ -145,11 +124,11 @@
    "MTS",
    "DOW"
   ],
-  "realized": -95.01,
-  "losses_in_row": 2,
-  "no_new_entries": false,
+  "realized": -138.41,
+  "losses_in_row": 3,
+  "no_new_entries": true,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-11T12:20:00+11:00",
+  "last_ts": "2026-11-11T12:25:00+11:00",
   "log": [
    "09:24 Read 79 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
@@ -161,7 +140,9 @@
    "10:30 SELL 705 MTS @ $3.440 (Stop loss) net $-45.25",
    "10:45 BUY 334 DOW @ $7.360, stop $7.270 (breakout above $7.340)",
    "11:35 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades.",
-   "12:40 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades."
+   "12:40 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
+   "12:25 SELL 334 DOW @ $7.260 (Stop loss) net $-43.40",
+   "12:25 3 losses in a row. Stopping for the day."
   ],
   "news": {
    "NXG": {
@@ -230,16 +211,16 @@
     "vwap": 7.301120386234729
    },
    "MTS": {
-    "pv": 6596461.931191126,
-    "v": 1912088.0,
+    "pv": 6606272.291254679,
+    "v": 1914944.0,
     "low": 3.390000104904175,
-    "vwap": 3.449873609996572
+    "vwap": 3.4498514271198943
    },
    "SHV": {
-    "pv": 1900116.0321399372,
-    "v": 442413.0,
+    "pv": 1903055.6822048824,
+    "v": 443094.0,
     "low": 4.119999885559082,
-    "vwap": 4.294891949693922
+    "vwap": 4.294925415837006
    },
    "CGS": {
     "pv": 611448.3916358948,
@@ -248,17 +229,17 @@
     "vwap": 3.6383393231813894
    },
    "FDC": {
-    "pv": 1187519.0936899981,
-    "v": 323592.0,
+    "pv": 1195316.426934481,
+    "v": 325742.0,
     "low": 3.5950000286102295,
-    "vwap": 3.6698036221229144
+    "vwap": 3.6695189043306695
    }
   },
   "news_checked_at": "2026-11-11T12:40:06.044092+11:00",
   "news_today": []
  },
- "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-11T12:45:05.974730+11:00",
+ "status": "Done for today: daily loss limit reached",
+ "last_run": "2026-11-11T12:50:05.429205+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
