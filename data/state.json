@@ -132,6 +132,16 @@
     "category": "Management change",
     "headline": "2026 AGM - Chairman and Managing Director's Address",
     "time": "2026-11-12T09:15:50+11:00"
+   },
+   "RPL": {
+    "category": "Other",
+    "headline": "CY26 Fund Performance Fee Revenue and Other Income Update",
+    "time": "2026-11-12T09:28:11+11:00"
+   },
+   "PDN": {
+    "category": "Trading halt",
+    "headline": "Trading Halt",
+    "time": "2026-11-12T09:49:41+11:00"
    }
   },
   "news_rules": {
@@ -144,10 +154,11 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-12T09:24:08.299173+11:00",
+ "status": "Building the opening range (prices are ~20 min delayed)",
+ "last_run": "2026-11-12T10:00:06.185409+11:00",
  "learning": {
   "risk_multiplier": 0.75,
   "blocks": [],
