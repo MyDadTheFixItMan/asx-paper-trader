@@ -149,7 +149,7 @@
   "losses_in_row": 2,
   "no_new_entries": false,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-11T12:00:00+11:00",
+  "last_ts": "2026-11-11T12:05:00+11:00",
   "log": [
    "09:24 Read 79 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
@@ -223,41 +223,41 @@
   "news_refreshed": true,
   "tracks": {
    "DOW": {
-    "pv": 8108044.910488128,
-    "v": 1110472.0,
+    "pv": 8146883.71075948,
+    "v": 1115807.0,
     "low": 7.260000228881836,
-    "vwap": 7.301440207846868
+    "vwap": 7.301337696178174
    },
    "MTS": {
-    "pv": 6479675.459665458,
-    "v": 1878080.0,
+    "pv": 6549001.327615897,
+    "v": 1898272.0,
     "low": 3.390000104904175,
-    "vwap": 3.450159449898544
+    "vwap": 3.4499804704572883
    },
    "SHV": {
-    "pv": 1840315.0459879239,
-    "v": 428587.0,
+    "pv": 1846160.7126545906,
+    "v": 429936.0,
     "low": 4.119999885559082,
-    "vwap": 4.29391242848692
+    "vwap": 4.294036118525991
    },
    "CGS": {
-    "pv": 602600.0467848778,
-    "v": 165576.0,
+    "pv": 603338.6917796135,
+    "v": 165783.0,
     "low": 3.549999952316284,
-    "vwap": 3.6394166230907725
+    "vwap": 3.639327867028667
    },
    "FDC": {
-    "pv": 1124881.4857102234,
-    "v": 306264.0,
-    "low": 3.5999999046325684,
-    "vwap": 3.672914497656347
+    "pv": 1161516.8933980465,
+    "v": 316417.0,
+    "low": 3.5950000286102295,
+    "vwap": 3.6708422537286127
    }
   },
   "news_checked_at": "2026-11-11T11:35:06.340916+11:00",
   "news_today": []
  },
- "status": "Watching 5 stocks in play for breakouts",
- "last_run": "2026-11-11T12:25:06.011676+11:00",
+ "status": "Past the entry cut-off. Managing open trades until the close.",
+ "last_run": "2026-11-11T12:30:06.326882+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
