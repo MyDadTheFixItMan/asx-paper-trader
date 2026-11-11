@@ -12,7 +12,7 @@ The rules come from published research and well-known traders' risk rules:
 |---|---|---|
 | Scan every ASX listing each morning, keep only shares priced $2–$20 with ≥ $1M average daily turnover and ATR ≥ 1.5% | `min_price`, `max_price`, `min_avg_turnover`, `min_atr_pct` | Liquidity first; Ross Cameron's price band (adopted 4 Nov after two backtests) |
 | Trade only **stocks in play**: opening volume ≥ 3× normal, green opening range, above yesterday's close; top 5 by relative volume | `min_relative_volume`, `watchlist_size` | Zarattini, Barbon & Aziz (2024); Cameron's relative-volume rule |
-| **Opening range breakout**: buy when price breaks the high of the first 15 minutes (covers the ASX's staggered 10:00–10:10 open) | `opening_range_minutes` | Toby Crabel; Zarattini et al. |
+| **Opening range breakout**: buy when price breaks the high of the first 10 minutes (the shortest range that covers the ASX's staggered 10:00–10:10 open) | `opening_range_minutes` | Toby Crabel; Zarattini et al. (adopted 11 Nov: 10 min beat 15 min in the 60-day test) |
 | **No longs below VWAP** | `vwap_entry_filter` | Lance Breitstein; Zarattini & Aziz (adopted 3 Nov: first rule with positive avg R) |
 | Long only; stand aside when the ASX 200 opens down more than 1% | `market_min_change_pct` | Trade with the market |
 | Risk 1% of equity per trade (scaled down after losing days), max 25% of equity in one stock, max 5 positions | `risk_per_trade_pct` … | Paul Tudor Jones / Linda Raschke: defence first |

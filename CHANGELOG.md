@@ -126,3 +126,42 @@ New engine switches (all default off / current behaviour): `max_gap_pct`, `requi
 - Test (bot/research_intraday_news.py, 58 days, 5-minute data): only 87 intraday announcements in tradeable shares;
   those that jumped 1%+ in the first 25 minutes then drifted −0.44% by the close (−1.04% after costs, 40% rose).
   With ~20-minute delayed data, chasing intraday news loses → no intraday news entry setup.
+
+## 2026-11-11: mid-week research (see RESEARCH.md)
+
+**Adopted: 10-minute opening range** (`opening_range_minutes` 15 → 10). Zarattini, Barbon & Aziz found shorter opening
+ranges work best (5 min in the US); 10 min is the shortest that covers the ASX's staggered 10:00–10:10 open.
+60-day intraday test (10 Sep – 10 Nov 2026, 254 shares; a second run on the same data gave identical numbers):
+
+| Variant | Trades | Return | Avg R | SQN | Max DD |
+|---|---|---|---|---|---|
+| Current (15-min range) | 48 | −7.3% | −0.22 | −1.09 | −10.3% |
+| **10-min range — adopted** | 57 | **−6.7%** | **−0.20** | −1.08 | −11.4% |
+| 10-min range, top 10 at 2× volume | 101 | −21.3% | −0.35 | −2.96 | −21.3% |
+| 15-min range, top 10 at 2× volume | 108 | −17.3% | −0.22 | −1.80 | −18.6% |
+| 10-min range, stop 0.25 ATR | 49 | −7.4% | −0.17 | −0.52 | −11.5% |
+
+Meets every adoption rule (better return and avg R, 57 trades, drawdown 1.1 points worse, not testable on daily bars),
+but the gain is small and within noise. The core strategy is still losing (−7% over 60 days): this is a tweak, not a fix.
+Saturday's run re-checks the old 15-minute range as a variant. Loosening the stocks-in-play filter (top 10, 2× volume)
+roughly doubled trades and losses. `tests/simulate_day.py` fixture now scales its normal opening volume with the range length.
+
+**10-year daily test (Dec 2016 – Nov 2026), large-cap ($20M+/day) gap-downs ≥3%, buy open / sell close:**
+
+| Variant | Trades | 10-yr return | Avg R | Max DD | Years up |
+|---|---|---|---|---|---|
+| Best so far: STW opens ≤ −1.5% | 141 | +5.7% | +0.17 | −8.5% | 5 |
+| Nagel: STW 20-day vol ≥ 20% (no open filter) | 138 | −16.4% | −0.04 | −19.5% | 0 |
+| Nagel: vol ≥ 15% and STW opens ≤ −1% | 115 | −7.4% | +0.04 | −10.1% | 2 |
+| Nagel: best so far + vol ≥ 15% | 70 | +4.5% | +0.18 | −4.1% | 3 |
+| Prior-day losers (fell ≥5% yesterday) | 386 | −60% | −0.12 | −60% | 1 |
+| …when vol ≥ 20% | 80 | −12.1% | −0.05 | −14.1% | 1 |
+| **Stress: STW fell ≥1.5% yesterday** | 115 | +6.2% | +0.20 | −10.7% | 4 |
+| **Stress: STW fell ≥2% yesterday** | 74 | **+14.0%** | **+0.36** | −7.6% | 6 |
+| Weak open OR stress day | 219 | +1.3% | +0.13 | −13.3% | 5 |
+| Stress + Nagel | 73 | −1.2% | +0.11 | −8.7% | 3 |
+
+Not adoptable (the live engine has no gap-down setup yet), but the "stress day" version (buy large caps that gap down
+≥3% the morning after the ASX 200 ETF fell ≥2%) is now the strongest daily result: +0.36R, SQN 2.9, ~7 trades a year.
+Caveat: thresholds were picked from ~35 combinations tested so far; 2020 alone contributed +11%.
+New daily-test keys: `prev_ret_max`, `mkt_vol_min`, `mkt_prev_ret_max`, `or_mkt_prev_ret_max`.

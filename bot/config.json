@@ -10,7 +10,7 @@
   "max_universe": 500,
 
   "_setup": "Opening range breakout on 'stocks in play' (Zarattini, Barbon & Aziz 2024; Toby Crabel).",
-  "opening_range_minutes": 15,
+  "opening_range_minutes": 10,
   "min_relative_volume": 3.0,
   "watchlist_size": 5,
   "market_index": "^AXJO",

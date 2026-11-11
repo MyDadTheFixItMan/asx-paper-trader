@@ -43,13 +43,15 @@ SCENARIO = {
     "DOWN": make_bars(4, 3.00, 0.0, 5, -0.003),      # high volume but red open -> skipped
     "^AXJO": make_bars(5, 8800, 0.0001, 1, 0.0002),
 }
+# Normal opening-range volume scales with the configured range length (30,000 shares per 5-minute bar in this fake day)
+OR_VOL = 30000 * (json.loads((REPO / "bot/config.json").read_text())["opening_range_minutes"] // 5)
 UNIVERSE = {
     "date": DAY, "scanned": 2100, "priced": 1900,
     "symbols": {
-        "RUNR": {"prev_close": 4.95, "atr": 0.15, "avg_turnover": 5e6, "avg_or_volume": 90000 * 4 / 3},
-        "FADE": {"prev_close": 2.45, "atr": 0.08, "avg_turnover": 3e6, "avg_or_volume": 90000 * 3 / 3},
-        "SLOW": {"prev_close": 9.95, "atr": 0.25, "avg_turnover": 8e6, "avg_or_volume": 90000},
-        "DOWN": {"prev_close": 3.05, "atr": 0.10, "avg_turnover": 2e6, "avg_or_volume": 90000},
+        "RUNR": {"prev_close": 4.95, "atr": 0.15, "avg_turnover": 5e6, "avg_or_volume": OR_VOL * 4 / 3},
+        "FADE": {"prev_close": 2.45, "atr": 0.08, "avg_turnover": 3e6, "avg_or_volume": OR_VOL * 3 / 3},
+        "SLOW": {"prev_close": 9.95, "atr": 0.25, "avg_turnover": 8e6, "avg_or_volume": OR_VOL},
+        "DOWN": {"prev_close": 3.05, "atr": 0.10, "avg_turnover": 2e6, "avg_or_volume": OR_VOL},
         "__index__": {"prev_close": 8790},
     },
 }

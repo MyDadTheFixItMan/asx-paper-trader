@@ -1,6 +1,6 @@
 [
- {"name": "Zarattini/Aziz: 10-minute opening range (shortest that covers the ASX's staggered open)", "overrides": {"opening_range_minutes": 10}},
- {"name": "Zarattini/Aziz: 10-minute range, top 10 at 2x volume (closer to the paper's top-20 stocks in play)", "overrides": {"opening_range_minutes": 10, "min_relative_volume": 2.0, "watchlist_size": 10}},
- {"name": "Current 15-minute range, top 10 at 2x volume", "overrides": {"min_relative_volume": 2.0, "watchlist_size": 10}},
- {"name": "Zarattini/Aziz: 10-minute range, stop 0.25 ATR (paper used a tight ATR stop; 1% minimum still applies)", "overrides": {"opening_range_minutes": 10, "stop_atr_fraction": 0.25}}
+ {"name": "Previous 15-minute opening range (re-check of the 11 Nov adoption)", "overrides": {"opening_range_minutes": 15}},
+ {"name": "10-minute range, top 10 at 2x volume", "overrides": {"min_relative_volume": 2.0, "watchlist_size": 10}},
+ {"name": "15-minute range, top 10 at 2x volume", "overrides": {"opening_range_minutes": 15, "min_relative_volume": 2.0, "watchlist_size": 10}},
+ {"name": "10-minute range, stop 0.25 ATR (1% minimum still applies)", "overrides": {"stop_atr_fraction": 0.25}}
 ]

@@ -295,7 +295,7 @@ function render(){
   const wl = state.day?.date===ref ? (state.day.watchlist||[]) : [];
   $("watch").innerHTML = wl.length? `<table><tr><th>Stock</th><th class="r">Rel. volume</th><th class="r">Gap</th><th class="r">Buy above</th><th class="r">Status</th></tr>${
     wl.map(w=>`<tr><td>${symLink(w.sym)}</td><td class="r">${w.rvol}×</td><td class="r">${w.gap_pct!=null?fmtP(w.gap_pct,1):"—"}</td><td class="r">${w.or_high.toFixed(3)}</td><td class="r">${wlStatus(w)}</td></tr>${w.news?`<tr><td colspan="5" class="meta" style="padding-top:0">📰 ${esc(w.news.category)}: ${esc(w.news.headline)}</td></tr>`:""}`).join("")}</table>`
-    : `<div class="empty">${state.day?.phase==="waiting_open"? "Picked after the first 15 minutes of trading." : "No stocks in play selected."}</div>`;
+    : `<div class="empty">${state.day?.phase==="waiting_open"? "Picked after the first 10 minutes of trading." : "No stocks in play selected."}</div>`;
 
   function wlStatus(w){
     const sold = trades.filter(t=>t.date===ref && t.sym===w.sym);

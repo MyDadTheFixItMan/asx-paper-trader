@@ -112,3 +112,24 @@ Bottom line: the books' risk rules (small fixed risk, hard stops, no averaging d
 expectancy over samples) are already the bot's foundation. Their entry methods were built for multi-day to multi-week
 holds in US markets; as same-day ASX filters, none improved results. The one promising area remains the large-cap
 gap-down bounce on sharply weak mornings (10-yr +5.7%, avg +0.17R, SQN ~2), which none of the book filters improved.
+
+## Mid-week research (11 Nov 2026)
+Ideas found (newest evidence first), what was tested, and the verdict.
+
+| Idea | Source | Test | Verdict |
+|---|---|---|---|
+| Shorter opening range works better for stocks-in-play ORB (5 min best in US; 17 of 25 OR-length/universe combos beat SPY in a replication) | [Zarattini, Barbon & Aziz](https://concretumgroup.com/a-profitable-day-trading-strategy-for-the-u-s-equity-market/); [QuantConnect replication](https://www.quantconnect.com/research/18444/opening-range-breakout-for-stocks-in-play/) (replication had no costs; commenters say other years were weaker) | 60-day intraday: 10-min range −6.7% / −0.20R vs −7.3% / −0.22R | **Adopted** (marginal) |
+| Paper's wider net (top 20, relative volume > 1) | same | top 10 at 2× volume: −21% | Rejected: on the ASX the strict 3× / top-5 filter matters |
+| Reversal profits rise with market volatility ("evaporating liquidity"): large liquid stocks ≈0 when VIX low, ≈0.1%/day when high | [Nagel 2012 (NBER w17653)](https://www.nber.org/papers/w17653.pdf); [Drechsler, Moreira & Savov, "Liquidity and Volatility"](https://rodneywhitecenter.wharton.upenn.edu/wp-content/uploads/2020/12/18-20.Drechsler2.pdf) (VIX +1 pt → +9 bps over 5 days for large-cap reversal) | 10-yr daily: STW 20-day realised vol filters | Volatility alone doesn't work on the ASX; added to the weak-open setup it cut drawdown (−4.1% vs −8.5%) but also return. Not better |
+| Buy prior-day losers; reversal earned intraday | [Lou, Polk & Skouras 2019]; [Chai et al. 2016, Australian short-term reversals](https://ideas.repec.org/a/sae/ausman/v41y2016i1p55-76.html) (Australian reversals are mainly a 1-month, small-cap effect) | 10-yr daily: large caps down ≥5% yesterday | Rejected: −0.04% gross per trade. Large ASX losers keep falling the next day |
+| "Correlated stress" reversal: buy equities the day after a broad risk-off day | [Quantpedia 2025](https://quantpedia.com/short-term-correlated-stress-reversal-trading/) | 10-yr daily: large-cap gap-downs ≥3% after STW fell ≥1.5% / ≥2% | **Best daily result yet** (≥2%: 74 trades, +14%, +0.36R, SQN 2.9, 6 of 9 active years up). Lead for the gap-down engine work |
+| Buy first half-hour, sell last half-hour on the ASX 200 (U-shaped intraday returns) | [Early bird / late bird, IJMF](https://www.emeraldinsight.com/doi/pdfplus/10.1108/IJMF-06-2018-0184) | Already covered by the 6 Nov STW open→close test (−0.22% per trade after costs) | Not re-tested |
+
+**Market regime (this week):** RBA raised the cash rate 25 bp on 3 Nov (inflation not back in band until late 2027);
+ASX 200 near 9,000 (9,030 on 9 Nov) after swinging from early losses; miners and gold stocks firm on Chinese
+producer prices, banks weak after ANZ's result, oil falling ([Trading Economics, 3 Nov](https://tradingeconomics.com/australia/stock-market/news/597537),
+[9 Nov](https://tradingeconomics.com/australia/stock-market/news/599428)). Rising rates and choppy opens keep the
+weak-market filter relevant; no regime change that alters the rules.
+
+**Most promising lead:** a "stress-day large-cap bounce" (weak open or prior-day sell-off of ≥2%, large caps gapping
+down ≥3%, buy open, sell close, 1 ATR stop). Needs engine support plus a shadow record before going live.
