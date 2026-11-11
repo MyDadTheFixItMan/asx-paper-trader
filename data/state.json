@@ -149,7 +149,7 @@
   "losses_in_row": 2,
   "no_new_entries": false,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-11T12:10:00+11:00",
+  "last_ts": "2026-11-11T12:15:00+11:00",
   "log": [
    "09:24 Read 79 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
@@ -160,7 +160,8 @@
    "10:20 SELL 568 SHV @ $4.260 (Stop loss) net $-49.76",
    "10:30 SELL 705 MTS @ $3.440 (Stop loss) net $-45.25",
    "10:45 BUY 334 DOW @ $7.360, stop $7.270 (breakout above $7.340)",
-   "11:35 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades."
+   "11:35 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades.",
+   "12:40 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "NXG": {
@@ -223,41 +224,41 @@
   "news_refreshed": true,
   "tracks": {
    "DOW": {
-    "pv": 8148092.190794308,
-    "v": 1115973.0,
+    "pv": 8171215.456339676,
+    "v": 1119150.0,
     "low": 7.260000228881836,
-    "vwap": 7.301334522245885
+    "vwap": 7.30126922784227
    },
    "MTS": {
-    "pv": 6585257.752850771,
-    "v": 1908827.0,
+    "pv": 6591011.377888043,
+    "v": 1910502.0,
     "low": 3.390000104904175,
-    "vwap": 3.4498976349615607
+    "vwap": 3.4498845737340464
    },
    "SHV": {
-    "pv": 1867671.7691318195,
-    "v": 434902.0,
+    "pv": 1872394.3992149036,
+    "v": 435991.0,
     "low": 4.119999885559082,
-    "vwap": 4.294465808692118
+    "vwap": 4.294571216412503
    },
    "CGS": {
-    "pv": 604300.7917633057,
-    "v": 166053.0,
+    "pv": 611448.3916358948,
+    "v": 168057.0,
     "low": 3.549999952316284,
-    "vwap": 3.6392043008154364
+    "vwap": 3.6383393231813894
    },
    "FDC": {
-    "pv": 1170881.8335131805,
-    "v": 319004.0,
+    "pv": 1180219.1636196773,
+    "v": 321581.0,
     "low": 3.5950000286102295,
-    "vwap": 3.6704299429260465
+    "vwap": 3.6700525330155616
    }
   },
-  "news_checked_at": "2026-11-11T11:35:06.340916+11:00",
+  "news_checked_at": "2026-11-11T12:40:06.044092+11:00",
   "news_today": []
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-11T12:35:05.728680+11:00",
+ "last_run": "2026-11-11T12:40:06.044092+11:00",
  "learning": {
   "risk_multiplier": 1.0,
   "blocks": [],
