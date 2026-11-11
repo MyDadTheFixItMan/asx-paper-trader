@@ -1,29 +1,8 @@
 {
  "start_capital": 10000,
- "cash": 7282.56,
+ "cash": 9655.64,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [
-  {
-   "sym": "SEK",
-   "qty": 167,
-   "entry": 14.49,
-   "entry_time": "2026-11-12T10:10:00+11:00",
-   "stop": 14.26,
-   "initial_stop": 14.26,
-   "risk_ps": 0.23,
-   "high": 14.510000228881836,
-   "last": 14.34000015258789,
-   "fees": 5.0,
-   "rvol": 4.67,
-   "atr": 0.4536,
-   "stop_note": "initial",
-   "gap_pct": 0.28,
-   "stop_pct": 1.59,
-   "market_pct": -0.37,
-   "news_cat": null,
-   "news_headline": null
-  }
- ],
+ "positions": [],
  "daily": [
   {
    "date": "2026-11-03",
@@ -147,17 +126,18 @@
   "entered": [
    "SEK"
   ],
-  "realized": 0.0,
-  "losses_in_row": 0,
+  "realized": -51.75,
+  "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.37,
-  "last_ts": "2026-11-12T10:25:00+11:00",
+  "last_ts": "2026-11-12T10:30:00+11:00",
   "log": [
    "09:24 Read 80 price-sensitive ASX announcements; 11 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters.",
    "Stocks in play: BVS (17.58x), TLC (14.16x), IPG (8.32x), PMV (7.97x), SEK (4.67x)",
    "10:30 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "10:10 BUY 167 SEK @ $14.490, stop $14.260 (breakout above $14.460)"
+   "10:10 BUY 167 SEK @ $14.490, stop $14.260 (breakout above $14.460)",
+   "10:30 SELL 167 SEK @ $14.240 (Stop loss) net $-51.75"
   ],
   "news": {
    "VAU": {
@@ -240,28 +220,28 @@
   "news_refreshed": true,
   "tracks": {
    "TLC": {
-    "pv": 6447862.419948737,
-    "v": 1159024.0,
+    "pv": 6448408.569939296,
+    "v": 1159123.0,
     "low": 5.5,
-    "vwap": 5.563182833098138
+    "vwap": 5.563178860172126
    },
    "SEK": {
-    "pv": 1760024.03656737,
-    "v": 122322.0,
+    "pv": 1991745.5973927178,
+    "v": 138549.0,
     "low": 14.199999809265137,
-    "vwap": 14.388450455088782
+    "vwap": 14.375748633282939
    },
    "PMV": {
-    "pv": 1396378.0189803438,
-    "v": 95801.0,
-    "low": 14.460000038146973,
-    "vwap": 14.57581882214532
+    "pv": 1416323.6183837252,
+    "v": 97181.0,
+    "low": 14.4399995803833,
+    "vwap": 14.57407948450546
    },
    "BVS": {
-    "pv": 1204234.2166332407,
-    "v": 339240.0,
-    "low": 3.5,
-    "vwap": 3.549800190523643
+    "pv": 1250341.8968013925,
+    "v": 352464.0,
+    "low": 3.4800000190734863,
+    "vwap": 3.5474315016608577
    },
    "IPG": {
     "pv": 283218.8604989052,
@@ -274,7 +254,7 @@
   "news_today": []
  },
  "status": "Watching 5 stocks in play for breakouts",
- "last_run": "2026-11-12T10:50:05.662578+11:00",
+ "last_run": "2026-11-12T10:55:05.519974+11:00",
  "learning": {
   "risk_multiplier": 0.75,
   "blocks": [],
