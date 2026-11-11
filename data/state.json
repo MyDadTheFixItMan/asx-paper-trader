@@ -63,19 +63,77 @@
  ],
  "day": {
   "date": "2026-11-12",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9707.39,
   "universe_size": 256,
-  "watchlist": [],
+  "watchlist": [
+   {
+    "sym": "BVS",
+    "rvol": 17.58,
+    "or_high": 3.569999933242798,
+    "or_low": 3.5399999618530273,
+    "or_open": 3.5399999618530273,
+    "or_close": 3.555000066757202,
+    "atr": 0.1218,
+    "gap_pct": -0.28,
+    "news": null
+   },
+   {
+    "sym": "TLC",
+    "rvol": 14.16,
+    "or_high": 5.610000133514404,
+    "or_low": 5.519999980926514,
+    "or_open": 5.519999980926514,
+    "or_close": 5.570000171661377,
+    "atr": 0.095,
+    "gap_pct": 0.55,
+    "news": null
+   },
+   {
+    "sym": "IPG",
+    "rvol": 8.32,
+    "or_high": 5.550000190734863,
+    "or_low": 5.440000057220459,
+    "or_open": 5.46999979019165,
+    "or_close": 5.5,
+    "atr": 0.2193,
+    "gap_pct": 0.55,
+    "news": null
+   },
+   {
+    "sym": "PMV",
+    "rvol": 7.97,
+    "or_high": 14.630000114440918,
+    "or_low": 14.5,
+    "or_open": 14.5,
+    "or_close": 14.579999923706055,
+    "atr": 0.3643,
+    "gap_pct": 0.0,
+    "news": null
+   },
+   {
+    "sym": "SEK",
+    "rvol": 4.67,
+    "or_high": 14.460000038146973,
+    "or_low": 14.199999809265137,
+    "or_open": 14.199999809265137,
+    "or_close": 14.359999656677246,
+    "atr": 0.4536,
+    "gap_pct": 0.28,
+    "news": null
+   }
+  ],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": -0.37,
+  "last_ts": "2026-11-12T10:05:00+11:00",
   "log": [
    "09:24 Read 80 price-sensitive ASX announcements; 11 are for shares the bot can trade.",
-   "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters."
+   "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters.",
+   "Stocks in play: BVS (17.58x), TLC (14.16x), IPG (8.32x), PMV (7.97x), SEK (4.67x)",
+   "10:30 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "VAU": {
@@ -155,10 +213,44 @@
     "Acquisition / sale"
    ]
   },
-  "news_refreshed": true
+  "news_refreshed": true,
+  "tracks": {
+   "TLC": {
+    "pv": 5813919.272754988,
+    "v": 1044383.0,
+    "low": 5.519999980926514,
+    "vwap": 5.5668459490004985
+   },
+   "SEK": {
+    "pv": 683435.518866539,
+    "v": 47613.0,
+    "low": 14.199999809265137,
+    "vwap": 14.3539688502413
+   },
+   "PMV": {
+    "pv": 1111412.2705275216,
+    "v": 76230.0,
+    "low": 14.5,
+    "vwap": 14.579722819461125
+   },
+   "BVS": {
+    "pv": 1020358.8298376402,
+    "v": 287168.0,
+    "low": 3.5399999618530273,
+    "vwap": 3.553177338135308
+   },
+   "IPG": {
+    "pv": 254003.70682525632,
+    "v": 46149.0,
+    "low": 5.440000057220459,
+    "vwap": 5.503991566995088
+   }
+  },
+  "news_checked_at": "2026-11-12T10:30:05.585961+11:00",
+  "news_today": []
  },
- "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-12T10:25:05.698073+11:00",
+ "status": "Watching 5 stocks in play for breakouts",
+ "last_run": "2026-11-12T10:30:05.585961+11:00",
  "learning": {
   "risk_multiplier": 0.75,
   "blocks": [],
