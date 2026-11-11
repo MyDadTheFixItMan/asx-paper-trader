@@ -51,11 +51,19 @@
    "pnl": 47.87,
    "trades": 3,
    "market_change_pct": 0.7
+  },
+  {
+   "date": "2026-11-11",
+   "start_equity": 9845.8,
+   "end_equity": 9707.39,
+   "pnl": -138.41,
+   "trades": 3,
+   "market_change_pct": -0.27
   }
  ],
  "day": {
   "date": "2026-11-11",
-  "phase": "trading",
+  "phase": "closed",
   "start_equity": 9845.8,
   "universe_size": 255,
   "watchlist": [
@@ -128,7 +136,7 @@
   "losses_in_row": 3,
   "no_new_entries": true,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-11T15:45:00+11:00",
+  "last_ts": "2026-11-11T15:50:00+11:00",
   "log": [
    "09:24 Read 79 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
@@ -145,7 +153,10 @@
    "12:25 3 losses in a row. Stopping for the day.",
    "13:45 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
    "14:45 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:50 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades."
+   "15:50 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
+   "15:50 Day closed. Equity $9,707.39 (-138.41).",
+   "16:15 Daily review done. See 'Learning from losses' on the dashboard.",
+   "16:15 News review done: today's announcements and price reactions recorded."
   ],
   "news": {
    "NXG": {
@@ -208,43 +219,45 @@
   "news_refreshed": true,
   "tracks": {
    "DOW": {
-    "pv": 15349224.109337332,
-    "v": 2106284.0,
+    "pv": 15522306.902065756,
+    "v": 2130070.0,
     "low": 7.244999885559082,
-    "vwap": 7.287347816978779
+    "vwap": 7.287228542754819
    },
    "MTS": {
-    "pv": 9839367.229288017,
-    "v": 2854334.0,
+    "pv": 9973044.062002495,
+    "v": 2893269.0,
     "low": 3.390000104904175,
-    "vwap": 3.447167440561622
+    "vwap": 3.446981273432403
    },
    "SHV": {
-    "pv": 2863716.538640659,
-    "v": 668507.0,
+    "pv": 2878299.7081796336,
+    "v": 671960.0,
     "low": 4.119999885559082,
-    "vwap": 4.283749517418156
+    "vwap": 4.2834390561635125
    },
    "CGS": {
-    "pv": 2347693.658518712,
-    "v": 646725.0,
+    "pv": 2388829.299704234,
+    "v": 658026.0,
     "low": 3.5399999618530273,
-    "vwap": 3.6301266512330774
+    "vwap": 3.630296218848851
    },
    "FDC": {
-    "pv": 3645021.7480253372,
-    "v": 1005488.0,
+    "pv": 3701437.0486687813,
+    "v": 1021058.0,
     "low": 3.569999933242798,
-    "vwap": 3.6251270507707076
+    "vwap": 3.6250996992029654
    }
   },
   "news_checked_at": "2026-11-11T15:50:05.786157+11:00",
-  "news_today": []
+  "news_today": [],
+  "end_equity": 9707.39,
+  "reviewed": true
  },
- "status": "Done for today: daily loss limit reached",
- "last_run": "2026-11-11T16:10:05.633721+11:00",
+ "status": "Day finished. Equity $9,707.39",
+ "last_run": "2026-11-11T16:15:06.511818+11:00",
  "learning": {
-  "risk_multiplier": 1.0,
+  "risk_multiplier": 0.75,
   "blocks": [],
   "lessons": [
    {
@@ -328,6 +341,33 @@
     "notes": [
      "A normal stop-out: the breakout didn't follow through. Small, planned losses like this are part of the strategy."
     ]
+   },
+   {
+    "trade_id": 17,
+    "date": "2026-11-11",
+    "sym": "SHV",
+    "net": -49.76,
+    "notes": [
+     "The ASX 200 was down at the open: breakouts struggle when the market is weak."
+    ]
+   },
+   {
+    "trade_id": 18,
+    "date": "2026-11-11",
+    "sym": "MTS",
+    "net": -45.25,
+    "notes": [
+     "The ASX 200 was down at the open: breakouts struggle when the market is weak."
+    ]
+   },
+   {
+    "trade_id": 19,
+    "date": "2026-11-11",
+    "sym": "DOW",
+    "net": -43.4,
+    "notes": [
+     "The ASX 200 was down at the open: breakouts struggle when the market is weak."
+    ]
    }
   ],
   "changes": [
@@ -346,16 +386,20 @@
    {
     "date": "2026-11-09",
     "text": "Raised risk per trade to 1.00% of equity after a winning day (+48.13)."
+   },
+   {
+    "date": "2026-11-11",
+    "text": "Cut risk per trade to 0.75% of equity after a losing day (-138.41)."
    }
   ],
   "buckets": [
    {
     "feature": "Entry time",
     "label": "10:30\u201311:00",
-    "n": 2,
-    "win_rate": 100,
-    "avg_r": 0.83,
-    "net": 51.4
+    "n": 3,
+    "win_rate": 67,
+    "avg_r": 0.19,
+    "net": 8.0
    },
    {
     "feature": "Entry time",
@@ -368,18 +412,18 @@
    {
     "feature": "Entry time",
     "label": "before 10:30",
-    "n": 11,
-    "win_rate": 18,
-    "avg_r": -0.38,
-    "net": -344.54
+    "n": 13,
+    "win_rate": 15,
+    "avg_r": -0.5,
+    "net": -439.55
    },
    {
     "feature": "Market at open",
     "label": "market down",
-    "n": 1,
+    "n": 4,
     "win_rate": 0,
-    "avg_r": -1.5,
-    "net": -89.8
+    "avg_r": -1.26,
+    "net": -228.21
    },
    {
     "feature": "Market at open",
@@ -392,10 +436,10 @@
    {
     "feature": "Opening gap",
     "label": "gap 0\u20132%",
-    "n": 7,
-    "win_rate": 57,
-    "avg_r": 0.09,
-    "net": -48.93
+    "n": 9,
+    "win_rate": 44,
+    "avg_r": -0.2,
+    "net": -143.94
    },
    {
     "feature": "Opening gap",
@@ -408,10 +452,10 @@
    {
     "feature": "Opening gap",
     "label": "gapped down",
-    "n": 1,
-    "win_rate": 100,
-    "avg_r": 1.18,
-    "net": 55.13
+    "n": 2,
+    "win_rate": 50,
+    "avg_r": 0.03,
+    "net": 11.73
    },
    {
     "feature": "Overnight news",
@@ -424,10 +468,10 @@
    {
     "feature": "Overnight news",
     "label": "no news",
-    "n": 15,
-    "win_rate": 47,
-    "avg_r": 0.09,
-    "net": -101.4
+    "n": 18,
+    "win_rate": 39,
+    "avg_r": -0.12,
+    "net": -239.81
    },
    {
     "feature": "Relative volume",
@@ -448,26 +492,26 @@
    {
     "feature": "Relative volume",
     "label": "over 10\u00d7 volume",
-    "n": 4,
-    "win_rate": 50,
-    "avg_r": 0.85,
-    "net": 71.02
+    "n": 7,
+    "win_rate": 29,
+    "avg_r": -0.02,
+    "net": -67.39
    },
    {
     "feature": "Share price",
     "label": "$1\u2013$5",
-    "n": 4,
-    "win_rate": 50,
-    "avg_r": 0.0,
-    "net": -20.57
+    "n": 6,
+    "win_rate": 33,
+    "avg_r": -0.4,
+    "net": -115.58
    },
    {
     "feature": "Share price",
     "label": "$5\u2013$20",
-    "n": 8,
-    "win_rate": 62,
-    "avg_r": 0.49,
-    "net": 56.08
+    "n": 9,
+    "win_rate": 56,
+    "avg_r": 0.31,
+    "net": 12.68
    },
    {
     "feature": "Share price",
@@ -488,10 +532,10 @@
    {
     "feature": "Stop distance",
     "label": "stop 1\u20132%",
-    "n": 4,
-    "win_rate": 75,
-    "avg_r": 1.27,
-    "net": 136.61
+    "n": 7,
+    "win_rate": 43,
+    "avg_r": 0.22,
+    "net": -1.8
    },
    {
     "feature": "Stop distance",
