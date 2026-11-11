@@ -36,19 +36,16 @@ GU = {"side": "up", "min_gap": 4, "max_gap": 60, "stop_atr": 1.0, "top": 5}
 LC = {"side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 3, "market_max_gap": -1.5}
 VARIANTS = [
     dict(GU, name="control: top 5 gap-ups >=4%, stop 1 ATR"),
-    dict(GU, name="Tudor Jones: + market above its 200-day average", mkt_ma=200),
-    dict(GU, name="Murphy/O'Neil: + market >200-day and stock >50-day average", mkt_ma=200, stock_ma=50),
-    dict(GU, name="O'Neil CAN SLIM-style leaders: gap >=2%, within 5% of 52-wk high, beats market by 10%+ over 3 mths, market >50-day",
-         min_gap=2, near_high_pct=5, rs_min=10, mkt_ma=50),
-    dict(GU, name="O'Neil: + prior-day volume >=1.5x 50-day avg (gap >=2%, market >50-day)", min_gap=2, prev_vol_surge=1.5, mkt_ma=50),
-    dict(GU, name="Livermore pivot: opens above 20-day high, market >200-day", min_gap=0, pivot_days=20, mkt_ma=200),
-    dict(GU, name="Livermore pivot: opens above 52-wk high (near_high 0%), gap >=1%", min_gap=1, near_high_pct=0, pivot_days=250),
-    dict(GU, name="Nison: gap-up >=2% after a bullish engulfing day", min_gap=2, prev_engulf=True),
     dict(LC, name="best so far: large-cap gap-down >=3% when STW opens <= -1.5%"),
-    dict(LC, name="…+ stock above its 200-day average (Murphy: buy dips in uptrends)", stock_ma=200),
-    dict(LC, name="…+ market above its 200-day average (Tudor Jones)", mkt_ma=200),
-    dict(LC, name="…+ stock beats market over 3 months (O'Neil RS)", rs_min=0),
-    dict(LC, name="Nison: large-cap gap-down >=3% after a hammer day, any market", market_max_gap=None, prev_hammer=True),
+    # Nagel (2012) "Evaporating Liquidity": reversal returns rise with market volatility (VIX). Proxy: STW 20-day realised vol.
+    dict(LC, name="Nagel: large-cap gap-down >=3% when STW 20-day vol >= 20% (no open filter)", market_max_gap=None, mkt_vol_min=20),
+    dict(LC, name="Nagel: large-cap gap-down >=3% when STW vol >= 15% and STW opens <= -1%", market_max_gap=-1.0, mkt_vol_min=15),
+    dict(LC, name="Nagel: best so far + STW vol >= 15%", mkt_vol_min=15),
+    # Lou, Polk & Skouras (2019) / Bremer & Sweeney: losers reverse, and the reversal is earned intraday
+    dict(LC, name="Prior-day losers: large caps that fell >=5% yesterday, opening below +1%", max_gap=1, prev_ret_max=-5, market_max_gap=None),
+    dict(LC, name="Prior-day losers >=5% when STW 20-day vol >= 20%", max_gap=1, prev_ret_max=-5, market_max_gap=None, mkt_vol_min=20),
+    # Stress-day reversal (Quantpedia 2025): buy the morning after the whole market sold off
+    dict(LC, name="Stress: large-cap gap-down >=3% after STW fell >=1.5% yesterday", market_max_gap=None, mkt_prev_ret_max=-1.5),
 ]
 EXTRA = ["STW.AX"]  # ETFs aren't in the company list
 
@@ -119,6 +116,17 @@ def signals(v, P):
         pO, pH, pL, pC = O.shift(1), P["H"].shift(1), L.shift(1), C.shift(1)
         body, rng = (pC - pO).abs(), (pH - pL)
         ok = ok & (rng > 0) & ((pO.where(pO < pC, pC) - pL) >= 2 * body) & ((pH - pO.where(pO > pC, pC)) <= body)
+    # ---- Mid-week research 11 Nov 2026 (only information known before the open) ----
+    if v.get("prev_ret_max") is not None:                  # Lou/Polk/Skouras; "returns after large one-day declines":
+        prev_ret = (C / C.shift(1) - 1).shift(1) * 100     # yesterday's close-to-close fall, reversal earned intraday
+        ok = ok & (prev_ret <= v["prev_ret_max"])
+        score = prev_ret
+    if v.get("mkt_vol_min") is not None and stw_c is not None:  # Nagel (2012) / Dai et al.: reversal pays when volatility is high
+        rv = ((stw_c / stw_c.shift(1) - 1).rolling(20).std() * (252 ** 0.5) * 100).shift(1)
+        ok = ok.mul((rv >= v["mkt_vol_min"]).fillna(False), axis=0)
+    if v.get("mkt_prev_ret_max") is not None and stw_c is not None:  # market sold off yesterday (stress day)
+        mprev = ((stw_c / stw_c.shift(1) - 1) * 100).shift(1)
+        ok = ok.mul((mprev <= v["mkt_prev_ret_max"]).fillna(False), axis=0)
     if v.get("market_max_gap") is not None and "STW" in O.columns:
         mkt = (O["STW"] / C["STW"].shift(1) - 1) * 100
         ok = ok.mul(mkt <= v["market_max_gap"], axis=0)
