@@ -130,7 +130,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.37,
-  "last_ts": "2026-11-12T12:00:00+11:00",
+  "last_ts": "2026-11-12T12:05:00+11:00",
   "log": [
    "09:24 Read 80 price-sensitive ASX announcements; 11 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 255 pass the liquidity and volatility filters.",
@@ -138,7 +138,8 @@
    "10:30 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
    "10:10 BUY 167 SEK @ $14.490, stop $14.260 (breakout above $14.460)",
    "10:30 SELL 167 SEK @ $14.240 (Stop loss) net $-51.75",
-   "11:30 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades."
+   "11:30 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
+   "12:30 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "VAU": {
@@ -221,41 +222,41 @@
   "news_refreshed": true,
   "tracks": {
    "TLC": {
-    "pv": 11983725.110053383,
-    "v": 2171836.0,
+    "pv": 12504768.300310137,
+    "v": 2267616.0,
     "low": 5.420000076293945,
-    "vwap": 5.517785463567868
+    "vwap": 5.514499941925854
    },
    "SEK": {
-    "pv": 3131361.645458857,
-    "v": 218844.0,
+    "pv": 3162717.4149796166,
+    "v": 221061.0,
     "low": 14.100000381469727,
-    "vwap": 14.308647463301973
+    "vwap": 14.306989541256108
    },
    "PMV": {
-    "pv": 2096465.6609805422,
-    "v": 144288.0,
+    "pv": 2103054.0776472087,
+    "v": 144745.0,
     "low": 14.329999923706055,
-    "vwap": 14.529729852659557
+    "vwap": 14.529372880909245
    },
    "BVS": {
-    "pv": 1888992.6972201671,
-    "v": 536413.0,
+    "pv": 1893337.8171923961,
+    "v": 537661.0,
     "low": 3.450000047683716,
-    "vwap": 3.5215266915980172
+    "vwap": 3.5214341698438165
    },
    "IPG": {
-    "pv": 439426.5953156153,
-    "v": 80433.0,
+    "pv": 441235.761982282,
+    "v": 80767.0,
     "low": 5.360000133514404,
-    "vwap": 5.463262532985408
+    "vwap": 5.463069842662003
    }
   },
-  "news_checked_at": "2026-11-12T11:30:05.947057+11:00",
+  "news_checked_at": "2026-11-12T12:30:06.353463+11:00",
   "news_today": []
  },
- "status": "Watching 5 stocks in play for breakouts",
- "last_run": "2026-11-12T12:25:05.846256+11:00",
+ "status": "Past the entry cut-off. Managing open trades until the close.",
+ "last_run": "2026-11-12T12:30:06.353463+11:00",
  "learning": {
   "risk_multiplier": 0.75,
   "blocks": [],
