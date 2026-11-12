@@ -12,7 +12,7 @@
    "initial_stop": 11.13,
    "risk_ps": 0.12,
    "high": 11.229999542236328,
-   "last": 11.204999923706055,
+   "last": 11.199999809265137,
    "fees": 5.0,
    "rvol": 3.04,
    "atr": 0.1796,
@@ -130,7 +130,7 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.44,
-  "last_ts": "2026-11-13T10:15:00+11:00",
+  "last_ts": "2026-11-13T10:20:00+11:00",
   "log": [
    "09:24 Read 45 price-sensitive ASX announcements; 5 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
@@ -179,23 +179,23 @@
   "news_refreshed": true,
   "tracks": {
    "APA": {
-    "pv": 1025552.0489104589,
-    "v": 91562.0,
+    "pv": 1095918.7086709342,
+    "v": 97841.0,
     "low": 11.175000190734863,
-    "vwap": 11.200629616112131
+    "vwap": 11.201017044704512
    },
    "AYA": {
-    "pv": 937142.6836884022,
-    "v": 256897.0,
-    "low": 3.549999952316284,
-    "vwap": 3.647931597832603
+    "pv": 987392.9330134392,
+    "v": 271052.0,
+    "low": 3.5299999713897705,
+    "vwap": 3.642817367196845
    }
   },
   "news_checked_at": "2026-11-13T10:30:05.691894+11:00",
   "news_today": []
  },
  "status": "Watching 2 stocks in play for breakouts",
- "last_run": "2026-11-13T10:40:06.299350+11:00",
+ "last_run": "2026-11-13T10:45:06.621857+11:00",
  "learning": {
   "risk_multiplier": 0.562,
   "blocks": [],
