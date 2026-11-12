@@ -122,10 +122,11 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-13T09:24:46.818319+11:00",
+ "status": "Building the opening range (prices are ~20 min delayed)",
+ "last_run": "2026-11-13T10:00:06.687298+11:00",
  "learning": {
   "risk_multiplier": 0.562,
   "blocks": [],
