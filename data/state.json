@@ -1,8 +1,29 @@
 {
  "start_capital": 10000,
- "cash": 9655.64,
+ "cash": 7243.14,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [],
+ "positions": [
+  {
+   "sym": "APA",
+   "qty": 214,
+   "entry": 11.25,
+   "entry_time": "2026-11-13T10:10:00+11:00",
+   "stop": 11.13,
+   "initial_stop": 11.13,
+   "risk_ps": 0.12,
+   "high": 11.229999542236328,
+   "last": 11.220000267028809,
+   "fees": 5.0,
+   "rvol": 3.04,
+   "atr": 0.1796,
+   "stop_note": "initial",
+   "gap_pct": 0.27,
+   "stop_pct": 1.07,
+   "market_pct": -0.44,
+   "news_cat": null,
+   "news_headline": null
+  }
+ ],
  "daily": [
   {
    "date": "2026-11-03",
@@ -102,17 +123,20 @@
     "news": null
    }
   ],
-  "entered": [],
+  "entered": [
+   "APA"
+  ],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.44,
-  "last_ts": "2026-11-13T10:05:00+11:00",
+  "last_ts": "2026-11-13T10:10:00+11:00",
   "log": [
    "09:24 Read 45 price-sensitive ASX announcements; 5 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
    "Stocks in play: AYA (4.03x, news: Contract / deal), APA (3.04x)",
-   "10:30 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades."
+   "10:30 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades.",
+   "10:10 BUY 214 APA @ $11.250, stop $11.130 (breakout above $11.220)"
   ],
   "news": {
    "CU6": {
@@ -155,23 +179,23 @@
   "news_refreshed": true,
   "tracks": {
    "APA": {
-    "pv": 922184.7169891994,
-    "v": 82345.0,
+    "pv": 961768.876809756,
+    "v": 85873.0,
     "low": 11.175000190734863,
-    "vwap": 11.199037184883107
+    "vwap": 11.199898417544002
    },
    "AYA": {
-    "pv": 614152.2882279555,
-    "v": 167314.0,
+    "pv": 797255.5104790528,
+    "v": 217895.0,
     "low": 3.549999952316284,
-    "vwap": 3.670656897975994
+    "vwap": 3.6588976822738144
    }
   },
   "news_checked_at": "2026-11-13T10:30:05.691894+11:00",
   "news_today": []
  },
  "status": "Watching 2 stocks in play for breakouts",
- "last_run": "2026-11-13T10:30:05.691894+11:00",
+ "last_run": "2026-11-13T10:35:06.525923+11:00",
  "learning": {
   "risk_multiplier": 0.562,
   "blocks": [],
