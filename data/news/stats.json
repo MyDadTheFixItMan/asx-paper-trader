@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-11T16:15+11:00",
- "events": 10335,
- "measured": 8622,
+ "updated": "2026-11-12T16:15+11:00",
+ "events": 10437,
+ "measured": 8704,
  "first_day": "2026-07-29",
  "rules": {
   "block": [
@@ -17,23 +17,23 @@
  "categories": [
   {
    "category": "Results",
-   "n": 791,
+   "n": 803,
    "avg_gap_pct": 0.71,
-   "avg_move_after_open_pct": -0.34,
-   "pct_up_after_open": 45.8,
-   "n_gap_up": 435,
-   "gap_up_then_move_pct": 0.44,
-   "gap_up_pct_up": 53.8
+   "avg_move_after_open_pct": -0.37,
+   "pct_up_after_open": 46.0,
+   "n_gap_up": 443,
+   "gap_up_then_move_pct": 0.38,
+   "gap_up_pct_up": 53.7
   },
   {
    "category": "Other",
-   "n": 446,
-   "avg_gap_pct": 0.33,
-   "avg_move_after_open_pct": -0.33,
-   "pct_up_after_open": 44.8,
-   "n_gap_up": 216,
-   "gap_up_then_move_pct": -0.36,
-   "gap_up_pct_up": 44.4
+   "n": 455,
+   "avg_gap_pct": 0.31,
+   "avg_move_after_open_pct": -0.37,
+   "pct_up_after_open": 44.2,
+   "n_gap_up": 217,
+   "gap_up_then_move_pct": -0.38,
+   "gap_up_pct_up": 44.2
   },
   {
    "category": "Quarterly report",
@@ -47,43 +47,43 @@
   },
   {
    "category": "Exploration / drilling",
-   "n": 145,
-   "avg_gap_pct": 0.61,
-   "avg_move_after_open_pct": 0.47,
-   "pct_up_after_open": 51.0,
+   "n": 146,
+   "avg_gap_pct": 0.6,
+   "avg_move_after_open_pct": 0.42,
+   "pct_up_after_open": 50.7,
    "n_gap_up": 76,
    "gap_up_then_move_pct": 1.81,
    "gap_up_pct_up": 57.9
   },
   {
    "category": "Dividend / buy-back",
-   "n": 121,
+   "n": 122,
    "avg_gap_pct": 0.35,
    "avg_move_after_open_pct": -0.43,
-   "pct_up_after_open": 39.7,
-   "n_gap_up": 56,
-   "gap_up_then_move_pct": -0.15,
-   "gap_up_pct_up": 50.0
+   "pct_up_after_open": 39.3,
+   "n_gap_up": 57,
+   "gap_up_then_move_pct": -0.17,
+   "gap_up_pct_up": 49.1
   },
   {
    "category": "Takeover / merger",
-   "n": 107,
-   "avg_gap_pct": 2.31,
-   "avg_move_after_open_pct": -0.55,
-   "pct_up_after_open": 43.0,
+   "n": 108,
+   "avg_gap_pct": 2.27,
+   "avg_move_after_open_pct": -0.58,
+   "pct_up_after_open": 42.6,
    "n_gap_up": 51,
    "gap_up_then_move_pct": -0.21,
    "gap_up_pct_up": 43.1
   },
   {
    "category": "Management change",
-   "n": 87,
-   "avg_gap_pct": -0.36,
-   "avg_move_after_open_pct": 0.39,
-   "pct_up_after_open": 47.1,
-   "n_gap_up": 42,
-   "gap_up_then_move_pct": 0.24,
-   "gap_up_pct_up": 40.5
+   "n": 93,
+   "avg_gap_pct": -0.31,
+   "avg_move_after_open_pct": 0.36,
+   "pct_up_after_open": 47.3,
+   "n_gap_up": 46,
+   "gap_up_then_move_pct": 0.22,
+   "gap_up_pct_up": 41.3
   },
   {
    "category": "Contract / deal",
@@ -97,13 +97,13 @@
   },
   {
    "category": "Trading halt",
-   "n": 57,
-   "avg_gap_pct": -1.8,
-   "avg_move_after_open_pct": -1.25,
-   "pct_up_after_open": 47.4,
-   "n_gap_up": 24,
-   "gap_up_then_move_pct": -0.87,
-   "gap_up_pct_up": 45.8
+   "n": 58,
+   "avg_gap_pct": -1.15,
+   "avg_move_after_open_pct": -1.4,
+   "pct_up_after_open": 46.6,
+   "n_gap_up": 25,
+   "gap_up_then_move_pct": -1.22,
+   "gap_up_pct_up": 44.0
   },
   {
    "category": "Acquisition / sale",
@@ -117,33 +117,33 @@
   },
   {
    "category": "Capital raising",
-   "n": 31,
-   "avg_gap_pct": -0.38,
-   "avg_move_after_open_pct": -0.37,
-   "pct_up_after_open": 41.9,
+   "n": 32,
+   "avg_gap_pct": -0.39,
+   "avg_move_after_open_pct": -0.4,
+   "pct_up_after_open": 40.6,
    "n_gap_up": 15,
    "gap_up_then_move_pct": -0.46,
    "gap_up_pct_up": 33.3
   },
   {
    "category": "Regulatory / clinical",
-   "n": 19,
-   "avg_gap_pct": 2.03,
-   "avg_move_after_open_pct": -1.07,
-   "pct_up_after_open": 15.8,
-   "n_gap_up": 13,
-   "gap_up_then_move_pct": -1.09,
-   "gap_up_pct_up": 7.7
+   "n": 20,
+   "avg_gap_pct": 2.04,
+   "avg_move_after_open_pct": -1.48,
+   "pct_up_after_open": 15.0,
+   "n_gap_up": 14,
+   "gap_up_then_move_pct": -1.67,
+   "gap_up_pct_up": 7.1
   },
   {
    "category": "Guidance upgrade",
-   "n": 14,
-   "avg_gap_pct": 1.94,
-   "avg_move_after_open_pct": 3.0,
-   "pct_up_after_open": 71.4,
-   "n_gap_up": 11,
-   "gap_up_then_move_pct": 3.33,
-   "gap_up_pct_up": 72.7
+   "n": 15,
+   "avg_gap_pct": 2.2,
+   "avg_move_after_open_pct": 2.8,
+   "pct_up_after_open": 66.7,
+   "n_gap_up": 12,
+   "gap_up_then_move_pct": 3.05,
+   "gap_up_pct_up": 66.7
   },
   {
    "category": "Guidance downgrade",
