@@ -71,19 +71,48 @@
  ],
  "day": {
   "date": "2026-11-13",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9655.64,
   "universe_size": 255,
-  "watchlist": [],
+  "watchlist": [
+   {
+    "sym": "AYA",
+    "rvol": 4.03,
+    "or_high": 3.765000104904175,
+    "or_low": 3.549999952316284,
+    "or_open": 3.549999952316284,
+    "or_close": 3.630000114440918,
+    "atr": 0.2582,
+    "gap_pct": 3.2,
+    "news": {
+     "category": "Contract / deal",
+     "headline": "Five Yr Agreement with HonorHealth Expands US Momentum",
+     "time": "2026-11-13T08:50:55+11:00"
+    }
+   },
+   {
+    "sym": "APA",
+    "rvol": 3.04,
+    "or_high": 11.220000267028809,
+    "or_low": 11.175000190734863,
+    "or_open": 11.180000305175781,
+    "or_close": 11.199999809265137,
+    "atr": 0.1796,
+    "gap_pct": 0.27,
+    "news": null
+   }
+  ],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": -0.44,
+  "last_ts": "2026-11-13T10:05:00+11:00",
   "log": [
    "09:24 Read 45 price-sensitive ASX announcements; 5 are for shares the bot can trade.",
-   "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters."
+   "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
+   "Stocks in play: AYA (4.03x, news: Contract / deal), APA (3.04x)",
+   "10:30 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "CU6": {
@@ -123,10 +152,26 @@
     "Acquisition / sale"
    ]
   },
-  "news_refreshed": true
+  "news_refreshed": true,
+  "tracks": {
+   "APA": {
+    "pv": 922184.7169891994,
+    "v": 82345.0,
+    "low": 11.175000190734863,
+    "vwap": 11.199037184883107
+   },
+   "AYA": {
+    "pv": 614152.2882279555,
+    "v": 167314.0,
+    "low": 3.549999952316284,
+    "vwap": 3.670656897975994
+   }
+  },
+  "news_checked_at": "2026-11-13T10:30:05.691894+11:00",
+  "news_today": []
  },
- "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-13T10:25:06.395771+11:00",
+ "status": "Watching 2 stocks in play for breakouts",
+ "last_run": "2026-11-13T10:30:05.691894+11:00",
  "learning": {
   "risk_multiplier": 0.562,
   "blocks": [],
