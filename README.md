@@ -17,10 +17,11 @@ The rules come from published research and well-known traders' risk rules:
 | Long only; stand aside when the ASX 200 opens down more than 1% | `market_min_change_pct` | Trade with the market |
 | Risk 1% of equity per trade (scaled down after losing days), max 25% of equity in one stock, max 5 positions | `risk_per_trade_pct` … | Paul Tudor Jones / Linda Raschke: defence first |
 | Stop below the opening range or ½ ATR (at least 1%); no breakeven or trailing stop, hold to the close | `stop_atr_fraction`, `min_stop_pct` | Backtest: cutting winners early made results worse |
-| No new entries after 12:30; all positions closed at 15:50 | `last_entry_time`, `exit_time` | Morning momentum; never hold overnight |
+| Breakouts only between 10:30 and 12:30; all positions closed at 15:50 | `first_entry_time`, `last_entry_time`, `exit_time` | Early breakouts were false starts (adopted 14 Nov after the 60-day test); never hold overnight |
+| **Stress-day gap-down bounce** (second setup): after the S&P 500 falls ≥2.5% overnight, buy up to 3 large caps (≥$20M/day, any price) that open ≥3% down, stop ½ ATR, sell at the close | `gapdown_*` | 10-year daily test: 148 trades, +55%, +0.59R (adopted 14 Nov); Stübinger & Schneider (2019); Quantpedia stress reversal |
 | Stop for the day after −2% or 3 losses in a row | `daily_loss_limit_pct`, `max_losses_in_row` | Protect the account on bad days |
 | $5 brokerage per trade + 0.10% slippage each way | `brokerage_per_trade`, `slippage_pct` | Realistic costs |
-| Tested but off: news filters, gap-down setups, Cameron 5-pillar filter, larger sizing | see CHANGELOG.md | Not yet proven over ≥30 trades |
+| Tested but off: news filters, small-cap gap-down setups, Cameron 5-pillar filter, larger sizing, tighter market filter | see CHANGELOG.md | Not yet proven over ≥30 trades |
 
 Every setting lives in `bot/config.json`.
 

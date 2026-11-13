@@ -165,3 +165,74 @@ Not adoptable (the live engine has no gap-down setup yet), but the "stress day" 
 ≥3% the morning after the ASX 200 ETF fell ≥2%) is now the strongest daily result: +0.36R, SQN 2.9, ~7 trades a year.
 Caveat: thresholds were picked from ~35 combinations tested so far; 2020 alone contributed +11%.
 New daily-test keys: `prev_ret_max`, `mkt_vol_min`, `mkt_prev_ret_max`, `or_mkt_prev_ret_max`.
+
+## 2026-11-14: weekly review #2: two adoptions (late-entry rule; stress-day gap-down bounce)
+
+**Live week (9–13 Nov): −0.9%** ($9,749.80 → $9,658.48) vs the +8% goal. 12 trades, 6 winners (50%), average −0.07R.
+Mon–Tue made +$96 (5 of 7 trades won); Wed–Thu lost $190 on 4 straight stop-outs, all on mornings the ASX 200 opened slightly
+down (−0.3% to −0.4%). Since launch: −3.4% in two weeks, 21 trades. In the bot's own review, breakouts bought before
+10:30 averaged −0.48R (15 trades) and those on down-opening mornings −0.94R (6 trades).
+
+**Research:** S&P 500 overnight moves and the ASX (FirstLinks "Night moves": the ASX closes in the same direction as a
+>2.5% US move 90% of the time); Stübinger & Schneider (2019, JRFM) overnight-gap mean reversion in S&P 500 stocks, strongest
+in the first hours; Concretum "Identifying stocks to fade" (gap reversal, gross only, decayed since 2022 from crowding);
+Akbas et al. / Lou, Polk & Skouras (overnight moves reverse intraday); Quantpedia correlated-stress reversal.
+
+**60-day intraday test (5-minute data, 14 Sep – 13 Nov 2026, 254 shares; run twice, identical numbers):**
+
+| Variant | Trades | Return | Avg R | SQN | Max DD |
+|---|---|---|---|---|---|
+| Current | 58 | −7.4% | −0.21 | −1.19 | −11.4% |
+| **No breakout entries before 10:30 — adopted** | 52 | **−5.3%** | **−0.08** | −0.42 | **−7.7%** |
+| No entries before 10:20 | 51 | −4.6% | −0.12 | −0.66 | −9.5% |
+| No entries before 10:45 | 58 | −8.8% | −0.22 | −1.42 | −8.8% |
+| No entries before 10:30, 15-min range | 44 | −5.6% | −0.08 | −0.39 | −6.9% |
+| Market filter 0% (only when ASX 200 is up at 10:10) | 44 | −9.6% | −0.42 | −3.21 | −10.4% |
+| Market filter −0.5% | 62 | −13.1% | −0.38 | −2.82 | −13.1% |
+| 15-min range (re-check) | 47 | −7.2% | −0.22 | −1.09 | −10.3% |
+| Gap-down bounce setup (any trigger) | 58 | −7.4% | −0.21 | −1.19 | −11.4% (no stress days in the window → no extra trades) |
+
+The live "market down at open" lesson did not hold: tighter market filters made results worse. The 10:30 rule meets every
+adoption rule, but it is fragile (10:45 was worse than current) and the breakout strategy still loses (−5% over 60 days).
+
+**10-year daily test (Dec 2016 – Nov 2026, 1,814 shares, buy at open, sell at close or stop, $5 + 0.10% each way).**
+Large caps ($20M+/day) gapping down ≥3%, top 3:
+
+| Variant | Trades | 10-yr return | Avg R | SQN | Max DD | Avg gross | Years up |
+|---|---|---|---|---|---|---|---|
+| Weak open ≤ −1.5% OR STW fell ≥2% yesterday | 194 | +5.3% | +0.16 | 1.9 | −12.6% | +1.13% | 5 |
+| …shares $2–$20 only (live price band) | 180 | −1.7% | +0.12 | 1.5 | −16.0% | +0.92% | 4 |
+| S&P 500 fell ≥1.5% overnight | 296 | −12.8% | +0.08 | 1.0 | −17.7% | +0.76% | 4 |
+| S&P 500 fell ≥2% overnight | 184 | +10.2% | +0.18 | 2.2 | −5.3% | +1.38% | 4 |
+| S&P 500 fell ≥2.5% overnight | 121 | +17.5% | +0.29 | 3.1 | −5.3% | +1.90% | 6 |
+| S&P 500 fell ≥3% overnight | 78 | +24.0% | +0.47 | 4.1 | −3.5% | +2.84% | 5 |
+| **S&P 500 fell ≥2.5%, stop 0.5 ATR — adopted** | **148** | **+54.8%** | **+0.59** | **3.7** | **−3.1%** | +2.06% | **8 of 9** |
+| STW ≥2% OR S&P ≥2.5%, stop 0.5 ATR | 195 | +44.3% | +0.45 | 2.9 | −5.1% | +1.59% | 7 |
+| …same, 2% risk / 50% position, 1 ATR stop | 195 | +62.3% | +0.21 | 2.5 | −10.4% | +1.49% | 7 |
+| Any trigger incl. weak open | 222 | +1.3% | +0.14 | 1.7 | −10.2% | +1.02% | 4 |
+| Control: same stress days, large caps that did NOT gap down | 218 | −41.2% | −0.19 | −3.0 | −41.2% | −0.16% | 0 |
+| Control: large-cap gap-downs on calm days (S&P up, STW open ≥ −0.5%) | 402 | −59.8% | −0.11 | −1.2 | −59.8% | −0.01% | 0 |
+| Control: top 5 gap-ups ≥4% | 430 | −60% | −0.07 | −0.6 | −60% | +0.15% | 0 |
+
+Finding: the bounce is a market-stress effect. Large caps that gap down hard *after a big US sell-off* recover +2% on
+average by the close; the same shares on calm days, and non-gapping shares on the same stress days, lose. The effect grows
+with the size of the US fall (1.5% → 2% → 2.5% → 3%), and 2022 (a bear year) was positive. Tighter 0.5 ATR stop worked better
+because it allows larger positions (cost is a smaller share of each trade) while the stop is rarely hit on real bounces.
+
+**Adopted (2):**
+1. `first_entry_time: "10:30"`: no breakout entries before 10:30 (60-day test: better return, avg R and drawdown, 52 trades;
+   intraday-only, can't be tested on daily bars).
+2. **New setup, `gapdown_enabled: true`**: after the S&P 500 falls ≥2.5% overnight, buy up to 3 large caps ($20M+/day
+   turnover, any price) that open ≥3% down, at the first bar after the opening range (10:10), stop 0.5 ATR (min 1%),
+   sell at 15:50. Same 1% risk sizing, daily loss limit and position caps as every trade. Expect ~12–15 trades a year.
+   Note on the adoption rule: this setup had no trigger days in the 60-day intraday window, so it changed nothing there
+   (it can't beat "current" in that run, only match it). It is adopted on the 10-year daily test (148 trades, +55%,
+   +0.59R, −3.1% max drawdown, two negative controls) because the setup is fully expressible on daily bars. Caveats:
+   thresholds chosen from ~45 daily combinations tested since 7 Nov; the live bot buys at 10:10 on delayed data rather than
+   at the 10:00 open; 2020 contributed a large share of the gain.
+
+**Rejected:** market filter 0% / −0.5%, 15-min range, entries from 10:45, weak-open and STW-only triggers (weaker than the
+US trigger), restricting the gap-down setup to $2–$20 shares, 2% risk sizing (better return, worse avg R and drawdown).
+
+Engine: new switches `first_entry_time`, `gapdown_*`; universe now records yesterday's ASX 200 move and the S&P 500's last
+overnight move; trades record their `setup` ("orb" or "gapdown"). Costs and results calculations unchanged.

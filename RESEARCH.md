@@ -133,3 +133,15 @@ weak-market filter relevant; no regime change that alters the rules.
 
 **Most promising lead:** a "stress-day large-cap bounce" (weak open or prior-day sell-off of ≥2%, large caps gapping
 down ≥3%, buy open, sell close, 1 ATR stop). Needs engine support plus a shadow record before going live.
+
+## After a US sell-off, the ASX's hardest-hit large caps bounce (14 Nov 2026)
+| Idea | Source | 10-year daily test | Verdict |
+|---|---|---|---|
+| Big US overnight moves set the ASX direction (90% same-direction close after a >2.5% US move) | [FirstLinks, "Night moves"](https://firstlinks.com.au/night-moves-us-market-mean-aussie-stocks) | The index follows, but the individual shares that gap down *most* recover intraday | Basis for the trigger |
+| Overnight price gaps in S&P 500 stocks mean-revert, mostly in the first hours | [Stübinger & Schneider 2019, JRFM](https://mdpi.com/1911-8074/12/2/51) | Large-cap gap-downs ≥3% after S&P ≥2.5% fall: avg +1.9% open→close (121 trades) | Confirmed on the ASX on stress days |
+| Gap-fade strategies decay with crowding (gross CAGR ~98% 2012–2022, then a structural break) | [Concretum, "Identifying stocks to fade"](https://concretumgroup.substack.com/p/identifying-stocks-to-fade) | Calm-day large-cap gap-downs: −0.01% gross, −60% after costs | Only stress days work; watch for decay |
+| Overnight returns reverse intraday (tug of war) | [Lou, Polk & Skouras 2019](https://personal.lse.ac.uk/loud/LouPolkSkouras.pdf); [Akbas et al.](https://econpapers.repec.org/RePEc:eee:jfinec:v:145:y:2022:i:3:p:850-875) | Consistent with the above | Supports long-only "buy the overnight loser" |
+
+Adopted as a second live setup (see CHANGELOG 14 Nov): ~12–15 trades a year, +0.59R in the 10-year test with a ½ ATR stop.
+It will not get anywhere near 8% a week on its own (+55% over 10 years ≈ 4.5% a year), but it is the first rule set that has
+made money over 10 years with costs, in 8 of 9 active years, with negative controls that lose.
