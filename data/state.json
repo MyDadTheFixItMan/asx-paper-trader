@@ -12,7 +12,7 @@
    "initial_stop": 11.13,
    "risk_ps": 0.12,
    "high": 11.229999542236328,
-   "last": 11.204999923706055,
+   "last": 11.1899995803833,
    "fees": 5.0,
    "rvol": 3.04,
    "atr": 0.1796,
@@ -130,13 +130,14 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.44,
-  "last_ts": "2026-11-13T11:00:00+11:00",
+  "last_ts": "2026-11-13T11:05:00+11:00",
   "log": [
    "09:24 Read 45 price-sensitive ASX announcements; 5 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
    "Stocks in play: AYA (4.03x, news: Contract / deal), APA (3.04x)",
    "10:30 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades.",
-   "10:10 BUY 214 APA @ $11.250, stop $11.130 (breakout above $11.220)"
+   "10:10 BUY 214 APA @ $11.250, stop $11.130 (breakout above $11.220)",
+   "11:30 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "CU6": {
@@ -179,23 +180,23 @@
   "news_refreshed": true,
   "tracks": {
    "APA": {
-    "pv": 1555188.7118399937,
-    "v": 138798.0,
+    "pv": 1620925.7500480015,
+    "v": 144670.0,
     "low": 11.175000190734863,
-    "vwap": 11.204691075087492
+    "vwap": 11.204297712366085
    },
    "AYA": {
-    "pv": 1454243.5880138078,
-    "v": 399195.0,
-    "low": 3.5299999713897705,
-    "vwap": 3.642940387564493
+    "pv": 1767451.5880138078,
+    "v": 488683.0,
+    "low": 3.4600000381469727,
+    "vwap": 3.6167650358490224
    }
   },
-  "news_checked_at": "2026-11-13T10:30:05.691894+11:00",
+  "news_checked_at": "2026-11-13T11:30:06.076614+11:00",
   "news_today": []
  },
  "status": "Watching 2 stocks in play for breakouts",
- "last_run": "2026-11-13T11:25:06.012396+11:00",
+ "last_run": "2026-11-13T11:30:06.076614+11:00",
  "learning": {
   "risk_multiplier": 0.562,
   "blocks": [],
