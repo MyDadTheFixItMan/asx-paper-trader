@@ -34,6 +34,15 @@
   "last_entry_time": "12:30",
   "exit_time": "15:50",
 
+  "_gapdown": "Stress-day large-cap gap-down bounce (10-year daily test). Off until it passes the adoption rules.",
+  "gapdown_enabled": false,
+  "gapdown_max_gap_pct": -3.0,
+  "gapdown_min_turnover": 20000000,
+  "gapdown_market_open_max": -1.5,
+  "gapdown_market_prev_max": -2.0,
+  "gapdown_top": 3,
+  "gapdown_stop_atr": 1.0,
+
   "_learning": "Rules added from losses, plus an end-of-day review that adapts slowly and only on evidence.",
   "entry_confirm_close": false,
   "vwap_entry_filter": true,

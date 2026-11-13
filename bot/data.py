@@ -147,6 +147,8 @@ def build_universe(codes: list[str], cfg: dict, today: datetime) -> dict:
         if len(idx):
             index_prev = float(idx["Close"].iloc[-1])
     syms["__index__"] = {"prev_close": index_prev, **(trend_meta(idx["Close"]) if idx is not None and len(idx) else {})}
+    if idx is not None and len(idx) >= 2:  # yesterday's ASX 200 move (stress-day filter for the gap-down setup)
+        syms["__index__"]["prev_ret"] = round(float(idx["Close"].iloc[-1] / idx["Close"].iloc[-2] - 1) * 100, 2)
     return {"date": today_d.isoformat(), "scanned": len(codes), "priced": len(daily), "symbols": syms}
 
 

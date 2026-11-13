@@ -99,6 +99,41 @@ class Engine:
             "end": orb[-1]["t"],
         }
 
+    def _gapdown_candidates(self, bars_by_sym: dict, universe: dict) -> list:
+        """Stress-day large-cap gap-down bounce (default off). Buys liquid shares that gapped down hard on mornings
+        when the whole market is under stress (weak open or a big fall yesterday); sells at the close.
+        Evidence: 10-year daily ASX test (CHANGELOG 11 and 14 Nov 2026); Quantpedia 'correlated stress reversal';
+        Griffith University study of large Australian stocks; Stubinger & Schneider (2019) gap reversal."""
+        cfg = self.cfg
+        if not cfg.get("gapdown_enabled"):
+            return []
+        im = universe.get("__index__", {})
+        mkt_open = self.day.get("market_change_pct")
+        weak_open = mkt_open is not None and mkt_open <= cfg.get("gapdown_market_open_max", -1.5)
+        stress = im.get("prev_ret") is not None and im["prev_ret"] <= cfg.get("gapdown_market_prev_max", -2.0)
+        if not (weak_open or stress):
+            return []
+        out = []
+        for sym, bars in bars_by_sym.items():
+            meta = universe.get(sym)
+            if not meta or sym == "__index__" or not meta.get("prev_close"):
+                continue
+            if (meta.get("avg_turnover") or 0) < cfg.get("gapdown_min_turnover", 20e6):
+                continue
+            orr = self.opening_range(bars)
+            if orr is None:
+                continue
+            gap = (orr["open"] / meta["prev_close"] - 1) * 100
+            if not (cfg.get("gapdown_min_gap_pct", -40) <= gap <= cfg.get("gapdown_max_gap_pct", -3)):
+                continue
+            if tick_size(orr["close"]) / orr["close"] * 100 > cfg.get("max_tick_pct", 100):
+                continue
+            out.append({"sym": sym, "setup": "gapdown", "rvol": 0, "or_high": orr["high"], "or_low": orr["low"],
+                        "or_open": orr["open"], "or_close": orr["close"], "atr": meta["atr"],
+                        "gap_pct": round(gap, 2), "news": (self.day.get("news") or {}).get(sym)})
+        out.sort(key=lambda c: c["gap_pct"])
+        return out[: cfg.get("gapdown_top", 3)]
+
     def select_watchlist(self, bars_by_sym: dict, index_bars: list | None, universe: dict) -> bool:
         """Pick today's stocks in play once the opening range is complete. Returns True when done."""
         cfg = self.cfg
@@ -112,10 +147,13 @@ class Engine:
                 chg = (idx_or["close"] / prev - 1) * 100
                 self.day["market_change_pct"] = round(chg, 2)
                 if chg < cfg["market_min_change_pct"]:
-                    self.day["watchlist"] = []
+                    gd = self._gapdown_candidates(bars_by_sym, universe)
+                    self.day["watchlist"] = gd
                     self.day["phase"] = "trading"
-                    self.day["no_new_entries"] = True
-                    self.log(idx_or["end"], f"ASX 200 {chg:+.2f}% at the open: weak market, standing aside today.")
+                    self.day["no_new_entries"] = not gd
+                    self.log(idx_or["end"], f"ASX 200 {chg:+.2f}% at the open: weak market, no breakout trades today.")
+                    if gd:
+                        self.log(None, "Gap-down bounce candidates: " + ", ".join(f"{c['sym']} ({c['gap_pct']:+.1f}%)" for c in gd))
                     return True
 
         # Tudor Jones / O'Neil "M": long only when the market is in an uptrend
@@ -192,6 +230,10 @@ class Engine:
         boost = set((self.day.get("news_rules") or {}).get("boost", [])) if cfg.get("news_learning") else set()
         cands.sort(key=lambda c: c["rvol"] * (1.5 if c.get("news") and c["news"]["category"] in boost else 1.0), reverse=True)
         self.day["watchlist"] = cands[: cfg["watchlist_size"]]
+        gd = self._gapdown_candidates(bars_by_sym, universe)
+        if gd:
+            self.log(None, "Gap-down bounce candidates: " + ", ".join(f"{c['sym']} ({c['gap_pct']:+.1f}%)" for c in gd))
+            self.day["watchlist"] += [c for c in gd if c["sym"] not in {w["sym"] for w in self.day["watchlist"]}]
         self.day["phase"] = "trading"
         if self.day["watchlist"]:
             names = ", ".join(f"{c['sym']} ({c['rvol']}x" + (f", news: {c['news']['category']}" if c.get("news") else "") + ")"
@@ -225,13 +267,15 @@ class Engine:
             if bar["c"] <= w["or_high"]:
                 return
             raw = bar["c"] * (1 + slip)
-        elif cfg.get("entry_mode") == "after_or":
+        elif cfg.get("entry_mode") == "after_or" or w.get("setup") == "gapdown":
             raw = bar["o"] * (1 + slip)  # buy as soon as the opening range is complete
         else:
             trigger = w["or_high"] + tick_size(w["or_high"])
             raw = max(trigger, bar["o"]) * (1 + slip)
         price = round_tick(raw, "up")
-        if cfg.get("stop_mode") == "low_of_day":
+        if w.get("setup") == "gapdown":
+            stop = price - cfg.get("gapdown_stop_atr", 1.0) * w["atr"]
+        elif cfg.get("stop_mode") == "low_of_day":
             # Kullamagi episodic pivot: stop at the low of the day
             stop = self.day.get("tracks", {}).get(w["sym"], {}).get("low", w["or_low"])
         elif not cfg.get("stop_use_or_low", True):
@@ -275,14 +319,16 @@ class Engine:
         self.s["cash"] = round(self.s["cash"] - cost, 2)
         pos = {
             "sym": w["sym"], "qty": qty, "entry": price, "entry_time": bar["t"].isoformat(),
-            "stop": stop, "initial_stop": stop, "risk_ps": round(risk_ps, 4), "high": bar["h"],
+            "stop": stop, "initial_stop": stop, "risk_ps": round(risk_ps, 4), "high": bar["h"], "setup": w.get("setup", "orb"),
             "last": bar["c"], "fees": self.fee(), "rvol": w["rvol"], "atr": w["atr"], "stop_note": "initial",
             "gap_pct": w.get("gap_pct"), "stop_pct": cand["stop_pct"], "market_pct": cand["market_pct"],
             "news_cat": (w.get("news") or {}).get("category"), "news_headline": (w.get("news") or {}).get("headline"),
         }
         self.s["positions"].append(pos)
         self.day["entered"].append(w["sym"])
-        self.log(bar["t"], f"BUY {qty} {w['sym']} @ ${price:.3f}, stop ${stop:.3f} (closed above ${w['or_high']:.3f})"
+        self.log(bar["t"], f"BUY {qty} {w['sym']} @ ${price:.3f}, stop ${stop:.3f} (gap-down bounce, gapped {w.get('gap_pct')}%)"
+                 if w.get("setup") == "gapdown" else
+                 f"BUY {qty} {w['sym']} @ ${price:.3f}, stop ${stop:.3f} (closed above ${w['or_high']:.3f})"
                  if cfg.get("entry_confirm_close") else
                  f"BUY {qty} {w['sym']} @ ${price:.3f}, stop ${stop:.3f} (breakout above ${w['or_high']:.3f})")
         if not cfg.get("entry_confirm_close") and bar["c"] <= stop:
@@ -320,6 +366,7 @@ class Engine:
             "market_pct": pos.get("market_pct"),
             "news_cat": pos.get("news_cat"),
             "news_headline": pos.get("news_headline"),
+            "setup": pos.get("setup", "orb"),
             "reason": reason,
         }
         self.trades.append(trade)
@@ -342,11 +389,11 @@ class Engine:
         pos["high"] = max(pos["high"], bar["h"])
         r = pos["risk_ps"]
         vw = self.day.get("tracks", {}).get(pos["sym"], {}).get("vwap")
-        if cfg.get("vwap_exit") and vw and bar["c"] < vw:
+        if cfg.get("vwap_exit") and vw and bar["c"] < vw and pos.get("setup") != "gapdown":
             self._exit(pos, bar["c"], bar["t"], "Closed below VWAP")
             return
         tsm = cfg.get("time_stop_minutes")
-        if tsm and (bar["t"] - pd.Timestamp(pos["entry_time"])).total_seconds() >= tsm * 60 and bar["c"] <= pos["entry"]:
+        if tsm and pos.get("setup") != "gapdown" and (bar["t"] - pd.Timestamp(pos["entry_time"])).total_seconds() >= tsm * 60 and bar["c"] <= pos["entry"]:
             self._exit(pos, bar["c"], bar["t"], f"Time stop ({tsm} min, not working)")
             return
         # 2) move stop to breakeven once +1R
@@ -413,7 +460,9 @@ class Engine:
                     if w["sym"] in day["entered"] or w.get("skipped"):
                         continue
                     bar = index.get(w["sym"], {}).get(ts)
-                    if bar and self.cfg.get("entry_mode") == "after_or":
+                    if w.get("setup") != "gapdown" and self.cfg.get("first_entry_time") and ts.time() < hhmm(self.cfg["first_entry_time"]):
+                        continue  # live lesson: breakouts before this time lost (test switch)
+                    if bar and (self.cfg.get("entry_mode") == "after_or" or w.get("setup") == "gapdown"):
                         self._enter(w, bar)
                         if w["sym"] not in day["entered"]:
                             w["skipped"] = True

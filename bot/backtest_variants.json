@@ -1,6 +1,42 @@
 [
- {"name": "Previous 15-minute opening range (re-check of the 11 Nov adoption)", "overrides": {"opening_range_minutes": 15}},
- {"name": "10-minute range, top 10 at 2x volume", "overrides": {"min_relative_volume": 2.0, "watchlist_size": 10}},
- {"name": "15-minute range, top 10 at 2x volume", "overrides": {"opening_range_minutes": 15, "min_relative_volume": 2.0, "watchlist_size": 10}},
- {"name": "10-minute range, stop 0.25 ATR (1% minimum still applies)", "overrides": {"stop_atr_fraction": 0.25}}
+ {
+  "name": "Live lesson: trade breakouts only when the ASX 200 is up at 10:10 (market filter 0%)",
+  "overrides": {
+   "market_min_change_pct": 0.0
+  }
+ },
+ {
+  "name": "Market filter -0.5%",
+  "overrides": {
+   "market_min_change_pct": -0.5
+  }
+ },
+ {
+  "name": "Live lesson: no breakout entries before 10:30",
+  "overrides": {
+   "first_entry_time": "10:30"
+  }
+ },
+ {
+  "name": "Previous 15-minute opening range (re-check)",
+  "overrides": {
+   "opening_range_minutes": 15
+  }
+ },
+ {
+  "name": "Add stress-day large-cap gap-down bounce (weak open <=-1.5% or ASX 200 fell >=2% yesterday)",
+  "overrides": {
+   "gapdown_enabled": true
+  }
+ },
+ {
+  "name": "Gap-down bounce, looser: gap >=2%, weak open <=-1% or ASX 200 fell >=1% yesterday, top 5",
+  "overrides": {
+   "gapdown_enabled": true,
+   "gapdown_max_gap_pct": -2.0,
+   "gapdown_market_open_max": -1.0,
+   "gapdown_market_prev_max": -1.0,
+   "gapdown_top": 5
+  }
+ }
 ]

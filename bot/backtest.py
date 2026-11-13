@@ -68,7 +68,8 @@ def meta_for(sym, d, intraday, daily, cfg):
     per = per[per > 0].tail(14)
     if len(per) < 5:
         return None
-    return {"prev_close": prev, "atr": atr, "avg_or_volume": float(per.mean()), **md.trend_meta(full["Close"], full["High"])}
+    return {"prev_close": prev, "atr": atr, "avg_turnover": turnover, "avg_or_volume": float(per.mean()),
+            **md.trend_meta(full["Close"], full["High"])}
 
 
 EVENTS = news.load_events(ROOT / "data/news/events.json")
@@ -92,6 +93,8 @@ def run(cfg, syms, intraday, daily, days):
             h = idd[idd.index.date < d]
             prev_idx = float(h["Close"].iloc[-1]) if len(h) else None
         uni["__index__"] = {"prev_close": prev_idx, **(md.trend_meta(h["Close"]) if idd is not None and len(h) else {})}
+        if idd is not None and len(h) >= 2:
+            uni["__index__"]["prev_ret"] = round(float(h["Close"].iloc[-1] / h["Close"].iloc[-2] - 1) * 100, 2)
         eng.new_day(d.isoformat(), uni)
         # News known at that morning, and rules learned only from earlier days (walk-forward, no hindsight)
         ov = news.overnight_news(EVENTS, d.isoformat())

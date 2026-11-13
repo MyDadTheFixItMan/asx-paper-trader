@@ -37,20 +37,20 @@ LC = {"side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "ma
 VARIANTS = [
     dict(GU, name="control: top 5 gap-ups >=4%, stop 1 ATR"),
     dict(LC, name="best so far: large-cap gap-down >=3% when STW opens <= -1.5%"),
-    # Nagel (2012) "Evaporating Liquidity": reversal returns rise with market volatility (VIX). Proxy: STW 20-day realised vol.
-    dict(LC, name="Nagel: large-cap gap-down >=3% when STW 20-day vol >= 20% (no open filter)", market_max_gap=None, mkt_vol_min=20),
-    dict(LC, name="Nagel: large-cap gap-down >=3% when STW vol >= 15% and STW opens <= -1%", market_max_gap=-1.0, mkt_vol_min=15),
-    dict(LC, name="Nagel: best so far + STW vol >= 15%", mkt_vol_min=15),
-    # Lou, Polk & Skouras (2019) / Bremer & Sweeney: losers reverse, and the reversal is earned intraday
-    dict(LC, name="Prior-day losers: large caps that fell >=5% yesterday, opening below +1%", max_gap=1, prev_ret_max=-5, market_max_gap=None),
-    dict(LC, name="Prior-day losers >=5% when STW 20-day vol >= 20%", max_gap=1, prev_ret_max=-5, market_max_gap=None, mkt_vol_min=20),
-    # Stress-day reversal (Quantpedia 2025): buy the morning after the whole market sold off
-    dict(LC, name="Stress: large-cap gap-down >=3% after STW fell >=1.5% yesterday", market_max_gap=None, mkt_prev_ret_max=-1.5),
-    dict(LC, name="Stress: same, STW fell >=2% yesterday", market_max_gap=None, mkt_prev_ret_max=-2.0),
-    dict(LC, name="Weak open OR stress day: best so far, or STW fell >=1.5% yesterday", or_mkt_prev_ret_max=-1.5),
-    dict(LC, name="Stress + Nagel: STW fell >=1.5% yesterday and STW vol >= 15%", market_max_gap=None, mkt_prev_ret_max=-1.5, mkt_vol_min=15),
+    dict(LC, name="Stress: large-cap gap-down >=3% after STW fell >=2% yesterday", market_max_gap=None, mkt_prev_ret_max=-2.0),
+    # 14 Nov 2026: the live engine's gap-down setup = weak open (<= -1.5%) OR stress day (STW fell >= 2% yesterday)
+    dict(LC, name="Engine rule: weak open <= -1.5% OR STW fell >=2% yesterday", or_mkt_prev_ret_max=-2.0),
+    dict(LC, name="Engine rule, live price band (shares $2-$20 only)", or_mkt_prev_ret_max=-2.0, max_price=20),
+    dict(LC, name="Engine rule, 2% risk / 50% max position (lower cost per $)", or_mkt_prev_ret_max=-2.0, risk=2.0, max_pos=50),
+    dict(LC, name="Engine rule, stop 0.5 ATR", or_mkt_prev_ret_max=-2.0, stop_atr=0.5),
+    dict(LC, name="Engine rule, stop 2 ATR", or_mkt_prev_ret_max=-2.0, stop_atr=2.0),
+    dict(LC, name="Engine rule, gap >=2%, top 5 (looser)", or_mkt_prev_ret_max=-2.0, max_gap=-2, top=5),
+    # US lead (FirstLinks 'Night moves': the ASX follows big US moves; Stubinger & Schneider 2019: big gaps revert intraday)
+    dict(LC, name="US lead: large-cap gap-down >=3% after S&P 500 fell >=1.5% overnight", market_max_gap=None, us_prev_ret_max=-1.5),
+    dict(LC, name="US lead: same, S&P 500 fell >=2.5% overnight", market_max_gap=None, us_prev_ret_max=-2.5),
+    dict(LC, name="Idiosyncratic: large-cap gap-down >=3% when S&P 500 rose overnight and STW opens >= -0.5%", market_max_gap=None, us_prev_ret_min=0, mkt_open_min=-0.5),
 ]
-EXTRA = ["STW.AX"]  # ETFs aren't in the company list
+EXTRA = ["STW.AX", "^GSPC"]  # ETFs aren't in the company list
 
 
 def load():
@@ -66,8 +66,22 @@ def load():
     return frames
 
 
+NOT_SHARES = {CFG["market_index"], "^GSPC"}
+US = {}
+
+
 def panel(frames, field):
-    return pd.DataFrame({s: f[field] for s, f in frames.items() if s != CFG["market_index"]})
+    return pd.DataFrame({s: f[field] for s, f in frames.items() if s not in NOT_SHARES})
+
+
+def us_prev_ret(index):
+    """S&P 500 return of the last US session that closed before each ASX day opened (US date < ASX date)."""
+    g = US.get("^GSPC")
+    if g is None:
+        return pd.Series(np.nan, index=index)
+    r = (g["Close"] / g["Close"].shift(1) - 1) * 100
+    r.index = r.index + pd.Timedelta(days=1)
+    return r.reindex(index, method="ffill", limit=4)
 
 
 def signals(v, P):
@@ -130,6 +144,17 @@ def signals(v, P):
     if v.get("mkt_prev_ret_max") is not None and stw_c is not None:  # market sold off yesterday (stress day)
         mprev = ((stw_c / stw_c.shift(1) - 1) * 100).shift(1)
         ok = ok.mul((mprev <= v["mkt_prev_ret_max"]).fillna(False), axis=0)
+    if v.get("max_price") is not None:                      # live universe price band
+        ok = ok & (prevC <= v["max_price"])
+    if v.get("us_prev_ret_max") is not None or v.get("us_prev_ret_min") is not None:
+        us = us_prev_ret(O.index)
+        if v.get("us_prev_ret_max") is not None:
+            ok = ok.mul((us <= v["us_prev_ret_max"]).fillna(False), axis=0)
+        if v.get("us_prev_ret_min") is not None:
+            ok = ok.mul((us >= v["us_prev_ret_min"]).fillna(False), axis=0)
+    if v.get("mkt_open_min") is not None and "STW" in O.columns:
+        mo = (O["STW"] / C["STW"].shift(1) - 1) * 100
+        ok = ok.mul((mo >= v["mkt_open_min"]).fillna(False), axis=0)
     if v.get("market_max_gap") is not None and "STW" in O.columns:
         mkt = (O["STW"] / C["STW"].shift(1) - 1) * 100
         cond = mkt <= v["market_max_gap"]
@@ -219,6 +244,8 @@ def summarise(v, daily, trades, start_capital):
 
 def main():
     frames = load()
+    if "^GSPC" in frames:
+        US["^GSPC"] = frames["^GSPC"]
     O, H, L, C, V = (panel(frames, f) for f in ("Open", "High", "Low", "Close", "Volume"))
     tr = pd.concat({s: pd.concat([H[s] - L[s], (H[s] - C[s].shift()).abs(), (L[s] - C[s].shift()).abs()], axis=1).max(axis=1)
                     for s in C.columns}, axis=1)
