@@ -32,7 +32,7 @@ def load_market(cfg):
     intraday = {t[:-3] if t.endswith(".AX") else t: md.to_sydney(df)
                 for t, df in md._download(tickers + [cfg["market_index"]], period="60d", interval="5m").items()}
     daily = {t[:-3] if t.endswith(".AX") else t: md.to_sydney(df)
-             for t, df in md._download(tickers + [cfg["market_index"]], period="2y", interval="1d").items()}
+             for t, df in md._download(tickers + [cfg["market_index"], "^GSPC"], period="2y", interval="1d").items()}
     return syms, intraday, daily
 
 
@@ -95,6 +95,11 @@ def run(cfg, syms, intraday, daily, days):
         uni["__index__"] = {"prev_close": prev_idx, **(md.trend_meta(h["Close"]) if idd is not None and len(h) else {})}
         if idd is not None and len(h) >= 2:
             uni["__index__"]["prev_ret"] = round(float(h["Close"].iloc[-1] / h["Close"].iloc[-2] - 1) * 100, 2)
+        us = daily.get("^GSPC")
+        if us is not None:
+            uh = us[us.index.date < d]["Close"].dropna()
+            if len(uh) >= 2:
+                uni["__index__"]["us_prev_ret"] = round(float(uh.iloc[-1] / uh.iloc[-2] - 1) * 100, 2)
         eng.new_day(d.isoformat(), uni)
         # News known at that morning, and rules learned only from earlier days (walk-forward, no hindsight)
         ov = news.overnight_news(EVENTS, d.isoformat())

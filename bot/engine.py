@@ -109,9 +109,11 @@ class Engine:
             return []
         im = universe.get("__index__", {})
         mkt_open = self.day.get("market_change_pct")
-        weak_open = mkt_open is not None and mkt_open <= cfg.get("gapdown_market_open_max", -1.5)
-        stress = im.get("prev_ret") is not None and im["prev_ret"] <= cfg.get("gapdown_market_prev_max", -2.0)
-        if not (weak_open or stress):
+        wo, mp, up = cfg.get("gapdown_market_open_max"), cfg.get("gapdown_market_prev_max"), cfg.get("gapdown_us_prev_max")
+        weak_open = wo is not None and mkt_open is not None and mkt_open <= wo
+        stress = mp is not None and im.get("prev_ret") is not None and im["prev_ret"] <= mp
+        us_fall = up is not None and im.get("us_prev_ret") is not None and im["us_prev_ret"] <= up
+        if not (weak_open or stress or us_fall):
             return []
         out = []
         for sym, bars in bars_by_sym.items():

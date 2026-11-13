@@ -34,21 +34,21 @@ CFG = json.loads((ROOT / "bot/config.json").read_text())
 #   risk/max_pos: % risk per trade and max % of equity per position (defaults: config, within guardrails)
 GU = {"side": "up", "min_gap": 4, "max_gap": 60, "stop_atr": 1.0, "top": 5}
 LC = {"side": "down", "min_gap": -40, "stop_atr": 1.0, "min_turnover": 20e6, "max_gap": -3, "top": 3, "market_max_gap": -1.5}
+NT = dict(LC, market_max_gap=None)  # no weak-open filter; triggers come from any_of
 VARIANTS = [
     dict(GU, name="control: top 5 gap-ups >=4%, stop 1 ATR"),
-    dict(LC, name="best so far: large-cap gap-down >=3% when STW opens <= -1.5%"),
-    dict(LC, name="Stress: large-cap gap-down >=3% after STW fell >=2% yesterday", market_max_gap=None, mkt_prev_ret_max=-2.0),
-    # 14 Nov 2026: the live engine's gap-down setup = weak open (<= -1.5%) OR stress day (STW fell >= 2% yesterday)
-    dict(LC, name="Engine rule: weak open <= -1.5% OR STW fell >=2% yesterday", or_mkt_prev_ret_max=-2.0),
-    dict(LC, name="Engine rule, live price band (shares $2-$20 only)", or_mkt_prev_ret_max=-2.0, max_price=20),
-    dict(LC, name="Engine rule, 2% risk / 50% max position (lower cost per $)", or_mkt_prev_ret_max=-2.0, risk=2.0, max_pos=50),
-    dict(LC, name="Engine rule, stop 0.5 ATR", or_mkt_prev_ret_max=-2.0, stop_atr=0.5),
-    dict(LC, name="Engine rule, stop 2 ATR", or_mkt_prev_ret_max=-2.0, stop_atr=2.0),
-    dict(LC, name="Engine rule, gap >=2%, top 5 (looser)", or_mkt_prev_ret_max=-2.0, max_gap=-2, top=5),
-    # US lead (FirstLinks 'Night moves': the ASX follows big US moves; Stubinger & Schneider 2019: big gaps revert intraday)
-    dict(LC, name="US lead: large-cap gap-down >=3% after S&P 500 fell >=1.5% overnight", market_max_gap=None, us_prev_ret_max=-1.5),
-    dict(LC, name="US lead: same, S&P 500 fell >=2.5% overnight", market_max_gap=None, us_prev_ret_max=-2.5),
-    dict(LC, name="Idiosyncratic: large-cap gap-down >=3% when S&P 500 rose overnight and STW opens >= -0.5%", market_max_gap=None, us_prev_ret_min=0, mkt_open_min=-0.5),
+    dict(LC, name="Engine rule (14 Nov): weak open <= -1.5% OR STW fell >=2% yesterday", or_mkt_prev_ret_max=-2.0),
+    dict(NT, name="US lead: S&P 500 fell >=2.5% overnight (run 1 best)", us_prev_ret_max=-2.5),
+    dict(NT, name="US lead: S&P 500 fell >=2% overnight", us_prev_ret_max=-2.0),
+    dict(NT, name="US lead: S&P 500 fell >=3% overnight", us_prev_ret_max=-3.0),
+    dict(NT, name="US lead >=2.5%, stop 0.5 ATR", us_prev_ret_max=-2.5, stop_atr=0.5),
+    dict(NT, name="US lead >=2.5%, gap >=2%", us_prev_ret_max=-2.5, max_gap=-2),
+    dict(NT, name="Stress: STW fell >=2% yesterday OR S&P 500 fell >=2.5% overnight", any_of=[("stw_prev", -2.0), ("us_prev", -2.5)]),
+    dict(NT, name="Stress-any: weak open <=-1.5% OR STW fell >=2% OR S&P fell >=2.5%", any_of=[("stw_open", -1.5), ("stw_prev", -2.0), ("us_prev", -2.5)]),
+    dict(NT, name="Stress (STW >=2% OR S&P >=2.5%), stop 0.5 ATR", any_of=[("stw_prev", -2.0), ("us_prev", -2.5)], stop_atr=0.5),
+    dict(NT, name="Stress (STW >=2% OR S&P >=2.5%), 2% risk / 50% max position", any_of=[("stw_prev", -2.0), ("us_prev", -2.5)], risk=2.0, max_pos=50),
+    dict(NT, name="Stress (STW >=2% OR S&P >=2.5%), shares $2-$20 only (live band)", any_of=[("stw_prev", -2.0), ("us_prev", -2.5)], max_price=20),
+    dict(NT, name="Control: same stress days, large caps that did NOT gap down (gap -1% to +1%)", any_of=[("stw_prev", -2.0), ("us_prev", -2.5)], min_gap=-1, max_gap=1),
 ]
 EXTRA = ["STW.AX", "^GSPC"]  # ETFs aren't in the company list
 
@@ -155,6 +155,17 @@ def signals(v, P):
     if v.get("mkt_open_min") is not None and "STW" in O.columns:
         mo = (O["STW"] / C["STW"].shift(1) - 1) * 100
         ok = ok.mul((mo >= v["mkt_open_min"]).fillna(False), axis=0)
+    if v.get("any_of"):  # any one stress trigger fires: ("stw_open", x) STW opens <= x%; ("stw_prev", x) STW fell >= |x|% yesterday; ("us_prev", x) S&P 500 overnight <= x%
+        cond = pd.Series(False, index=O.index)
+        for kind, x in v["any_of"]:
+            if kind == "stw_open":
+                c_ = (O["STW"] / C["STW"].shift(1) - 1) * 100 <= x
+            elif kind == "stw_prev":
+                c_ = ((C["STW"] / C["STW"].shift(1) - 1) * 100).shift(1) <= x
+            else:
+                c_ = us_prev_ret(O.index) <= x
+            cond = cond | c_.fillna(False)
+        ok = ok.mul(cond, axis=0)
     if v.get("market_max_gap") is not None and "STW" in O.columns:
         mkt = (O["STW"] / C["STW"].shift(1) - 1) * 100
         cond = mkt <= v["market_max_gap"]

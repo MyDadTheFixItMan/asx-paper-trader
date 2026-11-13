@@ -149,6 +149,12 @@ def build_universe(codes: list[str], cfg: dict, today: datetime) -> dict:
     syms["__index__"] = {"prev_close": index_prev, **(trend_meta(idx["Close"]) if idx is not None and len(idx) else {})}
     if idx is not None and len(idx) >= 2:  # yesterday's ASX 200 move (stress-day filter for the gap-down setup)
         syms["__index__"]["prev_ret"] = round(float(idx["Close"].iloc[-1] / idx["Close"].iloc[-2] - 1) * 100, 2)
+    us = _download(["^GSPC"], period="1mo", interval="1d").get("^GSPC")
+    if us is not None:  # last completed US session before this ASX morning (S&P 500 overnight move)
+        us = to_sydney(us)
+        us = us[us.index.date < today_d]["Close"].dropna()
+        if len(us) >= 2:
+            syms["__index__"]["us_prev_ret"] = round(float(us.iloc[-1] / us.iloc[-2] - 1) * 100, 2)
     return {"date": today_d.isoformat(), "scanned": len(codes), "priced": len(daily), "symbols": syms}
 
 
