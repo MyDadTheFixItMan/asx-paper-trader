@@ -12,7 +12,7 @@
    "initial_stop": 11.13,
    "risk_ps": 0.12,
    "high": 11.239999771118164,
-   "last": 11.204999923706055,
+   "last": 11.199999809265137,
    "fees": 5.0,
    "rvol": 3.04,
    "atr": 0.1796,
@@ -130,7 +130,7 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.44,
-  "last_ts": "2026-11-13T12:55:00+11:00",
+  "last_ts": "2026-11-13T13:00:00+11:00",
   "log": [
    "09:24 Read 45 price-sensitive ASX announcements; 5 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 254 pass the liquidity and volatility filters.",
@@ -181,23 +181,23 @@
   "news_refreshed": true,
   "tracks": {
    "APA": {
-    "pv": 3116920.3930206303,
-    "v": 278226.0,
+    "pv": 3126464.2128906255,
+    "v": 279078.0,
     "low": 11.15999984741211,
-    "vwap": 11.202836517869036
+    "vwap": 11.202832945952835
    },
    "AYA": {
-    "pv": 7153656.074208417,
-    "v": 2035672.0,
+    "pv": 7175913.38117647,
+    "v": 2042444.0,
     "low": 3.2699999809265137,
-    "vwap": 3.5141496637024123
+    "vwap": 3.5133954131307736
    }
   },
   "news_checked_at": "2026-11-13T12:35:06.120857+11:00",
   "news_today": []
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-13T13:20:05.842001+11:00",
+ "last_run": "2026-11-13T13:25:05.932928+11:00",
  "learning": {
   "risk_multiplier": 0.562,
   "blocks": [],
