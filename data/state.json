@@ -79,19 +79,66 @@
  ],
  "day": {
   "date": "2026-11-16",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9658.48,
   "universe_size": 251,
-  "watchlist": [],
+  "watchlist": [
+   {
+    "sym": "MGH",
+    "rvol": 6.87,
+    "or_high": 3.9800000190734863,
+    "or_low": 3.880000114440918,
+    "or_open": 3.8949999809265137,
+    "or_close": 3.940000057220459,
+    "atr": 0.2254,
+    "gap_pct": -0.13,
+    "news": null
+   },
+   {
+    "sym": "TCL",
+    "rvol": 5.66,
+    "or_high": 15.0600004196167,
+    "or_low": 14.9399995803833,
+    "or_open": 14.9399995803833,
+    "or_close": 15.055000305175781,
+    "atr": 0.2739,
+    "gap_pct": -0.4,
+    "news": null
+   },
+   {
+    "sym": "ING",
+    "rvol": 4.38,
+    "or_high": 2.2100000381469727,
+    "or_low": 2.174999952316284,
+    "or_open": 2.174999952316284,
+    "or_close": 2.200000047683716,
+    "atr": 0.0668,
+    "gap_pct": 0.69,
+    "news": null
+   },
+   {
+    "sym": "EVT",
+    "rvol": 3.36,
+    "or_high": 15.729999542236328,
+    "or_low": 15.539999961853027,
+    "or_open": 15.539999961853027,
+    "or_close": 15.664999961853027,
+    "atr": 0.3975,
+    "gap_pct": -0.64,
+    "news": null
+   }
+  ],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": -0.06,
+  "last_ts": "2026-11-16T10:05:00+11:00",
   "log": [
    "09:24 Read 89 price-sensitive ASX announcements; 8 are for shares the bot can trade.",
-   "09:24 Scanned 1836 ASX listings; 250 pass the liquidity and volatility filters."
+   "09:24 Scanned 1836 ASX listings; 250 pass the liquidity and volatility filters.",
+   "Stocks in play: MGH (6.87x), TCL (5.66x), ING (4.38x), EVT (3.36x)",
+   "10:30 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "PDN": {
@@ -156,10 +203,38 @@
     "Acquisition / sale"
    ]
   },
-  "news_refreshed": true
+  "news_refreshed": true,
+  "tracks": {
+   "TCL": {
+    "pv": 3120208.869812648,
+    "v": 207716.0,
+    "low": 14.9399995803833,
+    "vwap": 15.021514326352557
+   },
+   "MGH": {
+    "pv": 2146965.2439222336,
+    "v": 544760.0,
+    "low": 3.880000114440918,
+    "vwap": 3.94112130832336
+   },
+   "EVT": {
+    "pv": 123170.86563110352,
+    "v": 7876.0,
+    "low": 15.539999961853027,
+    "vwap": 15.638758967890238
+   },
+   "ING": {
+    "pv": 200959.5475107829,
+    "v": 91573.0,
+    "low": 2.174999952316284,
+    "vwap": 2.1945283818459904
+   }
+  },
+  "news_checked_at": "2026-11-16T10:30:06.106584+11:00",
+  "news_today": []
  },
- "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-16T10:25:05.763139+11:00",
+ "status": "Watching 4 stocks in play for breakouts",
+ "last_run": "2026-11-16T10:30:06.106584+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
