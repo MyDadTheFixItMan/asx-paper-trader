@@ -133,6 +133,16 @@
     "category": "Other",
     "headline": "Retail Information Booklet",
     "time": "2026-11-16T09:02:17+11:00"
+   },
+   "IGO": {
+    "category": "Acquisition / sale",
+    "headline": "IGO to Become Largest Shareholder in GG8 Through Cosmos Sale",
+    "time": "2026-11-16T09:28:27+11:00"
+   },
+   "INA": {
+    "category": "Takeover / merger",
+    "headline": "AVID exercises matching right and Peet ACCC determination",
+    "time": "2026-11-16T09:35:17+11:00"
    }
   },
   "news_rules": {
@@ -145,10 +155,11 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-16T09:24:27.537066+11:00",
+ "status": "Building the opening range (prices are ~20 min delayed)",
+ "last_run": "2026-11-16T10:00:06.088620+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
