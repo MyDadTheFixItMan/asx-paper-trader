@@ -133,7 +133,7 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.06,
-  "last_ts": "2026-11-16T10:20:00+11:00",
+  "last_ts": "2026-11-16T10:25:00+11:00",
   "log": [
    "09:24 Read 89 price-sensitive ASX announcements; 8 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 250 pass the liquidity and volatility filters.",
@@ -206,22 +206,22 @@
   "news_refreshed": true,
   "tracks": {
    "TCL": {
-    "pv": 4194082.471995036,
-    "v": 279114.0,
+    "pv": 4923121.950945219,
+    "v": 327625.0,
     "low": 14.9399995803833,
-    "vwap": 15.026413838055548
+    "vwap": 15.026698057062859
    },
    "MGH": {
-    "pv": 2654229.053837856,
-    "v": 675039.0,
+    "pv": 2871205.438367605,
+    "v": 731057.0,
     "low": 3.8399999141693115,
-    "vwap": 3.9319640107280556
+    "vwap": 3.927471371408256
    },
    "EVT": {
-    "pv": 317975.78465175634,
-    "v": 20296.0,
+    "pv": 328963.9597854615,
+    "v": 20997.0,
     "low": 15.539999961853027,
-    "vwap": 15.666918833846884
+    "vwap": 15.667188635779468
    },
    "ING": {
     "pv": 471209.6792904536,
@@ -234,7 +234,7 @@
   "news_today": []
  },
  "status": "Watching 4 stocks in play for breakouts",
- "last_run": "2026-11-16T10:45:05.836662+11:00",
+ "last_run": "2026-11-16T10:50:06.241040+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
