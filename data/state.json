@@ -1,6 +1,6 @@
 {
  "start_capital": 10000,
- "cash": 7239.08,
+ "cash": 4821.22,
  "created": "2026-11-03T12:05:51.257495+11:00",
  "positions": [
   {
@@ -13,13 +13,34 @@
    "risk_ps": 0.16,
    "high": 15.079999923706055,
    "setup": "orb",
-   "last": 15.045000076293945,
+   "last": 15.0600004196167,
    "fees": 5.0,
    "rvol": 5.66,
    "atr": 0.2739,
    "stop_note": "initial",
    "gap_pct": -0.4,
    "stop_pct": 1.06,
+   "market_pct": -0.06,
+   "news_cat": null,
+   "news_headline": null
+  },
+  {
+   "sym": "ING",
+   "qty": 1082,
+   "entry": 2.23,
+   "entry_time": "2026-11-16T11:35:00+11:00",
+   "stop": 2.19,
+   "initial_stop": 2.19,
+   "risk_ps": 0.04,
+   "high": 2.2200000286102295,
+   "setup": "orb",
+   "last": 2.2149999141693115,
+   "fees": 5.0,
+   "rvol": 4.38,
+   "atr": 0.0668,
+   "stop_note": "initial",
+   "gap_pct": 0.69,
+   "stop_pct": 1.79,
    "market_pct": -0.06,
    "news_cat": null,
    "news_headline": null
@@ -151,20 +172,22 @@
    }
   ],
   "entered": [
-   "TCL"
+   "TCL",
+   "ING"
   ],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.06,
-  "last_ts": "2026-11-16T11:30:00+11:00",
+  "last_ts": "2026-11-16T11:35:00+11:00",
   "log": [
    "09:24 Read 89 price-sensitive ASX announcements; 8 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 250 pass the liquidity and volatility filters.",
    "Stocks in play: MGH (6.87x), TCL (5.66x), ING (4.38x), EVT (3.36x)",
    "10:30 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
    "11:30 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
-   "11:25 BUY 160 TCL @ $15.090, stop $14.930 (breakout above $15.060)"
+   "11:25 BUY 160 TCL @ $15.090, stop $14.930 (breakout above $15.060)",
+   "11:35 BUY 1082 ING @ $2.230, stop $2.190 (breakout above $2.210)"
   ],
   "news": {
    "PDN": {
@@ -232,35 +255,35 @@
   "news_refreshed": true,
   "tracks": {
    "TCL": {
-    "pv": 8166458.428942681,
-    "v": 543403.0,
+    "pv": 8239490.233880998,
+    "v": 548254.0,
     "low": 14.9399995803833,
-    "vwap": 15.028364637189492
+    "vwap": 15.028600309128612
    },
    "MGH": {
-    "pv": 4120773.3478535805,
-    "v": 1049457.0,
+    "pv": 4179041.471706469,
+    "v": 1064315.0,
     "low": 3.8399999141693115,
-    "vwap": 3.926576646640673
+    "vwap": 3.9265081030582762
    },
    "EVT": {
-    "pv": 748749.8831450144,
-    "v": 47758.0,
+    "pv": 762036.7999413807,
+    "v": 48608.0,
     "low": 15.539999961853027,
-    "vwap": 15.67799914454153
+    "vwap": 15.677188938886207
    },
    "ING": {
-    "pv": 942777.689277331,
-    "v": 428705.0,
+    "pv": 2699758.861751954,
+    "v": 1223120.0,
     "low": 2.174999952316284,
-    "vwap": 2.199129213042374
+    "vwap": 2.207272272346094
    }
   },
   "news_checked_at": "2026-11-16T11:30:06.271223+11:00",
   "news_today": []
  },
  "status": "Watching 4 stocks in play for breakouts",
- "last_run": "2026-11-16T11:55:06.109687+11:00",
+ "last_run": "2026-11-16T12:00:06.229209+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
