@@ -478,5 +478,29 @@
   "news_headline": null,
   "setup": "orb",
   "reason": "Stop loss"
+ },
+ {
+  "id": 23,
+  "date": "2026-11-16",
+  "sym": "TCL",
+  "qty": 160,
+  "entry_time": "2026-11-16T11:25:00+11:00",
+  "entry_price": 15.09,
+  "exit_time": "2026-11-16T15:50:00+11:00",
+  "exit_price": 15.15,
+  "initial_stop": 14.93,
+  "fees": 10.0,
+  "gross": 9.6,
+  "net": -0.4,
+  "pct": -0.02,
+  "r": 0.38,
+  "rvol": 5.66,
+  "gap_pct": -0.4,
+  "stop_pct": 1.06,
+  "market_pct": -0.06,
+  "news_cat": null,
+  "news_headline": null,
+  "setup": "orb",
+  "reason": "End of day exit"
  }
 ]
