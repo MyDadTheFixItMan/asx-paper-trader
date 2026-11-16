@@ -158,7 +158,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.06,
-  "last_ts": "2026-11-16T13:10:00+11:00",
+  "last_ts": "2026-11-16T13:15:00+11:00",
   "log": [
    "09:24 Read 89 price-sensitive ASX announcements; 8 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 250 pass the liquidity and volatility filters.",
@@ -168,7 +168,8 @@
    "11:25 BUY 160 TCL @ $15.090, stop $14.930 (breakout above $15.060)",
    "11:35 BUY 1082 ING @ $2.230, stop $2.190 (breakout above $2.210)",
    "12:35 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
-   "13:05 SELL 1082 ING @ $2.180 (Stop loss) net $-64.10"
+   "13:05 SELL 1082 ING @ $2.180 (Stop loss) net $-64.10",
+   "13:40 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "PDN": {
@@ -236,35 +237,35 @@
   "news_refreshed": true,
   "tracks": {
    "TCL": {
-    "pv": 12918896.464554468,
-    "v": 858932.0,
+    "pv": 13150363.198649088,
+    "v": 874266.0,
     "low": 14.9399995803833,
-    "vwap": 15.040651023078041
+    "vwap": 15.04160426992367
    },
    "MGH": {
-    "pv": 5315471.091731867,
-    "v": 1354536.0,
+    "pv": 5316464.396713893,
+    "v": 1354793.0,
     "low": 3.8399999141693115,
-    "vwap": 3.924200679592028
+    "vwap": 3.924189449394773
    },
    "EVT": {
-    "pv": 2660412.190418879,
-    "v": 169951.0,
+    "pv": 2702865.7411438623,
+    "v": 172666.0,
     "low": 15.539999961853027,
-    "vwap": 15.65399550705132
+    "vwap": 15.65372303258234
    },
    "ING": {
-    "pv": 3198427.702817201,
-    "v": 1449666.0,
+    "pv": 3221133.3696485357,
+    "v": 1460026.0,
     "low": 2.174999952316284,
-    "vwap": 2.2063204233369627
+    "vwap": 2.206216443849997
    }
   },
-  "news_checked_at": "2026-11-16T12:35:06.172078+11:00",
+  "news_checked_at": "2026-11-16T13:40:06.223050+11:00",
   "news_today": []
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-16T13:35:05.948605+11:00",
+ "last_run": "2026-11-16T13:40:06.223050+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
