@@ -133,12 +133,13 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.06,
-  "last_ts": "2026-11-16T11:00:00+11:00",
+  "last_ts": "2026-11-16T11:05:00+11:00",
   "log": [
    "09:24 Read 89 price-sensitive ASX announcements; 8 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 250 pass the liquidity and volatility filters.",
    "Stocks in play: MGH (6.87x), TCL (5.66x), ING (4.38x), EVT (3.36x)",
-   "10:30 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades."
+   "10:30 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
+   "11:30 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "PDN": {
@@ -206,35 +207,35 @@
   "news_refreshed": true,
   "tracks": {
    "TCL": {
-    "pv": 6402535.089719456,
-    "v": 426183.0,
+    "pv": 6548042.721206666,
+    "v": 435862.0,
     "low": 14.9399995803833,
-    "vwap": 15.022971563200446
+    "vwap": 15.02320165833834
    },
    "MGH": {
-    "pv": 3777466.5931762056,
-    "v": 962278.0,
+    "pv": 3856337.7110529738,
+    "v": 982313.0,
     "low": 3.8399999141693115,
-    "vwap": 3.925546040932252
+    "vwap": 3.92577285554907
    },
    "EVT": {
-    "pv": 704117.7135028839,
-    "v": 44907.0,
+    "pv": 716096.3383569717,
+    "v": 45672.0,
     "low": 15.539999961853027,
-    "vwap": 15.679464526752708
+    "vwap": 15.679110578844188
    },
    "ING": {
-    "pv": 719191.4499211311,
-    "v": 326696.0,
+    "pv": 722487.4000072479,
+    "v": 328201.0,
     "low": 2.174999952316284,
-    "vwap": 2.2014088018253397
+    "vwap": 2.2013564858341317
    }
   },
-  "news_checked_at": "2026-11-16T10:30:06.106584+11:00",
+  "news_checked_at": "2026-11-16T11:30:06.271223+11:00",
   "news_today": []
  },
  "status": "Watching 4 stocks in play for breakouts",
- "last_run": "2026-11-16T11:25:05.965586+11:00",
+ "last_run": "2026-11-16T11:30:06.271223+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
