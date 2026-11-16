@@ -454,5 +454,29 @@
   "news_cat": null,
   "news_headline": null,
   "reason": "End of day exit"
+ },
+ {
+  "id": 22,
+  "date": "2026-11-16",
+  "sym": "ING",
+  "qty": 1082,
+  "entry_time": "2026-11-16T11:35:00+11:00",
+  "entry_price": 2.23,
+  "exit_time": "2026-11-16T13:05:00+11:00",
+  "exit_price": 2.18,
+  "initial_stop": 2.19,
+  "fees": 10.0,
+  "gross": -54.1,
+  "net": -64.1,
+  "pct": -2.66,
+  "r": -1.25,
+  "rvol": 4.38,
+  "gap_pct": 0.69,
+  "stop_pct": 1.79,
+  "market_pct": -0.06,
+  "news_cat": null,
+  "news_headline": null,
+  "setup": "orb",
+  "reason": "Stop loss"
  }
 ]

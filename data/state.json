@@ -1,6 +1,6 @@
 {
  "start_capital": 10000,
- "cash": 4821.22,
+ "cash": 7174.98,
  "created": "2026-11-03T12:05:51.257495+11:00",
  "positions": [
   {
@@ -13,34 +13,13 @@
    "risk_ps": 0.16,
    "high": 15.100000381469727,
    "setup": "orb",
-   "last": 15.09000015258789,
+   "last": 15.100000381469727,
    "fees": 5.0,
    "rvol": 5.66,
    "atr": 0.2739,
    "stop_note": "initial",
    "gap_pct": -0.4,
    "stop_pct": 1.06,
-   "market_pct": -0.06,
-   "news_cat": null,
-   "news_headline": null
-  },
-  {
-   "sym": "ING",
-   "qty": 1082,
-   "entry": 2.23,
-   "entry_time": "2026-11-16T11:35:00+11:00",
-   "stop": 2.19,
-   "initial_stop": 2.19,
-   "risk_ps": 0.04,
-   "high": 2.2200000286102295,
-   "setup": "orb",
-   "last": 2.190000057220459,
-   "fees": 5.0,
-   "rvol": 4.38,
-   "atr": 0.0668,
-   "stop_note": "initial",
-   "gap_pct": 0.69,
-   "stop_pct": 1.79,
    "market_pct": -0.06,
    "news_cat": null,
    "news_headline": null
@@ -175,11 +154,11 @@
    "TCL",
    "ING"
   ],
-  "realized": 0.0,
-  "losses_in_row": 0,
+  "realized": -64.1,
+  "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.06,
-  "last_ts": "2026-11-16T13:00:00+11:00",
+  "last_ts": "2026-11-16T13:05:00+11:00",
   "log": [
    "09:24 Read 89 price-sensitive ASX announcements; 8 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 250 pass the liquidity and volatility filters.",
@@ -188,7 +167,8 @@
    "11:30 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
    "11:25 BUY 160 TCL @ $15.090, stop $14.930 (breakout above $15.060)",
    "11:35 BUY 1082 ING @ $2.230, stop $2.190 (breakout above $2.210)",
-   "12:35 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades."
+   "12:35 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
+   "13:05 SELL 1082 ING @ $2.180 (Stop loss) net $-64.10"
   ],
   "news": {
    "PDN": {
@@ -256,35 +236,35 @@
   "news_refreshed": true,
   "tracks": {
    "TCL": {
-    "pv": 12561182.058039347,
-    "v": 835235.0,
+    "pv": 12635321.789538065,
+    "v": 840146.0,
     "low": 14.9399995803833,
-    "vwap": 15.039099245169739
+    "vwap": 15.039435752283609
    },
    "MGH": {
-    "pv": 5286242.737214884,
-    "v": 1346961.0,
+    "pv": 5287957.317185244,
+    "v": 1347405.0,
     "low": 3.8399999141693115,
-    "vwap": 3.924570004042347
+    "vwap": 3.9245492759676885
    },
    "EVT": {
-    "pv": 1772351.4780470529,
-    "v": 113134.0,
+    "pv": 1823925.84429423,
+    "v": 116433.0,
     "low": 15.539999961853027,
-    "vwap": 15.665949034304921
+    "vwap": 15.665024900966479
    },
    "ING": {
-    "pv": 3034417.536874294,
-    "v": 1374837.0,
+    "pv": 3185346.6629688735,
+    "v": 1443702.0,
     "low": 2.174999952316284,
-    "vwap": 2.2071107606751155
+    "vwap": 2.2063740737138784
    }
   },
   "news_checked_at": "2026-11-16T12:35:06.172078+11:00",
   "news_today": []
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-16T13:25:06.257152+11:00",
+ "last_run": "2026-11-16T13:30:05.695505+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
