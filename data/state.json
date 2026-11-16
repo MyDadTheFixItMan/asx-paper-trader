@@ -13,7 +13,7 @@
    "risk_ps": 0.16,
    "high": 15.079999923706055,
    "setup": "orb",
-   "last": 15.03499984741211,
+   "last": 15.029999732971191,
    "fees": 5.0,
    "rvol": 5.66,
    "atr": 0.2739,
@@ -179,7 +179,7 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.06,
-  "last_ts": "2026-11-16T12:05:00+11:00",
+  "last_ts": "2026-11-16T12:10:00+11:00",
   "log": [
    "09:24 Read 89 price-sensitive ASX announcements; 8 are for shares the bot can trade.",
    "09:24 Scanned 1836 ASX listings; 250 pass the liquidity and volatility filters.",
@@ -187,7 +187,8 @@
    "10:30 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
    "11:30 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
    "11:25 BUY 160 TCL @ $15.090, stop $14.930 (breakout above $15.060)",
-   "11:35 BUY 1082 ING @ $2.230, stop $2.190 (breakout above $2.210)"
+   "11:35 BUY 1082 ING @ $2.230, stop $2.190 (breakout above $2.210)",
+   "12:35 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "PDN": {
@@ -255,35 +256,35 @@
   "news_refreshed": true,
   "tracks": {
    "TCL": {
-    "pv": 9417841.4138724,
-    "v": 626611.0,
+    "pv": 9537025.67902692,
+    "v": 634539.0,
     "low": 14.9399995803833,
-    "vwap": 15.029805435704768
+    "vwap": 15.029849511262382
    },
    "MGH": {
-    "pv": 4665311.439500729,
-    "v": 1188018.0,
+    "pv": 4713752.938757816,
+    "v": 1200318.0,
     "low": 3.8399999141693115,
-    "vwap": 3.9269703316790894
+    "vwap": 3.92708677097054
    },
    "EVT": {
-    "pv": 830276.129339536,
-    "v": 52977.0,
+    "pv": 845242.0146315892,
+    "v": 53934.0,
     "low": 15.539999961853027,
-    "vwap": 15.672388571258017
+    "vwap": 15.671784303622745
    },
    "ING": {
-    "pv": 2748925.121973753,
-    "v": 1245367.0,
+    "pv": 2768713.931916952,
+    "v": 1254301.0,
     "low": 2.174999952316284,
-    "vwap": 2.2073213132945977
+    "vwap": 2.207376006171527
    }
   },
-  "news_checked_at": "2026-11-16T11:30:06.271223+11:00",
+  "news_checked_at": "2026-11-16T12:35:06.172078+11:00",
   "news_today": []
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-16T12:30:05.718187+11:00",
+ "last_run": "2026-11-16T12:35:06.172078+11:00",
  "learning": {
   "risk_multiplier": 0.812,
   "blocks": [],
