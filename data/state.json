@@ -83,11 +83,19 @@
    "pnl": -64.5,
    "trades": 2,
    "market_change_pct": -0.06
+  },
+  {
+   "date": "2026-11-17",
+   "start_equity": 9593.98,
+   "end_equity": 9593.98,
+   "pnl": 0.0,
+   "trades": 0,
+   "market_change_pct": -0.81
   }
  ],
  "day": {
   "date": "2026-11-17",
-  "phase": "trading",
+  "phase": "closed",
   "start_equity": 9593.98,
   "universe_size": 248,
   "watchlist": [],
@@ -102,7 +110,10 @@
    "15:26 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
    "No stock met the in-play rules today. No trades.",
    "15:30 Hourly news check: 21 new price-sensitive announcements, 1 for shares the bot trades.",
-   "16:30 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades."
+   "16:30 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades.",
+   "16:45 Day closed. Equity $9,593.98 (+0.00).",
+   "16:45 Daily review done. See 'Learning from losses' on the dashboard.",
+   "16:45 News review done: today's announcements and price reactions recorded."
   ],
   "news": {
    "VAU": {
@@ -173,10 +184,12 @@
     "category": "Takeover / merger",
     "headline": "Scheme Becomes Effective"
    }
-  ]
+  ],
+  "end_equity": 9593.98,
+  "reviewed": true
  },
- "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-17T16:40:06.252574+11:00",
+ "status": "Day finished. Equity $9,593.98",
+ "last_run": "2026-11-17T16:45:06.330640+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
