@@ -86,133 +86,66 @@
   }
  ],
  "day": {
-  "date": "2026-11-16",
-  "phase": "closed",
-  "start_equity": 9658.48,
-  "universe_size": 251,
-  "watchlist": [
-   {
-    "sym": "MGH",
-    "rvol": 6.87,
-    "or_high": 3.9800000190734863,
-    "or_low": 3.880000114440918,
-    "or_open": 3.8949999809265137,
-    "or_close": 3.940000057220459,
-    "atr": 0.2254,
-    "gap_pct": -0.13,
-    "news": null
-   },
-   {
-    "sym": "TCL",
-    "rvol": 5.66,
-    "or_high": 15.0600004196167,
-    "or_low": 14.9399995803833,
-    "or_open": 14.9399995803833,
-    "or_close": 15.055000305175781,
-    "atr": 0.2739,
-    "gap_pct": -0.4,
-    "news": null
-   },
-   {
-    "sym": "ING",
-    "rvol": 4.38,
-    "or_high": 2.2100000381469727,
-    "or_low": 2.174999952316284,
-    "or_open": 2.174999952316284,
-    "or_close": 2.200000047683716,
-    "atr": 0.0668,
-    "gap_pct": 0.69,
-    "news": null
-   },
-   {
-    "sym": "EVT",
-    "rvol": 3.36,
-    "or_high": 15.729999542236328,
-    "or_low": 15.539999961853027,
-    "or_open": 15.539999961853027,
-    "or_close": 15.664999961853027,
-    "atr": 0.3975,
-    "gap_pct": -0.64,
-    "news": null
-   }
-  ],
-  "entered": [
-   "TCL",
-   "ING"
-  ],
-  "realized": -64.5,
-  "losses_in_row": 2,
+  "date": "2026-11-17",
+  "phase": "waiting_open",
+  "start_equity": 9593.98,
+  "universe_size": 248,
+  "watchlist": [],
+  "entered": [],
+  "realized": 0.0,
+  "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": -0.06,
-  "last_ts": "2026-11-16T15:50:00+11:00",
+  "market_change_pct": null,
+  "last_ts": null,
   "log": [
-   "09:24 Read 89 price-sensitive ASX announcements; 8 are for shares the bot can trade.",
-   "09:24 Scanned 1836 ASX listings; 250 pass the liquidity and volatility filters.",
-   "Stocks in play: MGH (6.87x), TCL (5.66x), ING (4.38x), EVT (3.36x)",
-   "10:30 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "11:30 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
-   "11:25 BUY 160 TCL @ $15.090, stop $14.930 (breakout above $15.060)",
-   "11:35 BUY 1082 ING @ $2.230, stop $2.190 (breakout above $2.210)",
-   "12:35 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
-   "13:05 SELL 1082 ING @ $2.180 (Stop loss) net $-64.10",
-   "13:40 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "14:40 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:45 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:50 SELL 160 TCL @ $15.150 (End of day exit) net $-0.40",
-   "15:50 Day closed. Equity $9,593.98 (-64.50).",
-   "16:15 Daily review done. See 'Learning from losses' on the dashboard.",
-   "16:15 News review done: today's announcements and price reactions recorded."
+   "15:26 Read 104 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
+   "15:26 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters."
   ],
   "news": {
-   "PDN": {
-    "category": "Trading halt",
-    "headline": "Paladin successfully completes A$525M equity raising",
-    "time": "2026-11-13T12:53:51+11:00"
+   "VAU": {
+    "category": "Takeover / merger",
+    "headline": "Court Approves Scheme",
+    "time": "2026-11-16T19:24:34+11:00"
    },
-   "DPM": {
-    "category": "Results",
-    "headline": "DPM Reports Q3 2026 Financial Results",
-    "time": "2026-11-13T13:27:51+11:00"
-   },
-   "BEN": {
+   "LYL": {
     "category": "Other",
-    "headline": "BEN Basel III Pillar 3 Disclosures APS 330",
-    "time": "2026-11-13T14:16:37+11:00"
+    "headline": "Assafo-Dibibango Gold Project",
+    "time": "2026-11-17T08:31:02+11:00"
    },
-   "SXE": {
+   "CAT": {
+    "category": "Results",
+    "headline": "Appendix 4D and 2027 Half-Year Results",
+    "time": "2026-11-17T08:38:22+11:00"
+   },
+   "TNE": {
+    "category": "Results",
+    "headline": "TNE Results Presentation FY26",
+    "time": "2026-11-17T08:44:07+11:00"
+   },
+   "PRN": {
     "category": "Contract / deal",
-    "headline": "Data Centre and Buildings awards over $300m",
-    "time": "2026-11-16T08:16:56+11:00"
+    "headline": "Award of A$1B Geita underground contract",
+    "time": "2026-11-17T08:56:12+11:00"
    },
-   "NHC": {
-    "category": "Quarterly report",
-    "headline": "Quarterly Activities Report",
-    "time": "2026-11-16T08:18:06+11:00"
-   },
-   "IEL": {
+   "MYX": {
     "category": "Takeover / merger",
-    "headline": "Rejection of revised unsolicited proposal",
-    "time": "2026-11-16T08:39:57+11:00"
+    "headline": "MYX enters Scheme Implementation Deed with Gedeon Richter",
+    "time": "2026-11-17T09:13:07+11:00"
    },
-   "ELD": {
-    "category": "Results",
-    "headline": "Appendix 4E and Annual Report for Year Ended 30/9/2026",
-    "time": "2026-11-16T08:46:27+11:00"
-   },
-   "SSM": {
+   "PDI": {
     "category": "Other",
-    "headline": "Retail Information Booklet",
-    "time": "2026-11-16T09:02:17+11:00"
+    "headline": "Bankan and Mansounia Exploitation Permits Granted",
+    "time": "2026-11-17T09:26:17+11:00"
    },
-   "IGO": {
-    "category": "Acquisition / sale",
-    "headline": "IGO to Become Largest Shareholder in GG8 Through Cosmos Sale",
-    "time": "2026-11-16T09:28:27+11:00"
+   "REG": {
+    "category": "Management change",
+    "headline": "AGM Presentations",
+    "time": "2026-11-17T09:40:17+11:00"
    },
-   "INA": {
-    "category": "Takeover / merger",
-    "headline": "AVID exercises matching right and Peet ACCC determination",
-    "time": "2026-11-16T09:35:17+11:00"
+   "IPH": {
+    "category": "Management change",
+    "headline": "2026 AGM Addresses and FY27 Trading Update",
+    "time": "2026-11-17T09:42:47+11:00"
    }
   },
   "news_rules": {
@@ -225,41 +158,10 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  },
-  "news_refreshed": true,
-  "tracks": {
-   "TCL": {
-    "pv": 28186716.119287167,
-    "v": 1865845.0,
-    "low": 14.9399995803833,
-    "vwap": 15.106676127592145
-   },
-   "MGH": {
-    "pv": 7693537.567659774,
-    "v": 1966893.0,
-    "low": 3.8399999141693115,
-    "vwap": 3.9115180986763254
-   },
-   "EVT": {
-    "pv": 4592350.56947708,
-    "v": 293794.0,
-    "low": 15.539999961853027,
-    "vwap": 15.631192500449568
-   },
-   "ING": {
-    "pv": 5166039.073664348,
-    "v": 2347602.0,
-    "low": 2.1700000762939453,
-    "vwap": 2.200560007047339
-   }
-  },
-  "news_checked_at": "2026-11-16T15:45:05.931782+11:00",
-  "news_today": [],
-  "end_equity": 9593.98,
-  "reviewed": true
+  }
  },
- "status": "Day finished. Equity $9,593.98",
- "last_run": "2026-11-16T16:15:05.462243+11:00",
+ "status": "Morning scan done. Waiting for the 10:00 open.",
+ "last_run": "2026-11-17T15:26:37.725622+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
