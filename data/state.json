@@ -87,7 +87,7 @@
  ],
  "day": {
   "date": "2026-11-17",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9593.98,
   "universe_size": 248,
   "watchlist": [],
@@ -95,17 +95,19 @@
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
+  "market_change_pct": -0.81,
   "last_ts": null,
   "log": [
    "15:26 Read 104 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
-   "15:26 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters."
+   "15:26 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
+   "No stock met the in-play rules today. No trades.",
+   "15:30 Hourly news check: 21 new price-sensitive announcements, 1 for shares the bot trades."
   ],
   "news": {
    "VAU": {
     "category": "Takeover / merger",
-    "headline": "Court Approves Scheme",
-    "time": "2026-11-16T19:24:34+11:00"
+    "headline": "Scheme Becomes Effective",
+    "time": "2026-11-17T14:25:58+11:00"
    },
    "LYL": {
     "category": "Other",
@@ -158,10 +160,22 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true,
+  "tracks": {},
+  "news_checked_at": "2026-11-17T15:30:05.774024+11:00",
+  "news_today": [
+   {
+    "key": "2924-03162637_PS-6A1355362",
+    "sym": "VAU",
+    "time": "2026-11-17T14:25:58+11:00",
+    "category": "Takeover / merger",
+    "headline": "Scheme Becomes Effective"
+   }
+  ]
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-17T15:26:37.725622+11:00",
+ "status": "Past the entry cut-off. Managing open trades until the close.",
+ "last_run": "2026-11-17T15:30:05.774024+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
