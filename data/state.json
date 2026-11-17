@@ -95,19 +95,59 @@
  ],
  "day": {
   "date": "2026-11-18",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9593.98,
   "universe_size": 247,
-  "watchlist": [],
+  "watchlist": [
+   {
+    "sym": "MYX",
+    "rvol": 9.24,
+    "or_high": 6.039999961853027,
+    "or_low": 5.989999771118164,
+    "or_open": 6.0,
+    "or_close": 6.03000020980835,
+    "atr": 0.35,
+    "gap_pct": -0.17,
+    "news": null
+   },
+   {
+    "sym": "CAT",
+    "rvol": 5.66,
+    "or_high": 3.1600000858306885,
+    "or_low": 2.950000047683716,
+    "or_open": 2.9800000190734863,
+    "or_close": 3.059999942779541,
+    "atr": 0.2064,
+    "gap_pct": -1.32,
+    "news": null
+   },
+   {
+    "sym": "WA1",
+    "rvol": 3.74,
+    "or_high": 7.510000228881836,
+    "or_low": 7.380000114440918,
+    "or_open": 7.429999828338623,
+    "or_close": 7.460000038146973,
+    "atr": 0.6271,
+    "gap_pct": 1.36,
+    "news": {
+     "category": "Other",
+     "headline": "Luni Niobium Project - PFS",
+     "time": "2026-11-18T08:18:26+11:00"
+    }
+   }
+  ],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": -0.27,
+  "last_ts": "2026-11-18T10:05:00+11:00",
   "log": [
    "09:15 Read 67 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
-   "09:15 Scanned 1836 ASX listings; 246 pass the liquidity and volatility filters."
+   "09:15 Scanned 1836 ASX listings; 246 pass the liquidity and volatility filters.",
+   "Stocks in play: MYX (9.24x), CAT (5.66x), WA1 (3.74x, news: Other)",
+   "10:30 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "VAU": {
@@ -156,10 +196,32 @@
     "Acquisition / sale"
    ]
   },
-  "news_refreshed": true
+  "news_refreshed": true,
+  "tracks": {
+   "CAT": {
+    "pv": 619749.841146946,
+    "v": 201390.0,
+    "low": 2.950000047683716,
+    "vwap": 3.0773615430108046
+   },
+   "WA1": {
+    "pv": 167802.65694602331,
+    "v": 22523.0,
+    "low": 7.380000114440918,
+    "vwap": 7.450280022466959
+   },
+   "MYX": {
+    "pv": 486960.77176729834,
+    "v": 80858.0,
+    "low": 5.989999771118164,
+    "vwap": 6.022419201158801
+   }
+  },
+  "news_checked_at": "2026-11-18T10:30:06.348906+11:00",
+  "news_today": []
  },
- "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-18T10:25:06.347996+11:00",
+ "status": "Watching 3 stocks in play for breakouts",
+ "last_run": "2026-11-18T10:30:06.348906+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
