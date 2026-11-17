@@ -101,7 +101,8 @@
    "15:26 Read 104 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
    "15:26 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
    "No stock met the in-play rules today. No trades.",
-   "15:30 Hourly news check: 21 new price-sensitive announcements, 1 for shares the bot trades."
+   "15:30 Hourly news check: 21 new price-sensitive announcements, 1 for shares the bot trades.",
+   "16:30 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "VAU": {
@@ -163,7 +164,7 @@
   },
   "news_refreshed": true,
   "tracks": {},
-  "news_checked_at": "2026-11-17T15:30:05.774024+11:00",
+  "news_checked_at": "2026-11-17T16:30:06.239054+11:00",
   "news_today": [
    {
     "key": "2924-03162637_PS-6A1355362",
@@ -175,7 +176,7 @@
   ]
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-17T16:25:06.057537+11:00",
+ "last_run": "2026-11-17T16:30:06.239054+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
