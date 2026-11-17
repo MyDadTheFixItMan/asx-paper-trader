@@ -139,6 +139,11 @@
     "category": "Management change",
     "headline": "AGM 2026 - CEO and Managing Director Address",
     "time": "2026-11-18T08:54:01+11:00"
+   },
+   "NHC": {
+    "category": "Capital raising",
+    "headline": "Hybrid Securities Offer - Bookbuild complete and Margin set",
+    "time": "2026-11-18T09:26:02+11:00"
    }
   },
   "news_rules": {
@@ -150,10 +155,11 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-18T09:15:06.147459+11:00",
+ "status": "Building the opening range (prices are ~20 min delayed)",
+ "last_run": "2026-11-18T10:00:06.305609+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
