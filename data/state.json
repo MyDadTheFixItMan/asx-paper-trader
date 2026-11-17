@@ -94,26 +94,20 @@
   }
  ],
  "day": {
-  "date": "2026-11-17",
-  "phase": "closed",
+  "date": "2026-11-18",
+  "phase": "waiting_open",
   "start_equity": 9593.98,
-  "universe_size": 248,
+  "universe_size": 247,
   "watchlist": [],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": -0.81,
+  "market_change_pct": null,
   "last_ts": null,
   "log": [
-   "15:26 Read 104 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
-   "15:26 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
-   "No stock met the in-play rules today. No trades.",
-   "15:30 Hourly news check: 21 new price-sensitive announcements, 1 for shares the bot trades.",
-   "16:30 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades.",
-   "16:45 Day closed. Equity $9,593.98 (+0.00).",
-   "16:45 Daily review done. See 'Learning from losses' on the dashboard.",
-   "16:45 News review done: today's announcements and price reactions recorded."
+   "09:15 Read 67 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
+   "09:15 Scanned 1836 ASX listings; 246 pass the liquidity and volatility filters."
   ],
   "news": {
    "VAU": {
@@ -121,45 +115,30 @@
     "headline": "Scheme Becomes Effective",
     "time": "2026-11-17T14:25:58+11:00"
    },
-   "LYL": {
-    "category": "Other",
-    "headline": "Assafo-Dibibango Gold Project",
-    "time": "2026-11-17T08:31:02+11:00"
-   },
-   "CAT": {
+   "IFT": {
     "category": "Results",
-    "headline": "Appendix 4D and 2027 Half-Year Results",
-    "time": "2026-11-17T08:38:22+11:00"
+    "headline": "Interim results for the period ended 30 September 2026",
+    "time": "2026-11-18T07:30:31+11:00"
    },
-   "TNE": {
-    "category": "Results",
-    "headline": "TNE Results Presentation FY26",
-    "time": "2026-11-17T08:44:07+11:00"
-   },
-   "PRN": {
-    "category": "Contract / deal",
-    "headline": "Award of A$1B Geita underground contract",
-    "time": "2026-11-17T08:56:12+11:00"
-   },
-   "MYX": {
-    "category": "Takeover / merger",
-    "headline": "MYX enters Scheme Implementation Deed with Gedeon Richter",
-    "time": "2026-11-17T09:13:07+11:00"
-   },
-   "PDI": {
+   "WA1": {
     "category": "Other",
-    "headline": "Bankan and Mansounia Exploitation Permits Granted",
-    "time": "2026-11-17T09:26:17+11:00"
+    "headline": "Luni Niobium Project - PFS",
+    "time": "2026-11-18T08:18:26+11:00"
    },
-   "REG": {
-    "category": "Management change",
-    "headline": "AGM Presentations",
-    "time": "2026-11-17T09:40:17+11:00"
+   "PXA": {
+    "category": "Other",
+    "headline": "Release of IPART Final Report",
+    "time": "2026-11-18T08:24:56+11:00"
    },
-   "IPH": {
+   "SEK": {
     "category": "Management change",
-    "headline": "2026 AGM Addresses and FY27 Trading Update",
-    "time": "2026-11-17T09:42:47+11:00"
+    "headline": "AGM - CEO Presentation",
+    "time": "2026-11-18T08:31:51+11:00"
+   },
+   "RIC": {
+    "category": "Management change",
+    "headline": "AGM 2026 - CEO and Managing Director Address",
+    "time": "2026-11-18T08:54:01+11:00"
    }
   },
   "news_rules": {
@@ -168,28 +147,13 @@
     "Contract / deal"
    ],
    "boost": [
-    "Results",
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  },
-  "news_refreshed": true,
-  "tracks": {},
-  "news_checked_at": "2026-11-17T16:30:06.239054+11:00",
-  "news_today": [
-   {
-    "key": "2924-03162637_PS-6A1355362",
-    "sym": "VAU",
-    "time": "2026-11-17T14:25:58+11:00",
-    "category": "Takeover / merger",
-    "headline": "Scheme Becomes Effective"
-   }
-  ],
-  "end_equity": 9593.98,
-  "reviewed": true
+  }
  },
- "status": "Day finished. Equity $9,593.98",
- "last_run": "2026-11-17T16:45:06.330640+11:00",
+ "status": "Morning scan done. Waiting for the 10:00 open.",
+ "last_run": "2026-11-18T09:15:06.147459+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
