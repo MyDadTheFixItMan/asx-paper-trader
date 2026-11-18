@@ -13,7 +13,7 @@
    "risk_ps": 0.08,
    "high": 6.070000171661377,
    "setup": "orb",
-   "last": 6.070000171661377,
+   "last": 6.059999942779541,
    "fees": 5.0,
    "rvol": 9.24,
    "atr": 0.35,
@@ -167,7 +167,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-18T14:10:00+11:00",
+  "last_ts": "2026-11-18T14:15:00+11:00",
   "log": [
    "09:15 Read 67 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 246 pass the liquidity and volatility filters.",
@@ -178,7 +178,8 @@
    "12:10 BUY 395 MYX @ $6.060, stop $5.980 (breakout above $6.040)",
    "12:35 Hourly news check: 6 new price-sensitive announcements, 0 for shares the bot trades.",
    "13:00 SELL 276 WA1 @ $7.370 (Stop loss) net $-54.16",
-   "13:40 Hourly news check: 10 new price-sensitive announcements, 2 for shares the bot trades."
+   "13:40 Hourly news check: 10 new price-sensitive announcements, 2 for shares the bot trades.",
+   "14:40 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "VAU": {
@@ -230,25 +231,25 @@
   "news_refreshed": true,
   "tracks": {
    "CAT": {
-    "pv": 6316106.012811025,
-    "v": 2103315.0,
+    "pv": 6396485.835263014,
+    "v": 2130764.0,
     "low": 2.9100000858306885,
-    "vwap": 3.0029291916859933
+    "vwap": 3.0019682307674684
    },
    "WA1": {
-    "pv": 1629843.3164850874,
-    "v": 221544.0,
+    "pv": 1658125.9262835188,
+    "v": 225507.0,
     "low": 7.110000133514404,
-    "vwap": 7.356747718218897
+    "vwap": 7.352880071498973
    },
    "MYX": {
-    "pv": 12868711.605901558,
-    "v": 2137232.0,
+    "pv": 12989148.72805198,
+    "v": 2157128.0,
     "low": 5.989999771118164,
-    "vwap": 6.02120481346974
+    "vwap": 6.021501147846571
    }
   },
-  "news_checked_at": "2026-11-18T13:40:06.010611+11:00",
+  "news_checked_at": "2026-11-18T14:40:06.519926+11:00",
   "news_today": [
    {
     "key": "2924-03163169-6A1355590",
@@ -267,7 +268,7 @@
   ]
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-18T14:35:06.334668+11:00",
+ "last_run": "2026-11-18T14:40:06.519926+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
