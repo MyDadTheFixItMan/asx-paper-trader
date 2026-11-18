@@ -13,7 +13,7 @@
    "risk_ps": 0.08,
    "high": 6.070000171661377,
    "setup": "orb",
-   "last": 6.070000171661377,
+   "last": 6.065000057220459,
    "fees": 5.0,
    "rvol": 9.24,
    "atr": 0.35,
@@ -167,7 +167,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-18T15:15:00+11:00",
+  "last_ts": "2026-11-18T15:20:00+11:00",
   "log": [
    "09:15 Read 67 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 246 pass the liquidity and volatility filters.",
@@ -179,7 +179,8 @@
    "12:35 Hourly news check: 6 new price-sensitive announcements, 0 for shares the bot trades.",
    "13:00 SELL 276 WA1 @ $7.370 (Stop loss) net $-54.16",
    "13:40 Hourly news check: 10 new price-sensitive announcements, 2 for shares the bot trades.",
-   "14:40 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades."
+   "14:40 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
+   "15:45 Hourly news check: 4 new price-sensitive announcements, 4 for shares the bot trades."
   ],
   "news": {
    "VAU": {
@@ -231,25 +232,25 @@
   "news_refreshed": true,
   "tracks": {
    "CAT": {
-    "pv": 8318513.371605636,
-    "v": 2786565.0,
+    "pv": 8392226.236447573,
+    "v": 2811426.0,
     "low": 2.9000000953674316,
-    "vwap": 2.9852213645135266
+    "vwap": 2.9850425500964892
    },
    "WA1": {
-    "pv": 2190149.5701421103,
-    "v": 301185.0,
+    "pv": 2210619.2340672812,
+    "v": 304094.0,
     "low": 6.940000057220459,
-    "vwap": 7.27177505567047
+    "vwap": 7.269525982318893
    },
    "MYX": {
-    "pv": 14141683.835630098,
-    "v": 2347354.0,
+    "pv": 14157590.635880152,
+    "v": 2349976.0,
     "low": 5.989999771118164,
-    "vwap": 6.024521156855804
+    "vwap": 6.02456818107085
    }
   },
-  "news_checked_at": "2026-11-18T14:40:06.519926+11:00",
+  "news_checked_at": "2026-11-18T15:45:06.034774+11:00",
   "news_today": [
    {
     "key": "2924-03163169-6A1355590",
@@ -264,11 +265,39 @@
     "time": "2026-11-18T12:57:57+11:00",
     "category": "Other",
     "headline": "Response to ASX Price Query"
+   },
+   {
+    "key": "2924-03163260-6A1355622",
+    "sym": "TEA",
+    "time": "2026-11-18T15:05:08+11:00",
+    "category": "Management change",
+    "headline": "Tasmea 2026 AGM Presentation"
+   },
+   {
+    "key": "2924-03163262-6A1355623",
+    "sym": "TEA",
+    "time": "2026-11-18T15:06:28+11:00",
+    "category": "Management change",
+    "headline": "Tasmea 2026 AGM Address to Shareholders"
+   },
+   {
+    "key": "2924-03163265-6A1355625",
+    "sym": "TEA",
+    "time": "2026-11-18T15:12:23+11:00",
+    "category": "Guidance upgrade",
+    "headline": "Tasmea 2026 AGM and FY27 Guidance Upgrade"
+   },
+   {
+    "key": "2924-03163277-6A1355632",
+    "sym": "NST",
+    "time": "2026-11-18T15:40:53+11:00",
+    "category": "Management change",
+    "headline": "AGM Addresses and Presentation"
    }
   ]
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-18T15:40:05.489934+11:00",
+ "last_run": "2026-11-18T15:45:06.034774+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
