@@ -167,7 +167,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-18T13:40:00+11:00",
+  "last_ts": "2026-11-18T13:45:00+11:00",
   "log": [
    "09:15 Read 67 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 246 pass the liquidity and volatility filters.",
@@ -230,22 +230,22 @@
   "news_refreshed": true,
   "tracks": {
    "CAT": {
-    "pv": 5772235.380600691,
-    "v": 1917865.0,
+    "pv": 5955659.651242971,
+    "v": 1980396.0,
     "low": 2.9100000858306885,
-    "vwap": 3.009719339265637
+    "vwap": 3.007307453278522
    },
    "WA1": {
-    "pv": 1523988.059074561,
-    "v": 206701.0,
-    "low": 7.130000114440918,
-    "vwap": 7.372910915160357
+    "pv": 1558416.9859255159,
+    "v": 211532.0,
+    "low": 7.110000133514404,
+    "vwap": 7.367287152419094
    },
    "MYX": {
-    "pv": 12587482.075436272,
-    "v": 2090871.0,
+    "pv": 12607538.475751556,
+    "v": 2094177.0,
     "low": 5.989999771118164,
-    "vwap": 6.020209795552319
+    "vwap": 6.020283135452044
    }
   },
   "news_checked_at": "2026-11-18T13:40:06.010611+11:00",
@@ -267,7 +267,7 @@
   ]
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-18T14:05:05.633380+11:00",
+ "last_run": "2026-11-18T14:10:05.734137+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
