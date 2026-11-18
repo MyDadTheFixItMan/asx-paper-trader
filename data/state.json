@@ -1,30 +1,8 @@
 {
  "start_capital": 10000,
- "cash": 7141.12,
+ "cash": 9525.87,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [
-  {
-   "sym": "MYX",
-   "qty": 395,
-   "entry": 6.06,
-   "entry_time": "2026-11-18T12:10:00+11:00",
-   "stop": 5.98,
-   "initial_stop": 5.98,
-   "risk_ps": 0.08,
-   "high": 6.070000171661377,
-   "setup": "orb",
-   "last": 6.059999942779541,
-   "fees": 5.0,
-   "rvol": 9.24,
-   "atr": 0.35,
-   "stop_note": "initial",
-   "gap_pct": -0.17,
-   "stop_pct": 1.32,
-   "market_pct": -0.27,
-   "news_cat": null,
-   "news_headline": null
-  }
- ],
+ "positions": [],
  "daily": [
   {
    "date": "2026-11-03",
@@ -113,11 +91,19 @@
    "pnl": 0.0,
    "trades": 0,
    "market_change_pct": -0.81
+  },
+  {
+   "date": "2026-11-18",
+   "start_equity": 9593.98,
+   "end_equity": 9525.87,
+   "pnl": -68.11,
+   "trades": 2,
+   "market_change_pct": -0.27
   }
  ],
  "day": {
   "date": "2026-11-18",
-  "phase": "trading",
+  "phase": "closed",
   "start_equity": 9593.98,
   "universe_size": 247,
   "watchlist": [
@@ -163,11 +149,11 @@
    "WA1",
    "MYX"
   ],
-  "realized": -54.16,
-  "losses_in_row": 1,
+  "realized": -68.11,
+  "losses_in_row": 2,
   "no_new_entries": false,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-18T15:45:00+11:00",
+  "last_ts": "2026-11-18T15:50:00+11:00",
   "log": [
    "09:15 Read 67 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 246 pass the liquidity and volatility filters.",
@@ -180,7 +166,11 @@
    "13:00 SELL 276 WA1 @ $7.370 (Stop loss) net $-54.16",
    "13:40 Hourly news check: 10 new price-sensitive announcements, 2 for shares the bot trades.",
    "14:40 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:45 Hourly news check: 4 new price-sensitive announcements, 4 for shares the bot trades."
+   "15:45 Hourly news check: 4 new price-sensitive announcements, 4 for shares the bot trades.",
+   "15:50 SELL 395 MYX @ $6.050 (End of day exit) net $-13.95",
+   "15:50 Day closed. Equity $9,525.87 (-68.11).",
+   "16:15 Daily review done. See 'Learning from losses' on the dashboard.",
+   "16:15 News review done: today's announcements and price reactions recorded."
   ],
   "news": {
    "VAU": {
@@ -232,22 +222,22 @@
   "news_refreshed": true,
   "tracks": {
    "CAT": {
-    "pv": 9020340.86014072,
-    "v": 3024405.0,
+    "pv": 9217006.283968369,
+    "v": 3091298.0,
     "low": 2.9000000953674316,
-    "vwap": 2.98251750679579
+    "vwap": 2.9815974661674054
    },
    "WA1": {
-    "pv": 2390645.990935803,
-    "v": 329636.0,
+    "pv": 2453742.0254098577,
+    "v": 338607.0,
     "low": 6.940000057220459,
-    "vwap": 7.252381387153718
+    "vwap": 7.246577966225913
    },
    "MYX": {
-    "pv": 14944640.205819605,
-    "v": 2479751.0,
+    "pv": 15087819.75960334,
+    "v": 2503365.0,
     "low": 5.989999771118164,
-    "vwap": 6.026669696199177
+    "vwap": 6.027015540923253
    }
   },
   "news_checked_at": "2026-11-18T15:45:06.034774+11:00",
@@ -294,12 +284,14 @@
     "category": "Management change",
     "headline": "AGM Addresses and Presentation"
    }
-  ]
+  ],
+  "end_equity": 9525.87,
+  "reviewed": true
  },
- "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-18T16:10:06.281150+11:00",
+ "status": "Day finished. Equity $9,525.87",
+ "last_run": "2026-11-18T16:15:05.751608+11:00",
  "learning": {
-  "risk_multiplier": 0.609,
+  "risk_multiplier": 0.5,
   "blocks": [],
   "lessons": [
    {
@@ -439,6 +431,26 @@
      "Late entry: breakouts after 11am tend to have less follow-through.",
      "The ASX 200 was down at the open: breakouts struggle when the market is weak."
     ]
+   },
+   {
+    "trade_id": 24,
+    "date": "2026-11-18",
+    "sym": "WA1",
+    "net": -54.16,
+    "notes": [
+     "Late entry: breakouts after 11am tend to have less follow-through.",
+     "The ASX 200 was down at the open: breakouts struggle when the market is weak."
+    ]
+   },
+   {
+    "trade_id": 25,
+    "date": "2026-11-18",
+    "sym": "MYX",
+    "net": -13.95,
+    "notes": [
+     "Late entry: breakouts after 11am tend to have less follow-through.",
+     "The ASX 200 was down at the open: breakouts struggle when the market is weak."
+    ]
    }
   ],
   "changes": [
@@ -473,6 +485,10 @@
    {
     "date": "2026-11-16",
     "text": "Cut risk per trade to 0.61% of equity after a losing day (-64.50)."
+   },
+   {
+    "date": "2026-11-18",
+    "text": "Cut risk per trade to 0.50% of equity after a losing day (-68.11)."
    }
   ],
   "buckets": [
@@ -487,10 +503,10 @@
    {
     "feature": "Entry time",
     "label": "after 11:00",
-    "n": 5,
-    "win_rate": 60,
-    "avg_r": 0.42,
-    "net": 74.44
+    "n": 7,
+    "win_rate": 43,
+    "avg_r": 0.13,
+    "net": 6.33
    },
    {
     "feature": "Entry time",
@@ -503,10 +519,10 @@
    {
     "feature": "Market at open",
     "label": "market down",
-    "n": 8,
-    "win_rate": 12,
-    "avg_r": -0.81,
-    "net": -341.62
+    "n": 10,
+    "win_rate": 10,
+    "avg_r": -0.77,
+    "net": -409.73
    },
    {
     "feature": "Market at open",
@@ -519,10 +535,10 @@
    {
     "feature": "Opening gap",
     "label": "gap 0\u20132%",
-    "n": 12,
-    "win_rate": 42,
-    "avg_r": -0.3,
-    "net": -256.95
+    "n": 13,
+    "win_rate": 38,
+    "avg_r": -0.36,
+    "net": -311.11
    },
    {
     "feature": "Opening gap",
@@ -535,42 +551,42 @@
    {
     "feature": "Opening gap",
     "label": "gapped down",
-    "n": 3,
-    "win_rate": 33,
-    "avg_r": 0.15,
-    "net": 11.33
+    "n": 4,
+    "win_rate": 25,
+    "avg_r": 0.08,
+    "net": -2.62
    },
    {
     "feature": "Overnight news",
     "label": "news: Other",
-    "n": 1,
+    "n": 2,
     "win_rate": 0,
-    "avg_r": -0.8,
-    "net": -52.8
+    "avg_r": -0.94,
+    "net": -106.96
    },
    {
     "feature": "Overnight news",
     "label": "no news",
-    "n": 22,
-    "win_rate": 36,
+    "n": 23,
+    "win_rate": 35,
     "avg_r": -0.17,
-    "net": -353.22
+    "net": -367.17
    },
    {
     "feature": "Relative volume",
     "label": "3\u20135\u00d7 volume",
-    "n": 10,
-    "win_rate": 50,
-    "avg_r": -0.14,
-    "net": -213.6
+    "n": 11,
+    "win_rate": 45,
+    "avg_r": -0.22,
+    "net": -267.76
    },
    {
     "feature": "Relative volume",
     "label": "5\u201310\u00d7 volume",
-    "n": 6,
-    "win_rate": 17,
-    "avg_r": -0.5,
-    "net": -125.03
+    "n": 7,
+    "win_rate": 14,
+    "avg_r": -0.44,
+    "net": -138.98
    },
    {
     "feature": "Relative volume",
@@ -591,10 +607,10 @@
    {
     "feature": "Share price",
     "label": "$5\u2013$20",
-    "n": 12,
-    "win_rate": 50,
-    "avg_r": 0.21,
-    "net": -36.63
+    "n": 14,
+    "win_rate": 43,
+    "avg_r": 0.1,
+    "net": -104.74
    },
    {
     "feature": "Share price",
@@ -615,10 +631,10 @@
    {
     "feature": "Stop distance",
     "label": "stop 1\u20132%",
-    "n": 11,
-    "win_rate": 36,
-    "avg_r": 0.01,
-    "net": -115.21
+    "n": 13,
+    "win_rate": 31,
+    "avg_r": -0.08,
+    "net": -183.32
    },
    {
     "feature": "Stop distance",

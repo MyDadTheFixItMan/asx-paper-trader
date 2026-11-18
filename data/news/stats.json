@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-17T16:45+11:00",
- "events": 10702,
- "measured": 8918,
+ "updated": "2026-11-18T16:15+11:00",
+ "events": 10799,
+ "measured": 8999,
  "first_day": "2026-07-29",
  "rules": {
   "block": [
@@ -16,43 +16,43 @@
  "categories": [
   {
    "category": "Results",
-   "n": 815,
+   "n": 816,
    "avg_gap_pct": 0.72,
    "avg_move_after_open_pct": -0.41,
-   "pct_up_after_open": 45.9,
-   "n_gap_up": 454,
-   "gap_up_then_move_pct": 0.28,
-   "gap_up_pct_up": 53.5
+   "pct_up_after_open": 46.0,
+   "n_gap_up": 455,
+   "gap_up_then_move_pct": 0.29,
+   "gap_up_pct_up": 53.6
   },
   {
    "category": "Other",
-   "n": 475,
-   "avg_gap_pct": 0.29,
-   "avg_move_after_open_pct": -0.48,
-   "pct_up_after_open": 43.4,
-   "n_gap_up": 222,
-   "gap_up_then_move_pct": -0.44,
-   "gap_up_pct_up": 44.1
+   "n": 478,
+   "avg_gap_pct": 0.32,
+   "avg_move_after_open_pct": -0.54,
+   "pct_up_after_open": 43.1,
+   "n_gap_up": 225,
+   "gap_up_then_move_pct": -0.57,
+   "gap_up_pct_up": 43.6
   },
   {
    "category": "Quarterly report",
-   "n": 209,
+   "n": 210,
    "avg_gap_pct": 0.17,
    "avg_move_after_open_pct": -1.61,
-   "pct_up_after_open": 34.4,
-   "n_gap_up": 105,
-   "gap_up_then_move_pct": -1.13,
-   "gap_up_pct_up": 35.2
+   "pct_up_after_open": 34.3,
+   "n_gap_up": 106,
+   "gap_up_then_move_pct": -1.12,
+   "gap_up_pct_up": 34.9
   },
   {
    "category": "Exploration / drilling",
-   "n": 147,
-   "avg_gap_pct": 0.62,
-   "avg_move_after_open_pct": 0.37,
-   "pct_up_after_open": 50.3,
-   "n_gap_up": 77,
-   "gap_up_then_move_pct": 1.69,
-   "gap_up_pct_up": 57.1
+   "n": 149,
+   "avg_gap_pct": 0.65,
+   "avg_move_after_open_pct": 0.33,
+   "pct_up_after_open": 49.7,
+   "n_gap_up": 79,
+   "gap_up_then_move_pct": 1.58,
+   "gap_up_pct_up": 55.7
   },
   {
    "category": "Dividend / buy-back",
@@ -66,33 +66,33 @@
   },
   {
    "category": "Takeover / merger",
-   "n": 117,
-   "avg_gap_pct": 2.71,
-   "avg_move_after_open_pct": -0.44,
-   "pct_up_after_open": 44.4,
-   "n_gap_up": 52,
-   "gap_up_then_move_pct": -0.12,
-   "gap_up_pct_up": 44.2
+   "n": 119,
+   "avg_gap_pct": 3.01,
+   "avg_move_after_open_pct": -0.4,
+   "pct_up_after_open": 44.5,
+   "n_gap_up": 54,
+   "gap_up_then_move_pct": -0.05,
+   "gap_up_pct_up": 44.4
   },
   {
    "category": "Management change",
-   "n": 96,
+   "n": 98,
    "avg_gap_pct": -0.39,
-   "avg_move_after_open_pct": 0.21,
-   "pct_up_after_open": 45.8,
-   "n_gap_up": 47,
-   "gap_up_then_move_pct": 0.05,
-   "gap_up_pct_up": 40.4
+   "avg_move_after_open_pct": 0.17,
+   "pct_up_after_open": 44.9,
+   "n_gap_up": 48,
+   "gap_up_then_move_pct": -0.0,
+   "gap_up_pct_up": 39.6
   },
   {
    "category": "Contract / deal",
-   "n": 80,
-   "avg_gap_pct": 1.32,
-   "avg_move_after_open_pct": -0.65,
-   "pct_up_after_open": 45.0,
-   "n_gap_up": 38,
-   "gap_up_then_move_pct": -1.09,
-   "gap_up_pct_up": 36.8
+   "n": 81,
+   "avg_gap_pct": 1.35,
+   "avg_move_after_open_pct": -0.58,
+   "pct_up_after_open": 45.7,
+   "n_gap_up": 39,
+   "gap_up_then_move_pct": -0.93,
+   "gap_up_pct_up": 38.5
   },
   {
    "category": "Trading halt",
@@ -116,10 +116,10 @@
   },
   {
    "category": "Capital raising",
-   "n": 33,
-   "avg_gap_pct": -0.69,
-   "avg_move_after_open_pct": -0.61,
-   "pct_up_after_open": 39.4,
+   "n": 34,
+   "avg_gap_pct": -0.67,
+   "avg_move_after_open_pct": -0.58,
+   "pct_up_after_open": 41.2,
    "n_gap_up": 15,
    "gap_up_then_move_pct": -0.46,
    "gap_up_pct_up": 33.3
@@ -136,10 +136,10 @@
   },
   {
    "category": "Guidance upgrade",
-   "n": 15,
-   "avg_gap_pct": 2.2,
-   "avg_move_after_open_pct": 2.8,
-   "pct_up_after_open": 66.7,
+   "n": 16,
+   "avg_gap_pct": 2.06,
+   "avg_move_after_open_pct": 3.03,
+   "pct_up_after_open": 68.8,
    "n_gap_up": 12,
    "gap_up_then_move_pct": 3.05,
    "gap_up_pct_up": 66.7

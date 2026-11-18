@@ -526,5 +526,29 @@
   "news_headline": "Luni Niobium Project - PFS",
   "setup": "orb",
   "reason": "Stop loss"
+ },
+ {
+  "id": 25,
+  "date": "2026-11-18",
+  "sym": "MYX",
+  "qty": 395,
+  "entry_time": "2026-11-18T12:10:00+11:00",
+  "entry_price": 6.06,
+  "exit_time": "2026-11-18T15:50:00+11:00",
+  "exit_price": 6.05,
+  "initial_stop": 5.98,
+  "fees": 10.0,
+  "gross": -3.95,
+  "net": -13.95,
+  "pct": -0.58,
+  "r": -0.12,
+  "rvol": 9.24,
+  "gap_pct": -0.17,
+  "stop_pct": 1.32,
+  "market_pct": -0.27,
+  "news_cat": null,
+  "news_headline": null,
+  "setup": "orb",
+  "reason": "End of day exit"
  }
 ]
