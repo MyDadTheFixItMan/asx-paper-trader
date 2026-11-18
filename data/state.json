@@ -13,7 +13,7 @@
    "risk_ps": 0.15,
    "high": 7.625,
    "setup": "orb",
-   "last": 7.519999980926514,
+   "last": 7.53000020980835,
    "fees": 5.0,
    "rvol": 3.74,
    "atr": 0.6271,
@@ -34,7 +34,7 @@
    "risk_ps": 0.08,
    "high": 6.050000190734863,
    "setup": "orb",
-   "last": 6.050000190734863,
+   "last": 6.045000076293945,
    "fees": 5.0,
    "rvol": 9.24,
    "atr": 0.35,
@@ -188,7 +188,7 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-18T12:15:00+11:00",
+  "last_ts": "2026-11-18T12:20:00+11:00",
   "log": [
    "09:15 Read 67 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 246 pass the liquidity and volatility filters.",
@@ -249,29 +249,29 @@
   "news_refreshed": true,
   "tracks": {
    "CAT": {
-    "pv": 3964654.2129150233,
-    "v": 1305314.0,
+    "pv": 4038805.956802686,
+    "v": 1330225.0,
     "low": 2.950000047683716,
-    "vwap": 3.0373183869283737
+    "vwap": 3.036182568214164
    },
    "WA1": {
-    "pv": 796873.1117989223,
-    "v": 106739.0,
+    "pv": 801380.0385872524,
+    "v": 107337.0,
     "low": 7.320000171661377,
-    "vwap": 7.465622797655237
+    "vwap": 7.466018601109146
    },
    "MYX": {
-    "pv": 11504365.406578857,
-    "v": 1911975.0,
+    "pv": 11631249.958180267,
+    "v": 1932965.0,
     "low": 5.989999771118164,
-    "vwap": 6.017006188145168
+    "vwap": 6.017310172807199
    }
   },
   "news_checked_at": "2026-11-18T12:35:06.252764+11:00",
   "news_today": []
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-18T12:40:06.000187+11:00",
+ "last_run": "2026-11-18T12:45:06.129368+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
