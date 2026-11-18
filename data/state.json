@@ -167,7 +167,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.27,
-  "last_ts": "2026-11-18T13:10:00+11:00",
+  "last_ts": "2026-11-18T13:15:00+11:00",
   "log": [
    "09:15 Read 67 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 246 pass the liquidity and volatility filters.",
@@ -177,7 +177,8 @@
    "11:15 BUY 276 WA1 @ $7.530, stop $7.380 (breakout above $7.510)",
    "12:10 BUY 395 MYX @ $6.060, stop $5.980 (breakout above $6.040)",
    "12:35 Hourly news check: 6 new price-sensitive announcements, 0 for shares the bot trades.",
-   "13:00 SELL 276 WA1 @ $7.370 (Stop loss) net $-54.16"
+   "13:00 SELL 276 WA1 @ $7.370 (Stop loss) net $-54.16",
+   "13:40 Hourly news check: 10 new price-sensitive announcements, 2 for shares the bot trades."
   ],
   "news": {
    "VAU": {
@@ -229,29 +230,44 @@
   "news_refreshed": true,
   "tracks": {
    "CAT": {
-    "pv": 5422587.325051308,
-    "v": 1799376.0,
+    "pv": 5491544.70609045,
+    "v": 1822725.0,
     "low": 2.9100000858306885,
-    "vwap": 3.0135932262358214
+    "vwap": 3.012821301123565
    },
    "WA1": {
-    "pv": 1183159.080272039,
-    "v": 159385.0,
-    "low": 7.170000076293945,
-    "vwap": 7.423277474492825
+    "pv": 1204825.1299090388,
+    "v": 162390.0,
+    "low": 7.150000095367432,
+    "vwap": 7.419330807987183
    },
    "MYX": {
-    "pv": 12355783.712838808,
-    "v": 2052668.0,
+    "pv": 12404550.094217936,
+    "v": 2060702.0,
     "low": 5.989999771118164,
-    "vwap": 6.0193775675554
+    "vwap": 6.019574928455417
    }
   },
-  "news_checked_at": "2026-11-18T12:35:06.252764+11:00",
-  "news_today": []
+  "news_checked_at": "2026-11-18T13:40:06.010611+11:00",
+  "news_today": [
+   {
+    "key": "2924-03163169-6A1355590",
+    "sym": "WA1",
+    "time": "2026-11-18T12:49:02+11:00",
+    "category": "Management change",
+    "headline": "Annual General Meeting Presentation"
+   },
+   {
+    "key": "2924-03163174-2A1711268",
+    "sym": "LLC",
+    "time": "2026-11-18T12:57:57+11:00",
+    "category": "Other",
+    "headline": "Response to ASX Price Query"
+   }
+  ]
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-18T13:35:05.761323+11:00",
+ "last_run": "2026-11-18T13:40:06.010611+11:00",
  "learning": {
   "risk_multiplier": 0.609,
   "blocks": [],
