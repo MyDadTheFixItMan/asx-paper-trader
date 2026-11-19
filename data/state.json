@@ -102,111 +102,71 @@
   }
  ],
  "day": {
-  "date": "2026-11-18",
-  "phase": "closed",
-  "start_equity": 9593.98,
-  "universe_size": 247,
-  "watchlist": [
-   {
-    "sym": "MYX",
-    "rvol": 9.24,
-    "or_high": 6.039999961853027,
-    "or_low": 5.989999771118164,
-    "or_open": 6.0,
-    "or_close": 6.03000020980835,
-    "atr": 0.35,
-    "gap_pct": -0.17,
-    "news": null
-   },
-   {
-    "sym": "CAT",
-    "rvol": 5.66,
-    "or_high": 3.1600000858306885,
-    "or_low": 2.950000047683716,
-    "or_open": 2.9800000190734863,
-    "or_close": 3.059999942779541,
-    "atr": 0.2064,
-    "gap_pct": -1.32,
-    "news": null
-   },
-   {
-    "sym": "WA1",
-    "rvol": 3.74,
-    "or_high": 7.510000228881836,
-    "or_low": 7.380000114440918,
-    "or_open": 7.429999828338623,
-    "or_close": 7.460000038146973,
-    "atr": 0.6271,
-    "gap_pct": 1.36,
-    "news": {
-     "category": "Other",
-     "headline": "Luni Niobium Project - PFS",
-     "time": "2026-11-18T08:18:26+11:00"
-    }
-   }
-  ],
-  "entered": [
-   "WA1",
-   "MYX"
-  ],
-  "realized": -68.11,
-  "losses_in_row": 2,
+  "date": "2026-11-19",
+  "phase": "waiting_open",
+  "start_equity": 9525.87,
+  "universe_size": 246,
+  "watchlist": [],
+  "entered": [],
+  "realized": 0.0,
+  "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": -0.27,
-  "last_ts": "2026-11-18T15:50:00+11:00",
+  "market_change_pct": null,
+  "last_ts": null,
   "log": [
-   "09:15 Read 67 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
-   "09:15 Scanned 1836 ASX listings; 246 pass the liquidity and volatility filters.",
-   "Stocks in play: MYX (9.24x), CAT (5.66x), WA1 (3.74x, news: Other)",
-   "10:30 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades.",
-   "11:35 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "11:15 BUY 276 WA1 @ $7.530, stop $7.380 (breakout above $7.510)",
-   "12:10 BUY 395 MYX @ $6.060, stop $5.980 (breakout above $6.040)",
-   "12:35 Hourly news check: 6 new price-sensitive announcements, 0 for shares the bot trades.",
-   "13:00 SELL 276 WA1 @ $7.370 (Stop loss) net $-54.16",
-   "13:40 Hourly news check: 10 new price-sensitive announcements, 2 for shares the bot trades.",
-   "14:40 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:45 Hourly news check: 4 new price-sensitive announcements, 4 for shares the bot trades.",
-   "15:50 SELL 395 MYX @ $6.050 (End of day exit) net $-13.95",
-   "15:50 Day closed. Equity $9,525.87 (-68.11).",
-   "16:15 Daily review done. See 'Learning from losses' on the dashboard.",
-   "16:15 News review done: today's announcements and price reactions recorded."
+   "14:16 Read 151 price-sensitive ASX announcements; 10 are for shares the bot can trade.",
+   "14:16 Scanned 1836 ASX listings; 245 pass the liquidity and volatility filters."
   ],
   "news": {
-   "VAU": {
-    "category": "Takeover / merger",
-    "headline": "Scheme Becomes Effective",
-    "time": "2026-11-17T14:25:58+11:00"
-   },
-   "IFT": {
-    "category": "Results",
-    "headline": "Interim results for the period ended 30 September 2026",
-    "time": "2026-11-18T07:30:31+11:00"
-   },
    "WA1": {
-    "category": "Other",
-    "headline": "Luni Niobium Project - PFS",
-    "time": "2026-11-18T08:18:26+11:00"
-   },
-   "PXA": {
-    "category": "Other",
-    "headline": "Release of IPART Final Report",
-    "time": "2026-11-18T08:24:56+11:00"
-   },
-   "SEK": {
     "category": "Management change",
-    "headline": "AGM - CEO Presentation",
-    "time": "2026-11-18T08:31:51+11:00"
+    "headline": "Annual General Meeting Presentation",
+    "time": "2026-11-18T12:49:02+11:00"
    },
-   "RIC": {
+   "TEA": {
     "category": "Management change",
-    "headline": "AGM 2026 - CEO and Managing Director Address",
-    "time": "2026-11-18T08:54:01+11:00"
+    "headline": "Tasmea 2026 AGM Presentation",
+    "time": "2026-11-18T15:05:08+11:00"
+   },
+   "NST": {
+    "category": "Management change",
+    "headline": "AGM Addresses and Presentation",
+    "time": "2026-11-18T15:40:53+11:00"
+   },
+   "A2M": {
+    "category": "Management change",
+    "headline": "China IMF and FY27 outlook update",
+    "time": "2026-11-19T07:30:06+11:00"
+   },
+   "WOR": {
+    "category": "Management change",
+    "headline": "Chair's Address to Shareholders",
+    "time": "2026-11-19T08:21:51+11:00"
+   },
+   "NUF": {
+    "category": "Results",
+    "headline": "Full Year Statutory Accounts",
+    "time": "2026-11-19T08:24:16+11:00"
+   },
+   "C79": {
+    "category": "Management change",
+    "headline": "Pre AGM Trading Update Presentation",
+    "time": "2026-11-19T08:24:17+11:00"
+   },
+   "TCL": {
+    "category": "Other",
+    "headline": "October 2026 traffic",
+    "time": "2026-11-19T08:32:17+11:00"
+   },
+   "SRL": {
+    "category": "Takeover / merger",
+    "headline": "FIRB approval received",
+    "time": "2026-11-19T09:05:57+11:00"
    },
    "NHC": {
-    "category": "Capital raising",
-    "headline": "Hybrid Securities Offer - Bookbuild complete and Margin set",
-    "time": "2026-11-18T09:26:02+11:00"
+    "category": "Dividend / buy-back",
+    "headline": "Dividend/Distribution - NHC",
+    "time": "2026-11-19T09:37:52+11:00"
    }
   },
   "news_rules": {
@@ -218,78 +178,10 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  },
-  "news_refreshed": true,
-  "tracks": {
-   "CAT": {
-    "pv": 9217006.283968369,
-    "v": 3091298.0,
-    "low": 2.9000000953674316,
-    "vwap": 2.9815974661674054
-   },
-   "WA1": {
-    "pv": 2453742.0254098577,
-    "v": 338607.0,
-    "low": 6.940000057220459,
-    "vwap": 7.246577966225913
-   },
-   "MYX": {
-    "pv": 15087819.75960334,
-    "v": 2503365.0,
-    "low": 5.989999771118164,
-    "vwap": 6.027015540923253
-   }
-  },
-  "news_checked_at": "2026-11-18T15:45:06.034774+11:00",
-  "news_today": [
-   {
-    "key": "2924-03163169-6A1355590",
-    "sym": "WA1",
-    "time": "2026-11-18T12:49:02+11:00",
-    "category": "Management change",
-    "headline": "Annual General Meeting Presentation"
-   },
-   {
-    "key": "2924-03163174-2A1711268",
-    "sym": "LLC",
-    "time": "2026-11-18T12:57:57+11:00",
-    "category": "Other",
-    "headline": "Response to ASX Price Query"
-   },
-   {
-    "key": "2924-03163260-6A1355622",
-    "sym": "TEA",
-    "time": "2026-11-18T15:05:08+11:00",
-    "category": "Management change",
-    "headline": "Tasmea 2026 AGM Presentation"
-   },
-   {
-    "key": "2924-03163262-6A1355623",
-    "sym": "TEA",
-    "time": "2026-11-18T15:06:28+11:00",
-    "category": "Management change",
-    "headline": "Tasmea 2026 AGM Address to Shareholders"
-   },
-   {
-    "key": "2924-03163265-6A1355625",
-    "sym": "TEA",
-    "time": "2026-11-18T15:12:23+11:00",
-    "category": "Guidance upgrade",
-    "headline": "Tasmea 2026 AGM and FY27 Guidance Upgrade"
-   },
-   {
-    "key": "2924-03163277-6A1355632",
-    "sym": "NST",
-    "time": "2026-11-18T15:40:53+11:00",
-    "category": "Management change",
-    "headline": "AGM Addresses and Presentation"
-   }
-  ],
-  "end_equity": 9525.87,
-  "reviewed": true
+  }
  },
- "status": "Day finished. Equity $9,525.87",
- "last_run": "2026-11-18T16:15:05.751608+11:00",
+ "status": "Morning scan done. Waiting for the 10:00 open.",
+ "last_run": "2026-11-19T14:16:45.089621+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
