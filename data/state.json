@@ -103,19 +103,21 @@
  ],
  "day": {
   "date": "2026-11-19",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9525.87,
   "universe_size": 246,
   "watchlist": [],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
-  "no_new_entries": false,
-  "market_change_pct": null,
+  "no_new_entries": true,
+  "market_change_pct": -1.02,
   "last_ts": null,
   "log": [
    "14:16 Read 151 price-sensitive ASX announcements; 10 are for shares the bot can trade.",
-   "14:16 Scanned 1836 ASX listings; 245 pass the liquidity and volatility filters."
+   "14:16 Scanned 1836 ASX listings; 245 pass the liquidity and volatility filters.",
+   "10:05 ASX 200 -1.02% at the open: weak market, no breakout trades today.",
+   "14:20 Hourly news check: 30 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "WA1": {
@@ -178,10 +180,14 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true,
+  "tracks": {},
+  "news_checked_at": "2026-11-19T14:20:05.396605+11:00",
+  "news_today": []
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-19T14:16:45.089621+11:00",
+ "status": "Standing aside today: ASX 200 opened -1.02%",
+ "last_run": "2026-11-19T14:20:05.396605+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
