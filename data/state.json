@@ -178,7 +178,7 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.82,
-  "last_ts": "2026-11-20T15:40:00+11:00",
+  "last_ts": "2026-11-20T15:45:00+11:00",
   "log": [
    "14:04 Read 84 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
    "14:04 Scanned 1836 ASX listings; 244 pass the liquidity and volatility filters.",
@@ -232,22 +232,22 @@
   "news_refreshed": true,
   "tracks": {
    "GMD": {
-    "pv": 53763453.69181713,
-    "v": 8979919.0,
+    "pv": 54974297.40874132,
+    "v": 9184684.0,
     "low": 5.860000133514404,
-    "vwap": 5.987075572933022
+    "vwap": 5.985431551999102
    },
    "FMG": {
-    "pv": 103910835.57555771,
-    "v": 7811328.0,
+    "pv": 105444428.11971156,
+    "v": 7925932.0,
     "low": 13.119999885559082,
-    "vwap": 13.302582553895792
+    "vwap": 13.303726062715597
    },
    "NCK": {
-    "pv": 4401282.976959548,
-    "v": 348239.0,
+    "pv": 4409939.113529842,
+    "v": 348928.0,
     "low": 12.550000190734863,
-    "vwap": 12.63868485999428
+    "vwap": 12.63853606913129
    }
   },
   "news_checked_at": "2026-11-20T15:15:05.663170+11:00",
@@ -262,7 +262,7 @@
   ]
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-20T16:05:06.195967+11:00",
+ "last_run": "2026-11-20T16:10:05.731354+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
