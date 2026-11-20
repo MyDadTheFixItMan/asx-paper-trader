@@ -550,5 +550,29 @@
   "news_headline": null,
   "setup": "orb",
   "reason": "End of day exit"
+ },
+ {
+  "id": 26,
+  "date": "2026-11-20",
+  "sym": "FMG",
+  "qty": 141,
+  "entry_time": "2026-11-20T10:35:00+11:00",
+  "entry_price": 13.36,
+  "exit_time": "2026-11-20T15:50:00+11:00",
+  "exit_price": 13.37,
+  "initial_stop": 13.13,
+  "fees": 10.0,
+  "gross": 1.41,
+  "net": -8.59,
+  "pct": -0.46,
+  "r": 0.04,
+  "rvol": 18.68,
+  "gap_pct": -0.0,
+  "stop_pct": 1.72,
+  "market_pct": -0.82,
+  "news_cat": null,
+  "news_headline": null,
+  "setup": "orb",
+  "reason": "End of day exit"
  }
 ]
