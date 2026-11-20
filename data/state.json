@@ -1,8 +1,30 @@
 {
  "start_capital": 10000,
- "cash": 9525.87,
+ "cash": 7637.11,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [],
+ "positions": [
+  {
+   "sym": "FMG",
+   "qty": 141,
+   "entry": 13.36,
+   "entry_time": "2026-11-20T10:35:00+11:00",
+   "stop": 13.13,
+   "initial_stop": 13.13,
+   "risk_ps": 0.23,
+   "high": 13.4399995803833,
+   "setup": "orb",
+   "last": 13.375,
+   "fees": 5.0,
+   "rvol": 18.68,
+   "atr": 0.4471,
+   "stop_note": "initial",
+   "gap_pct": -0.0,
+   "stop_pct": 1.72,
+   "market_pct": -0.82,
+   "news_cat": null,
+   "news_headline": null
+  }
+ ],
  "daily": [
   {
    "date": "2026-11-03",
@@ -111,19 +133,58 @@
  ],
  "day": {
   "date": "2026-11-20",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9525.87,
   "universe_size": 245,
-  "watchlist": [],
-  "entered": [],
+  "watchlist": [
+   {
+    "sym": "FMG",
+    "rvol": 18.68,
+    "or_high": 13.329999923706055,
+    "or_low": 13.119999885559082,
+    "or_open": 13.15999984741211,
+    "or_close": 13.220000267028809,
+    "atr": 0.4471,
+    "gap_pct": -0.0,
+    "news": null
+   },
+   {
+    "sym": "GMD",
+    "rvol": 4.51,
+    "or_high": 6.260000228881836,
+    "or_low": 6.099999904632568,
+    "or_open": 6.150000095367432,
+    "or_close": 6.210000038146973,
+    "atr": 0.4568,
+    "gap_pct": -0.81,
+    "news": null
+   },
+   {
+    "sym": "NCK",
+    "rvol": 4.0,
+    "or_high": 13.140000343322754,
+    "or_low": 12.875,
+    "or_open": 12.920000076293945,
+    "or_close": 12.96500015258789,
+    "atr": 0.5179,
+    "gap_pct": 0.08,
+    "news": null
+   }
+  ],
+  "entered": [
+   "FMG"
+  ],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": -0.82,
+  "last_ts": "2026-11-20T13:45:00+11:00",
   "log": [
    "14:04 Read 84 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
-   "14:04 Scanned 1836 ASX listings; 244 pass the liquidity and volatility filters."
+   "14:04 Scanned 1836 ASX listings; 244 pass the liquidity and volatility filters.",
+   "Stocks in play: FMG (18.68x), GMD (4.51x), NCK (4.0x)",
+   "10:35 BUY 141 FMG @ $13.360, stop $13.130 (breakout above $13.330)",
+   "14:10 Hourly news check: 14 new price-sensitive announcements, 1 for shares the bot trades."
   ],
   "news": {
    "SGM": {
@@ -166,10 +227,41 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true,
+  "tracks": {
+   "GMD": {
+    "pv": 38776863.687744774,
+    "v": 6447466.0,
+    "low": 5.860000133514404,
+    "vwap": 6.014279670144019
+   },
+   "FMG": {
+    "pv": 83431950.56996219,
+    "v": 6281910.0,
+    "low": 13.119999885559082,
+    "vwap": 13.28130307023854
+   },
+   "NCK": {
+    "pv": 1703711.561019262,
+    "v": 133669.0,
+    "low": 12.569999694824219,
+    "vwap": 12.745749283822443
+   }
+  },
+  "news_checked_at": "2026-11-20T14:10:06.216894+11:00",
+  "news_today": [
+   {
+    "key": "2924-03164392-6A1356078",
+    "sym": "GNP",
+    "time": "2026-11-20T12:54:12+11:00",
+    "category": "Management change",
+    "headline": "2026 AGM Address and Presentation"
+   }
+  ]
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-20T14:04:04.562476+11:00",
+ "status": "Past the entry cut-off. Managing open trades until the close.",
+ "last_run": "2026-11-20T14:10:06.216894+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
