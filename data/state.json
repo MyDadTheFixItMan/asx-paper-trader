@@ -110,78 +110,51 @@
   }
  ],
  "day": {
-  "date": "2026-11-19",
-  "phase": "closed",
+  "date": "2026-11-20",
+  "phase": "waiting_open",
   "start_equity": 9525.87,
-  "universe_size": 246,
+  "universe_size": 245,
   "watchlist": [],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
-  "no_new_entries": true,
-  "market_change_pct": -1.02,
+  "no_new_entries": false,
+  "market_change_pct": null,
   "last_ts": null,
   "log": [
-   "14:16 Read 151 price-sensitive ASX announcements; 10 are for shares the bot can trade.",
-   "14:16 Scanned 1836 ASX listings; 245 pass the liquidity and volatility filters.",
-   "10:05 ASX 200 -1.02% at the open: weak market, no breakout trades today.",
-   "14:20 Hourly news check: 30 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:20 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades.",
-   "16:25 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades.",
-   "16:45 Day closed. Equity $9,525.87 (+0.00).",
-   "16:45 Daily review done. See 'Learning from losses' on the dashboard.",
-   "16:45 News review done: today's announcements and price reactions recorded."
+   "14:04 Read 84 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
+   "14:04 Scanned 1836 ASX listings; 244 pass the liquidity and volatility filters."
   ],
   "news": {
-   "WA1": {
-    "category": "Management change",
-    "headline": "Annual General Meeting Presentation",
-    "time": "2026-11-18T12:49:02+11:00"
-   },
-   "TEA": {
-    "category": "Management change",
-    "headline": "Tasmea 2026 AGM Presentation",
-    "time": "2026-11-18T15:05:08+11:00"
-   },
-   "NST": {
-    "category": "Management change",
-    "headline": "AGM Addresses and Presentation",
-    "time": "2026-11-18T15:40:53+11:00"
-   },
-   "A2M": {
-    "category": "Management change",
-    "headline": "China IMF and FY27 outlook update",
-    "time": "2026-11-19T07:30:06+11:00"
-   },
-   "WOR": {
+   "SGM": {
     "category": "Management change",
     "headline": "Chair's Address to Shareholders",
-    "time": "2026-11-19T08:21:51+11:00"
+    "time": "2026-11-20T08:19:31+11:00"
    },
-   "NUF": {
-    "category": "Results",
-    "headline": "Full Year Statutory Accounts",
-    "time": "2026-11-19T08:24:16+11:00"
+   "NXT": {
+    "category": "Guidance upgrade",
+    "headline": "FY27 Guidance Upgrade",
+    "time": "2026-11-20T08:24:56+11:00"
    },
-   "C79": {
-    "category": "Management change",
-    "headline": "Pre AGM Trading Update Presentation",
-    "time": "2026-11-19T08:24:17+11:00"
-   },
-   "TCL": {
+   "ORI": {
     "category": "Other",
-    "headline": "October 2026 traffic",
-    "time": "2026-11-19T08:32:17+11:00"
+    "headline": "Response to Industry Article",
+    "time": "2026-11-20T08:26:51+11:00"
    },
-   "SRL": {
-    "category": "Takeover / merger",
-    "headline": "FIRB approval received",
-    "time": "2026-11-19T09:05:57+11:00"
+   "PME": {
+    "category": "Other",
+    "headline": "PME signs 10-year deal, A$128M with NYC Health and Hospitals",
+    "time": "2026-11-20T08:27:16+11:00"
    },
-   "NHC": {
+   "ARF": {
     "category": "Dividend / buy-back",
-    "headline": "Dividend/Distribution - NHC",
-    "time": "2026-11-19T09:37:52+11:00"
+    "headline": "On-market Buyback",
+    "time": "2026-11-20T08:28:41+11:00"
+   },
+   "GNP": {
+    "category": "Management change",
+    "headline": "2026 AGM Address and Presentation",
+    "time": "2026-11-20T12:54:12+11:00"
    }
   },
   "news_rules": {
@@ -193,16 +166,10 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  },
-  "news_refreshed": true,
-  "tracks": {},
-  "news_checked_at": "2026-11-19T16:25:05.672194+11:00",
-  "news_today": [],
-  "end_equity": 9525.87,
-  "reviewed": true
+  }
  },
- "status": "Day finished. Equity $9,525.87",
- "last_run": "2026-11-19T16:45:06.110578+11:00",
+ "status": "Morning scan done. Waiting for the 10:00 open.",
+ "last_run": "2026-11-20T14:04:04.562476+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
