@@ -1,8 +1,51 @@
 {
  "start_capital": 10000,
- "cash": 9517.28,
+ "cash": 6586.7,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [],
+ "positions": [
+  {
+   "sym": "RMS",
+   "qty": 322,
+   "entry": 3.24,
+   "entry_time": "2026-11-23T10:30:00+11:00",
+   "stop": 3.14,
+   "initial_stop": 3.14,
+   "risk_ps": 0.1,
+   "high": 3.259999990463257,
+   "setup": "orb",
+   "last": 3.174999952316284,
+   "fees": 5.0,
+   "rvol": 7.63,
+   "atr": 0.1836,
+   "stop_note": "initial",
+   "gap_pct": -0.32,
+   "stop_pct": 3.09,
+   "market_pct": -0.63,
+   "news_cat": null,
+   "news_headline": null
+  },
+  {
+   "sym": "SFR",
+   "qty": 109,
+   "entry": 16.42,
+   "entry_time": "2026-11-23T10:40:00+11:00",
+   "stop": 16.12,
+   "initial_stop": 16.12,
+   "risk_ps": 0.3,
+   "high": 16.729999542236328,
+   "setup": "orb",
+   "last": 16.530000686645508,
+   "fees": 5.0,
+   "rvol": 3.24,
+   "atr": 1.0229,
+   "stop_note": "initial",
+   "gap_pct": -0.92,
+   "stop_pct": 1.83,
+   "market_pct": -0.63,
+   "news_cat": null,
+   "news_headline": null
+  }
+ ],
  "daily": [
   {
    "date": "2026-11-03",
@@ -119,19 +162,143 @@
  ],
  "day": {
   "date": "2026-11-23",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9517.28,
   "universe_size": 244,
-  "watchlist": [],
-  "entered": [],
-  "realized": 0.0,
-  "losses_in_row": 0,
+  "watchlist": [
+   {
+    "sym": "DOW",
+    "rvol": 30.25,
+    "or_high": 7.215000152587891,
+    "or_low": 6.989999771118164,
+    "or_open": 6.989999771118164,
+    "or_close": 7.199999809265137,
+    "atr": 0.1732,
+    "gap_pct": 0.58,
+    "news": {
+     "category": "Contract / deal",
+     "headline": "Downer awarded $1.1bn power project in NSW",
+     "time": "2026-11-23T09:01:16+11:00"
+    }
+   },
+   {
+    "sym": "RMS",
+    "rvol": 7.63,
+    "or_high": 3.2200000286102295,
+    "or_low": 3.0899999141693115,
+    "or_open": 3.130000114440918,
+    "or_close": 3.200000047683716,
+    "atr": 0.1836,
+    "gap_pct": -0.32,
+    "news": null
+   },
+   {
+    "sym": "SKS",
+    "rvol": 5.3,
+    "or_high": 5.190000057220459,
+    "or_low": 4.900000095367432,
+    "or_open": 4.920000076293945,
+    "or_close": 5.139999866485596,
+    "atr": 0.4132,
+    "gap_pct": -2.96,
+    "news": null,
+    "skipped": true
+   },
+   {
+    "sym": "KGN",
+    "rvol": 3.71,
+    "or_high": 4.5,
+    "or_low": 4.039999961853027,
+    "or_open": 4.050000190734863,
+    "or_close": 4.440000057220459,
+    "atr": 0.1586,
+    "gap_pct": -0.25,
+    "news": {
+     "category": "Management change",
+     "headline": "2026 KGN AGM Chair & CEO addresses",
+     "time": "2026-11-23T09:03:51+11:00"
+    }
+   },
+   {
+    "sym": "SFR",
+    "rvol": 3.24,
+    "or_high": 16.389999389648438,
+    "or_low": 16.1200008392334,
+    "or_open": 16.1200008392334,
+    "or_close": 16.360000610351562,
+    "atr": 1.0229,
+    "gap_pct": -0.92,
+    "news": null
+   },
+   {
+    "sym": "ALQ",
+    "setup": "gapdown",
+    "rvol": 0,
+    "or_high": 18.360000610351562,
+    "or_low": 17.56999969482422,
+    "or_open": 18.309999465942383,
+    "or_close": 17.600000381469727,
+    "atr": 0.5757,
+    "gap_pct": -5.13,
+    "news": {
+     "category": "Results",
+     "headline": "Half Yearly Report and Accounts",
+     "time": "2026-11-23T08:29:15+11:00"
+    }
+   },
+   {
+    "sym": "MP1",
+    "setup": "gapdown",
+    "rvol": 0,
+    "or_high": 14.649999618530273,
+    "or_low": 14.15999984741211,
+    "or_open": 14.359999656677246,
+    "or_close": 14.5600004196167,
+    "atr": 1.3089,
+    "gap_pct": -3.88,
+    "news": null,
+    "skipped": true
+   },
+   {
+    "sym": "PLS",
+    "setup": "gapdown",
+    "rvol": 0,
+    "or_high": 2.5799999237060547,
+    "or_low": 2.509999990463257,
+    "or_open": 2.5199999809265137,
+    "or_close": 2.569999933242798,
+    "atr": 0.1761,
+    "gap_pct": -3.82,
+    "news": null,
+    "skipped": true
+   }
+  ],
+  "entered": [
+   "ALQ",
+   "RMS",
+   "SFR",
+   "DOW"
+  ],
+  "realized": -87.52,
+  "losses_in_row": 2,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": -0.63,
+  "last_ts": "2026-11-23T13:20:00+11:00",
   "log": [
    "13:37 Read 126 price-sensitive ASX announcements; 10 are for shares the bot can trade.",
-   "13:37 Scanned 1836 ASX listings; 243 pass the liquidity and volatility filters."
+   "13:37 Scanned 1836 ASX listings; 243 pass the liquidity and volatility filters.",
+   "Gap-down bounce candidates: ALQ (-5.1%), MP1 (-3.9%), PLS (-3.8%)",
+   "Stocks in play: DOW (30.25x, news: Contract / deal), RMS (7.63x), SKS (5.3x), KGN (3.71x, news: Management change), SFR (3.24x), ALQ (0x, news: Results), MP1 (0x), PLS (0x)",
+   "10:10 BUY 112 ALQ @ $17.620, stop $17.330 (gap-down bounce, gapped -5.13%)",
+   "10:10 SELL 112 ALQ @ $17.310 (Stopped out on entry bar) net $-44.72",
+   "10:10 Skipped MP1: not enough cash or risk room for a sensible size.",
+   "10:10 Skipped PLS: not enough cash or risk room for a sensible size.",
+   "10:30 BUY 322 RMS @ $3.240, stop $3.140 (breakout above $3.220)",
+   "10:30 Skipped SKS: not enough cash or risk room for a sensible size.",
+   "10:40 BUY 109 SFR @ $16.420, stop $16.120 (breakout above $16.390)",
+   "12:05 BUY 328 DOW @ $7.240, stop $7.150 (breakout above $7.215)",
+   "13:05 SELL 328 DOW @ $7.140 (Stop loss) net $-42.80",
+   "13:45 Hourly news check: 18 new price-sensitive announcements, 2 for shares the bot trades."
   ],
   "news": {
    "GNP": {
@@ -194,10 +361,78 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true,
+  "tracks": {
+   "PLS": {
+    "pv": 51691228.95040996,
+    "v": 19616292.0,
+    "low": 2.509999990463257,
+    "vwap": 2.6351172255393607
+   },
+   "SFR": {
+    "pv": 27501043.75542895,
+    "v": 1665355.0,
+    "low": 16.1200008392334,
+    "vwap": 16.513622474144523
+   },
+   "RMS": {
+    "pv": 16796549.646896362,
+    "v": 5235581.0,
+    "low": 3.0899999141693115,
+    "vwap": 3.2081539082093014
+   },
+   "MP1": {
+    "pv": 22344471.528510097,
+    "v": 1506520.0,
+    "low": 14.15999984741211,
+    "vwap": 14.83184526492187
+   },
+   "ALQ": {
+    "pv": 32115512.951827373,
+    "v": 1878404.0,
+    "low": 16.719999313354492,
+    "vwap": 17.09723411567872
+   },
+   "DOW": {
+    "pv": 8033301.096571288,
+    "v": 1118720.0,
+    "low": 6.989999771118164,
+    "vwap": 7.180796889812722
+   },
+   "SKS": {
+    "pv": 2480944.2192707057,
+    "v": 471800.0,
+    "low": 4.900000095367432,
+    "vwap": 5.258465916215993
+   },
+   "KGN": {
+    "pv": 2754592.6535188346,
+    "v": 647668.0,
+    "low": 3.940000057220459,
+    "vwap": 4.253093642914015
+   }
+  },
+  "news_checked_at": "2026-11-23T13:45:05.709924+11:00",
+  "news_today": [
+   {
+    "key": "2924-03165021-6A1356374",
+    "sym": "TEA",
+    "time": "2026-11-23T10:18:51+11:00",
+    "category": "Trading halt",
+    "headline": "Trading Halt"
+   },
+   {
+    "key": "2924-03165029-2A1712141",
+    "sym": "MGH",
+    "time": "2026-11-23T10:31:01+11:00",
+    "category": "Trading halt",
+    "headline": "Trading Halt"
+   }
+  ]
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-23T13:37:21.092232+11:00",
+ "status": "Past the entry cut-off. Managing open trades until the close.",
+ "last_run": "2026-11-23T13:45:05.709924+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
