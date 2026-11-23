@@ -13,7 +13,7 @@
    "risk_ps": 0.1,
    "high": 3.259999990463257,
    "setup": "orb",
-   "last": 3.200000047683716,
+   "last": 3.2049999237060547,
    "fees": 5.0,
    "rvol": 7.63,
    "atr": 0.1836,
@@ -34,7 +34,7 @@
    "risk_ps": 0.3,
    "high": 16.729999542236328,
    "setup": "orb",
-   "last": 16.59000015258789,
+   "last": 16.610000610351562,
    "fees": 5.0,
    "rvol": 3.24,
    "atr": 1.0229,
@@ -283,7 +283,7 @@
   "losses_in_row": 2,
   "no_new_entries": false,
   "market_change_pct": -0.63,
-  "last_ts": "2026-11-23T14:15:00+11:00",
+  "last_ts": "2026-11-23T14:20:00+11:00",
   "log": [
    "13:37 Read 126 price-sensitive ASX announcements; 10 are for shares the bot can trade.",
    "13:37 Scanned 1836 ASX listings; 243 pass the liquidity and volatility filters.",
@@ -298,7 +298,8 @@
    "10:40 BUY 109 SFR @ $16.420, stop $16.120 (breakout above $16.390)",
    "12:05 BUY 328 DOW @ $7.240, stop $7.150 (breakout above $7.215)",
    "13:05 SELL 328 DOW @ $7.140 (Stop loss) net $-42.80",
-   "13:45 Hourly news check: 18 new price-sensitive announcements, 2 for shares the bot trades."
+   "13:45 Hourly news check: 18 new price-sensitive announcements, 2 for shares the bot trades.",
+   "14:45 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "GNP": {
@@ -365,55 +366,55 @@
   "news_refreshed": true,
   "tracks": {
    "PLS": {
-    "pv": 61867635.57552106,
-    "v": 23428345.0,
+    "pv": 63663740.690202385,
+    "v": 24093980.0,
     "low": 2.509999990463257,
-    "vwap": 2.6407172839362345
+    "vwap": 2.6423090203529007
    },
    "SFR": {
-    "pv": 32407397.49139087,
-    "v": 1964509.0,
+    "pv": 32831315.86879413,
+    "v": 1990036.0,
     "low": 16.1200008392334,
-    "vwap": 16.49643625526321
+    "vwap": 16.497850224214098
    },
    "RMS": {
-    "pv": 36322221.35231662,
-    "v": 11425306.0,
+    "pv": 36554133.89622442,
+    "v": 11497628.0,
     "low": 3.0899999141693115,
-    "vwap": 3.1791027174516477
+    "vwap": 3.1792760990549023
    },
    "MP1": {
-    "pv": 26979867.728792515,
-    "v": 1822613.0,
+    "pv": 27331822.06212553,
+    "v": 1846442.0,
     "low": 14.15999984741211,
-    "vwap": 14.80285048377934
+    "vwap": 14.802426538242484
    },
    "ALQ": {
-    "pv": 35196671.01475843,
-    "v": 2061026.0,
+    "pv": 63062802.88583565,
+    "v": 3695563.0,
     "low": 16.719999313354492,
-    "vwap": 17.077257159666317
+    "vwap": 17.06446430106472
    },
    "DOW": {
-    "pv": 9014694.981694382,
-    "v": 1255509.0,
+    "pv": 9201878.901197594,
+    "v": 1281555.0,
     "low": 6.989999771118164,
-    "vwap": 7.18011179664533
+    "vwap": 7.1802450157797315
    },
    "SKS": {
-    "pv": 5705291.18289709,
-    "v": 1081739.0,
+    "pv": 5717085.152659415,
+    "v": 1083938.0,
     "low": 4.900000095367432,
-    "vwap": 5.274184607282431
+    "vwap": 5.274365464315685
    },
    "KGN": {
-    "pv": 2971132.6698576603,
-    "v": 702142.0,
+    "pv": 3041887.675629774,
+    "v": 719491.0,
     "low": 3.930000066757202,
-    "vwap": 4.23152677073535
+    "vwap": 4.2278328368663045
    }
   },
-  "news_checked_at": "2026-11-23T13:45:05.709924+11:00",
+  "news_checked_at": "2026-11-23T14:45:06.298901+11:00",
   "news_today": [
    {
     "key": "2924-03165021-6A1356374",
@@ -432,7 +433,7 @@
   ]
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-23T14:40:06.197856+11:00",
+ "last_run": "2026-11-23T14:45:06.298901+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
