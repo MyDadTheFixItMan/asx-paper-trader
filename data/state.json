@@ -1,8 +1,51 @@
 {
  "start_capital": 10000,
- "cash": 9418.83,
+ "cash": 5511.36,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [],
+ "positions": [
+  {
+   "sym": "SHV",
+   "qty": 309,
+   "entry": 5.0,
+   "entry_time": "2026-11-25T10:30:00+11:00",
+   "stop": 4.9,
+   "initial_stop": 4.9,
+   "risk_ps": 0.1,
+   "high": 4.989999771118164,
+   "setup": "orb",
+   "last": 4.960000038146973,
+   "fees": 5.0,
+   "rvol": 8.98,
+   "atr": 0.1896,
+   "stop_note": "initial",
+   "gap_pct": 0.31,
+   "stop_pct": 2.0,
+   "market_pct": -0.19,
+   "news_cat": null,
+   "news_headline": null
+  },
+  {
+   "sym": "SCG",
+   "qty": 641,
+   "entry": 3.67,
+   "entry_time": "2026-11-25T10:30:00+11:00",
+   "stop": 3.63,
+   "initial_stop": 3.63,
+   "risk_ps": 0.04,
+   "high": 3.6549999713897705,
+   "setup": "orb",
+   "last": 3.6449999809265137,
+   "fees": 5.0,
+   "rvol": 5.56,
+   "atr": 0.0768,
+   "stop_note": "initial",
+   "gap_pct": 0.42,
+   "stop_pct": 1.09,
+   "market_pct": -0.19,
+   "news_cat": null,
+   "news_headline": null
+  }
+ ],
  "daily": [
   {
    "date": "2026-11-03",
@@ -173,17 +216,22 @@
     "news": null
    }
   ],
-  "entered": [],
+  "entered": [
+   "SHV",
+   "SCG"
+  ],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": -0.19,
-  "last_ts": "2026-11-25T10:25:00+11:00",
+  "last_ts": "2026-11-25T10:30:00+11:00",
   "log": [
    "09:15 Read 96 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
    "Stocks in play: NCK (13.19x), SHV (8.98x), SCG (5.56x)",
-   "10:30 Hourly news check: 8 new price-sensitive announcements, 1 for shares the bot trades."
+   "10:30 Hourly news check: 8 new price-sensitive announcements, 1 for shares the bot trades.",
+   "10:30 BUY 309 SHV @ $5.000, stop $4.900 (breakout above $4.930)",
+   "10:30 BUY 641 SCG @ $3.670, stop $3.630 (breakout above $3.650)"
   ],
   "news": {
    "NHC": {
@@ -256,22 +304,22 @@
   "news_refreshed": true,
   "tracks": {
    "SCG": {
-    "pv": 5220131.777980168,
-    "v": 1434229.0,
+    "pv": 5874332.841401895,
+    "v": 1613626.0,
     "low": 3.609999895095825,
-    "vwap": 3.639678027693045
+    "vwap": 3.6404550009741383
    },
    "NCK": {
-    "pv": 1063750.6423155467,
-    "v": 83383.0,
+    "pv": 1081039.641884486,
+    "v": 84739.0,
     "low": 12.399999618530273,
-    "vwap": 12.757404294826845
+    "vwap": 12.757285805644225
    },
    "SHV": {
-    "pv": 1017103.0437660217,
-    "v": 207134.0,
+    "pv": 1025094.8036842346,
+    "v": 208742.0,
     "low": 4.789999961853027,
-    "vwap": 4.910362585408585
+    "vwap": 4.910821989270174
    }
   },
   "news_checked_at": "2026-11-25T10:30:06.140660+11:00",
@@ -286,7 +334,7 @@
   ]
  },
  "status": "Watching 3 stocks in play for breakouts",
- "last_run": "2026-11-25T10:50:05.510067+11:00",
+ "last_run": "2026-11-25T10:55:06.359286+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
