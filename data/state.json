@@ -134,125 +134,22 @@
   }
  ],
  "day": {
-  "date": "2026-11-24",
-  "phase": "closed",
-  "start_equity": 9427.35,
+  "date": "2026-11-25",
+  "phase": "waiting_open",
+  "start_equity": 9418.83,
   "universe_size": 248,
-  "watchlist": [
-   {
-    "sym": "PPT",
-    "rvol": 9.67,
-    "or_high": 17.639999389648438,
-    "or_low": 17.540000915527344,
-    "or_open": 17.559999465942383,
-    "or_close": 17.6200008392334,
-    "atr": 0.4018,
-    "gap_pct": 0.86,
-    "news": null
-   },
-   {
-    "sym": "PWH",
-    "rvol": 8.45,
-    "or_high": 11.59000015258789,
-    "or_low": 11.170000076293945,
-    "or_open": 11.170000076293945,
-    "or_close": 11.319999694824219,
-    "atr": 0.3511,
-    "gap_pct": 2.38,
-    "news": null
-   },
-   {
-    "sym": "ARB",
-    "rvol": 4.29,
-    "or_high": 17.290000915527344,
-    "or_low": 17.079999923706055,
-    "or_open": 17.079999923706055,
-    "or_close": 17.155000686645508,
-    "atr": 0.5821,
-    "gap_pct": 2.28,
-    "news": null
-   },
-   {
-    "sym": "UNI",
-    "rvol": 3.9,
-    "or_high": 7.110000133514404,
-    "or_low": 6.75,
-    "or_open": 6.75,
-    "or_close": 6.849999904632568,
-    "atr": 0.2682,
-    "gap_pct": 1.5,
-    "news": null
-   },
-   {
-    "sym": "LSF",
-    "rvol": 3.81,
-    "or_high": 4.5,
-    "or_low": 4.420000076293945,
-    "or_open": 4.420000076293945,
-    "or_close": 4.5,
-    "atr": 0.1325,
-    "gap_pct": 0.68,
-    "news": null
-   }
-  ],
-  "entered": [
-   "PPT",
-   "ARB"
-  ],
-  "realized": -8.52,
-  "losses_in_row": 2,
+  "watchlist": [],
+  "entered": [],
+  "realized": 0.0,
+  "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": 1.33,
-  "last_ts": "2026-11-24T15:50:00+11:00",
+  "market_change_pct": null,
+  "last_ts": null,
   "log": [
-   "16:57 Read 134 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
-   "16:57 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
-   "Stocks in play: PPT (9.67x), PWH (8.45x), ARB (4.29x), UNI (3.9x), LSF (3.81x)",
-   "10:30 BUY 133 PPT @ $17.710, stop $17.530 (breakout above $17.640)",
-   "12:15 BUY 126 ARB @ $17.320, stop $17.070 (breakout above $17.290)",
-   "15:50 SELL 133 PPT @ $17.730 (End of day exit) net $-7.34",
-   "15:50 SELL 126 ARB @ $17.390 (End of day exit) net $-1.18",
-   "15:50 Day closed. Equity $9,418.83 (-8.52).",
-   "17:00 Hourly news check: 33 new price-sensitive announcements, 3 for shares the bot trades.",
-   "17:00 Daily review done. See 'Learning from losses' on the dashboard.",
-   "17:00 News review done: today's announcements and price reactions recorded."
+   "09:15 Read 96 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
+   "09:15 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters."
   ],
   "news": {
-   "TEA": {
-    "category": "Trading halt",
-    "headline": "Trading Halt",
-    "time": "2026-11-23T10:18:51+11:00"
-   },
-   "MGH": {
-    "category": "Trading halt",
-    "headline": "Trading Halt",
-    "time": "2026-11-23T10:31:01+11:00"
-   },
-   "SXE": {
-    "category": "Contract / deal",
-    "headline": "Data Centre and Sydney Metro awards circa $120m",
-    "time": "2026-11-24T08:15:11+11:00"
-   },
-   "LOV": {
-    "category": "Other",
-    "headline": "AGM Trading Update November 2026",
-    "time": "2026-11-24T08:21:51+11:00"
-   },
-   "IPG": {
-    "category": "Management change",
-    "headline": "CEO Presentation and 1H27 Guidance",
-    "time": "2026-11-24T08:25:36+11:00"
-   },
-   "SHV": {
-    "category": "Results",
-    "headline": "SHV - FY2026 Appendix 4E and Annual Report",
-    "time": "2026-11-24T08:46:26+11:00"
-   },
-   "RWC": {
-    "category": "Takeover / merger",
-    "headline": "Major Shareholder Support for the Scheme Received",
-    "time": "2026-11-24T09:36:51+11:00"
-   },
    "NHC": {
     "category": "Capital raising",
     "headline": "Hybrid Securities Offer open and Replacement Prospectus",
@@ -262,6 +159,31 @@
     "category": "Management change",
     "headline": "2026 AGM Presentation",
     "time": "2026-11-24T12:45:56+11:00"
+   },
+   "DBI": {
+    "category": "Dividend / buy-back",
+    "headline": "Q3-26 Distribution",
+    "time": "2026-11-25T08:15:20+11:00"
+   },
+   "WEB": {
+    "category": "Results",
+    "headline": "Appendix 4D and Half-Year Financial Report",
+    "time": "2026-11-25T08:17:06+11:00"
+   },
+   "WTC": {
+    "category": "Other",
+    "headline": "Richard White confirms conclusion of AFP investigation",
+    "time": "2026-11-25T08:22:00+11:00"
+   },
+   "DVP": {
+    "category": "Other",
+    "headline": "Pioneer Dome Project Update",
+    "time": "2026-11-25T08:31:00+11:00"
+   },
+   "HVN": {
+    "category": "Other",
+    "headline": "Retail Trading Update",
+    "time": "2026-11-25T09:04:01+11:00"
    }
   },
   "news_rules": {
@@ -270,72 +192,14 @@
     "Contract / deal"
    ],
    "boost": [
+    "Results",
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  },
-  "news_refreshed": true,
-  "tracks": {
-   "PPT": {
-    "pv": 6167930.2164325705,
-    "v": 348799.0,
-    "low": 17.540000915527344,
-    "vwap": 17.683336868605043
-   },
-   "ARB": {
-    "pv": 4005940.7889474235,
-    "v": 230886.0,
-    "low": 17.020000457763672,
-    "vwap": 17.350297501569706
-   },
-   "UNI": {
-    "pv": 919402.3880440395,
-    "v": 132877.0,
-    "low": 6.75,
-    "vwap": 6.919198868457593
-   },
-   "PWH": {
-    "pv": 1677136.7870858505,
-    "v": 147183.0,
-    "low": 11.170000076293945,
-    "vwap": 11.394908291622338
-   },
-   "LSF": {
-    "pv": 1706067.525949001,
-    "v": 382483.0,
-    "low": 4.420000076293945,
-    "vwap": 4.460505502071991
-   }
-  },
-  "end_equity": 9418.83,
-  "news_checked_at": "2026-11-24T17:00:06.114278+11:00",
-  "news_today": [
-   {
-    "key": "2924-03165692-2A1712507",
-    "sym": "NHC",
-    "time": "2026-11-24T11:56:36+11:00",
-    "category": "Capital raising",
-    "headline": "Hybrid Securities Offer open and Replacement Prospectus"
-   },
-   {
-    "key": "2924-03165717-6A1356653",
-    "sym": "MND",
-    "time": "2026-11-24T12:45:56+11:00",
-    "category": "Management change",
-    "headline": "2026 AGM Presentation"
-   },
-   {
-    "key": "2924-03165718-6A1356654",
-    "sym": "MND",
-    "time": "2026-11-24T12:48:11+11:00",
-    "category": "Management change",
-    "headline": "2026 AGM Address to Shareholders"
-   }
-  ],
-  "reviewed": true
+  }
  },
- "status": "Day finished. Equity $9,418.83",
- "last_run": "2026-11-24T17:00:06.114278+11:00",
+ "status": "Morning scan done. Waiting for the 10:00 open.",
+ "last_run": "2026-11-25T09:15:06.457427+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
