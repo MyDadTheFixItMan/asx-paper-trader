@@ -184,6 +184,26 @@
     "category": "Other",
     "headline": "Retail Trading Update",
     "time": "2026-11-25T09:04:01+11:00"
+   },
+   "LYL": {
+    "category": "Other",
+    "headline": "San Christobal Project Update",
+    "time": "2026-11-25T09:23:16+11:00"
+   },
+   "MGH": {
+    "category": "Trading halt",
+    "headline": "Suspension from Quotation",
+    "time": "2026-11-25T09:34:01+11:00"
+   },
+   "GNG": {
+    "category": "Management change",
+    "headline": "FY26 Annual General Meeting Presentation",
+    "time": "2026-11-25T09:36:21+11:00"
+   },
+   "PME": {
+    "category": "Regulatory / clinical",
+    "headline": "PME Receives FDA Clearance for Visage7 AI Mammography",
+    "time": "2026-11-25T09:48:36+11:00"
    }
   },
   "news_rules": {
@@ -196,10 +216,11 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-25T09:15:06.457427+11:00",
+ "status": "Building the opening range (prices are ~20 min delayed)",
+ "last_run": "2026-11-25T10:00:05.594815+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
