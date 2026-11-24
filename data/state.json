@@ -1,6 +1,6 @@
 {
  "start_capital": 10000,
- "cash": 9427.35,
+ "cash": 9418.83,
  "created": "2026-11-03T12:05:51.257495+11:00",
  "positions": [],
  "daily": [
@@ -123,23 +123,99 @@
    "pnl": -89.93,
    "trades": 4,
    "market_change_pct": -0.63
+  },
+  {
+   "date": "2026-11-24",
+   "start_equity": 9427.35,
+   "end_equity": 9418.83,
+   "pnl": -8.52,
+   "trades": 2,
+   "market_change_pct": 1.33
   }
  ],
  "day": {
   "date": "2026-11-24",
-  "phase": "waiting_open",
+  "phase": "closed",
   "start_equity": 9427.35,
   "universe_size": 248,
-  "watchlist": [],
-  "entered": [],
-  "realized": 0.0,
-  "losses_in_row": 0,
+  "watchlist": [
+   {
+    "sym": "PPT",
+    "rvol": 9.67,
+    "or_high": 17.639999389648438,
+    "or_low": 17.540000915527344,
+    "or_open": 17.559999465942383,
+    "or_close": 17.6200008392334,
+    "atr": 0.4018,
+    "gap_pct": 0.86,
+    "news": null
+   },
+   {
+    "sym": "PWH",
+    "rvol": 8.45,
+    "or_high": 11.59000015258789,
+    "or_low": 11.170000076293945,
+    "or_open": 11.170000076293945,
+    "or_close": 11.319999694824219,
+    "atr": 0.3511,
+    "gap_pct": 2.38,
+    "news": null
+   },
+   {
+    "sym": "ARB",
+    "rvol": 4.29,
+    "or_high": 17.290000915527344,
+    "or_low": 17.079999923706055,
+    "or_open": 17.079999923706055,
+    "or_close": 17.155000686645508,
+    "atr": 0.5821,
+    "gap_pct": 2.28,
+    "news": null
+   },
+   {
+    "sym": "UNI",
+    "rvol": 3.9,
+    "or_high": 7.110000133514404,
+    "or_low": 6.75,
+    "or_open": 6.75,
+    "or_close": 6.849999904632568,
+    "atr": 0.2682,
+    "gap_pct": 1.5,
+    "news": null
+   },
+   {
+    "sym": "LSF",
+    "rvol": 3.81,
+    "or_high": 4.5,
+    "or_low": 4.420000076293945,
+    "or_open": 4.420000076293945,
+    "or_close": 4.5,
+    "atr": 0.1325,
+    "gap_pct": 0.68,
+    "news": null
+   }
+  ],
+  "entered": [
+   "PPT",
+   "ARB"
+  ],
+  "realized": -8.52,
+  "losses_in_row": 2,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": 1.33,
+  "last_ts": "2026-11-24T15:50:00+11:00",
   "log": [
    "16:57 Read 134 price-sensitive ASX announcements; 9 are for shares the bot can trade.",
-   "16:57 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters."
+   "16:57 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
+   "Stocks in play: PPT (9.67x), PWH (8.45x), ARB (4.29x), UNI (3.9x), LSF (3.81x)",
+   "10:30 BUY 133 PPT @ $17.710, stop $17.530 (breakout above $17.640)",
+   "12:15 BUY 126 ARB @ $17.320, stop $17.070 (breakout above $17.290)",
+   "15:50 SELL 133 PPT @ $17.730 (End of day exit) net $-7.34",
+   "15:50 SELL 126 ARB @ $17.390 (End of day exit) net $-1.18",
+   "15:50 Day closed. Equity $9,418.83 (-8.52).",
+   "17:00 Hourly news check: 33 new price-sensitive announcements, 3 for shares the bot trades.",
+   "17:00 Daily review done. See 'Learning from losses' on the dashboard.",
+   "17:00 News review done: today's announcements and price reactions recorded."
   ],
   "news": {
    "TEA": {
@@ -197,10 +273,69 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true,
+  "tracks": {
+   "PPT": {
+    "pv": 6167930.2164325705,
+    "v": 348799.0,
+    "low": 17.540000915527344,
+    "vwap": 17.683336868605043
+   },
+   "ARB": {
+    "pv": 4005940.7889474235,
+    "v": 230886.0,
+    "low": 17.020000457763672,
+    "vwap": 17.350297501569706
+   },
+   "UNI": {
+    "pv": 919402.3880440395,
+    "v": 132877.0,
+    "low": 6.75,
+    "vwap": 6.919198868457593
+   },
+   "PWH": {
+    "pv": 1677136.7870858505,
+    "v": 147183.0,
+    "low": 11.170000076293945,
+    "vwap": 11.394908291622338
+   },
+   "LSF": {
+    "pv": 1706067.525949001,
+    "v": 382483.0,
+    "low": 4.420000076293945,
+    "vwap": 4.460505502071991
+   }
+  },
+  "end_equity": 9418.83,
+  "news_checked_at": "2026-11-24T17:00:06.114278+11:00",
+  "news_today": [
+   {
+    "key": "2924-03165692-2A1712507",
+    "sym": "NHC",
+    "time": "2026-11-24T11:56:36+11:00",
+    "category": "Capital raising",
+    "headline": "Hybrid Securities Offer open and Replacement Prospectus"
+   },
+   {
+    "key": "2924-03165717-6A1356653",
+    "sym": "MND",
+    "time": "2026-11-24T12:45:56+11:00",
+    "category": "Management change",
+    "headline": "2026 AGM Presentation"
+   },
+   {
+    "key": "2924-03165718-6A1356654",
+    "sym": "MND",
+    "time": "2026-11-24T12:48:11+11:00",
+    "category": "Management change",
+    "headline": "2026 AGM Address to Shareholders"
+   }
+  ],
+  "reviewed": true
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-24T16:57:02.585809+11:00",
+ "status": "Day finished. Equity $9,418.83",
+ "last_run": "2026-11-24T17:00:06.114278+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
@@ -400,6 +535,24 @@
     "notes": [
      "The ASX 200 was down at the open: breakouts struggle when the market is weak."
     ]
+   },
+   {
+    "trade_id": 31,
+    "date": "2026-11-24",
+    "sym": "PPT",
+    "net": -7.34,
+    "notes": [
+     "A normal stop-out: the breakout didn't follow through. Small, planned losses like this are part of the strategy."
+    ]
+   },
+   {
+    "trade_id": 32,
+    "date": "2026-11-24",
+    "sym": "ARB",
+    "net": -1.18,
+    "notes": [
+     "Late entry: breakouts after 11am tend to have less follow-through."
+    ]
    }
   ],
   "changes": [
@@ -444,18 +597,18 @@
    {
     "feature": "Entry time",
     "label": "10:30\u201311:00",
-    "n": 6,
-    "win_rate": 50,
-    "avg_r": 0.19,
-    "net": -3.0
+    "n": 7,
+    "win_rate": 43,
+    "avg_r": 0.18,
+    "net": -10.34
    },
    {
     "feature": "Entry time",
     "label": "after 11:00",
-    "n": 8,
-    "win_rate": 38,
-    "avg_r": -0.02,
-    "net": -36.47
+    "n": 9,
+    "win_rate": 33,
+    "avg_r": 0.01,
+    "net": -37.65
    },
    {
     "feature": "Entry time",
@@ -476,26 +629,26 @@
    {
     "feature": "Market at open",
     "label": "market up",
-    "n": 10,
-    "win_rate": 70,
-    "avg_r": 0.67,
-    "net": 171.91
+    "n": 12,
+    "win_rate": 58,
+    "avg_r": 0.59,
+    "net": 163.39
    },
    {
     "feature": "Opening gap",
     "label": "gap 0\u20132%",
-    "n": 15,
-    "win_rate": 33,
-    "avg_r": -0.39,
-    "net": -362.5
+    "n": 16,
+    "win_rate": 31,
+    "avg_r": -0.35,
+    "net": -369.84
    },
    {
     "feature": "Opening gap",
     "label": "gap 2\u20135%",
-    "n": 3,
-    "win_rate": 67,
-    "avg_r": 1.14,
-    "net": 75.91
+    "n": 4,
+    "win_rate": 50,
+    "avg_r": 0.93,
+    "net": 74.73
    },
    {
     "feature": "Opening gap",
@@ -532,10 +685,10 @@
    {
     "feature": "Overnight news",
     "label": "no news",
-    "n": 26,
-    "win_rate": 35,
-    "avg_r": -0.12,
-    "net": -378.17
+    "n": 28,
+    "win_rate": 32,
+    "avg_r": -0.1,
+    "net": -386.69
    },
    {
     "feature": "Relative volume",
@@ -548,18 +701,18 @@
    {
     "feature": "Relative volume",
     "label": "3\u20135\u00d7 volume",
-    "n": 12,
-    "win_rate": 50,
-    "avg_r": -0.14,
-    "net": -250.51
+    "n": 13,
+    "win_rate": 46,
+    "avg_r": -0.1,
+    "net": -251.69
    },
    {
     "feature": "Relative volume",
     "label": "5\u201310\u00d7 volume",
-    "n": 8,
-    "win_rate": 12,
-    "avg_r": -0.43,
-    "net": -158.64
+    "n": 9,
+    "win_rate": 11,
+    "avg_r": -0.37,
+    "net": -165.98
    },
    {
     "feature": "Relative volume",
@@ -580,10 +733,10 @@
    {
     "feature": "Share price",
     "label": "$5\u2013$20",
-    "n": 18,
-    "win_rate": 39,
-    "avg_r": 0.0,
-    "net": -183.6
+    "n": 20,
+    "win_rate": 35,
+    "avg_r": 0.02,
+    "net": -192.12
    },
    {
     "feature": "Share price",
@@ -604,10 +757,10 @@
    {
     "feature": "Stop distance",
     "label": "stop 1\u20132%",
-    "n": 17,
-    "win_rate": 29,
-    "avg_r": -0.14,
-    "net": -262.18
+    "n": 19,
+    "win_rate": 26,
+    "avg_r": -0.11,
+    "net": -270.7
    },
    {
     "feature": "Stop distance",
