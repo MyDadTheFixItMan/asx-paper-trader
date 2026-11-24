@@ -135,19 +135,55 @@
  ],
  "day": {
   "date": "2026-11-25",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9418.83,
   "universe_size": 248,
-  "watchlist": [],
+  "watchlist": [
+   {
+    "sym": "NCK",
+    "rvol": 13.19,
+    "or_high": 12.9399995803833,
+    "or_low": 12.399999618530273,
+    "or_open": 12.555000305175781,
+    "or_close": 12.930000305175781,
+    "atr": 0.5082,
+    "gap_pct": -1.91,
+    "news": null
+   },
+   {
+    "sym": "SHV",
+    "rvol": 8.98,
+    "or_high": 4.929999828338623,
+    "or_low": 4.789999961853027,
+    "or_open": 4.815000057220459,
+    "or_close": 4.929999828338623,
+    "atr": 0.1896,
+    "gap_pct": 0.31,
+    "news": null
+   },
+   {
+    "sym": "SCG",
+    "rvol": 5.56,
+    "or_high": 3.6500000953674316,
+    "or_low": 3.609999895095825,
+    "or_open": 3.625,
+    "or_close": 3.6500000953674316,
+    "atr": 0.0768,
+    "gap_pct": 0.42,
+    "news": null
+   }
+  ],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": -0.19,
+  "last_ts": "2026-11-25T10:05:00+11:00",
   "log": [
    "09:15 Read 96 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
-   "09:15 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters."
+   "09:15 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
+   "Stocks in play: NCK (13.19x), SHV (8.98x), SCG (5.56x)",
+   "10:30 Hourly news check: 8 new price-sensitive announcements, 1 for shares the bot trades."
   ],
   "news": {
    "NHC": {
@@ -217,10 +253,40 @@
     "Acquisition / sale"
    ]
   },
-  "news_refreshed": true
+  "news_refreshed": true,
+  "tracks": {
+   "SCG": {
+    "pv": 4181041.713192304,
+    "v": 1148984.0,
+    "low": 3.609999895095825,
+    "vwap": 3.6389033382469242
+   },
+   "NCK": {
+    "pv": 1026140.375228246,
+    "v": 80465.0,
+    "low": 12.399999618530273,
+    "vwap": 12.752630028313503
+   },
+   "SHV": {
+    "pv": 614065.4793485006,
+    "v": 125820.0,
+    "low": 4.789999961853027,
+    "vwap": 4.880507704248137
+   }
+  },
+  "news_checked_at": "2026-11-25T10:30:06.140660+11:00",
+  "news_today": [
+   {
+    "key": "2924-03166292-3A707397",
+    "sym": "PME",
+    "time": "2026-11-25T10:05:26+11:00",
+    "category": "Management change",
+    "headline": "PME - AGM 2026 - Presentation"
+   }
+  ]
  },
- "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-25T10:25:05.639564+11:00",
+ "status": "Watching 3 stocks in play for breakouts",
+ "last_run": "2026-11-25T10:30:06.140660+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
