@@ -181,7 +181,7 @@
   "losses_in_row": 2,
   "no_new_entries": false,
   "market_change_pct": -0.19,
-  "last_ts": "2026-11-25T14:15:00+11:00",
+  "last_ts": "2026-11-25T14:20:00+11:00",
   "log": [
    "09:15 Read 96 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
@@ -193,7 +193,8 @@
    "11:30 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades.",
    "12:35 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades.",
    "13:40 Hourly news check: 8 new price-sensitive announcements, 1 for shares the bot trades.",
-   "13:25 SELL 309 SHV @ $4.890 (Stop loss) net $-43.99"
+   "13:25 SELL 309 SHV @ $4.890 (Stop loss) net $-43.99",
+   "14:45 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "NHC": {
@@ -266,25 +267,25 @@
   "news_refreshed": true,
   "tracks": {
    "SCG": {
-    "pv": 26625652.532155275,
-    "v": 7357843.0,
+    "pv": 26745606.51443426,
+    "v": 7391010.0,
     "low": 3.5799999237060547,
-    "vwap": 3.6186763610144
+    "vwap": 3.6186673424111535
    },
    "NCK": {
-    "pv": 10070365.090742107,
-    "v": 792377.0,
+    "pv": 10082271.610730167,
+    "v": 793316.0,
     "low": 12.399999618530273,
-    "vwap": 12.709057797919561
+    "vwap": 12.709023403952735
    },
    "SHV": {
-    "pv": 44962440.70612081,
-    "v": 9033875.0,
+    "pv": 44987106.78552008,
+    "v": 9038848.0,
     "low": 4.789999961853027,
-    "vwap": 4.9770935181326745
+    "vwap": 4.9770841135419115
    }
   },
-  "news_checked_at": "2026-11-25T13:40:06.513319+11:00",
+  "news_checked_at": "2026-11-25T14:45:05.839123+11:00",
   "news_today": [
    {
     "key": "2924-03166292-3A707397",
@@ -303,7 +304,7 @@
   ]
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-25T14:40:06.281418+11:00",
+ "last_run": "2026-11-25T14:45:05.839123+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
