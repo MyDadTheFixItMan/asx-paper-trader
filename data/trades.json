@@ -718,5 +718,29 @@
   "news_headline": null,
   "setup": "orb",
   "reason": "End of day exit"
+ },
+ {
+  "id": 33,
+  "date": "2026-11-25",
+  "sym": "SCG",
+  "qty": 641,
+  "entry_time": "2026-11-25T10:30:00+11:00",
+  "entry_price": 3.67,
+  "exit_time": "2026-11-25T10:40:00+11:00",
+  "exit_price": 3.62,
+  "initial_stop": 3.63,
+  "fees": 10.0,
+  "gross": -32.05,
+  "net": -42.05,
+  "pct": -1.79,
+  "r": -1.25,
+  "rvol": 5.56,
+  "gap_pct": 0.42,
+  "stop_pct": 1.09,
+  "market_pct": -0.19,
+  "news_cat": null,
+  "news_headline": null,
+  "setup": "orb",
+  "reason": "Stop loss"
  }
 ]
