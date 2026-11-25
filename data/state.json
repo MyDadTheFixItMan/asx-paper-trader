@@ -143,19 +143,66 @@
  ],
  "day": {
   "date": "2026-11-26",
-  "phase": "waiting_open",
+  "phase": "trading",
   "start_equity": 9332.79,
   "universe_size": 246,
-  "watchlist": [],
+  "watchlist": [
+   {
+    "sym": "TCL",
+    "rvol": 5.91,
+    "or_high": 15.100000381469727,
+    "or_low": 15.020000457763672,
+    "or_open": 15.0600004196167,
+    "or_close": 15.09000015258789,
+    "atr": 0.28,
+    "gap_pct": -0.07,
+    "news": null
+   },
+   {
+    "sym": "GTK",
+    "rvol": 3.86,
+    "or_high": 3.9200000762939453,
+    "or_low": 3.759999990463257,
+    "or_open": 3.7899999618530273,
+    "or_close": 3.859999895095825,
+    "atr": 0.2189,
+    "gap_pct": -0.26,
+    "news": null
+   },
+   {
+    "sym": "WHC",
+    "rvol": 3.25,
+    "or_high": 7.289999961853027,
+    "or_low": 7.199999809265137,
+    "or_open": 7.230000019073486,
+    "or_close": 7.239999771118164,
+    "atr": 0.2468,
+    "gap_pct": 2.41,
+    "news": null
+   },
+   {
+    "sym": "TLC",
+    "rvol": 3.15,
+    "or_high": 5.599999904632568,
+    "or_low": 5.534999847412109,
+    "or_open": 5.534999847412109,
+    "or_close": 5.599999904632568,
+    "atr": 0.085,
+    "gap_pct": -0.45,
+    "news": null
+   }
+  ],
   "entered": [],
   "realized": 0.0,
   "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": null,
-  "last_ts": null,
+  "market_change_pct": 0.08,
+  "last_ts": "2026-11-26T10:05:00+11:00",
   "log": [
    "09:15 Read 91 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
-   "09:15 Scanned 1836 ASX listings; 245 pass the liquidity and volatility filters."
+   "09:15 Scanned 1836 ASX listings; 245 pass the liquidity and volatility filters.",
+   "Stocks in play: TCL (5.91x), GTK (3.86x), WHC (3.25x), TLC (3.15x)",
+   "10:30 Hourly news check: 4 new price-sensitive announcements, 1 for shares the bot trades."
   ],
   "news": {
    "PME": {
@@ -215,10 +262,46 @@
     "Acquisition / sale"
    ]
   },
-  "news_refreshed": true
+  "news_refreshed": true,
+  "tracks": {
+   "TCL": {
+    "pv": 3369427.5296529136,
+    "v": 223720.0,
+    "low": 15.020000457763672,
+    "vwap": 15.06091332761002
+   },
+   "TLC": {
+    "pv": 1934299.5503083866,
+    "v": 346582.0,
+    "low": 5.534999847412109,
+    "vwap": 5.581073311102096
+   },
+   "WHC": {
+    "pv": 1555163.336083889,
+    "v": 214421.0,
+    "low": 7.199999809265137,
+    "vwap": 7.2528499357986815
+   },
+   "GTK": {
+    "pv": 184839.9063338439,
+    "v": 47751.0,
+    "low": 3.759999990463257,
+    "vwap": 3.8709117365886345
+   }
+  },
+  "news_checked_at": "2026-11-26T10:30:06.469392+11:00",
+  "news_today": [
+   {
+    "key": "2924-03167012-2A1713114",
+    "sym": "NEU",
+    "time": "2026-11-26T10:09:21+11:00",
+    "category": "Trading halt",
+    "headline": "Trading Halt"
+   }
+  ]
  },
- "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-26T10:25:06.219017+11:00",
+ "status": "Watching 4 stocks in play for breakouts",
+ "last_run": "2026-11-26T10:30:06.469392+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
