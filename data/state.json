@@ -11,9 +11,9 @@
    "stop": 4.9,
    "initial_stop": 4.9,
    "risk_ps": 0.1,
-   "high": 5.050000190734863,
+   "high": 5.079999923706055,
    "setup": "orb",
-   "last": 5.034999847412109,
+   "last": 5.079999923706055,
    "fees": 5.0,
    "rvol": 8.98,
    "atr": 0.1896,
@@ -203,7 +203,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.19,
-  "last_ts": "2026-11-25T10:45:00+11:00",
+  "last_ts": "2026-11-25T10:50:00+11:00",
   "log": [
    "09:15 Read 96 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
@@ -284,22 +284,22 @@
   "news_refreshed": true,
   "tracks": {
    "SCG": {
-    "pv": 6107912.212473551,
-    "v": 1677824.0,
+    "pv": 15076821.584714254,
+    "v": 4153144.0,
     "low": 3.609999895095825,
-    "vwap": 3.6403771864471786
+    "vwap": 3.6302188377562286
    },
    "NCK": {
-    "pv": 1122222.2248385749,
-    "v": 87970.0,
+    "pv": 1128964.3297780356,
+    "v": 88499.0,
     "low": 12.399999618530273,
-    "vwap": 12.756874216648573
+    "vwap": 12.756803238206484
    },
    "SHV": {
-    "pv": 1606931.9705896378,
-    "v": 324875.0,
+    "pv": 1711649.8359422684,
+    "v": 345543.0,
     "low": 4.789999961853027,
-    "vwap": 4.946308489694922
+    "vwap": 4.953507482259135
    }
   },
   "news_checked_at": "2026-11-25T10:30:06.140660+11:00",
@@ -314,7 +314,7 @@
   ]
  },
  "status": "Watching 3 stocks in play for breakouts",
- "last_run": "2026-11-25T11:10:05.802923+11:00",
+ "last_run": "2026-11-25T11:15:06.452713+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
