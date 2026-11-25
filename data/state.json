@@ -218,7 +218,7 @@
   "news_refreshed": true
  },
  "status": "Building the opening range (prices are ~20 min delayed)",
- "last_run": "2026-11-26T10:10:05.687719+11:00",
+ "last_run": "2026-11-26T10:15:05.678069+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
