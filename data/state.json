@@ -192,6 +192,16 @@
     "category": "Management change",
     "headline": "FY26 AGM Presentation",
     "time": "2026-11-26T08:58:46+11:00"
+   },
+   "NWH": {
+    "category": "Contract / deal",
+    "headline": "Fredon Contract Awards",
+    "time": "2026-11-26T09:37:06+11:00"
+   },
+   "NEU": {
+    "category": "Trading halt",
+    "headline": "Pause in Trading",
+    "time": "2026-11-26T09:53:26+11:00"
    }
   },
   "news_rules": {
@@ -204,10 +214,11 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  }
+  },
+  "news_refreshed": true
  },
- "status": "Morning scan done. Waiting for the 10:00 open.",
- "last_run": "2026-11-26T09:15:06.378011+11:00",
+ "status": "Building the opening range (prices are ~20 min delayed)",
+ "last_run": "2026-11-26T10:00:05.736345+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
