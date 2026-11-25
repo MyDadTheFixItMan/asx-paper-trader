@@ -13,7 +13,7 @@
    "risk_ps": 0.1,
    "high": 5.130000114440918,
    "setup": "orb",
-   "last": 5.110000133514404,
+   "last": 5.090000152587891,
    "fees": 5.0,
    "rvol": 8.98,
    "atr": 0.1896,
@@ -203,7 +203,7 @@
   "losses_in_row": 1,
   "no_new_entries": false,
   "market_change_pct": -0.19,
-  "last_ts": "2026-11-25T11:00:00+11:00",
+  "last_ts": "2026-11-25T11:05:00+11:00",
   "log": [
    "09:15 Read 96 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
@@ -211,7 +211,8 @@
    "10:30 Hourly news check: 8 new price-sensitive announcements, 1 for shares the bot trades.",
    "10:30 BUY 309 SHV @ $5.000, stop $4.900 (breakout above $4.930)",
    "10:30 BUY 641 SCG @ $3.670, stop $3.630 (breakout above $3.650)",
-   "10:40 SELL 641 SCG @ $3.620 (Stop loss) net $-42.05"
+   "10:40 SELL 641 SCG @ $3.620 (Stop loss) net $-42.05",
+   "11:30 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "NHC": {
@@ -284,25 +285,25 @@
   "news_refreshed": true,
   "tracks": {
    "SCG": {
-    "pv": 15764550.016409397,
-    "v": 4343387.0,
+    "pv": 15857697.265590668,
+    "v": 4369142.0,
     "low": 3.609999895095825,
-    "vwap": 3.6295522403160017
+    "vwap": 3.6294762828927665
    },
    "NCK": {
-    "pv": 1189598.4397967658,
-    "v": 93252.0,
+    "pv": 1192203.1798175178,
+    "v": 93456.0,
     "low": 12.399999618530273,
-    "vwap": 12.756814221644209
+    "vwap": 12.75683936630626
    },
    "SHV": {
-    "pv": 2011247.9310156505,
-    "v": 404336.0,
+    "pv": 2572839.159741084,
+    "v": 514380.0,
     "low": 4.789999961853027,
-    "vwap": 4.974199504905946
+    "vwap": 5.001825809209309
    }
   },
-  "news_checked_at": "2026-11-25T10:30:06.140660+11:00",
+  "news_checked_at": "2026-11-25T11:30:06.494540+11:00",
   "news_today": [
    {
     "key": "2924-03166292-3A707397",
@@ -314,7 +315,7 @@
   ]
  },
  "status": "Watching 3 stocks in play for breakouts",
- "last_run": "2026-11-25T11:25:05.950277+11:00",
+ "last_run": "2026-11-25T11:30:06.494540+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
