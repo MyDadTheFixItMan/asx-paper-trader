@@ -742,5 +742,29 @@
   "news_headline": null,
   "setup": "orb",
   "reason": "Stop loss"
+ },
+ {
+  "id": 34,
+  "date": "2026-11-25",
+  "sym": "SHV",
+  "qty": 309,
+  "entry_time": "2026-11-25T10:30:00+11:00",
+  "entry_price": 5.0,
+  "exit_time": "2026-11-25T13:25:00+11:00",
+  "exit_price": 4.89,
+  "initial_stop": 4.9,
+  "fees": 10.0,
+  "gross": -33.99,
+  "net": -43.99,
+  "pct": -2.85,
+  "r": -1.1,
+  "rvol": 8.98,
+  "gap_pct": 0.31,
+  "stop_pct": 2.0,
+  "market_pct": -0.19,
+  "news_cat": null,
+  "news_headline": null,
+  "setup": "orb",
+  "reason": "Stop loss"
  }
 ]
