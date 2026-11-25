@@ -142,127 +142,56 @@
   }
  ],
  "day": {
-  "date": "2026-11-25",
-  "phase": "closed",
-  "start_equity": 9418.83,
-  "universe_size": 248,
-  "watchlist": [
-   {
-    "sym": "NCK",
-    "rvol": 13.19,
-    "or_high": 12.9399995803833,
-    "or_low": 12.399999618530273,
-    "or_open": 12.555000305175781,
-    "or_close": 12.930000305175781,
-    "atr": 0.5082,
-    "gap_pct": -1.91,
-    "news": null
-   },
-   {
-    "sym": "SHV",
-    "rvol": 8.98,
-    "or_high": 4.929999828338623,
-    "or_low": 4.789999961853027,
-    "or_open": 4.815000057220459,
-    "or_close": 4.929999828338623,
-    "atr": 0.1896,
-    "gap_pct": 0.31,
-    "news": null
-   },
-   {
-    "sym": "SCG",
-    "rvol": 5.56,
-    "or_high": 3.6500000953674316,
-    "or_low": 3.609999895095825,
-    "or_open": 3.625,
-    "or_close": 3.6500000953674316,
-    "atr": 0.0768,
-    "gap_pct": 0.42,
-    "news": null
-   }
-  ],
-  "entered": [
-   "SHV",
-   "SCG"
-  ],
-  "realized": -86.04,
-  "losses_in_row": 2,
+  "date": "2026-11-26",
+  "phase": "waiting_open",
+  "start_equity": 9332.79,
+  "universe_size": 246,
+  "watchlist": [],
+  "entered": [],
+  "realized": 0.0,
+  "losses_in_row": 0,
   "no_new_entries": false,
-  "market_change_pct": -0.19,
-  "last_ts": "2026-11-25T15:50:00+11:00",
+  "market_change_pct": null,
+  "last_ts": null,
   "log": [
-   "09:15 Read 96 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
-   "09:15 Scanned 1836 ASX listings; 247 pass the liquidity and volatility filters.",
-   "Stocks in play: NCK (13.19x), SHV (8.98x), SCG (5.56x)",
-   "10:30 Hourly news check: 8 new price-sensitive announcements, 1 for shares the bot trades.",
-   "10:30 BUY 309 SHV @ $5.000, stop $4.900 (breakout above $4.930)",
-   "10:30 BUY 641 SCG @ $3.670, stop $3.630 (breakout above $3.650)",
-   "10:40 SELL 641 SCG @ $3.620 (Stop loss) net $-42.05",
-   "11:30 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades.",
-   "12:35 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades.",
-   "13:40 Hourly news check: 8 new price-sensitive announcements, 1 for shares the bot trades.",
-   "13:25 SELL 309 SHV @ $4.890 (Stop loss) net $-43.99",
-   "14:45 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:50 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:50 Day closed. Equity $9,332.79 (-86.04).",
-   "16:15 Daily review done. See 'Learning from losses' on the dashboard.",
-   "16:15 News review done: today's announcements and price reactions recorded."
+   "09:15 Read 91 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
+   "09:15 Scanned 1836 ASX listings; 245 pass the liquidity and volatility filters."
   ],
   "news": {
-   "NHC": {
-    "category": "Capital raising",
-    "headline": "Hybrid Securities Offer open and Replacement Prospectus",
-    "time": "2026-11-24T11:56:36+11:00"
-   },
-   "MND": {
-    "category": "Management change",
-    "headline": "2026 AGM Presentation",
-    "time": "2026-11-24T12:45:56+11:00"
-   },
-   "DBI": {
-    "category": "Dividend / buy-back",
-    "headline": "Q3-26 Distribution",
-    "time": "2026-11-25T08:15:20+11:00"
-   },
-   "WEB": {
-    "category": "Results",
-    "headline": "Appendix 4D and Half-Year Financial Report",
-    "time": "2026-11-25T08:17:06+11:00"
-   },
-   "WTC": {
-    "category": "Other",
-    "headline": "Richard White confirms conclusion of AFP investigation",
-    "time": "2026-11-25T08:22:00+11:00"
-   },
-   "DVP": {
-    "category": "Other",
-    "headline": "Pioneer Dome Project Update",
-    "time": "2026-11-25T08:31:00+11:00"
-   },
-   "HVN": {
-    "category": "Other",
-    "headline": "Retail Trading Update",
-    "time": "2026-11-25T09:04:01+11:00"
-   },
-   "LYL": {
-    "category": "Other",
-    "headline": "San Christobal Project Update",
-    "time": "2026-11-25T09:23:16+11:00"
-   },
-   "MGH": {
-    "category": "Trading halt",
-    "headline": "Suspension from Quotation",
-    "time": "2026-11-25T09:34:01+11:00"
-   },
-   "GNG": {
-    "category": "Management change",
-    "headline": "FY26 Annual General Meeting Presentation",
-    "time": "2026-11-25T09:36:21+11:00"
-   },
    "PME": {
-    "category": "Regulatory / clinical",
-    "headline": "PME Receives FDA Clearance for Visage7 AI Mammography",
-    "time": "2026-11-25T09:48:36+11:00"
+    "category": "Management change",
+    "headline": "PME - AGM 2026 - Presentation",
+    "time": "2026-11-25T10:05:26+11:00"
+   },
+   "NXG": {
+    "category": "Exploration / drilling",
+    "headline": "NexGen Grows High-Grade Subdomain Vertically & along strike",
+    "time": "2026-11-25T12:42:36+11:00"
+   },
+   "FPH": {
+    "category": "Results",
+    "headline": "FPH reports strong first half revenue and profit growth",
+    "time": "2026-11-26T07:32:06+11:00"
+   },
+   "BVS": {
+    "category": "Other",
+    "headline": "FY27 Guidance Update",
+    "time": "2026-11-26T08:12:31+11:00"
+   },
+   "NST": {
+    "category": "Other",
+    "headline": "Executive Leadership Appointments",
+    "time": "2026-11-26T08:19:46+11:00"
+   },
+   "MMS": {
+    "category": "Acquisition / sale",
+    "headline": "Sale of Plan & Support Services business",
+    "time": "2026-11-26T08:24:31+11:00"
+   },
+   "HSN": {
+    "category": "Management change",
+    "headline": "FY26 AGM Presentation",
+    "time": "2026-11-26T08:58:46+11:00"
    }
   },
   "news_rules": {
@@ -275,50 +204,10 @@
     "Exploration / drilling",
     "Acquisition / sale"
    ]
-  },
-  "news_refreshed": true,
-  "tracks": {
-   "SCG": {
-    "pv": 30356702.066064756,
-    "v": 8389019.0,
-    "low": 3.5799999237060547,
-    "vwap": 3.6186235918722747
-   },
-   "NCK": {
-    "pv": 12002929.503422735,
-    "v": 944543.0,
-    "low": 12.399999618530273,
-    "vwap": 12.707658098596607
-   },
-   "SHV": {
-    "pv": 48029875.7000974,
-    "v": 9644966.0,
-    "low": 4.789999961853027,
-    "vwap": 4.979786937569028
-   }
-  },
-  "news_checked_at": "2026-11-25T15:50:06.426654+11:00",
-  "news_today": [
-   {
-    "key": "2924-03166292-3A707397",
-    "sym": "PME",
-    "time": "2026-11-25T10:05:26+11:00",
-    "category": "Management change",
-    "headline": "PME - AGM 2026 - Presentation"
-   },
-   {
-    "key": "2924-03166407-6A1356910",
-    "sym": "NXG",
-    "time": "2026-11-25T12:42:36+11:00",
-    "category": "Exploration / drilling",
-    "headline": "NexGen Grows High-Grade Subdomain Vertically & along strike"
-   }
-  ],
-  "end_equity": 9332.79,
-  "reviewed": true
+  }
  },
- "status": "Day finished. Equity $9,332.79",
- "last_run": "2026-11-25T16:15:05.836666+11:00",
+ "status": "Morning scan done. Waiting for the 10:00 open.",
+ "last_run": "2026-11-26T09:15:06.378011+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
