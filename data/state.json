@@ -13,7 +13,7 @@
    "risk_ps": 0.16,
    "high": 15.1899995803833,
    "setup": "orb",
-   "last": 15.15999984741211,
+   "last": 15.180000305175781,
    "fees": 5.0,
    "rvol": 5.91,
    "atr": 0.28,
@@ -221,13 +221,14 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": 0.08,
-  "last_ts": "2026-11-26T11:05:00+11:00",
+  "last_ts": "2026-11-26T11:10:00+11:00",
   "log": [
    "09:15 Read 91 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 245 pass the liquidity and volatility filters.",
    "Stocks in play: TCL (5.91x), GTK (3.86x), WHC (3.25x), TLC (3.15x)",
    "10:30 Hourly news check: 4 new price-sensitive announcements, 1 for shares the bot trades.",
-   "10:30 BUY 154 TCL @ $15.150, stop $14.990 (breakout above $15.100)"
+   "10:30 BUY 154 TCL @ $15.150, stop $14.990 (breakout above $15.100)",
+   "11:35 Hourly news check: 9 new price-sensitive announcements, 1 for shares the bot trades."
   ],
   "news": {
    "PME": {
@@ -290,31 +291,31 @@
   "news_refreshed": true,
   "tracks": {
    "TCL": {
-    "pv": 7359355.615781149,
-    "v": 487510.0,
+    "pv": 7591557.2873147335,
+    "v": 502820.0,
     "low": 15.020000457763672,
-    "vwap": 15.095804426126948
+    "vwap": 15.097962068562772
    },
    "TLC": {
-    "pv": 6546531.075621286,
-    "v": 1175391.0,
+    "pv": 6663567.5778991375,
+    "v": 1196466.0,
     "low": 5.534999847412109,
-    "vwap": 5.569662414993212
+    "vwap": 5.5693747903401665
    },
    "WHC": {
-    "pv": 2790987.559249401,
-    "v": 385358.0,
+    "pv": 2978010.4301842055,
+    "v": 411178.0,
     "low": 7.190000057220459,
-    "vwap": 7.242583673491665
+    "vwap": 7.24263075890297
    },
    "GTK": {
-    "pv": 275297.3716573715,
-    "v": 71226.0,
+    "pv": 275877.3716406822,
+    "v": 71376.0,
     "low": 3.759999990463257,
-    "vwap": 3.8651246968434494
+    "vwap": 3.86512793713128
    }
   },
-  "news_checked_at": "2026-11-26T10:30:06.469392+11:00",
+  "news_checked_at": "2026-11-26T11:35:05.980110+11:00",
   "news_today": [
    {
     "key": "2924-03167012-2A1713114",
@@ -322,11 +323,18 @@
     "time": "2026-11-26T10:09:21+11:00",
     "category": "Trading halt",
     "headline": "Trading Halt"
+   },
+   {
+    "key": "2924-03167056-3A707546",
+    "sym": "SKS",
+    "time": "2026-11-26T10:56:16+11:00",
+    "category": "Management change",
+    "headline": "AGM 2026 CEO Address"
    }
   ]
  },
  "status": "Watching 4 stocks in play for breakouts",
- "last_run": "2026-11-26T11:30:05.975111+11:00",
+ "last_run": "2026-11-26T11:35:05.980110+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
