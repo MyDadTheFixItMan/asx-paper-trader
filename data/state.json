@@ -13,7 +13,7 @@
    "risk_ps": 0.16,
    "high": 15.220000267028809,
    "setup": "orb",
-   "last": 15.199999809265137,
+   "last": 15.1899995803833,
    "fees": 5.0,
    "rvol": 5.91,
    "atr": 0.28,
@@ -34,7 +34,7 @@
    "risk_ps": 0.12,
    "high": 7.420000076293945,
    "setup": "orb",
-   "last": 7.340000152587891,
+   "last": 7.34499979019165,
    "fees": 5.0,
    "rvol": 3.25,
    "atr": 0.2468,
@@ -243,7 +243,7 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": 0.08,
-  "last_ts": "2026-11-26T15:15:00+11:00",
+  "last_ts": "2026-11-26T15:20:00+11:00",
   "log": [
    "09:15 Read 91 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 245 pass the liquidity and volatility filters.",
@@ -254,7 +254,8 @@
    "11:45 BUY 253 WHC @ $7.310, stop $7.190 (breakout above $7.290)",
    "12:35 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades.",
    "13:40 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades.",
-   "14:40 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades."
+   "14:40 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
+   "15:45 Hourly news check: 3 new price-sensitive announcements, 1 for shares the bot trades."
   ],
   "news": {
    "PME": {
@@ -317,31 +318,31 @@
   "news_refreshed": true,
   "tracks": {
    "TCL": {
-    "pv": 17699895.637796402,
-    "v": 1168379.0,
+    "pv": 17891001.026516598,
+    "v": 1180960.0,
     "low": 15.020000457763672,
-    "vwap": 15.149104560931343
+    "vwap": 15.149540227032752
    },
    "TLC": {
-    "pv": 16022469.430644833,
-    "v": 2882062.0,
+    "pv": 16087307.387865705,
+    "v": 2893727.0,
     "low": 5.53000020980835,
-    "vwap": 5.559377081632815
+    "vwap": 5.559372873759586
    },
    "WHC": {
-    "pv": 18080237.92185593,
-    "v": 2473868.0,
+    "pv": 18129177.656517033,
+    "v": 2480531.0,
     "low": 7.190000057220459,
-    "vwap": 7.3084893461801235
+    "vwap": 7.308587417983098
    },
    "GTK": {
-    "pv": 627008.9415601094,
-    "v": 162369.0,
+    "pv": 627742.0632182757,
+    "v": 162560.0,
     "low": 3.759999990463257,
-    "vwap": 3.8616296310263003
+    "vwap": 3.861602258970692
    }
   },
-  "news_checked_at": "2026-11-26T14:40:06.069137+11:00",
+  "news_checked_at": "2026-11-26T15:45:06.186525+11:00",
   "news_today": [
    {
     "key": "2924-03167012-2A1713114",
@@ -356,11 +357,18 @@
     "time": "2026-11-26T10:56:16+11:00",
     "category": "Management change",
     "headline": "AGM 2026 CEO Address"
+   },
+   {
+    "key": "2924-03167253_PS-6A1357294",
+    "sym": "VAU",
+    "time": "2026-11-26T15:07:07+11:00",
+    "category": "Takeover / merger",
+    "headline": "Implementation of Scheme"
    }
   ]
  },
  "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-26T15:40:05.952470+11:00",
+ "last_run": "2026-11-26T15:45:06.186525+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
