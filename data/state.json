@@ -11,9 +11,9 @@
    "stop": 14.99,
    "initial_stop": 14.99,
    "risk_ps": 0.16,
-   "high": 15.1899995803833,
+   "high": 15.199999809265137,
    "setup": "orb",
-   "last": 15.180000305175781,
+   "last": 15.1899995803833,
    "fees": 5.0,
    "rvol": 5.91,
    "atr": 0.28,
@@ -221,7 +221,7 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": 0.08,
-  "last_ts": "2026-11-26T11:10:00+11:00",
+  "last_ts": "2026-11-26T11:15:00+11:00",
   "log": [
    "09:15 Read 91 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 245 pass the liquidity and volatility filters.",
@@ -291,22 +291,22 @@
   "news_refreshed": true,
   "tracks": {
    "TCL": {
-    "pv": 7591557.2873147335,
-    "v": 502820.0,
+    "pv": 7813571.164712271,
+    "v": 517439.0,
     "low": 15.020000457763672,
-    "vwap": 15.097962068562772
+    "vwap": 15.100468199560279
    },
    "TLC": {
-    "pv": 6663567.5778991375,
-    "v": 1196466.0,
+    "pv": 6818164.837087153,
+    "v": 1224313.0,
     "low": 5.534999847412109,
-    "vwap": 5.5693747903401665
+    "vwap": 5.568972017030901
    },
    "WHC": {
-    "pv": 2978010.4301842055,
-    "v": 411178.0,
+    "pv": 3049575.1801842055,
+    "v": 421049.0,
     "low": 7.190000057220459,
-    "vwap": 7.24263075890297
+    "vwap": 7.242803522117867
    },
    "GTK": {
     "pv": 275877.3716406822,
@@ -334,7 +334,7 @@
   ]
  },
  "status": "Watching 4 stocks in play for breakouts",
- "last_run": "2026-11-26T11:35:05.980110+11:00",
+ "last_run": "2026-11-26T11:40:05.517247+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
