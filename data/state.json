@@ -1,51 +1,8 @@
 {
  "start_capital": 10000,
- "cash": 5140.26,
+ "cash": 9319.39,
  "created": "2026-11-03T12:05:51.257495+11:00",
- "positions": [
-  {
-   "sym": "TCL",
-   "qty": 154,
-   "entry": 15.15,
-   "entry_time": "2026-11-26T10:30:00+11:00",
-   "stop": 14.99,
-   "initial_stop": 14.99,
-   "risk_ps": 0.16,
-   "high": 15.220000267028809,
-   "setup": "orb",
-   "last": 15.1899995803833,
-   "fees": 5.0,
-   "rvol": 5.91,
-   "atr": 0.28,
-   "stop_note": "initial",
-   "gap_pct": -0.07,
-   "stop_pct": 1.06,
-   "market_pct": 0.08,
-   "news_cat": null,
-   "news_headline": null
-  },
-  {
-   "sym": "WHC",
-   "qty": 253,
-   "entry": 7.31,
-   "entry_time": "2026-11-26T11:45:00+11:00",
-   "stop": 7.19,
-   "initial_stop": 7.19,
-   "risk_ps": 0.12,
-   "high": 7.420000076293945,
-   "setup": "orb",
-   "last": 7.349999904632568,
-   "fees": 5.0,
-   "rvol": 3.25,
-   "atr": 0.2468,
-   "stop_note": "initial",
-   "gap_pct": 2.41,
-   "stop_pct": 1.64,
-   "market_pct": 0.08,
-   "news_cat": null,
-   "news_headline": null
-  }
- ],
+ "positions": [],
  "daily": [
   {
    "date": "2026-11-03",
@@ -182,11 +139,19 @@
    "pnl": -86.04,
    "trades": 2,
    "market_change_pct": -0.19
+  },
+  {
+   "date": "2026-11-26",
+   "start_equity": 9332.79,
+   "end_equity": 9319.39,
+   "pnl": -13.4,
+   "trades": 2,
+   "market_change_pct": 0.08
   }
  ],
  "day": {
   "date": "2026-11-26",
-  "phase": "trading",
+  "phase": "closed",
   "start_equity": 9332.79,
   "universe_size": 246,
   "watchlist": [
@@ -239,11 +204,11 @@
    "TCL",
    "WHC"
   ],
-  "realized": 0.0,
-  "losses_in_row": 0,
+  "realized": -13.4,
+  "losses_in_row": 2,
   "no_new_entries": false,
   "market_change_pct": 0.08,
-  "last_ts": "2026-11-26T15:45:00+11:00",
+  "last_ts": "2026-11-26T15:50:00+11:00",
   "log": [
    "09:15 Read 91 price-sensitive ASX announcements; 7 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 245 pass the liquidity and volatility filters.",
@@ -255,7 +220,12 @@
    "12:35 Hourly news check: 4 new price-sensitive announcements, 0 for shares the bot trades.",
    "13:40 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades.",
    "14:40 Hourly news check: 2 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:45 Hourly news check: 3 new price-sensitive announcements, 1 for shares the bot trades."
+   "15:45 Hourly news check: 3 new price-sensitive announcements, 1 for shares the bot trades.",
+   "15:50 SELL 154 TCL @ $15.160 (End of day exit) net $-8.46",
+   "15:50 SELL 253 WHC @ $7.330 (End of day exit) net $-4.94",
+   "15:50 Day closed. Equity $9,319.39 (-13.40).",
+   "16:15 Daily review done. See 'Learning from losses' on the dashboard.",
+   "16:15 News review done: today's announcements and price reactions recorded."
   ],
   "news": {
    "PME": {
@@ -318,28 +288,28 @@
   "news_refreshed": true,
   "tracks": {
    "TCL": {
-    "pv": 18944741.59267203,
-    "v": 1250344.0,
+    "pv": 19743309.012682598,
+    "v": 1302939.0,
     "low": 15.020000457763672,
-    "vwap": 15.151623547337397
+    "vwap": 15.152903560859409
    },
    "TLC": {
-    "pv": 17875248.824346866,
-    "v": 3216034.0,
+    "pv": 18003293.626988735,
+    "v": 3239119.0,
     "low": 5.53000020980835,
-    "vwap": 5.558165375225158
+    "vwap": 5.5580834254588165
    },
    "WHC": {
-    "pv": 19912891.78496727,
-    "v": 2723541.0,
+    "pv": 20762429.187468376,
+    "v": 2839203.0,
     "low": 7.190000057220459,
-    "vwap": 7.31139784015268
+    "vwap": 7.312766712161257
    },
    "GTK": {
-    "pv": 925170.7956188519,
-    "v": 240318.0,
+    "pv": 977466.1951842307,
+    "v": 253990.0,
     "low": 3.759999990463257,
-    "vwap": 3.849777360076448
+    "vwap": 3.8484436205528985
    }
   },
   "news_checked_at": "2026-11-26T15:45:06.186525+11:00",
@@ -365,10 +335,12 @@
     "category": "Takeover / merger",
     "headline": "Implementation of Scheme"
    }
-  ]
+  ],
+  "end_equity": 9319.39,
+  "reviewed": true
  },
- "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-26T16:10:06.059260+11:00",
+ "status": "Day finished. Equity $9,319.39",
+ "last_run": "2026-11-26T16:15:06.373763+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
@@ -604,6 +576,24 @@
     "notes": [
      "The ASX 200 was down at the open: breakouts struggle when the market is weak."
     ]
+   },
+   {
+    "trade_id": 35,
+    "date": "2026-11-26",
+    "sym": "TCL",
+    "net": -8.46,
+    "notes": [
+     "A normal stop-out: the breakout didn't follow through. Small, planned losses like this are part of the strategy."
+    ]
+   },
+   {
+    "trade_id": 36,
+    "date": "2026-11-26",
+    "sym": "WHC",
+    "net": -4.94,
+    "notes": [
+     "Late entry: breakouts after 11am tend to have less follow-through."
+    ]
    }
   ],
   "changes": [
@@ -648,18 +638,18 @@
    {
     "feature": "Entry time",
     "label": "10:30\u201311:00",
-    "n": 9,
-    "win_rate": 33,
-    "avg_r": -0.12,
-    "net": -96.38
+    "n": 10,
+    "win_rate": 30,
+    "avg_r": -0.11,
+    "net": -104.84
    },
    {
     "feature": "Entry time",
     "label": "after 11:00",
-    "n": 9,
-    "win_rate": 33,
-    "avg_r": 0.01,
-    "net": -37.65
+    "n": 10,
+    "win_rate": 30,
+    "avg_r": 0.03,
+    "net": -42.59
    },
    {
     "feature": "Entry time",
@@ -680,10 +670,10 @@
    {
     "feature": "Market at open",
     "label": "market up",
-    "n": 12,
-    "win_rate": 58,
-    "avg_r": 0.59,
-    "net": 163.39
+    "n": 14,
+    "win_rate": 50,
+    "avg_r": 0.53,
+    "net": 149.99
    },
    {
     "feature": "Opening gap",
@@ -696,18 +686,18 @@
    {
     "feature": "Opening gap",
     "label": "gap 2\u20135%",
-    "n": 4,
-    "win_rate": 50,
-    "avg_r": 0.93,
-    "net": 74.73
+    "n": 5,
+    "win_rate": 40,
+    "avg_r": 0.78,
+    "net": 69.79
    },
    {
     "feature": "Opening gap",
     "label": "gapped down",
-    "n": 7,
-    "win_rate": 29,
-    "avg_r": -0.03,
-    "net": -49.75
+    "n": 8,
+    "win_rate": 25,
+    "avg_r": -0.02,
+    "net": -58.21
    },
    {
     "feature": "Overnight news",
@@ -736,10 +726,10 @@
    {
     "feature": "Overnight news",
     "label": "no news",
-    "n": 30,
-    "win_rate": 30,
-    "avg_r": -0.17,
-    "net": -472.73
+    "n": 32,
+    "win_rate": 28,
+    "avg_r": -0.16,
+    "net": -486.13
    },
    {
     "feature": "Relative volume",
@@ -752,18 +742,18 @@
    {
     "feature": "Relative volume",
     "label": "3\u20135\u00d7 volume",
-    "n": 13,
-    "win_rate": 46,
-    "avg_r": -0.1,
-    "net": -251.69
+    "n": 14,
+    "win_rate": 43,
+    "avg_r": -0.08,
+    "net": -256.63
    },
    {
     "feature": "Relative volume",
     "label": "5\u201310\u00d7 volume",
-    "n": 11,
-    "win_rate": 9,
-    "avg_r": -0.51,
-    "net": -252.02
+    "n": 12,
+    "win_rate": 8,
+    "avg_r": -0.47,
+    "net": -260.48
    },
    {
     "feature": "Relative volume",
@@ -784,10 +774,10 @@
    {
     "feature": "Share price",
     "label": "$5\u2013$20",
-    "n": 21,
-    "win_rate": 33,
-    "avg_r": -0.03,
-    "net": -236.11
+    "n": 23,
+    "win_rate": 30,
+    "avg_r": -0.02,
+    "net": -249.51
    },
    {
     "feature": "Share price",
@@ -808,10 +798,10 @@
    {
     "feature": "Stop distance",
     "label": "stop 1\u20132%",
-    "n": 20,
-    "win_rate": 25,
-    "avg_r": -0.16,
-    "net": -312.75
+    "n": 22,
+    "win_rate": 23,
+    "avg_r": -0.14,
+    "net": -326.15
    },
    {
     "feature": "Stop distance",
