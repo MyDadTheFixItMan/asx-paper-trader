@@ -147,11 +147,19 @@
    "pnl": -13.4,
    "trades": 2,
    "market_change_pct": 0.08
+  },
+  {
+   "date": "2026-11-27",
+   "start_equity": 9319.39,
+   "end_equity": 9319.39,
+   "pnl": 0.0,
+   "trades": 0,
+   "market_change_pct": 0.23
   }
  ],
  "day": {
   "date": "2026-11-27",
-  "phase": "trading",
+  "phase": "closed",
   "start_equity": 9319.39,
   "universe_size": 244,
   "watchlist": [
@@ -184,7 +192,7 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": 0.23,
-  "last_ts": "2026-11-27T15:45:00+11:00",
+  "last_ts": "2026-11-27T15:50:00+11:00",
   "log": [
    "09:15 Read 66 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 243 pass the liquidity and volatility filters.",
@@ -195,7 +203,10 @@
    "12:30 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades.",
    "13:35 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades.",
    "14:35 Hourly news check: 3 new price-sensitive announcements, 0 for shares the bot trades.",
-   "15:35 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades."
+   "15:35 Hourly news check: 5 new price-sensitive announcements, 0 for shares the bot trades.",
+   "15:50 Day closed. Equity $9,319.39 (+0.00).",
+   "16:15 Daily review done. See 'Learning from losses' on the dashboard.",
+   "16:15 News review done: today's announcements and price reactions recorded."
   ],
   "news": {
    "NEU": {
@@ -243,23 +254,25 @@
   "news_refreshed": true,
   "tracks": {
    "WEB": {
-    "pv": 7559990.341740292,
-    "v": 2858217.0,
+    "pv": 7651805.245944343,
+    "v": 2892455.0,
     "low": 2.5899999141693115,
-    "vwap": 2.64500223102035
+    "vwap": 2.6454362283749764
    },
    "BVS": {
-    "pv": 4983400.559271575,
-    "v": 1409042.0,
+    "pv": 5001126.194565297,
+    "v": 1413905.0,
     "low": 3.4000000953674316,
-    "vwap": 3.536729607259099
+    "vwap": 3.5371019938152117
    }
   },
   "news_checked_at": "2026-11-27T15:35:06.404379+11:00",
-  "news_today": []
+  "news_today": [],
+  "end_equity": 9319.39,
+  "reviewed": true
  },
- "status": "Past the entry cut-off. Managing open trades until the close.",
- "last_run": "2026-11-27T16:10:05.613621+11:00",
+ "status": "Day finished. Equity $9,319.39",
+ "last_run": "2026-11-27T16:15:05.591252+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
