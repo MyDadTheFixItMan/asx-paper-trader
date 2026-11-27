@@ -183,12 +183,13 @@
   "losses_in_row": 0,
   "no_new_entries": false,
   "market_change_pct": 0.23,
-  "last_ts": "2026-11-27T11:00:00+11:00",
+  "last_ts": "2026-11-27T11:05:00+11:00",
   "log": [
    "09:15 Read 66 price-sensitive ASX announcements; 6 are for shares the bot can trade.",
    "09:15 Scanned 1836 ASX listings; 243 pass the liquidity and volatility filters.",
    "Stocks in play: BVS (3.55x), WEB (3.37x)",
-   "10:30 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades."
+   "10:30 Hourly news check: 1 new price-sensitive announcements, 0 for shares the bot trades.",
+   "11:30 Hourly news check: 0 new price-sensitive announcements, 0 for shares the bot trades."
   ],
   "news": {
    "NEU": {
@@ -236,23 +237,23 @@
   "news_refreshed": true,
   "tracks": {
    "WEB": {
-    "pv": 1492372.1426219943,
-    "v": 566935.0,
+    "pv": 1541750.6423886619,
+    "v": 585722.0,
     "low": 2.5899999141693115,
-    "vwap": 2.6323514029333066
+    "vwap": 2.6322225260254215
    },
    "BVS": {
-    "pv": 1879867.3683191934,
-    "v": 535819.0,
+    "pv": 1879916.0416517255,
+    "v": 535833.0,
     "low": 3.4000000953674316,
-    "vwap": 3.5083999789466094
+    "vwap": 3.5083991498316185
    }
   },
-  "news_checked_at": "2026-11-27T10:30:05.920077+11:00",
+  "news_checked_at": "2026-11-27T11:30:06.335876+11:00",
   "news_today": []
  },
  "status": "Watching 2 stocks in play for breakouts",
- "last_run": "2026-11-27T11:25:06.376451+11:00",
+ "last_run": "2026-11-27T11:30:06.335876+11:00",
  "learning": {
   "risk_multiplier": 0.5,
   "blocks": [],
